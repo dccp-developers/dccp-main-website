@@ -1,0 +1,454 @@
+---
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+---
+
+<section id="about" class="relative overflow-hidden py-24 md:py-32">
+  <!-- Elegant background elements -->
+  <div class="absolute inset-0 -z-10">
+    <!-- Base background -->
+    <div class="absolute inset-0 bg-background"></div>
+    
+    <!-- Subtle gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background"></div>
+    
+    <!-- Elegant decorative elements -->
+    <div class="absolute right-0 top-0 h-[30rem] w-[30rem] translate-x-1/3 -translate-y-1/3 rounded-full border border-primary/5 opacity-70"></div>
+    <div class="absolute bottom-0 left-0 h-[25rem] w-[25rem] -translate-x-1/3 translate-y-1/3 rounded-full border border-primary/5 opacity-70"></div>
+  </div>
+
+  <div class="container relative z-10">
+    <!-- Elegant section header with smooth reveal -->
+    <div class="smooth-reveal mb-20">
+      <div class="mx-auto max-w-md text-center">
+        <div class="inline-flex items-center justify-center">
+          <Separator className="w-12 bg-primary/30" />
+          <span class="mx-4 text-sm uppercase tracking-widest text-primary">About Us</span>
+          <Separator className="w-12 bg-primary/30" />
+        </div>
+        
+        <h2 class="mt-6 text-4xl font-light tracking-tight sm:text-5xl md:text-6xl">
+          Our <span class="elegant-underline font-medium">Story</span>
+        </h2>
+        
+        <p class="mt-6 text-balance text-muted-foreground">
+          A journey of excellence in education, innovation, and transformation
+        </p>
+      </div>
+    </div>
+
+    <!-- Elegant two-column layout -->
+    <div class="mb-24 grid gap-16 md:grid-cols-2">
+      <!-- Left column: Image with elegant border -->
+      <div class="smooth-reveal-left relative order-2 md:order-1">
+        <div class="elegant-frame relative aspect-[4/5] overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+            <!-- This would be replaced with an actual image in production -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          
+          <!-- Elegant corner accents -->
+          <div class="absolute left-0 top-0 h-12 w-12 border-l-2 border-t-2 border-primary/30"></div>
+          <div class="absolute right-0 top-0 h-12 w-12 border-r-2 border-t-2 border-primary/30"></div>
+          <div class="absolute bottom-0 left-0 h-12 w-12 border-b-2 border-l-2 border-primary/30"></div>
+          <div class="absolute bottom-0 right-0 h-12 w-12 border-b-2 border-r-2 border-primary/30"></div>
+        </div>
+        
+        <!-- Elegant floating accent -->
+        <div class="absolute -bottom-8 -right-8 h-32 w-32 rounded-full border border-primary/10 bg-primary/5"></div>
+        <div class="absolute -top-8 -left-8 h-24 w-24 rounded-full border border-primary/10 bg-primary/5"></div>
+      </div>
+      
+      <!-- Right column: Content with elegant typography -->
+      <div class="smooth-reveal-right order-1 flex flex-col justify-center md:order-2">
+        <p class="elegant-dropcap text-lg leading-relaxed text-foreground">
+          Founded in 1995, Data Center College of The Philippines was established with a vision to bridge the gap between academic learning and industry requirements. Our institution has evolved into a premier center for technology and business education in Baguio City.
+        </p>
+        
+        <p class="mt-6 text-muted-foreground">
+          Our college has grown from a small institution to a respected name in education, particularly in the fields of information technology, business administration, and hospitality management. We continue to evolve our programs to meet the changing demands of the global job market.
+        </p>
+        
+        <div class="mt-8 flex items-center space-x-4">
+          <div class="h-px flex-1 bg-border"></div>
+          <span class="text-sm text-muted-foreground">Est. 1995</span>
+          <div class="h-px flex-1 bg-border"></div>
+        </div>
+        
+        <div class="mt-8">
+          <Button variant="outline" className="group border-primary/20 hover:border-primary">
+            <span>Learn more about our history</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </Button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Elegant values section with smooth hover effects -->
+    <div class="mb-24">
+      <div class="smooth-reveal mb-16 text-center">
+        <h3 class="text-3xl font-light">Our Core <span class="elegant-underline font-medium">Values</span></h3>
+      </div>
+      
+      <div class="grid gap-8 md:grid-cols-3">
+        <!-- Value 1 -->
+        <div class="smooth-reveal-staggered elegant-card group" style="--stagger: 0">
+          <div class="elegant-card-content">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/5 transition-colors duration-500 ease-out group-hover:bg-primary/10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            
+            <h4 class="text-xl font-medium">Excellence in Education</h4>
+            <div class="mt-2 h-px w-12 bg-primary transition-all duration-500 ease-out group-hover:w-24"></div>
+            <p class="mt-4 text-muted-foreground">
+              Committed to providing high-quality education with modern teaching methodologies and industry-relevant curriculum.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Value 2 -->
+        <div class="smooth-reveal-staggered elegant-card group" style="--stagger: 1">
+          <div class="elegant-card-content">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/5 transition-colors duration-500 ease-out group-hover:bg-primary/10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            
+            <h4 class="text-xl font-medium">Student-Centered Approach</h4>
+            <div class="mt-2 h-px w-12 bg-primary transition-all duration-500 ease-out group-hover:w-24"></div>
+            <p class="mt-4 text-muted-foreground">
+              Focusing on individual student needs with personalized attention and mentorship to ensure academic success.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Value 3 -->
+        <div class="smooth-reveal-staggered elegant-card group" style="--stagger: 2">
+          <div class="elegant-card-content">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/5 transition-colors duration-500 ease-out group-hover:bg-primary/10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </div>
+            
+            <h4 class="text-xl font-medium">Industry Connections</h4>
+            <div class="mt-2 h-px w-12 bg-primary transition-all duration-500 ease-out group-hover:w-24"></div>
+            <p class="mt-4 text-muted-foreground">
+              Strong partnerships with leading companies providing internships, job placements, and industry exposure.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Elegant timeline with smooth scroll animations -->
+    <div class="mb-24">
+      <div class="smooth-reveal mb-16 text-center">
+        <h3 class="text-3xl font-light">Our <span class="elegant-underline font-medium">Journey</span></h3>
+      </div>
+      
+      <div class="relative">
+        <!-- Elegant timeline line -->
+        <div class="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-primary/0 via-primary/30 to-primary/0 md:left-1/2"></div>
+        
+        <!-- Timeline items -->
+        <div class="space-y-24">
+          <!-- Timeline item 1 -->
+          <div class="relative">
+            <div class="absolute left-0 top-0 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border border-primary/30 bg-background md:left-1/2">
+              <div class="h-2 w-2 rounded-full bg-primary"></div>
+            </div>
+            
+            <div class="ml-8 md:ml-0 md:grid md:grid-cols-2 md:gap-8">
+              <div class="smooth-reveal-right md:text-right">
+                <div class="inline-block rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-light text-primary">1995</div>
+                <h4 class="mt-2 text-xl font-medium">Foundation</h4>
+              </div>
+              
+              <div class="smooth-reveal-left mt-2 md:mt-0">
+                <p class="text-muted-foreground">
+                  Established with a mission to provide quality education in technology and business in Baguio City.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Timeline item 2 -->
+          <div class="relative">
+            <div class="absolute left-0 top-0 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border border-primary/30 bg-background md:left-1/2">
+              <div class="h-2 w-2 rounded-full bg-primary"></div>
+            </div>
+            
+            <div class="ml-8 md:ml-0 md:grid md:grid-cols-2 md:gap-8">
+              <div class="smooth-reveal-right md:text-right">
+                <div class="inline-block rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-light text-primary">2005</div>
+                <h4 class="mt-2 text-xl font-medium">Expansion</h4>
+              </div>
+              
+              <div class="smooth-reveal-left mt-2 md:mt-0">
+                <p class="text-muted-foreground">
+                  Expanded programs and facilities to accommodate growing student population and new course offerings.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Timeline item 3 -->
+          <div class="relative">
+            <div class="absolute left-0 top-0 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border border-primary/30 bg-background md:left-1/2">
+              <div class="h-2 w-2 rounded-full bg-primary"></div>
+            </div>
+            
+            <div class="ml-8 md:ml-0 md:grid md:grid-cols-2 md:gap-8">
+              <div class="smooth-reveal-right md:text-right">
+                <div class="inline-block rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-light text-primary">2015</div>
+                <h4 class="mt-2 text-xl font-medium">Innovation Hub</h4>
+              </div>
+              
+              <div class="smooth-reveal-left mt-2 md:mt-0">
+                <p class="text-muted-foreground">
+                  Launched technology innovation center for advanced research and development, strengthening industry partnerships.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Timeline item 4 -->
+          <div class="relative">
+            <div class="absolute left-0 top-0 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border border-primary/30 bg-background md:left-1/2">
+              <div class="h-2 w-2 rounded-full bg-primary"></div>
+            </div>
+            
+            <div class="ml-8 md:ml-0 md:grid md:grid-cols-2 md:gap-8">
+              <div class="smooth-reveal-right md:text-right">
+                <div class="inline-block rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-light text-primary">Present</div>
+                <h4 class="mt-2 text-xl font-medium">Digital Transformation</h4>
+              </div>
+              
+              <div class="smooth-reveal-left mt-2 md:mt-0">
+                <p class="text-muted-foreground">
+                  Leading the way in digital education and preparing students for Industry 4.0 with cutting-edge programs.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Elegant stats with smooth counter animations -->
+    <div class="smooth-reveal">
+      <div class="overflow-hidden rounded-xl border bg-card shadow-sm">
+        <div class="grid divide-y md:divide-x md:divide-y-0 md:grid-cols-4">
+          <!-- Stat 1 -->
+          <div class="elegant-stat group p-8 text-center transition-colors duration-500 ease-out hover:bg-primary/5">
+            <div class="text-4xl font-light text-primary">
+              <span class="counter inline-block" data-target="30">0</span>+
+            </div>
+            <p class="mt-2 text-sm text-muted-foreground">Years of Excellence</p>
+            <div class="mx-auto mt-4 h-px w-0 bg-primary transition-all duration-500 ease-out group-hover:w-12"></div>
+          </div>
+          
+          <!-- Stat 2 -->
+          <div class="elegant-stat group p-8 text-center transition-colors duration-500 ease-out hover:bg-primary/5">
+            <div class="text-4xl font-light text-primary">
+              <span class="counter inline-block" data-target="5000">0</span>+
+            </div>
+            <p class="mt-2 text-sm text-muted-foreground">Graduates</p>
+            <div class="mx-auto mt-4 h-px w-0 bg-primary transition-all duration-500 ease-out group-hover:w-12"></div>
+          </div>
+          
+          <!-- Stat 3 -->
+          <div class="elegant-stat group p-8 text-center transition-colors duration-500 ease-out hover:bg-primary/5">
+            <div class="text-4xl font-light text-primary">
+              <span class="counter inline-block" data-target="95">0</span>%
+            </div>
+            <p class="mt-2 text-sm text-muted-foreground">Employment Rate</p>
+            <div class="mx-auto mt-4 h-px w-0 bg-primary transition-all duration-500 ease-out group-hover:w-12"></div>
+          </div>
+          
+          <!-- Stat 4 -->
+          <div class="elegant-stat group p-8 text-center transition-colors duration-500 ease-out hover:bg-primary/5">
+            <div class="text-4xl font-light text-primary">
+              <span class="counter inline-block" data-target="50">0</span>+
+            </div>
+            <p class="mt-2 text-sm text-muted-foreground">Industry Partners</p>
+            <div class="mx-auto mt-4 h-px w-0 bg-primary transition-all duration-500 ease-out group-hover:w-12"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Elegant underline effect */
+  .elegant-underline {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .elegant-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -0.25rem;
+    left: 25%;
+    width: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.8), transparent);
+  }
+  
+  /* Elegant drop cap */
+  .elegant-dropcap::first-letter {
+    float: left;
+    font-size: 3.5em;
+    line-height: 0.8;
+    margin-right: 0.1em;
+    font-weight: 300;
+    color: hsl(var(--primary));
+  }
+  
+  /* Elegant frame */
+  .elegant-frame {
+    position: relative;
+    border: 1px solid hsl(var(--border));
+    transition: all 0.5s ease-out;
+  }
+  
+  .elegant-frame:hover {
+    border-color: hsl(var(--primary) / 0.3);
+  }
+  
+  /* Elegant card */
+  .elegant-card {
+    position: relative;
+    padding: 2rem;
+    transition: transform 0.5s ease-out;
+  }
+  
+  .elegant-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid hsl(var(--border));
+    transition: all 0.5s ease-out;
+  }
+  
+  .elegant-card:hover::before {
+    border-color: hsl(var(--primary) / 0.3);
+  }
+  
+  .elegant-card-content {
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Smooth reveal animations */
+  .smooth-reveal, .smooth-reveal-left, .smooth-reveal-right, .smooth-reveal-staggered {
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  .smooth-reveal {
+    transform: translateY(20px);
+  }
+  
+  .smooth-reveal-left {
+    transform: translateX(-20px);
+  }
+  
+  .smooth-reveal-right {
+    transform: translateX(20px);
+  }
+  
+  .smooth-reveal-staggered {
+    transform: translateY(20px);
+    transition-delay: calc(var(--stagger) * 0.1s);
+  }
+  
+  .reveal-active {
+    opacity: 1;
+    transform: translate(0);
+  }
+  
+  /* Dark mode compatibility */
+  :global(.dark) .elegant-underline::after {
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.6), transparent);
+  }
+  
+  :global(.dark) .elegant-frame {
+    border-color: hsl(var(--border) / 0.7);
+  }
+  
+  :global(.dark) .elegant-card::before {
+    border-color: hsl(var(--border) / 0.7);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Smooth reveal animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-active');
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all elements with reveal animations
+    document.querySelectorAll('.smooth-reveal, .smooth-reveal-left, .smooth-reveal-right, .smooth-reveal-staggered').forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Counter animation with smooth easing
+    const counters = document.querySelectorAll('.counter');
+    
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const target = parseInt(counter.getAttribute('data-target'));
+          
+          // Smooth counter animation with easing
+          const duration = 2000; // ms
+          const frameDuration = 1000/60; // 60fps
+          const totalFrames = Math.round(duration / frameDuration);
+          
+          let frame = 0;
+          const easeOutQuad = t => t * (2 - t);
+          
+          const animate = () => {
+            frame++;
+            const progress = easeOutQuad(frame / totalFrames);
+            const currentCount = Math.round(target * progress);
+            
+            if (parseInt(counter.textContent) !== currentCount) {
+              counter.textContent = currentCount;
+            }
+            
+            if (frame < totalFrames) {
+              requestAnimationFrame(animate);
+            } else {
+              counter.textContent = target;
+            }
+          };
+          
+          animate();
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => {
+      counterObserver.observe(counter);
+    });
+  });
+</script>

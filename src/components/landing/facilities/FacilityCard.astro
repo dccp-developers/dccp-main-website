@@ -1,0 +1,250 @@
+---
+// Define the props for this component
+interface Facility {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  image: string;
+  color: string;
+  features: string[];
+  highlight?: boolean;
+}
+
+interface Props {
+  facility: Facility;
+  index: number;
+}
+
+const { facility, index } = Astro.props;
+
+// Function to get icon SVG based on name
+const getIconSvg = (iconName: string) => {
+  switch(iconName) {
+    case 'computer':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>`;
+    case 'book':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>`;
+    case 'utensils':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>`;
+    case 'users':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`;
+    case 'presentation':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7v10"/><path d="M11 7v10"/><path d="m15 7 2 10"/></svg>`;
+    case 'activity':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>`;
+    default:
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="16"></line><line x1="8" x2="16" y1="12" y2="12"></line></svg>`;
+  }
+};
+---
+
+<div class="facility-card group" data-index={index}>
+  <div class={`relative overflow-hidden rounded-xl border ${facility.highlight ? 'border-primary/30' : 'border-border'} bg-card transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 h-full`}>
+    <!-- Card top with visual elements -->
+    <div class="relative">
+      <!-- Visual placeholder for image -->
+      <div class="aspect-[3/2] w-full bg-muted overflow-hidden">
+        <!-- Placeholder gradient background -->
+        <div class={`absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-70`}></div>
+        
+        <!-- Icon overlay -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-20 h-20 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center text-primary card-icon">
+            <Fragment set:html={getIconSvg(facility.icon)} />
+          </div>
+        </div>
+      </div>
+      
+      <!-- Highlight badge if applicable -->
+      {facility.highlight && (
+        <div class="absolute top-4 right-4 px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full z-10 card-badge">
+          Featured
+        </div>
+      )}
+    </div>
+    
+    <!-- Card content -->
+    <div class="p-6">
+      <h3 class="text-xl font-bold mb-3 card-title group-hover:text-primary transition-colors duration-300">
+        {facility.title}
+      </h3>
+      
+      <p class="text-muted-foreground mb-6 card-description">
+        {facility.description}
+      </p>
+      
+      <!-- Feature list with visual indicators -->
+      <div class="space-y-3 card-features">
+        {facility.features.map((feature, i) => (
+          <div class="flex items-start gap-2 feature-item" style={`--delay: ${i * 100}ms`}>
+            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <span>{feature}</span>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Visual "Learn More" button -->
+      <div class="mt-6 card-button">
+        <a href={`#${facility.id}`} class="inline-flex items-center text-sm font-medium text-primary group/link">
+          <span class="relative">
+            Learn More
+            <span class="absolute -bottom-1 left-0 w-full h-px bg-current transform origin-left scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300"></span>
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 transform translate-x-0 group-hover/link:translate-x-1 transition-transform duration-300">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ index }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animate facility card on scroll
+    const facilityCard = document.querySelector(`.facility-card[data-index="${index}"]`);
+    
+    if (facilityCard) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Add visible class to main container with delay based on index
+            setTimeout(() => {
+              facilityCard.classList.add('card-visible');
+              
+              // Animate card elements
+              const cardIcon = facilityCard.querySelector('.card-icon');
+              const cardBadge = facilityCard.querySelector('.card-badge');
+              const cardTitle = facilityCard.querySelector('.card-title');
+              const cardDescription = facilityCard.querySelector('.card-description');
+              const cardFeatures = facilityCard.querySelector('.card-features');
+              const cardButton = facilityCard.querySelector('.card-button');
+              
+              if (cardIcon) cardIcon.classList.add('icon-visible');
+              if (cardBadge) cardBadge.classList.add('badge-visible');
+              if (cardTitle) cardTitle.classList.add('title-visible');
+              if (cardDescription) cardDescription.classList.add('description-visible');
+              if (cardFeatures) cardFeatures.classList.add('features-visible');
+              if (cardButton) cardButton.classList.add('button-visible');
+              
+              // Animate feature items with staggered delay
+              const featureItems = facilityCard.querySelectorAll('.feature-item');
+              featureItems.forEach((item, i) => {
+                setTimeout(() => {
+                  item.classList.add('feature-visible');
+                }, 300 + (i * 100));
+              });
+            }, index * 100);
+            
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(facilityCard);
+    }
+  });
+</script>
+
+<style>
+  /* Card animations */
+  .facility-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .facility-card.card-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Icon animations */
+  .card-icon {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .card-icon.icon-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Badge animations */
+  .card-badge {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .card-badge.badge-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Title animations */
+  .card-title {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease, color 0.3s ease;
+  }
+  
+  .card-title.title-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Description animations */
+  .card-description {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+  }
+  
+  .card-description.description-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Features animations */
+  .card-features {
+    opacity: 0;
+    transition: opacity 0.5s ease 0.2s;
+  }
+  
+  .card-features.features-visible {
+    opacity: 1;
+  }
+  
+  /* Feature item animations */
+  .feature-item {
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: var(--delay, 0ms);
+  }
+  
+  .feature-item.feature-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* Button animations */
+  .card-button {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+  }
+  
+  .card-button.button-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

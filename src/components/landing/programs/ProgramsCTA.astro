@@ -1,0 +1,108 @@
+---
+import { buttonVariants } from "@/components/ui/button";
+---
+
+<div class="programs-cta mt-24 md:mt-32">
+  <div class="cta-container bg-primary/5 rounded-xl p-8 md:p-12 relative overflow-hidden">
+    <!-- Background pattern -->
+    <div class="absolute inset-0 bg-dot-pattern opacity-10 pointer-events-none"></div>
+    
+    <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="text-center md:text-left">
+        <h3 class="text-2xl md:text-3xl font-bold mb-2 cta-title">
+          Discover More Programs
+        </h3>
+        <p class="text-muted-foreground max-w-md cta-description">
+          Explore our full range of academic offerings and find the perfect program for your future
+        </p>
+      </div>
+      
+      <div class="cta-button">
+        <a 
+          href="/programs" 
+          class={buttonVariants({ 
+            size: "lg", 
+            className: "group relative overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90" 
+          })}
+        >
+          <span class="relative z-10">View All Programs</span>
+          <span class="absolute inset-0 w-full h-full bg-white/10 transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animate CTA on scroll
+    const ctaContainer = document.querySelector('.cta-container');
+    const ctaTitle = document.querySelector('.cta-title');
+    const ctaDescription = document.querySelector('.cta-description');
+    const ctaButton = document.querySelector('.cta-button');
+    
+    if (ctaContainer) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            ctaContainer.classList.add('cta-visible');
+            
+            if (ctaTitle) ctaTitle.classList.add('title-visible');
+            if (ctaDescription) ctaDescription.classList.add('description-visible');
+            if (ctaButton) ctaButton.classList.add('button-visible');
+            
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      
+      observer.observe(ctaContainer);
+    }
+  });
+</script>
+
+<style>
+  /* Background pattern */
+  .bg-dot-pattern {
+    background-image: radial-gradient(var(--primary) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  /* CTA animations */
+  .cta-container {
+    transform: translateY(30px);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+  }
+  
+  .cta-container.cta-visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .cta-title,
+  .cta-description,
+  .cta-button {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .cta-title.title-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+  }
+  
+  .cta-description.description-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+  }
+  
+  .cta-button.button-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+  }
+</style>

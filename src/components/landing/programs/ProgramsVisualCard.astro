@@ -1,0 +1,382 @@
+---
+// Define the props for this component
+interface Specialization {
+  name: string;
+  icon: string;
+}
+
+interface Program {
+  id: string;
+  title: string;
+  description: string;
+  duration: string;
+  format: string;
+  degree: string;
+  image: string;
+  color: string;
+  specializations: Specialization[];
+  features: string[];
+  isPopular?: boolean;
+  isNew?: boolean;
+}
+
+interface Props {
+  program: Program;
+  index: number;
+}
+
+const { program, index } = Astro.props;
+
+// Function to get icon SVG based on name
+const getIconSvg = (iconName: string) => {
+  switch(iconName) {
+    case 'code':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`;
+    case 'cloud':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>`;
+    case 'shield':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`;
+    case 'database':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>`;
+    case 'banknote':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="12" x="2" y="6" rx="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg>`;
+    case 'presentation':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20"></path><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"></path><path d="m7 21 5-5 5 5"></path></svg>`;
+    case 'users':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>`;
+    case 'lightbulb':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path><path d="M9 18h6"></path><path d="M10 22h4"></path></svg>`;
+    case 'building':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>`;
+    case 'calendar':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg>`;
+    case 'map':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" x2="9" y1="3" y2="18"></line><line x1="15" x2="15" y1="6" y2="21"></line></svg>`;
+    case 'utensils':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></svg>`;
+    default:
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="16"></line><line x1="8" x2="16" y1="12" y2="12"></line></svg>`;
+  }
+};
+
+// Determine if card should be reversed based on index
+const isReversed = index % 2 !== 0;
+---
+
+<div class="program-visual-card" data-index={index}>
+  <div class={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-16 items-center`}>
+    <!-- Visual program image with overlay -->
+    <div class="lg:w-2/5 visual-image-container relative overflow-hidden rounded-2xl">
+      <!-- Placeholder for image - in production, use actual images -->
+      <div class={`aspect-video w-full bg-${program.color}-100 relative overflow-hidden group`}>
+        <!-- Program image (placeholder) -->
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-70"></div>
+        
+        <!-- Visual overlay with gradient -->
+        <div class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"></div>
+        
+        <!-- Program badge -->
+        {program.isPopular && (
+          <div class="absolute top-4 left-4 px-3 py-1 bg-primary/90 text-primary-foreground text-xs font-medium rounded-full z-10 visual-badge">
+            Most Popular
+          </div>
+        )}
+        
+        {program.isNew && (
+          <div class="absolute top-4 left-4 px-3 py-1 bg-primary/90 text-primary-foreground text-xs font-medium rounded-full z-10 visual-badge">
+            New Program
+          </div>
+        )}
+        
+        <!-- Visual program title overlay -->
+        <div class="absolute bottom-0 left-0 w-full p-6 z-10">
+          <h3 class="text-2xl md:text-3xl font-bold text-foreground visual-overlay-title">
+            {program.title}
+          </h3>
+          <div class="mt-2 w-20 h-1 bg-primary visual-overlay-line"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Program content with visual elements -->
+    <div class="lg:w-3/5 visual-content">
+      <!-- Program title for mobile (hidden on desktop) -->
+      <h3 class="text-3xl md:text-4xl font-bold mb-4 lg:hidden visual-title">
+        {program.title}
+      </h3>
+      
+      <!-- Program description with visual styling -->
+      <p class="text-xl text-muted-foreground mb-8 visual-description">
+        {program.description}
+      </p>
+      
+      <!-- Visual program details -->
+      <div class="grid grid-cols-3 gap-4 mb-8 visual-details">
+        <div class="visual-detail-card bg-card p-4 rounded-lg border border-border/50 text-center">
+          <div class="text-xs uppercase tracking-wider text-muted-foreground mb-1">Duration</div>
+          <div class="text-lg font-medium">{program.duration}</div>
+        </div>
+        
+        <div class="visual-detail-card bg-card p-4 rounded-lg border border-border/50 text-center">
+          <div class="text-xs uppercase tracking-wider text-muted-foreground mb-1">Format</div>
+          <div class="text-lg font-medium">{program.format}</div>
+        </div>
+        
+        <div class="visual-detail-card bg-card p-4 rounded-lg border border-border/50 text-center">
+          <div class="text-xs uppercase tracking-wider text-muted-foreground mb-1">Degree</div>
+          <div class="text-lg font-medium">{program.degree}</div>
+        </div>
+      </div>
+      
+      <!-- Visual specializations -->
+      <div class="mb-8 visual-specializations">
+        <h4 class="text-sm uppercase tracking-wider text-muted-foreground mb-4">Specializations</h4>
+        <div class="grid grid-cols-2 gap-4">
+          {program.specializations.map((spec) => (
+            <div class="visual-spec-card flex items-center gap-3 p-3 rounded-lg bg-card border border-border/50 hover:border-primary/50 hover:bg-primary/5 transition-colors duration-300">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                <Fragment set:html={getIconSvg(spec.icon)} />
+              </div>
+              <span class="font-medium">{spec.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Visual features list -->
+      <div class="mb-8 visual-features">
+        <h4 class="text-sm uppercase tracking-wider text-muted-foreground mb-4">Program Features</h4>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
+          {program.features.map((feature) => (
+            <li class="flex items-center gap-2">
+              <div class="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <!-- Visual CTA button -->
+      <div class="visual-cta">
+        <a href={`/programs/${program.id}`} class="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors duration-300 group">
+          <span>Explore Program</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ index }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animate program card on scroll
+    const programCard = document.querySelector(`.program-visual-card[data-index="${index}"]`);
+    
+    if (programCard) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Add visible class to main container
+            programCard.classList.add('card-visible');
+            
+            // Animate image container
+            const imageContainer = programCard.querySelector('.visual-image-container');
+            if (imageContainer) {
+              imageContainer.classList.add('image-visible');
+            }
+            
+            // Animate badge
+            const badge = programCard.querySelector('.visual-badge');
+            if (badge) {
+              badge.classList.add('badge-visible');
+            }
+            
+            // Animate overlay title
+            const overlayTitle = programCard.querySelector('.visual-overlay-title');
+            if (overlayTitle) {
+              overlayTitle.classList.add('overlay-title-visible');
+            }
+            
+            // Animate overlay line
+            const overlayLine = programCard.querySelector('.visual-overlay-line');
+            if (overlayLine) {
+              overlayLine.classList.add('overlay-line-visible');
+            }
+            
+            // Animate content elements with staggered delay
+            const contentElements = [
+              programCard.querySelector('.visual-title'),
+              programCard.querySelector('.visual-description'),
+              programCard.querySelector('.visual-details'),
+              programCard.querySelector('.visual-specializations'),
+              programCard.querySelector('.visual-features'),
+              programCard.querySelector('.visual-cta')
+            ];
+            
+            contentElements.forEach((element, i) => {
+              if (element) {
+                setTimeout(() => {
+                  element.classList.add('content-visible');
+                }, 100 * i);
+              }
+            });
+            
+            // Animate detail cards
+            const detailCards = programCard.querySelectorAll('.visual-detail-card');
+            detailCards.forEach((card, i) => {
+              setTimeout(() => {
+                card.classList.add('detail-visible');
+              }, 100 * i);
+            });
+            
+            // Animate specialization cards
+            const specCards = programCard.querySelectorAll('.visual-spec-card');
+            specCards.forEach((card, i) => {
+              setTimeout(() => {
+                card.classList.add('spec-visible');
+              }, 150 * i);
+            });
+            
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(programCard);
+    }
+  });
+</script>
+
+<style>
+  /* Card animations */
+  .program-visual-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  .program-visual-card.card-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Image container animations */
+  .visual-image-container {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .visual-image-container.image-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Badge animations */
+  .visual-badge {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+  }
+  
+  .visual-badge.badge-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Overlay title animations */
+  .visual-overlay-title {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+  }
+  
+  .visual-overlay-title.overlay-title-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Overlay line animations */
+  .visual-overlay-line {
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: opacity 0.5s ease 0.4s, transform 0.5s ease 0.4s;
+  }
+  
+  .visual-overlay-line.overlay-line-visible {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  
+  /* Content animations */
+  .visual-title,
+  .visual-description,
+  .visual-details,
+  .visual-specializations,
+  .visual-features,
+  .visual-cta {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .visual-title.content-visible,
+  .visual-description.content-visible,
+  .visual-details.content-visible,
+  .visual-specializations.content-visible,
+  .visual-features.content-visible,
+  .visual-cta.content-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Detail card animations */
+  .visual-detail-card {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .visual-detail-card.detail-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Specialization card animations */
+  .visual-spec-card {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease, 
+                background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .visual-spec-card.spec-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Add divider between cards */
+  .program-visual-card:not(:last-child) {
+    position: relative;
+    padding-bottom: 32px;
+  }
+  
+  .program-visual-card:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+</style>

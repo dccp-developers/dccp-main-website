@@ -1,0 +1,85 @@
+---
+import ProgramsHeader from "./ProgramsHeader.astro";
+import ProgramCard from "./ProgramCard.astro";
+import ProgramsCTA from "./ProgramsCTA.astro";
+
+// Program data
+const programs = [
+  {
+    id: "it",
+    title: "Information Technology",
+    description: "Develop expertise in programming, systems analysis, and digital innovation.",
+    duration: "4 Years",
+    format: "On Campus",
+    degree: "Bachelor of Science",
+    specializations: [
+      "Web Development",
+      "Cloud Computing",
+      "Cybersecurity",
+      "Data Science"
+    ],
+    isPopular: true
+  },
+  {
+    id: "business",
+    title: "Business Administration",
+    description: "Master principles of management, marketing, finance, and entrepreneurship.",
+    duration: "4 Years",
+    format: "On Campus",
+    degree: "Bachelor of Science",
+    specializations: [
+      "Financial Management",
+      "Marketing",
+      "Human Resources",
+      "Entrepreneurship"
+    ]
+  },
+  {
+    id: "hospitality",
+    title: "Hospitality Management",
+    description: "Prepare for leadership in hospitality with practical and theoretical knowledge.",
+    duration: "4 Years",
+    format: "On Campus",
+    degree: "Bachelor of Science",
+    specializations: [
+      "Hotel Management",
+      "Event Planning",
+      "Tourism",
+      "Culinary Arts"
+    ],
+    isNew: true
+  }
+];
+---
+
+<section id="programs" class="py-24 md:py-32 relative">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
+  
+  <div class="container relative z-10">
+    <!-- Header component -->
+    <ProgramsHeader />
+    
+    <!-- Programs grid -->
+    <div class="mt-16 md:mt-24 space-y-16 md:space-y-24">
+      {programs.map((program, index) => (
+        <ProgramCard 
+          program={program}
+          index={index}
+        />
+      ))}
+    </div>
+    
+    <!-- CTA component -->
+    <ProgramsCTA />
+  </div>
+</section>
+
+<style>
+  .bg-grid-pattern {
+    background-size: 30px 30px;
+    background-image: 
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  }
+</style>

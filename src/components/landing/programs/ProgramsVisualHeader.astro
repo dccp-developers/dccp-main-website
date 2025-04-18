@@ -1,0 +1,138 @@
+---
+// No props needed for this component
+---
+
+<div class="programs-visual-header relative">
+  <!-- Visual decorative elements -->
+  <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-xl opacity-50"></div>
+  <div class="absolute top-20 right-0 w-20 h-20 bg-primary/20 rounded-full blur-lg opacity-30"></div>
+  
+  <div class="relative z-10 text-center max-w-3xl mx-auto">
+    <!-- Visual title with gradient and 3D effect -->
+    <h2 class="visual-title text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none mb-6">
+      <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70">
+        Academic
+      </span>
+      <span class="inline-block relative ml-2 text-foreground">
+        Programs
+        <span class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary/30"></span>
+      </span>
+    </h2>
+    
+    <!-- Animated subtitle with visual elements -->
+    <div class="mt-8 max-w-2xl mx-auto relative">
+      <p class="visual-subtitle text-xl md:text-2xl text-muted-foreground font-light leading-relaxed">
+        Shaping tomorrow's leaders with cutting-edge education
+      </p>
+      
+      <!-- Visual indicator -->
+      <div class="mt-12 flex justify-center">
+        <div class="visual-scroll-indicator flex flex-col items-center">
+          <span class="text-xs uppercase tracking-widest text-muted-foreground mb-2">Explore</span>
+          <div class="w-px h-10 bg-gradient-to-b from-primary to-transparent animate-pulse-slow"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Visual title animation
+    const title = document.querySelector('.visual-title');
+    if (title) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            title.classList.add('title-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(title);
+    }
+    
+    // Visual subtitle animation
+    const subtitle = document.querySelector('.visual-subtitle');
+    if (subtitle) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            subtitle.classList.add('subtitle-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(subtitle);
+    }
+    
+    // Visual scroll indicator animation
+    const scrollIndicator = document.querySelector('.visual-scroll-indicator');
+    if (scrollIndicator) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            scrollIndicator.classList.add('indicator-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(scrollIndicator);
+    }
+  });
+</script>
+
+<style>
+  /* Visual title animations */
+  .visual-title {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  .visual-title.title-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Visual subtitle animations */
+  .visual-subtitle {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+  }
+  
+  .visual-subtitle.subtitle-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Visual scroll indicator animations */
+  .visual-scroll-indicator {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+  }
+  
+  .visual-scroll-indicator.indicator-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Pulse animation for scroll indicator */
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 2s ease-in-out infinite;
+  }
+</style>

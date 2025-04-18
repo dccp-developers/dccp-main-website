@@ -1,0 +1,368 @@
+---
+// Define campus locations for the map
+const campusLocations = [
+  {
+    name: "Main Campus",
+    address: "123 Session Road, Baguio City, 2600 Philippines",
+    coordinates: "16.4023, 120.5960",
+    features: ["Administration Building", "Academic Halls", "Library", "Student Center"]
+  },
+  {
+    name: "Technology Center",
+    address: "456 Magsaysay Avenue, Baguio City, 2600 Philippines",
+    coordinates: "16.4103, 120.6010",
+    features: ["Computer Labs", "Engineering Workshops", "Research Facilities"]
+  },
+  {
+    name: "Sports Complex",
+    address: "789 Loakan Road, Baguio City, 2600 Philippines",
+    coordinates: "16.3750, 120.6100",
+    features: ["Gymnasium", "Swimming Pool", "Athletic Fields", "Fitness Center"]
+  }
+];
+---
+
+<div class="bg-card border border-border/50 rounded-xl p-6 md:p-8 shadow-sm overflow-hidden relative">
+  <div class="relative z-10">
+    <div class="map-header flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+      <div>
+        <h3 class="text-2xl font-bold">Campus Locations</h3>
+        <p class="text-muted-foreground mt-1">Find us at these convenient locations</p>
+      </div>
+      
+      <!-- Location selector tabs -->
+      <div class="flex space-x-2">
+        {campusLocations.map((location, index) => (
+          <button 
+            class={`location-tab px-3 py-1.5 text-sm font-medium rounded-md transition-colors duration-300 ${index === 0 ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-primary/10'}`}
+            data-location-index={index}
+          >
+            {location.name}
+          </button>
+        ))}
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Map visualization -->
+      <div class="lg:col-span-2 map-container">
+        <div class="aspect-[16/9] w-full overflow-hidden rounded-lg border border-border/50 bg-muted relative">
+          <!-- This would be replaced with an actual map embed -->
+          <div class="flex h-full w-full items-center justify-center bg-primary/5 map-placeholder">
+            <div class="text-center p-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-primary/50 mb-2">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <p class="text-muted-foreground">Interactive Campus Map</p>
+              <p class="text-xs text-muted-foreground mt-1">Click on a location to view details</p>
+            </div>
+          </div>
+          
+          <!-- Map overlay with pulsing location marker -->
+          <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <div class="map-marker relative">
+                <div class="w-4 h-4 bg-primary rounded-full"></div>
+                <div class="absolute inset-0 bg-primary rounded-full animate-ping opacity-75"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Location details -->
+      <div class="lg:col-span-1 location-details">
+        {campusLocations.map((location, index) => (
+          <div class={`location-panel ${index === 0 ? 'block' : 'hidden'}`} data-location-index={index}>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold">{location.name}</h4>
+                  <p class="text-muted-foreground">{location.address}</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold">Coordinates</h4>
+                  <p class="text-muted-foreground">{location.coordinates}</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"></path>
+                    <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"></path>
+                    <path d="M12 3v6"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold">Key Facilities</h4>
+                  <ul class="text-muted-foreground mt-1 space-y-1">
+                    {location.features.map((feature) => (
+                      <li class="flex items-center gap-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-6">
+              <a href="#directions" class="inline-flex items-center text-primary hover:underline">
+                <span>Get Directions</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                  <path d="M9 18l6-6-6-6"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Transportation options -->
+    <div class="mt-8 p-4 bg-muted/50 rounded-lg border border-border/50 transportation-info">
+      <h4 class="font-bold mb-2 flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-primary">
+          <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+          <circle cx="9" cy="9" r="2"></circle>
+          <path d="M21 9h-5"></path>
+          <path d="M21 15h-5"></path>
+          <path d="M12 9v6"></path>
+          <path d="M3 15h4"></path>
+        </svg>
+        Transportation Options
+      </h4>
+      <p class="text-sm text-muted-foreground">
+        Our campus is conveniently accessible by public transportation. Jeepneys and taxis are readily available, and we offer shuttle services from key points in the city. Parking is available for students and visitors with personal vehicles.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animate map elements on scroll
+    const mapHeader = document.querySelector('.map-header');
+    const mapContainer = document.querySelector('.map-container');
+    const locationDetails = document.querySelector('.location-details');
+    const transportationInfo = document.querySelector('.transportation-info');
+    
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target === mapHeader) {
+            mapHeader.classList.add('header-visible');
+          }
+          
+          if (entry.target === mapContainer) {
+            mapContainer.classList.add('map-visible');
+            
+            // Animate map placeholder
+            const mapPlaceholder = mapContainer.querySelector('.map-placeholder');
+            if (mapPlaceholder) {
+              setTimeout(() => {
+                mapPlaceholder.classList.add('placeholder-visible');
+              }, 300);
+            }
+            
+            // Animate map marker
+            const mapMarker = mapContainer.querySelector('.map-marker');
+            if (mapMarker) {
+              setTimeout(() => {
+                mapMarker.classList.add('marker-visible');
+              }, 600);
+            }
+          }
+          
+          if (entry.target === locationDetails) {
+            locationDetails.classList.add('details-visible');
+            
+            // Show the first location panel
+            const firstPanel = locationDetails.querySelector('.location-panel[data-location-index="0"]');
+            if (firstPanel) {
+              setTimeout(() => {
+                firstPanel.classList.add('panel-visible');
+              }, 300);
+            }
+          }
+          
+          if (entry.target === transportationInfo) {
+            transportationInfo.classList.add('transportation-visible');
+          }
+          
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    if (mapHeader) observer.observe(mapHeader);
+    if (mapContainer) observer.observe(mapContainer);
+    if (locationDetails) observer.observe(locationDetails);
+    if (transportationInfo) observer.observe(transportationInfo);
+    
+    // Location tab functionality
+    const locationTabs = document.querySelectorAll('.location-tab');
+    const locationPanels = document.querySelectorAll('.location-panel');
+    
+    locationTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const locationIndex = tab.getAttribute('data-location-index');
+        
+        // Update active tab
+        locationTabs.forEach(t => {
+          t.classList.remove('bg-primary', 'text-primary-foreground');
+          t.classList.add('bg-muted', 'text-muted-foreground', 'hover:bg-primary/10');
+        });
+        
+        tab.classList.remove('bg-muted', 'text-muted-foreground', 'hover:bg-primary/10');
+        tab.classList.add('bg-primary', 'text-primary-foreground');
+        
+        // Show corresponding panel
+        locationPanels.forEach(panel => {
+          panel.classList.remove('panel-visible');
+          panel.classList.add('hidden');
+          
+          if (panel.getAttribute('data-location-index') === locationIndex) {
+            panel.classList.remove('hidden');
+            panel.classList.add('block', 'panel-visible');
+          }
+        });
+        
+        // Update map marker position (in a real implementation)
+        // This would actually move the marker on the map
+      });
+    });
+  });
+</script>
+
+<style>
+  /* Header animations */
+  .map-header {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .map-header.header-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Map container animations */
+  .map-container {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .map-container.map-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Map placeholder animations */
+  .map-placeholder {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  
+  .map-placeholder.placeholder-visible {
+    opacity: 1;
+  }
+  
+  /* Map marker animations */
+  .map-marker {
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .map-marker.marker-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Location details animations */
+  .location-details {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .location-details.details-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Location panel animations */
+  .location-panel {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .location-panel.panel-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* Transportation info animations */
+  .transportation-info {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .transportation-info.transportation-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Location tab hover effects */
+  .location-tab {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .location-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .location-tab:hover::after {
+    transform: scaleX(1);
+  }
+</style>

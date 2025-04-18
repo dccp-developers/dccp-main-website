@@ -1,0 +1,135 @@
+---
+// No props needed for this component
+---
+
+<div class="programs-header text-center max-w-3xl mx-auto">
+  <div class="overflow-hidden mb-3">
+    <h2 class="text-glitch text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-none">
+      Academic Programs
+    </h2>
+  </div>
+  
+  <div class="mt-6 max-w-2xl mx-auto">
+    <p class="text-fade-in text-lg md:text-xl text-muted-foreground">
+      Shaping tomorrow's leaders with cutting-edge education
+    </p>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Text glitch effect
+    const glitchText = document.querySelector('.text-glitch');
+    
+    if (glitchText) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('glitch-animate');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(glitchText);
+    }
+    
+    // Fade-in text effect
+    const fadeText = document.querySelector('.text-fade-in');
+    
+    if (fadeText) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-animate');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(fadeText);
+    }
+  });
+</script>
+
+<style>
+  /* Glitch text effect */
+  .text-glitch {
+    position: relative;
+    opacity: 0;
+  }
+  
+  .text-glitch.glitch-animate {
+    opacity: 1;
+    animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  }
+  
+  .text-glitch.glitch-animate::before,
+  .text-glitch.glitch-animate::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .text-glitch.glitch-animate::before {
+    animation: glitch-effect 3s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(-0.025em, -0.0125em);
+    opacity: 0.8;
+  }
+  
+  .text-glitch.glitch-animate::after {
+    animation: glitch-effect 2s infinite reverse;
+    clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+    transform: translate(0.025em, 0.0125em);
+    opacity: 0.8;
+  }
+  
+  /* Fade-in text effect */
+  .text-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .text-fade-in.fade-in-animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Animations */
+  @keyframes text-focus-in {
+    0% {
+      filter: blur(12px);
+      opacity: 0;
+    }
+    100% {
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes glitch-effect {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-3px, 3px);
+    }
+    40% {
+      transform: translate(-3px, -3px);
+    }
+    60% {
+      transform: translate(3px, 3px);
+    }
+    80% {
+      transform: translate(3px, -3px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+</style>

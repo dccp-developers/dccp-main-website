@@ -1,0 +1,146 @@
+---
+import ProgramsVisualHeader from "./ProgramsVisualHeader.astro";
+import ProgramsVisualCard from "./ProgramsVisualCard.astro";
+import ProgramsVisualCTA from "./ProgramsVisualCTA.astro";
+import ProgramsVisualTabs from "./ProgramsVisualTabs.astro";
+
+// Program data with enhanced visual elements
+const programs = [
+  {
+    id: "it",
+    title: "Information Technology",
+    description: "Develop expertise in programming, systems analysis, and digital innovation.",
+    duration: "4 Years",
+    format: "On Campus",
+    degree: "Bachelor of Science",
+    image: "/images/programs/it-program.jpg", // You'll need to add these images to your public folder
+    color: "blue",
+    specializations: [
+      { name: "Web Development", icon: "code" },
+      { name: "Cloud Computing", icon: "cloud" },
+      { name: "Cybersecurity", icon: "shield" },
+      { name: "Data Science", icon: "database" }
+    ],
+    features: [
+      "Industry-aligned curriculum",
+      "State-of-the-art computer labs",
+      "Internship opportunities with tech companies",
+      "Certification preparation"
+    ],
+    isPopular: true
+  },
+  {
+    id: "business",
+    title: "Business Administration",
+    description: "Master principles of management, marketing, finance, and entrepreneurship.",
+    duration: "4 Years",
+    format: "On Campus",
+    degree: "Bachelor of Science",
+    image: "/images/programs/business-program.jpg",
+    color: "amber",
+    specializations: [
+      { name: "Financial Management", icon: "banknote" },
+      { name: "Marketing", icon: "presentation" },
+      { name: "Human Resources", icon: "users" },
+      { name: "Entrepreneurship", icon: "lightbulb" }
+    ],
+    features: [
+      "Business simulation projects",
+      "Industry partnerships",
+      "Leadership development program",
+      "Global business perspective"
+    ]
+  },
+  {
+    id: "hospitality",
+    title: "Hospitality Management",
+    description: "Prepare for leadership in hospitality with practical and theoretical knowledge.",
+    duration: "4 Years",
+    format: "On Campus",
+    degree: "Bachelor of Science",
+    image: "/images/programs/hospitality-program.jpg",
+    color: "green",
+    specializations: [
+      { name: "Hotel Management", icon: "building" },
+      { name: "Event Planning", icon: "calendar" },
+      { name: "Tourism", icon: "map" },
+      { name: "Culinary Arts", icon: "utensils" }
+    ],
+    features: [
+      "Training restaurant and kitchen",
+      "Industry internships",
+      "Event management experience",
+      "International hospitality standards"
+    ],
+    isNew: true
+  }
+];
+---
+
+<section id="programs" class="py-24 md:py-32 relative overflow-hidden">
+  <!-- Visual background elements -->
+  <div class="absolute inset-0 bg-gradient-to-b from-background to-background/50 pointer-events-none"></div>
+  <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
+  
+  <!-- Floating shapes for visual interest -->
+  <div class="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float"></div>
+  <div class="absolute bottom-20 right-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float-delayed"></div>
+  
+  <div class="container relative z-10">
+    <!-- Header component -->
+    <ProgramsVisualHeader />
+    
+    <!-- Interactive program tabs -->
+    <div class="mt-16">
+      <ProgramsVisualTabs programs={programs} />
+    </div>
+    
+    <!-- Visual program cards -->
+    <div class="mt-24 space-y-32">
+      {programs.map((program, index) => (
+        <ProgramsVisualCard 
+          program={program}
+          index={index}
+        />
+      ))}
+    </div>
+    
+    <!-- Visual CTA component -->
+    <ProgramsVisualCTA />
+  </div>
+</section>
+
+<style>
+  .bg-grid-pattern {
+    background-size: 30px 30px;
+    background-image: 
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  @keyframes float-delayed {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 15s ease-in-out infinite;
+  }
+  
+  .animate-float-delayed {
+    animation: float-delayed 18s ease-in-out 2s infinite;
+  }
+</style>

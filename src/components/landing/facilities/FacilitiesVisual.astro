@@ -1,0 +1,190 @@
+---
+import FacilitiesHeader from "./FacilitiesHeader.astro";
+import FacilityCard from "./FacilityCard.astro";
+import FacilitiesTechnology from "./FacilitiesTechnology.astro";
+import FacilitiesGallery from "./FacilitiesGallery.astro";
+import FacilitiesVirtualTour from "./FacilitiesVirtualTour.astro";
+
+// Facility data with enhanced visual elements
+const facilities = [
+  {
+    id: "computer-labs",
+    title: "Computer Laboratories",
+    description: "State-of-the-art computer labs equipped with the latest hardware and software for hands-on learning.",
+    icon: "computer",
+    image: "/images/facilities/computer-lab.jpg", // You'll need to add these images to your public folder
+    color: "blue",
+    features: [
+      "Latest hardware and software",
+      "Specialized programming environments",
+      "Industry-standard tools",
+      "Technical support available"
+    ],
+    highlight: true
+  },
+  {
+    id: "library",
+    title: "Library & Learning Center",
+    description: "Comprehensive library with extensive collection of books, journals, and digital resources.",
+    icon: "book",
+    image: "/images/facilities/library.jpg",
+    color: "amber",
+    features: [
+      "Extensive book collection",
+      "Digital research databases",
+      "Quiet study spaces",
+      "Research assistance"
+    ]
+  },
+  {
+    id: "culinary",
+    title: "Culinary Laboratory",
+    description: "Professional-grade kitchen facilities for hospitality management students to develop culinary skills.",
+    icon: "utensils",
+    image: "/images/facilities/culinary-lab.jpg",
+    color: "red",
+    features: [
+      "Professional kitchen equipment",
+      "Ingredient preparation areas",
+      "Cooking and baking stations",
+      "Food presentation spaces"
+    ]
+  },
+  {
+    id: "collaboration",
+    title: "Student Collaboration Spaces",
+    description: "Dedicated areas for group work, discussions, and collaborative projects to foster teamwork.",
+    icon: "users",
+    image: "/images/facilities/collaboration-space.jpg",
+    color: "green",
+    features: [
+      "Flexible seating arrangements",
+      "Whiteboard and brainstorming tools",
+      "Presentation equipment",
+      "Comfortable work environment"
+    ]
+  },
+  {
+    id: "auditorium",
+    title: "Auditorium & Event Spaces",
+    description: "Modern venues for academic events, guest lectures, seminars, and student activities.",
+    icon: "presentation",
+    image: "/images/facilities/auditorium.jpg",
+    color: "purple",
+    features: [
+      "Professional sound system",
+      "Stage and lighting setup",
+      "Flexible seating capacity",
+      "Multimedia presentation tools"
+    ]
+  },
+  {
+    id: "recreation",
+    title: "Recreation & Sports Facilities",
+    description: "Sports courts, fitness center, and recreational areas for physical activities and healthy lifestyle.",
+    icon: "activity",
+    image: "/images/facilities/sports.jpg",
+    color: "orange",
+    features: [
+      "Indoor and outdoor courts",
+      "Fitness equipment",
+      "Team sports facilities",
+      "Recreational areas"
+    ]
+  }
+];
+
+// Technology stats
+const techStats = [
+  {
+    value: "100%",
+    label: "Wi-Fi Coverage",
+    icon: "wifi"
+  },
+  {
+    value: "24/7",
+    label: "Lab Access",
+    icon: "clock"
+  },
+  {
+    value: "50+",
+    label: "Smart Classrooms",
+    icon: "monitor"
+  },
+  {
+    value: "1 Gbps",
+    label: "Internet Speed",
+    icon: "zap"
+  }
+];
+---
+
+<section id="facilities" class="py-24 md:py-32 relative overflow-hidden">
+  <!-- Visual background elements -->
+  <div class="absolute inset-0 bg-dot-pattern opacity-[0.03] pointer-events-none"></div>
+
+  <!-- Floating decorative elements -->
+  <div class="absolute top-40 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float"></div>
+  <div class="absolute bottom-40 right-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float-delayed"></div>
+
+  <div class="container relative z-10">
+    <!-- Header component -->
+    <FacilitiesHeader />
+
+    <!-- Facility cards in a visually appealing grid -->
+    <div class="mt-16 md:mt-24 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {facilities.map((facility, index) => (
+        <FacilityCard
+          facility={facility}
+          index={index}
+        />
+      ))}
+    </div>
+
+    <!-- Technology stats section -->
+    <div class="mt-24">
+      <FacilitiesTechnology stats={techStats} />
+    </div>
+
+    <!-- Visual gallery section -->
+ 
+
+    <!-- Virtual tour section -->
+    <div class="mt-24">
+      <FacilitiesVirtualTour />
+    </div>
+  </div>
+</section>
+
+<style>
+  .bg-dot-pattern {
+    background-image: radial-gradient(var(--foreground) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes float-delayed {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-float {
+    animation: float 15s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float-delayed 18s ease-in-out 2s infinite;
+  }
+</style>

@@ -1,0 +1,180 @@
+---
+import { buttonVariants } from "@/components/ui/button";
+---
+
+<section class="relative bg-background">
+  <!-- Minimal grid background pattern -->
+  <div class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+
+  <!-- Top status bar -->
+  <div class="border-b border-border/40">
+    <div class="container flex items-center justify-between py-3">
+      <div class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Est. 1990</div>
+      <div class="flex items-center gap-3">
+        <div class="h-1.5 w-1.5 rounded-full bg-green-500"></div>
+        <span class="text-xs font-medium">Now accepting applications</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main hero content -->
+  <div class="container">
+    <div class="grid gap-16 py-16 md:grid-cols-12 md:py-24 lg:py-32">
+      <!-- Left column: Editorial-style content -->
+      <div class="md:col-span-7 md:pr-12 lg:col-span-6 lg:pr-20">
+        <!-- Subtle fade-in animation for the heading -->
+        <div class="fade-in-up">
+          <h1 class="font-serif text-4xl font-light leading-tight tracking-tight md:text-5xl lg:text-6xl">
+            <span class="block">Data Center College</span>
+            <span class="block font-normal text-primary">of The Philippines</span>
+            <span class="block mt-1 text-xl font-light text-muted-foreground md:text-2xl">Baguio City</span>
+          </h1>
+        </div>
+
+        <div class="mt-8 h-px w-16 bg-primary"></div>
+
+        <div class="mt-8 fade-in-up animation-delay-200">
+          <p class="text-lg leading-relaxed text-muted-foreground md:text-xl">
+            Where academic excellence meets innovation. Developing future leaders through a blend of rigorous education and practical experience in technology and business.
+          </p>
+        </div>
+
+        <!-- Horizontal statistics bar -->
+        <div class="mt-12 grid grid-cols-3 border-y border-border/40 py-6 fade-in-up animation-delay-300">
+          <div class="border-r border-border/40 pr-4">
+            <div class="font-serif text-3xl font-light">30+</div>
+            <div class="mt-1 text-xs uppercase tracking-wider text-muted-foreground">Years of Excellence</div>
+          </div>
+          <div class="border-r border-border/40 px-4">
+            <div class="font-serif text-3xl font-light">95%</div>
+            <div class="mt-1 text-xs uppercase tracking-wider text-muted-foreground">Employment Rate</div>
+          </div>
+          <div class="pl-4">
+            <div class="font-serif text-3xl font-light">50+</div>
+            <div class="mt-1 text-xs uppercase tracking-wider text-muted-foreground">Industry Partners</div>
+          </div>
+        </div>
+
+        <!-- Minimal CTA buttons -->
+        <div class="mt-12 flex flex-col space-y-4 sm:flex-row sm:space-x-6 sm:space-y-0 fade-in-up animation-delay-400">
+          <a href="#programs" class={buttonVariants({ variant: "default", className: "group rounded-none border-2 border-primary bg-transparent px-8 py-6 text-primary hover:bg-primary hover:text-primary-foreground" })}>
+            <span class="text-sm font-medium uppercase tracking-wider">Explore Programs</span>
+          </a>
+          <a href="#admissions" class={buttonVariants({ variant: "outline", className: "group rounded-none border-2 border-border px-8 py-6 hover:bg-muted" })}>
+            <span class="text-sm font-medium uppercase tracking-wider">Apply Now</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right column: Featured image with overlay -->
+      <div class="relative overflow-hidden md:col-span-5 lg:col-span-6 fade-in-right">
+        <!-- This would be replaced with an actual image in production -->
+        <div class="aspect-[4/5] w-full bg-muted/50 md:aspect-auto md:h-full">
+          <!-- Placeholder for actual image -->
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10">
+            <!-- College emblem overlay -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="relative h-32 w-32 md:h-40 md:w-40 lg:h-48 lg:w-48">
+                <div class="absolute inset-0 flex items-center justify-center rounded-full border border-primary/20">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="text-primary/80">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Overlay text elements -->
+        <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+          <div class="space-y-4">
+            <!-- Program highlight -->
+            <div class="inline-block bg-background/90 px-4 py-2 backdrop-blur-sm">
+              <div class="text-xs font-medium uppercase tracking-wider text-primary">Featured Program</div>
+              <div class="mt-1 text-lg font-medium">BS Information Technology</div>
+            </div>
+
+            <!-- Accreditation badge -->
+            <div class="inline-block bg-background/90 px-4 py-2 backdrop-blur-sm">
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-primary"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7-6.3-4.6L5.7 21l2.3-7-6-4.6h7.6L12 2z"/></svg>
+                <span class="text-xs font-medium">Fully Accredited Institution</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom navigation bar -->
+  <div class="border-t border-border/40">
+    <div class="container py-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-6">
+          <a href="#about" class="text-xs font-medium uppercase tracking-wider text-muted-foreground hover:text-foreground">About</a>
+          <a href="#programs" class="text-xs font-medium uppercase tracking-wider text-muted-foreground hover:text-foreground">Programs</a>
+          <a href="#facilities" class="text-xs font-medium uppercase tracking-wider text-muted-foreground hover:text-foreground">Facilities</a>
+          <a href="#admissions" class="text-xs font-medium uppercase tracking-wider text-muted-foreground hover:text-foreground">Admissions</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <a href="#contact" class="text-xs font-medium uppercase tracking-wider text-primary hover:underline">Contact Us</a>
+          <div class="h-4 w-px bg-border"></div>
+          <a href="#virtual-tour" class="flex items-center gap-2 text-xs font-medium uppercase tracking-wider hover:text-primary">
+            <span>Virtual Tour</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3 w-3"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Subtle fade-in animations */
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .fade-in-right {
+    animation: fadeInRight 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 0.3s;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>

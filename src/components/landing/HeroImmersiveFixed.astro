@@ -1,0 +1,159 @@
+---
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+---
+
+<section class="relative w-full overflow-hidden">
+  <!-- Full-screen background image with overlay -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="/campus.png" 
+      alt="DCCP Campus" 
+      class="h-full w-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/30 dark:from-background/98 dark:via-background/90 dark:to-background/70"></div>
+  </div>
+
+  <!-- Content container -->
+  <div class="container relative z-10 mx-auto px-4 py-24 sm:px-6 lg:min-h-[85vh] lg:flex lg:items-center lg:px-8">
+    <div class="flex flex-col items-start space-y-8 lg:w-3/5">
+      <!-- Animated badge -->
+      <div class="animate-fade-in-up" style="--animation-delay: 0.2s;">
+        <Badge variant="outline" className="border-primary/20 bg-primary/10 backdrop-blur-sm px-4 py-1.5 text-sm">
+          <span class="mr-1 inline-block h-2 w-2 animate-pulse rounded-full bg-primary"></span>
+          Now Accepting Applications
+        </Badge>
+      </div>
+      
+      <!-- Main heading with animated reveal -->
+      <div class="space-y-4">
+        <h1 class="animate-reveal-text text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+          <span class="block">Shape Your Future at</span>
+          <span class="block text-primary">Data Center College</span>
+          <span class="block text-xl font-medium md:text-2xl">Baguio City, Philippines</span>
+        </h1>
+        <p class="animate-fade-in-up max-w-xl text-muted-foreground md:text-xl" style="--animation-delay: 0.4s;">
+          A premier institution for technology and business education, empowering students with the skills and knowledge needed for tomorrow's challenges.
+        </p>
+      </div>
+      
+      <!-- CTA buttons with staggered animation -->
+      <div class="flex flex-wrap gap-4 animate-fade-in-up" style="--animation-delay: 0.6s;">
+        <Button size="lg" className="group relative overflow-hidden">
+          <span class="relative z-10">Explore Programs</span>
+          <span class="absolute bottom-0 left-0 h-1 w-0 bg-primary-foreground transition-all duration-300 group-hover:w-full"></span>
+        </Button>
+        <Button variant="outline" size="lg" className="group">
+          <span>Apply Now</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </Button>
+      </div>
+      
+      <!-- Feature highlights -->
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 animate-fade-in-up" style="--animation-delay: 0.8s;">
+        <div class="rounded-lg border border-border/40 bg-background/60 p-4 backdrop-blur-md">
+          <div class="flex items-center gap-3">
+            <div class="rounded-full bg-primary/10 p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-medium">Top-Rated Programs</h3>
+              <p class="text-xs text-muted-foreground">Industry-aligned curriculum</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="rounded-lg border border-border/40 bg-background/60 p-4 backdrop-blur-md">
+          <div class="flex items-center gap-3">
+            <div class="rounded-full bg-primary/10 p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary">
+                <path d="M3 3v18h18"/>
+                <path d="m19 9-5 5-4-4-3 3"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-medium">95% Employment</h3>
+              <p class="text-xs text-muted-foreground">Graduates in high demand</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="rounded-lg border border-border/40 bg-background/60 p-4 backdrop-blur-md sm:col-span-2 md:col-span-1">
+          <div class="flex items-center gap-3">
+            <div class="rounded-full bg-primary/10 p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-medium">Modern Campus</h3>
+              <p class="text-xs text-muted-foreground">State-of-the-art facilities</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 animate-bounce md:block">
+        <a href="#about" class="flex flex-col items-center text-muted-foreground transition-colors hover:text-foreground">
+          <span class="text-xs font-medium">Discover More</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-2 h-5 w-5">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Decorative elements -->
+  <div class="pointer-events-none absolute inset-0 z-20 overflow-hidden">
+    <!-- Top-right decorative element -->
+    <div class="absolute -right-20 -top-20 h-[300px] w-[300px] rounded-full border border-primary/20 bg-primary/5 backdrop-blur-3xl"></div>
+    
+    <!-- Bottom-left decorative element -->
+    <div class="absolute -bottom-32 -left-32 h-[400px] w-[400px] rounded-full border border-primary/10 bg-primary/5 backdrop-blur-3xl"></div>
+  </div>
+</section>
+
+<style>
+  /* Animation keyframes */
+  @keyframes reveal-text {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade-in-up {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Apply animations */
+  .animate-reveal-text {
+    animation: reveal-text 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease forwards;
+    animation-delay: var(--animation-delay, 0s);
+    opacity: 0;
+  }
+</style>

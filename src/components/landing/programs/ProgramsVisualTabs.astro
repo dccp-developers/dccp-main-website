@@ -1,0 +1,225 @@
+---
+// Define the props for this component
+interface Specialization {
+  name: string;
+  icon: string;
+}
+
+interface Program {
+  id: string;
+  title: string;
+  description: string;
+  duration: string;
+  format: string;
+  degree: string;
+  image: string;
+  color: string;
+  specializations: Specialization[];
+  features: string[];
+  isPopular?: boolean;
+  isNew?: boolean;
+}
+
+interface Props {
+  programs: Program[];
+}
+
+const { programs } = Astro.props;
+---
+
+<div class="programs-visual-tabs">
+  <div class="visual-tabs-container bg-card border border-border/50 rounded-xl p-1 flex overflow-x-auto hide-scrollbar">
+    {programs.map((program, index) => (
+      <button 
+        class={`visual-tab-button flex-1 min-w-[120px] py-3 px-4 rounded-lg text-center text-sm font-medium transition-all duration-300 ${index === 0 ? 'active' : ''}`}
+        data-program-id={program.id}
+      >
+        {program.title}
+      </button>
+    ))}
+  </div>
+  
+  <div class="mt-8">
+    {programs.map((program, index) => (
+      <div 
+        class={`visual-tab-content transition-all duration-500 ${index === 0 ? 'block' : 'hidden'}`}
+        data-program-id={program.id}
+      >
+        <div class="bg-card border border-border/50 rounded-xl p-6 md:p-8">
+          <div class="flex flex-col md:flex-row gap-8 items-start">
+            <!-- Program quick info -->
+            <div class="md:w-1/3">
+              <h3 class="text-2xl font-bold mb-4">{program.title}</h3>
+              <p class="text-muted-foreground mb-6">{program.description}</p>
+              
+              <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-xs text-muted-foreground">Duration</div>
+                    <div class="font-medium">{program.duration}</div>
+                  </div>
+                </div>
+                
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                      <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="text-xs text-muted-foreground">Degree</div>
+                    <div class="font-medium">{program.degree}</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mt-6">
+                <a href={`/programs/${program.id}`} class="inline-flex items-center text-primary hover:underline">
+                  <span>Learn more</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            
+            <!-- Program specializations -->
+            <div class="md:w-2/3">
+              <h4 class="text-sm uppercase tracking-wider text-muted-foreground mb-4">Specializations</h4>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {program.specializations.map((spec) => (
+                  <div class="p-4 rounded-lg bg-background border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300">
+                    <h5 class="font-medium mb-2">{spec.name}</h5>
+                    <p class="text-sm text-muted-foreground">Specialized courses and practical training in this field.</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Tab functionality
+    const tabButtons = document.querySelectorAll('.visual-tab-button');
+    const tabContents = document.querySelectorAll('.visual-tab-content');
+    
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const programId = button.getAttribute('data-program-id');
+        
+        // Update active tab button
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        // Show corresponding content
+        tabContents.forEach(content => {
+          if (content.getAttribute('data-program-id') === programId) {
+            content.classList.remove('hidden');
+            content.classList.add('block');
+          } else {
+            content.classList.add('hidden');
+            content.classList.remove('block');
+          }
+        });
+      });
+    });
+    
+    // Animate tabs on scroll
+    const tabsContainer = document.querySelector('.programs-visual-tabs');
+    
+    if (tabsContainer) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            tabsContainer.classList.add('tabs-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(tabsContainer);
+    }
+  });
+</script>
+
+<style>
+  /* Hide scrollbar but allow scrolling */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Tab button styling */
+  .visual-tab-button {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .visual-tab-button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .visual-tab-button:hover {
+    background-color: var(--primary-5);
+    color: var(--primary);
+  }
+  
+  .visual-tab-button.active {
+    background-color: var(--primary-10);
+    color: var(--primary);
+  }
+  
+  .visual-tab-button.active::after {
+    transform: scaleX(1);
+  }
+  
+  /* Tabs container animation */
+  .programs-visual-tabs {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .programs-visual-tabs.tabs-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Tab content transition */
+  .visual-tab-content {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .visual-tab-content.block {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

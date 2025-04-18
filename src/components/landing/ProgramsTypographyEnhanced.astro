@@ -1,0 +1,443 @@
+---
+import { buttonVariants } from "@/components/ui/button";
+---
+
+<section id="programs" class="py-24 md:py-32 relative overflow-hidden">
+  <!-- Large typography background elements -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none select-none opacity-[0.02] z-0">
+    <div class="absolute -top-20 -left-20 text-[25rem] font-black tracking-tighter">
+      LEARN
+    </div>
+    <div class="absolute bottom-0 right-0 text-[25rem] font-black tracking-tighter">
+      GROW
+    </div>
+  </div>
+
+  <div class="container relative z-10">
+    <!-- Typography-focused header with dramatic text reveal -->
+    <div class="mb-24 md:mb-32 relative">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="overflow-hidden mb-3">
+          <h2 class="split-text-reveal text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none">
+            <span class="split-text-char">A</span>
+            <span class="split-text-char">c</span>
+            <span class="split-text-char">a</span>
+            <span class="split-text-char">d</span>
+            <span class="split-text-char">e</span>
+            <span class="split-text-char">m</span>
+            <span class="split-text-char">i</span>
+            <span class="split-text-char">c</span>
+          </h2>
+        </div>
+        <div class="overflow-hidden mb-8">
+          <h2 class="split-text-reveal text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none text-primary">
+            <span class="split-text-char">P</span>
+            <span class="split-text-char">r</span>
+            <span class="split-text-char">o</span>
+            <span class="split-text-char">g</span>
+            <span class="split-text-char">r</span>
+            <span class="split-text-char">a</span>
+            <span class="split-text-char">m</span>
+            <span class="split-text-char">s</span>
+          </h2>
+        </div>
+        <p class="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl mx-auto fade-in-up">
+          Shaping tomorrow's leaders with cutting-edge education
+        </p>
+      </div>
+    </div>
+
+    <!-- Minimal, typography-focused program cards -->
+    <div class="space-y-32">
+      <!-- Program 1 -->
+      <div class="program-row fade-in-up" style="--delay: 0.1s">
+        <div class="flex flex-col md:flex-row items-start">
+          <!-- Program number -->
+          <div class="program-number text-[10rem] md:text-[14rem] font-black text-primary/5 leading-none -mt-16 md:-mt-24 md:mr-8">
+            01
+          </div>
+          
+          <!-- Program content -->
+          <div class="flex-1 -mt-16 md:-mt-12">
+            <div class="program-title-wrapper overflow-hidden">
+              <h3 class="program-title text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+                Information Technology
+              </h3>
+            </div>
+            
+            <div class="mt-6 md:mt-8 grid md:grid-cols-[2fr_3fr] gap-8 md:gap-16">
+              <!-- Left column: Key info -->
+              <div>
+                <p class="text-xl text-muted-foreground mb-8">
+                  Develop expertise in programming, database management, and systems analysis.
+                </p>
+                
+                <div class="space-y-6">
+                  <div class="program-stat">
+                    <div class="text-xs uppercase tracking-widest text-muted-foreground">Duration</div>
+                    <div class="text-2xl font-medium">4 Years</div>
+                  </div>
+                  
+                  <div class="program-stat">
+                    <div class="text-xs uppercase tracking-widest text-muted-foreground">Format</div>
+                    <div class="text-2xl font-medium">On Campus</div>
+                  </div>
+                  
+                  <div class="program-stat">
+                    <div class="text-xs uppercase tracking-widest text-muted-foreground">Degree</div>
+                    <div class="text-2xl font-medium">Bachelor of Science</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Right column: Specializations -->
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted-foreground mb-6">Specializations</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                  <div class="specialization-item group">
+                    <div class="text-lg font-medium group-hover:text-primary transition-colors duration-300">Web Development</div>
+                    <div class="mt-1 h-px w-0 group-hover:w-full bg-primary transition-all duration-500"></div>
+                  </div>
+                  
+                  <div class="specialization-item group">
+                    <div class="text-lg font-medium group-hover:text-primary transition-colors duration-300">Cloud Computing</div>
+                    <div class="mt-1 h-px w-0 group-hover:w-full bg-primary transition-all duration-500"></div>
+                  </div>
+                  
+                  <div class="specialization-item group">
+                    <div class="text-lg font-medium group-hover:text-primary transition-colors duration-300">Cybersecurity</div>
+                    <div class="mt-1 h-px w-0 group-hover:w-full bg-primary transition-all duration-500"></div>
+                  </div>
+                  
+                  <div class="specialization-item group">
+                    <div class="text-lg font-medium group-hover:text-primary transition-colors duration-300">Data Science</div>
+                    <div class="mt-1 h-px w-0 group-hover:w-full bg-primary transition-all duration-500"></div>
+                  </div>
+                </div>
+                
+                <div class="mt-12">
+                  <a href="#" class="program-link group inline-flex items-center text-lg font-medium">
+                    <span class="relative">
+                      Explore Program
+                      <span class="absolute -bottom-1 left-0 w-full h-px bg-current transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Program 2 -->
+      <div class="program-row fade-in-up" style="--delay: 0.2s">
+        <div class="flex flex-col md:flex-row items-start">
+          <!-- Program number -->
+          <div class="program-number text-[10rem] md:text-[14rem] font-black text-primary/5 leading-none -mt-16 md:-mt-24 md:mr-8">
+            02
+          </div>
+          
+          <!-- Program content -->
+          <div class="flex-1 -mt-16 md:-mt-12">
+            <div class="program-title-wrapper overflow-hidden">
+              <h3 class="program-title text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+                Business Administration
+              </h3>
+            </div>
+            
+            <div class="mt-6 md:mt-8 grid md:grid-cols-[2fr_3fr] gap-8 md:gap-16">
+              <!-- Left column: Key info -->
+              <div>
+                <p class="text-xl text-muted-foreground mb-8">
+                  Master principles of management, marketing, finance, and entrepreneurship.
+                </p>
+                
+                <div class="space-y-6">
+                  <div class="program-stat">
+                    <div class="text-xs uppercase tracking-widest text-muted-foreground">Duration</div>
+                    <div class="text-2xl font-medium">4 Years</div>
+                  </div>
+                  
+                  <div class="program-stat">
+                    <div class="text-xs uppercase tracking-widest text-muted-foreground">Format</div>
+                    <div class="text-2xl font-medium">On Campus</div>
+                  </div>
+                  
+                  <div class="program-stat">
+                    <div class="text-xs uppercase tracking-widest text-muted-foreground">Degree</div>
+                    <div class="text-2xl font-medium">Bachelor of Science</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Right column: Specializations -->
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted-foreground mb-6">Specializations</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                  <div class="specialization-item group">
+                    <div class="text-lg font-medium group-hover:text-primary transition-colors duration-300">Financial Management</div>
+                    <div class="mt-1 h-px w-0 group-hover:w-full bg-primary transition-all duration-500"></div>
+                  </div>
+                  
+                  <div class="specialization-item group">
+                    <div class="text-lg font-medium group-hover:text-primary transition-colors duration-300">Marketing</div>
+                    <div class="mt-1 h-px w-0 group-hover:w-full bg-primary transition-all duration-500"></div>
+                  </div>
+                  
+                  <div class="specialization-item group">
+                    <div class="text-lg font-medium group-hover:text-primary transition-colors duration-300">Human Resources</div>
+                    <div class="mt-1 h-px w-0 group-hover:w-full bg-primary transition-all duration-500"></div>
+                  </div>
+                  
+                  <div class="specialization-item group">
+                    <div class="text-lg font-medium group-hover:text-primary transition-colors duration-300">Entrepreneurship</div>
+                    <div class="mt-1 h-px w-0 group-hover:w-full bg-primary transition-all duration-500"></div>
+                  </div>
+                </div>
+                
+                <div class="mt-12">
+                  <a href="#" class="program-link group inline-flex items-center text-lg font-medium">
+                    <span class="relative">
+                      Explore Program
+                      <span class="absolute -bottom-1 left-0 w-full h-px bg-current transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Program 3 -->
+      <div class="program-row fade-in-up" style="--delay: 0.3s">
+        <div class="flex flex-col md:flex-row items-start">
+          <!-- Program number -->
+          <div class="program-number text-[10rem] md:text-[14rem] font-black text-primary/5 leading-none -mt-16 md:-mt-24 md:mr-8">
+            03
+          </div>
+          
+          <!-- Program content -->
+          <div class="flex-1 -mt-16 md:-mt-12">
+            <div class="program-title-wrapper overflow-hidden">
+              <h3 class="program-title text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+                Hospitality Management
+              </h3>
+            </div>
+            
+            <div class="mt-6 md:mt-8 grid md:grid-cols-[2fr_3fr] gap-8 md:gap-16">
+              <!-- Left column: Key info -->
+              <div>
+                <p class="text-xl text-muted-foreground mb-8">
+                  Prepare for leadership in hospitality with practical and theoretical knowledge.
+                </p>
+                
+                <div class="space-y-6">
+                  <div class="program-stat">
+                    <div class="text-xs uppercase tracking-widest text-muted-foreground">Duration</div>
+                    <div class="text-2xl font-medium">4 Years</div>
+                  </div>
+                  
+                  <div class="program-stat">
+                    <div class="text-xs uppercase tracking-widest text-muted-foreground">Format</div>
+                    <div class="text-2xl font-medium">On Campus</div>
+                  </div>
+                  
+                  <div class="program-stat">
+                    <div class="text-xs uppercase tracking-widest text-muted-foreground">Degree</div>
+                    <div class="text-2xl font-medium">Bachelor of Science</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Right column: Specializations -->
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted-foreground mb-6">Specializations</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                  <div class="specialization-item group">
+                    <div class="text-lg font-medium group-hover:text-primary transition-colors duration-300">Hotel Management</div>
+                    <div class="mt-1 h-px w-0 group-hover:w-full bg-primary transition-all duration-500"></div>
+                  </div>
+                  
+                  <div class="specialization-item group">
+                    <div class="text-lg font-medium group-hover:text-primary transition-colors duration-300">Event Planning</div>
+                    <div class="mt-1 h-px w-0 group-hover:w-full bg-primary transition-all duration-500"></div>
+                  </div>
+                  
+                  <div class="specialization-item group">
+                    <div class="text-lg font-medium group-hover:text-primary transition-colors duration-300">Tourism</div>
+                    <div class="mt-1 h-px w-0 group-hover:w-full bg-primary transition-all duration-500"></div>
+                  </div>
+                  
+                  <div class="specialization-item group">
+                    <div class="text-lg font-medium group-hover:text-primary transition-colors duration-300">Culinary Arts</div>
+                    <div class="mt-1 h-px w-0 group-hover:w-full bg-primary transition-all duration-500"></div>
+                  </div>
+                </div>
+                
+                <div class="mt-12">
+                  <a href="#" class="program-link group inline-flex items-center text-lg font-medium">
+                    <span class="relative">
+                      Explore Program
+                      <span class="absolute -bottom-1 left-0 w-full h-px bg-current transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typography-focused CTA -->
+    <div class="mt-32 md:mt-40 text-center fade-in-up" style="--delay: 0.4s">
+      <a href="#" class="inline-block group">
+        <div class="overflow-hidden">
+          <span class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight block transform translate-y-0 group-hover:-translate-y-full transition-transform duration-500 ease-in-out">View All Programs</span>
+          <span class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary block transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">View All Programs</span>
+        </div>
+        <div class="mt-2 h-px w-0 group-hover:w-full bg-primary mx-auto transition-all duration-500 ease-in-out"></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Character-by-character text reveal animation
+    const splitTextChars = document.querySelectorAll('.split-text-char');
+    
+    splitTextChars.forEach((char, index) => {
+      char.style.transitionDelay = `${index * 0.05}s`;
+      setTimeout(() => {
+        char.classList.add('revealed');
+      }, 100);
+    });
+    
+    // Fade-in animations
+    const fadeElements = document.querySelectorAll('.fade-in-up');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { 
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    });
+    
+    fadeElements.forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Program title animations
+    const programTitles = document.querySelectorAll('.program-title');
+    
+    programTitles.forEach(title => {
+      const titleObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('title-revealed');
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      titleObserver.observe(title);
+    });
+  });
+</script>
+
+<style>
+  /* Character-by-character text reveal */
+  .split-text-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  }
+  
+  .split-text-char.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Fade-in animations */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+    transition-delay: var(--delay, 0s);
+  }
+  
+  .fade-in-up.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Program title animations */
+  .program-title {
+    transform: translateY(100%);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .program-title.title-revealed {
+    transform: translateY(0);
+  }
+  
+  /* Program row styling */
+  .program-row {
+    position: relative;
+  }
+  
+  .program-row:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    opacity: 0.3;
+  }
+  
+  @media (min-width: 768px) {
+    .program-row:not(:last-child)::after {
+      bottom: -16px;
+    }
+  }
+  
+  /* Program stat hover effect */
+  .program-stat {
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  
+  .program-stat:hover {
+    transform: translateX(8px);
+  }
+  
+  /* Program link hover effect */
+  .program-link {
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .program-link:hover {
+    color: var(--primary);
+  }
+</style>

@@ -1,0 +1,480 @@
+---
+import { buttonVariants } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+---
+
+<section id="programs" class="py-20 md:py-28">
+  <div class="container">
+    <!-- Header with animated reveal -->
+    <div class="mx-auto max-w-[58rem] text-center mb-16">
+      <div class="smooth-reveal-staggered">
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+          Academic Programs
+        </h2>
+        <div class="mt-4 flex justify-center">
+          <div class="w-20 h-1 bg-primary rounded-full"></div>
+        </div>
+        <p class="mt-6 text-lg text-muted-foreground max-w-[42rem] mx-auto">
+          Discover our innovative programs designed to prepare you for the careers of tomorrow
+        </p>
+      </div>
+    </div>
+
+    <!-- Featured Programs with modern card design -->
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Program 1 -->
+      <div class="group relative overflow-hidden rounded-xl border bg-card transition-all hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 duration-300">
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        
+        <!-- Program image with overlay -->
+        <div class="aspect-video w-full overflow-hidden bg-muted relative">
+          <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10"></div>
+          <div class="h-full w-full bg-primary/10 group-hover:scale-105 transition-transform duration-500"></div>
+          
+          <!-- Program badge -->
+          <Badge variant="secondary" className="absolute top-4 right-4 z-20 font-medium">
+            Most Popular
+          </Badge>
+        </div>
+        
+        <!-- Content -->
+        <div class="p-6 relative z-10">
+          <h3 class="text-xl font-bold group-hover:text-primary transition-colors duration-300">
+            Bachelor of Science in Information Technology
+          </h3>
+          
+          <!-- Program stats -->
+          <div class="flex items-center gap-4 mt-3 text-sm text-muted-foreground">
+            <div class="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+              <span>4 Years</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                <path d="M12 20h9"/>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+              <span>120 Credits</span>
+            </div>
+          </div>
+          
+          <p class="mt-4 text-muted-foreground">
+            Develop expertise in programming, database management, networking, and systems analysis.
+          </p>
+          
+          <!-- Skills progress bars -->
+          <div class="mt-6 space-y-3">
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Programming</span>
+                <span>95%</span>
+              </div>
+              <Progress value={95} className="h-1.5" />
+            </div>
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Database Management</span>
+                <span>85%</span>
+              </div>
+              <Progress value={85} className="h-1.5" />
+            </div>
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Web Development</span>
+                <span>90%</span>
+              </div>
+              <Progress value={90} className="h-1.5" />
+            </div>
+          </div>
+          
+          <!-- Key features -->
+          <ul class="mt-6 space-y-2 text-sm">
+            <li class="flex items-center gap-2">
+              <div class="flex-shrink-0 rounded-full bg-primary/10 p-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span>Web & Mobile Development</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <div class="flex-shrink-0 rounded-full bg-primary/10 p-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span>Database & Cloud Computing</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <div class="flex-shrink-0 rounded-full bg-primary/10 p-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span>Network & Cybersecurity</span>
+            </li>
+          </ul>
+          
+          <!-- CTA button with hover effect -->
+          <div class="mt-8">
+            <a href="#" class={buttonVariants({ variant: "outline", size: "sm", className: "w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300" })}>
+              <span>Explore Program</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 transition-transform duration-300 group-hover:translate-x-1">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Program 2 -->
+      <div class="group relative overflow-hidden rounded-xl border bg-card transition-all hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 duration-300">
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        
+        <!-- Program image with overlay -->
+        <div class="aspect-video w-full overflow-hidden bg-muted relative">
+          <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10"></div>
+          <div class="h-full w-full bg-primary/10 group-hover:scale-105 transition-transform duration-500"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="p-6 relative z-10">
+          <h3 class="text-xl font-bold group-hover:text-primary transition-colors duration-300">
+            Bachelor of Science in Business Administration
+          </h3>
+          
+          <!-- Program stats -->
+          <div class="flex items-center gap-4 mt-3 text-sm text-muted-foreground">
+            <div class="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+              <span>4 Years</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                <path d="M12 20h9"/>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+              <span>120 Credits</span>
+            </div>
+          </div>
+          
+          <p class="mt-4 text-muted-foreground">
+            Gain comprehensive knowledge in management, marketing, finance, and entrepreneurship.
+          </p>
+          
+          <!-- Skills progress bars -->
+          <div class="mt-6 space-y-3">
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Management</span>
+                <span>90%</span>
+              </div>
+              <Progress value={90} className="h-1.5" />
+            </div>
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Marketing</span>
+                <span>85%</span>
+              </div>
+              <Progress value={85} className="h-1.5" />
+            </div>
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Finance</span>
+                <span>80%</span>
+              </div>
+              <Progress value={80} className="h-1.5" />
+            </div>
+          </div>
+          
+          <!-- Key features -->
+          <ul class="mt-6 space-y-2 text-sm">
+            <li class="flex items-center gap-2">
+              <div class="flex-shrink-0 rounded-full bg-primary/10 p-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span>Financial Management</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <div class="flex-shrink-0 rounded-full bg-primary/10 p-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span>Marketing & Sales</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <div class="flex-shrink-0 rounded-full bg-primary/10 p-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span>Human Resource Management</span>
+            </li>
+          </ul>
+          
+          <!-- CTA button with hover effect -->
+          <div class="mt-8">
+            <a href="#" class={buttonVariants({ variant: "outline", size: "sm", className: "w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300" })}>
+              <span>Explore Program</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 transition-transform duration-300 group-hover:translate-x-1">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Program 3 -->
+      <div class="group relative overflow-hidden rounded-xl border bg-card transition-all hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1 duration-300">
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        
+        <!-- Program image with overlay -->
+        <div class="aspect-video w-full overflow-hidden bg-muted relative">
+          <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10"></div>
+          <div class="h-full w-full bg-primary/10 group-hover:scale-105 transition-transform duration-500"></div>
+          
+          <!-- Program badge -->
+          <Badge variant="secondary" className="absolute top-4 right-4 z-20 font-medium">
+            New Program
+          </Badge>
+        </div>
+        
+        <!-- Content -->
+        <div class="p-6 relative z-10">
+          <h3 class="text-xl font-bold group-hover:text-primary transition-colors duration-300">
+            Bachelor of Science in Hospitality Management
+          </h3>
+          
+          <!-- Program stats -->
+          <div class="flex items-center gap-4 mt-3 text-sm text-muted-foreground">
+            <div class="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+              <span>4 Years</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                <path d="M12 20h9"/>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+              <span>120 Credits</span>
+            </div>
+          </div>
+          
+          <p class="mt-4 text-muted-foreground">
+            Prepare for careers in the hospitality industry with practical and theoretical knowledge.
+          </p>
+          
+          <!-- Skills progress bars -->
+          <div class="mt-6 space-y-3">
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Hotel Management</span>
+                <span>90%</span>
+              </div>
+              <Progress value={90} className="h-1.5" />
+            </div>
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Event Planning</span>
+                <span>85%</span>
+              </div>
+              <Progress value={85} className="h-1.5" />
+            </div>
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span>Culinary Arts</span>
+                <span>80%</span>
+              </div>
+              <Progress value={80} className="h-1.5" />
+            </div>
+          </div>
+          
+          <!-- Key features -->
+          <ul class="mt-6 space-y-2 text-sm">
+            <li class="flex items-center gap-2">
+              <div class="flex-shrink-0 rounded-full bg-primary/10 p-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span>Hotel & Restaurant Management</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <div class="flex-shrink-0 rounded-full bg-primary/10 p-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span>Tourism & Events Planning</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <div class="flex-shrink-0 rounded-full bg-primary/10 p-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span>Culinary Arts</span>
+            </li>
+          </ul>
+          
+          <!-- CTA button with hover effect -->
+          <div class="mt-8">
+            <a href="#" class={buttonVariants({ variant: "outline", size: "sm", className: "w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300" })}>
+              <span>Explore Program</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 transition-transform duration-300 group-hover:translate-x-1">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Program categories with hover effects -->
+    <div class="mt-20">
+      <h3 class="text-2xl font-bold text-center mb-10">Explore by Category</h3>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <a href="#" class="group flex flex-col items-center p-6 rounded-xl border bg-card hover:shadow-md hover:border-primary/50 transition-all duration-300">
+          <div class="size-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+              <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
+            </svg>
+          </div>
+          <span class="font-medium group-hover:text-primary transition-colors duration-300">Technology</span>
+        </a>
+        
+        <a href="#" class="group flex flex-col items-center p-6 rounded-xl border bg-card hover:shadow-md hover:border-primary/50 transition-all duration-300">
+          <div class="size-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+              <path d="M3 3v18h18"></path>
+              <path d="m19 9-5 5-4-4-3 3"></path>
+            </svg>
+          </div>
+          <span class="font-medium group-hover:text-primary transition-colors duration-300">Business</span>
+        </a>
+        
+        <a href="#" class="group flex flex-col items-center p-6 rounded-xl border bg-card hover:shadow-md hover:border-primary/50 transition-all duration-300">
+          <div class="size-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+              <path d="M20 7h-9"></path>
+              <path d="M14 17H5"></path>
+              <circle cx="17" cy="17" r="3"></circle>
+              <circle cx="7" cy="7" r="3"></circle>
+            </svg>
+          </div>
+          <span class="font-medium group-hover:text-primary transition-colors duration-300">Hospitality</span>
+        </a>
+        
+        <a href="#" class="group flex flex-col items-center p-6 rounded-xl border bg-card hover:shadow-md hover:border-primary/50 transition-all duration-300">
+          <div class="size-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+          <span class="font-medium group-hover:text-primary transition-colors duration-300">Liberal Arts</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- CTA section -->
+    <div class="mt-16 text-center">
+      <a href="#" class={buttonVariants({ size: "lg", className: "group relative overflow-hidden" })}>
+        <span class="relative z-10">View All Programs</span>
+        <span class="absolute bottom-0 left-0 h-1 w-0 bg-primary-foreground transition-all duration-300 group-hover:w-full"></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Smooth reveal animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-active');
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all elements with reveal animations
+    document.querySelectorAll('.smooth-reveal, .smooth-reveal-left, .smooth-reveal-right, .smooth-reveal-staggered').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
+
+<style>
+  /* Reveal animations */
+  .smooth-reveal,
+  .smooth-reveal-left,
+  .smooth-reveal-right,
+  .smooth-reveal-staggered {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .smooth-reveal {
+    transform: translateY(20px);
+  }
+  
+  .smooth-reveal-left {
+    transform: translateX(-20px);
+  }
+  
+  .smooth-reveal-right {
+    transform: translateX(20px);
+  }
+  
+  .smooth-reveal-staggered > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--index, 0) * 100ms);
+  }
+  
+  .reveal-active {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  
+  .reveal-active.smooth-reveal-staggered > *:nth-child(1) {
+    --index: 1;
+  }
+  
+  .reveal-active.smooth-reveal-staggered > *:nth-child(2) {
+    --index: 2;
+  }
+  
+  .reveal-active.smooth-reveal-staggered > *:nth-child(3) {
+    --index: 3;
+  }
+  
+  .reveal-active.smooth-reveal-staggered > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

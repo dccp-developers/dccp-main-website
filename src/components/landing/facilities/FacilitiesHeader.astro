@@ -1,0 +1,152 @@
+---
+// No props needed for this component
+---
+
+<div class="facilities-header text-center max-w-3xl mx-auto relative">
+  <!-- Visual decorative elements -->
+  <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-xl opacity-50 hidden md:block"></div>
+  <div class="absolute top-20 right-0 w-20 h-20 bg-primary/20 rounded-full blur-lg opacity-30 hidden md:block"></div>
+  
+  <div class="relative z-10">
+    <!-- Fancy text reveal for the title -->
+    <div class="overflow-hidden mb-2">
+      <h2 class="text-reveal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-none">
+        <span class="text-gradient">Campus</span> <span class="relative">Facilities
+          <span class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary/30 line-reveal"></span>
+        </span>
+      </h2>
+    </div>
+    
+    <!-- Animated subtitle with staggered reveal -->
+    <div class="mt-6 max-w-2xl mx-auto overflow-hidden">
+      <p class="text-fade-in text-lg md:text-xl text-muted-foreground leading-relaxed">
+        <span class="word-reveal">Modern</span> 
+        <span class="word-reveal">facilities</span> 
+        <span class="word-reveal">designed</span> 
+        <span class="word-reveal">to</span> 
+        <span class="word-reveal">enhance</span> 
+        <span class="word-reveal">your</span> 
+        <span class="word-reveal">learning</span> 
+        <span class="word-reveal">experience</span>
+      </p>
+    </div>
+    
+    <!-- Visual scroll indicator -->
+    <div class="mt-12 flex justify-center">
+      <div class="scroll-indicator flex flex-col items-center">
+        <span class="text-xs uppercase tracking-widest text-muted-foreground mb-2 opacity-0 animate-fade-in">Explore</span>
+        <div class="w-px h-10 bg-gradient-to-b from-primary to-transparent animate-pulse-slow opacity-0 animate-fade-in"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Text reveal animation
+    const textReveal = document.querySelector('.text-reveal');
+    if (textReveal) {
+      textReveal.classList.add('revealed');
+    }
+    
+    // Line reveal animation
+    const lineReveal = document.querySelector('.line-reveal');
+    if (lineReveal) {
+      setTimeout(() => {
+        lineReveal.classList.add('revealed');
+      }, 800);
+    }
+    
+    // Word-by-word reveal animation
+    const words = document.querySelectorAll('.word-reveal');
+    words.forEach((word, index) => {
+      setTimeout(() => {
+        word.classList.add('revealed');
+      }, 300 + (index * 100));
+    });
+    
+    // Scroll indicator animation
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+      setTimeout(() => {
+        const children = scrollIndicator.querySelectorAll('.animate-fade-in');
+        children.forEach((child, index) => {
+          setTimeout(() => {
+            child.classList.add('fade-in');
+          }, 1200 + (index * 200));
+        });
+      }, 1000);
+    }
+  });
+</script>
+
+<style>
+  /* Gradient text effect */
+  .text-gradient {
+    background: linear-gradient(to right, var(--primary), var(--primary-foreground));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+  
+  /* Text reveal animation */
+  .text-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .text-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Line reveal animation */
+  .line-reveal {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .line-reveal.revealed {
+    transform: scaleX(1);
+  }
+  
+  /* Word-by-word reveal animation */
+  .word-reveal {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-right: 0.3em;
+  }
+  
+  .word-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Fade-in animation */
+  .animate-fade-in {
+    transition: opacity 0.5s ease;
+  }
+  
+  .animate-fade-in.fade-in {
+    opacity: 1;
+  }
+  
+  /* Pulse animation for scroll indicator */
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 2s ease-in-out infinite;
+  }
+</style>

@@ -1,0 +1,295 @@
+---
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+---
+
+<section class="relative isolate overflow-hidden">
+  <!-- Split background with diagonal divider -->
+  <div class="absolute inset-0 -z-10">
+    <!-- Left side background -->
+    <div class="absolute inset-0 bg-background"></div>
+    
+    <!-- Right side background with campus image -->
+    <div class="absolute right-0 top-0 bottom-0 w-1/3 md:w-1/2 overflow-hidden">
+      <div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+      <img 
+        src="/campus.png" 
+        alt="DCCP Campus" 
+        class="h-full w-full object-cover opacity-80 dark:opacity-60"
+      />
+      <div class="absolute inset-0 bg-gradient-to-l from-transparent via-background/20 to-background"></div>
+    </div>
+    
+    <!-- Diagonal divider -->
+    <div class="absolute inset-0 clip-diagonal"></div>
+  </div>
+
+  <!-- Animated grid pattern -->
+  <div class="absolute inset-0 -z-10 grid-pattern opacity-10 dark:opacity-5"></div>
+  
+  <!-- Main content -->
+  <div class="container relative z-10 mx-auto px-4 py-16 sm:px-6 lg:min-h-[90vh] lg:flex lg:items-center lg:px-8">
+    <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-0">
+      <!-- Left content area (text) -->
+      <div class="lg:col-span-6 lg:pr-8">
+        <!-- Vertical text line -->
+        <div class="hidden lg:block absolute -left-4 top-1/4 transform -translate-y-1/2">
+          <div class="flex flex-col items-center">
+            <div class="h-32 w-px bg-border"></div>
+            <div class="mt-4 rotate-90 transform origin-center whitespace-nowrap text-xs uppercase tracking-widest text-muted-foreground">
+              Est. 1990
+            </div>
+          </div>
+        </div>
+        
+        <!-- Main heading with split design -->
+        <div class="relative">
+          <div class="absolute -left-2 top-0 h-12 w-1 bg-primary"></div>
+          <div class="space-y-2 pl-4">
+            <Badge variant="outline" className="mb-4 border-primary/20 bg-primary/5 px-3 py-1">
+              <span class="mr-1 inline-block h-2 w-2 animate-pulse rounded-full bg-primary"></span>
+              Admissions Open
+            </Badge>
+            
+            <h1 class="split-heading text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+              <span class="block overflow-hidden">
+                <span class="block transform transition-transform duration-700 animate-slide-up">Redefine</span>
+              </span>
+              <span class="block overflow-hidden">
+                <span class="block transform transition-transform duration-700 animate-slide-up delay-100">Your Future at</span>
+              </span>
+              <span class="block overflow-hidden">
+                <span class="block transform transition-transform duration-700 animate-slide-up delay-200 text-primary">Data Center College</span>
+              </span>
+            </h1>
+            
+            <p class="mt-6 max-w-xl text-muted-foreground md:text-lg animate-fade-in opacity-0" style="animation-delay: 0.8s;">
+              Where innovation meets education in Baguio City. Discover a transformative learning experience designed for tomorrow's technology and business leaders.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Interactive CTA section -->
+        <div class="mt-10 flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 animate-fade-in opacity-0" style="animation-delay: 1s;">
+          <Button size="lg" className="group relative overflow-hidden">
+            <span class="relative z-10">Explore Programs</span>
+            <span class="absolute inset-0 -z-10 bg-gradient-to-r from-primary to-primary/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+          </Button>
+          
+          <Button variant="outline" size="lg" className="group">
+            <span>Virtual Tour</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="10 8 16 12 10 16 10 8"></polygon>
+            </svg>
+          </Button>
+        </div>
+      </div>
+      
+      <!-- Right content area (interactive elements) -->
+      <div class="lg:col-span-6 lg:pl-8">
+        <!-- Staggered cards -->
+        <div class="relative h-[400px] md:h-[500px]">
+          <!-- Main feature card -->
+          <div class="absolute left-0 top-0 w-full max-w-sm rounded-lg border bg-card p-6 shadow-lg transition-transform duration-500 hover:-translate-y-2 hover:shadow-xl animate-fade-in opacity-0" style="animation-delay: 0.6s;">
+            <div class="flex justify-between">
+              <div class="rounded-full bg-primary/10 p-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <Badge className="bg-primary/90 text-primary-foreground">Featured</Badge>
+            </div>
+            
+            <div class="mt-4">
+              <h3 class="text-xl font-bold">BS Information Technology</h3>
+              <p class="mt-2 text-sm text-muted-foreground">
+                Develop expertise in programming, database management, networking, and systems analysis.
+              </p>
+              
+              <div class="mt-4 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                    <line x1="16" x2="16" y1="2" y2="6"></line>
+                    <line x1="8" x2="8" y1="2" y2="6"></line>
+                    <line x1="3" x2="21" y1="10" y2="10"></line>
+                  </svg>
+                  <span class="text-xs text-muted-foreground">4-Year Program</span>
+                </div>
+                <Button variant="ghost" size="sm" className="gap-1 text-primary">
+                  Details
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </Button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Stats card -->
+          <div class="absolute bottom-0 right-0 w-64 rounded-lg border bg-card p-6 shadow-lg transition-transform duration-500 hover:-translate-y-2 hover:shadow-xl animate-fade-in opacity-0" style="animation-delay: 0.9s;">
+            <h3 class="text-lg font-bold">Graduate Success</h3>
+            
+            <div class="mt-4 space-y-4">
+              <div class="relative pt-1">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-xs font-semibold inline-block text-primary">
+                      Employment Rate
+                    </span>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs font-semibold inline-block text-primary">
+                      95%
+                    </span>
+                  </div>
+                </div>
+                <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-primary/20">
+                  <div style="width:95%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary"></div>
+                </div>
+              </div>
+              
+              <div class="relative pt-1">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-xs font-semibold inline-block text-primary">
+                      Industry Partners
+                    </span>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-xs font-semibold inline-block text-primary">
+                      50+
+                    </span>
+                  </div>
+                </div>
+                <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-primary/20">
+                  <div style="width:80%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Floating badge -->
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border bg-background/80 px-6 py-3 backdrop-blur-sm animate-pulse-slow animate-fade-in opacity-0" style="animation-delay: 1.2s;">
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span class="font-medium">Baguio City, Philippines</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block">
+    <a href="#about" class="flex flex-col items-center text-muted-foreground transition-colors hover:text-foreground">
+      <span class="text-xs font-medium uppercase tracking-widest">Scroll</span>
+      <div class="mt-2 h-12 w-px animate-scroll-indicator bg-muted-foreground"></div>
+    </a>
+  </div>
+  
+  <!-- Decorative elements -->
+  <div class="absolute top-0 right-0 -z-10 hidden md:block">
+    <svg width="350" height="350" viewBox="0 0 350 350" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-primary/5">
+      <circle cx="175" cy="175" r="175" fill="currentColor"/>
+    </svg>
+  </div>
+  
+  <div class="absolute bottom-0 left-0 -z-10 hidden md:block">
+    <svg width="250" height="250" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-primary/5">
+      <circle cx="125" cy="125" r="125" fill="currentColor"/>
+    </svg>
+  </div>
+</section>
+
+<style>
+  /* Diagonal clip path */
+  .clip-diagonal {
+    clip-path: polygon(0 0, 65% 0, 35% 100%, 0 100%);
+    background: linear-gradient(to right, transparent, var(--background) 50%);
+  }
+  
+  /* Grid pattern */
+  .grid-pattern {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  }
+  
+  /* Animation keyframes */
+  @keyframes slide-up {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+  }
+  
+  @keyframes scroll-indicator {
+    0% {
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    50% {
+      transform: scaleY(1);
+      transform-origin: top;
+    }
+    50.1% {
+      transform-origin: bottom;
+    }
+    100% {
+      transform: scaleY(0);
+      transform-origin: bottom;
+    }
+  }
+  
+  /* Apply animations */
+  .animate-slide-up {
+    transform: translateY(100%);
+    animation: slide-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .delay-100 {
+    animation-delay: 0.1s;
+  }
+  
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 1s ease forwards;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
+  
+  .animate-scroll-indicator {
+    animation: scroll-indicator 2s ease-in-out infinite;
+  }
+</style>

@@ -1,0 +1,212 @@
+---
+import { buttonVariants } from "@/components/ui/button";
+---
+
+<div class="programs-visual-cta mt-32 md:mt-40">
+  <div class="visual-cta-container relative overflow-hidden rounded-2xl">
+    <!-- Visual background with gradient and pattern -->
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-background"></div>
+    <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+    
+    <!-- Floating visual elements -->
+    <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-primary/20 blur-xl"></div>
+    <div class="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-primary/20 blur-xl"></div>
+    
+    <!-- CTA content -->
+    <div class="relative z-10 p-8 md:p-12 lg:p-16">
+      <div class="max-w-3xl mx-auto text-center">
+        <h3 class="visual-cta-title text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          Find Your Perfect Program
+        </h3>
+        
+        <p class="visual-cta-description text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          Explore our complete range of academic programs and discover the path that aligns with your passions and career goals
+        </p>
+        
+        <div class="visual-cta-buttons flex flex-wrap justify-center gap-4">
+          <a 
+            href="/programs" 
+            class={buttonVariants({ 
+              size: "lg", 
+              className: "bg-primary text-primary-foreground hover:bg-primary/90 group relative overflow-hidden" 
+            })}
+          >
+            <span class="relative z-10">View All Programs</span>
+            <span class="absolute inset-0 w-full h-full bg-white/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+          </a>
+          
+          <a 
+            href="/contact" 
+            class={buttonVariants({ 
+              variant: "outline", 
+              size: "lg", 
+              className: "border-primary text-primary hover:bg-primary/10 group" 
+            })}
+          >
+            <span>Request Information</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Visual stats -->
+        <div class="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="visual-stat">
+            <div class="text-3xl md:text-4xl font-bold text-primary visual-stat-number">30+</div>
+            <div class="text-sm text-muted-foreground mt-1">Academic Programs</div>
+          </div>
+          
+          <div class="visual-stat">
+            <div class="text-3xl md:text-4xl font-bold text-primary visual-stat-number">95%</div>
+            <div class="text-sm text-muted-foreground mt-1">Graduate Employment</div>
+          </div>
+          
+          <div class="visual-stat">
+            <div class="text-3xl md:text-4xl font-bold text-primary visual-stat-number">200+</div>
+            <div class="text-sm text-muted-foreground mt-1">Industry Partners</div>
+          </div>
+          
+          <div class="visual-stat">
+            <div class="text-3xl md:text-4xl font-bold text-primary visual-stat-number">50+</div>
+            <div class="text-sm text-muted-foreground mt-1">Years of Excellence</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animate CTA on scroll
+    const ctaContainer = document.querySelector('.visual-cta-container');
+    
+    if (ctaContainer) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Animate main container
+            ctaContainer.classList.add('cta-visible');
+            
+            // Animate title and description
+            const title = document.querySelector('.visual-cta-title');
+            const description = document.querySelector('.visual-cta-description');
+            const buttons = document.querySelector('.visual-cta-buttons');
+            
+            if (title) title.classList.add('title-visible');
+            if (description) description.classList.add('description-visible');
+            if (buttons) buttons.classList.add('buttons-visible');
+            
+            // Animate stats with counter effect
+            const statNumbers = document.querySelectorAll('.visual-stat-number');
+            statNumbers.forEach(stat => {
+              const targetValue = parseInt(stat.textContent);
+              let currentValue = 0;
+              const duration = 2000; // ms
+              const increment = targetValue / (duration / 16); // 60fps
+              
+              const counter = setInterval(() => {
+                currentValue += increment;
+                
+                if (currentValue >= targetValue) {
+                  stat.textContent = targetValue + (stat.textContent.includes('%') ? '%' : '+');
+                  clearInterval(counter);
+                } else {
+                  stat.textContent = Math.floor(currentValue) + (stat.textContent.includes('%') ? '%' : '+');
+                }
+              }, 16);
+              
+              stat.classList.add('stat-visible');
+            });
+            
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(ctaContainer);
+    }
+  });
+</script>
+
+<style>
+  /* Background pattern */
+  .bg-grid-pattern {
+    background-size: 20px 20px;
+    background-image: 
+      linear-gradient(to right, var(--primary) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--primary) 1px, transparent 1px);
+  }
+  
+  /* CTA container animation */
+  .visual-cta-container {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .visual-cta-container.cta-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Title animation */
+  .visual-cta-title {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+  }
+  
+  .visual-cta-title.title-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Description animation */
+  .visual-cta-description {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+  }
+  
+  .visual-cta-description.description-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Buttons animation */
+  .visual-cta-buttons {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+  }
+  
+  .visual-cta-buttons.buttons-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Stats animation */
+  .visual-stat-number {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .visual-stat-number.stat-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Visual stat hover effect */
+  .visual-stat {
+    transition: transform 0.3s ease;
+  }
+  
+  .visual-stat:hover {
+    transform: translateY(-5px);
+  }
+</style>

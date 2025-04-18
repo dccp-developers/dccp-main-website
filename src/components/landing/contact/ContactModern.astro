@@ -1,0 +1,331 @@
+---
+import { buttonVariants } from "@/components/ui/button";
+import ContactForm from "./ContactForm.astro";
+import ContactInfo from "./ContactInfo.astro";
+import ContactMap from "./ContactMap.astro";
+---
+
+<section id="contact" class="py-20 md:py-32 relative overflow-hidden">
+  <!-- Background elements -->
+  <div class="absolute inset-0 bg-noise opacity-30 pointer-events-none"></div>
+  <div class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-background to-transparent pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
+  
+  <!-- Decorative elements -->
+  <div class="absolute top-40 -left-20 w-80 h-80 bg-primary/10 rounded-full blur-[100px] opacity-70 animate-blob"></div>
+  <div class="absolute bottom-40 -right-20 w-80 h-80 bg-primary/10 rounded-full blur-[100px] opacity-70 animate-blob animation-delay-2000"></div>
+  
+  <div class="container relative z-10">
+    <!-- Section header with text reveal effect -->
+    <div class="text-center mb-16 md:mb-24 max-w-3xl mx-auto">
+      <div class="inline-block overflow-hidden">
+        <h2 class="text-reveal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+          Get in <span class="text-primary">Touch</span>
+        </h2>
+      </div>
+      <div class="mt-6 overflow-hidden">
+        <p class="text-fade-in text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          We're here to answer your questions and help you navigate your educational journey
+        </p>
+      </div>
+      
+      <!-- Animated indicator -->
+      <div class="mt-10 flex justify-center">
+        <div class="scroll-indicator flex flex-col items-center">
+          <div class="w-px h-10 bg-gradient-to-b from-primary to-transparent animate-pulse-slow"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main content with 3D card effect -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+      <!-- Contact info card -->
+      <div class="lg:col-span-1">
+        <div class="card-3d h-full">
+          <ContactInfo />
+        </div>
+      </div>
+      
+      <!-- Contact form card -->
+      <div class="lg:col-span-2">
+        <div class="card-3d h-full">
+          <ContactForm />
+        </div>
+      </div>
+    </div>
+    
+    <!-- Map section -->
+    <div class="mt-12 md:mt-20">
+      <div class="card-3d">
+        <ContactMap />
+      </div>
+    </div>
+    
+    <!-- FAQ section with accordion effect -->
+    <div class="mt-20 md:mt-32">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl font-bold tracking-tight faq-title">Frequently Asked Questions</h3>
+        <p class="mt-4 text-muted-foreground max-w-2xl mx-auto faq-description">
+          Find quick answers to common questions about contacting our institution
+        </p>
+      </div>
+      
+      <div class="max-w-3xl mx-auto">
+        <div class="space-y-4 faq-items">
+          <!-- FAQ Item 1 -->
+          <div class="faq-item border border-border rounded-lg overflow-hidden" data-index="0">
+            <button class="faq-trigger w-full flex items-center justify-between p-4 text-left font-medium focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2">
+              <span>What are the best ways to contact admissions?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon transition-transform duration-300">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-4 pt-0 text-muted-foreground">
+                <p>The best ways to contact our admissions office are through email at admissions@college.edu, by phone at (123) 456-7890, or by visiting our campus during office hours. Our admissions team typically responds to inquiries within 24-48 hours on business days.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 2 -->
+          <div class="faq-item border border-border rounded-lg overflow-hidden" data-index="1">
+            <button class="faq-trigger w-full flex items-center justify-between p-4 text-left font-medium focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2">
+              <span>How can I schedule a campus tour?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon transition-transform duration-300">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-4 pt-0 text-muted-foreground">
+                <p>Campus tours can be scheduled through our website's "Visit Us" page, by calling our admissions office, or by sending an email request. Tours are available Monday through Friday at 10:00 AM and 2:00 PM, and select Saturdays at 10:00 AM. We recommend booking at least one week in advance.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 3 -->
+          <div class="faq-item border border-border rounded-lg overflow-hidden" data-index="2">
+            <button class="faq-trigger w-full flex items-center justify-between p-4 text-left font-medium focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2">
+              <span>What information should I include in my inquiry?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon transition-transform duration-300">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-4 pt-0 text-muted-foreground">
+                <p>When contacting us, it's helpful to include your full name, contact information, your current educational status (high school student, transfer student, etc.), programs you're interested in, and any specific questions you have. This allows us to provide you with the most relevant and helpful information.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 4 -->
+          <div class="faq-item border border-border rounded-lg overflow-hidden" data-index="3">
+            <button class="faq-trigger w-full flex items-center justify-between p-4 text-left font-medium focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2">
+              <span>How quickly can I expect a response?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon transition-transform duration-300">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-4 pt-0 text-muted-foreground">
+                <p>We strive to respond to all inquiries within 24-48 business hours. During peak admission periods (typically December-January and July-August), response times may be slightly longer. For urgent matters, we recommend calling our admissions office directly.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Text reveal animation
+    const textReveal = document.querySelector('.text-reveal');
+    if (textReveal) {
+      textReveal.classList.add('revealed');
+    }
+    
+    // Fade-in animation
+    const textFadeIn = document.querySelector('.text-fade-in');
+    if (textFadeIn) {
+      setTimeout(() => {
+        textFadeIn.classList.add('revealed');
+      }, 400);
+    }
+    
+    // 3D card hover effect
+    const cards = document.querySelectorAll('.card-3d');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        card.style.transition = 'transform 0.1s ease';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        card.style.transition = 'transform 0.5s ease';
+      });
+    });
+    
+    // FAQ accordion functionality
+    const faqTriggers = document.querySelectorAll('.faq-trigger');
+    faqTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const faqItem = trigger.parentElement;
+        const content = trigger.nextElementSibling;
+        const icon = trigger.querySelector('.faq-icon');
+        
+        // Check if this item is already open
+        const isOpen = content.classList.contains('active');
+        
+        // Close all items
+        document.querySelectorAll('.faq-content').forEach(item => {
+          item.classList.remove('active');
+          item.style.maxHeight = '0';
+        });
+        
+        document.querySelectorAll('.faq-icon').forEach(icon => {
+          icon.style.transform = 'rotate(0)';
+        });
+        
+        // If the clicked item wasn't open, open it
+        if (!isOpen) {
+          content.classList.add('active');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+    
+    // Animate elements on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    // Observe FAQ elements
+    const faqTitle = document.querySelector('.faq-title');
+    const faqDescription = document.querySelector('.faq-description');
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    if (faqTitle) observer.observe(faqTitle);
+    if (faqDescription) observer.observe(faqDescription);
+    
+    faqItems.forEach((item, index) => {
+      item.style.transitionDelay = `${index * 100}ms`;
+      observer.observe(item);
+    });
+  });
+</script>
+
+<style>
+  /* Background noise texture */
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+  
+  /* Text reveal animation */
+  .text-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .text-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Fade-in animation */
+  .text-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .text-fade-in.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Pulse animation for scroll indicator */
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 2s ease-in-out infinite;
+  }
+  
+  /* Blob animation */
+  @keyframes blob {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(20px, -20px) scale(1.1);
+    }
+    50% {
+      transform: translate(0, 20px) scale(0.9);
+    }
+    75% {
+      transform: translate(-20px, -10px) scale(1.05);
+    }
+  }
+  
+  .animate-blob {
+    animation: blob 20s ease-in-out infinite;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  /* 3D card effect */
+  .card-3d {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: transform 0.5s ease;
+    will-change: transform;
+  }
+  
+  /* FAQ animations */
+  .faq-title,
+  .faq-description,
+  .faq-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .faq-title.in-view,
+  .faq-description.in-view,
+  .faq-item.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

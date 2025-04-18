@@ -1,0 +1,24 @@
+---
+import { buttonVariants } from "@/components/ui/button";
+---
+
+<section class="bg-primary py-16 md:py-24">
+  <div class="container">
+    <div class="mx-auto max-w-[58rem] text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
+        Ready to Shape Your Future?
+      </h2>
+      <p class="mt-4 text-lg text-primary-foreground/80">
+        Take the first step towards a successful career with Data Center College of The Philippines
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="#admissions" class={buttonVariants({ variant: "secondary", size: "lg" })}>
+          Apply Now
+        </a>
+        <a href="#contact" class={buttonVariants({ variant: "outline", size: "lg", className: "bg-transparent text-primary-foreground hover:bg-primary-foreground/10 border-primary-foreground/20" })}>
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

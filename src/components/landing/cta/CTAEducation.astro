@@ -1,0 +1,457 @@
+---
+import { buttonVariants } from "@/components/ui/button";
+
+// Define important dates for the academic calendar
+const importantDates = [
+  {
+    title: "Application Deadline",
+    date: "June 30, 2023",
+    icon: "calendar"
+  },
+  {
+    title: "Orientation Day",
+    date: "August 15, 2023",
+    icon: "users"
+  },
+  {
+    title: "Classes Begin",
+    date: "August 21, 2023",
+    icon: "book"
+  }
+];
+
+// Define quick links for prospective students
+const quickLinks = [
+  {
+    title: "Admission Requirements",
+    href: "#requirements",
+    icon: "file-text"
+  },
+  {
+    title: "Tuition & Financial Aid",
+    href: "#financial-aid",
+    icon: "dollar-sign"
+  },
+  {
+    title: "Campus Tour Schedule",
+    href: "#campus-tour",
+    icon: "map-pin"
+  },
+  {
+    title: "Student Testimonials",
+    href: "#testimonials",
+    icon: "message-circle"
+  }
+];
+
+// Function to get icon SVG based on name
+const getIconSvg = (iconName: string) => {
+  switch(iconName) {
+    case 'calendar':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg>`;
+    case 'users':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>`;
+    case 'book':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>`;
+    case 'file-text':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><line x1="10" x2="8" y1="9" y2="9"></line></svg>`;
+    case 'dollar-sign':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>`;
+    case 'map-pin':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>`;
+    case 'message-circle':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>`;
+    default:
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="16"></line><line x1="8" x2="16" y1="12" y2="12"></line></svg>`;
+  }
+};
+---
+
+<section id="cta-education" class="py-16 md:py-24 relative overflow-hidden">
+  <!-- Visual background elements -->
+  <div class="absolute inset-0 bg-gradient-to-b from-primary/10 to-background"></div>
+  <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
+  
+  <!-- Floating decorative elements -->
+  <div class="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float"></div>
+  <div class="absolute bottom-20 right-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float-delayed"></div>
+  
+  <div class="container relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Left column: Main CTA content -->
+      <div class="cta-content">
+        <div class="space-y-6">
+          <div class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium cta-badge">
+            Enrollment Open for 2023-2024
+          </div>
+          
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight cta-title">
+            Begin Your Academic Journey <span class="text-primary">Today</span>
+          </h2>
+          
+          <p class="text-lg text-muted-foreground max-w-xl cta-description">
+            Join our vibrant academic community and gain the knowledge, skills, and experiences needed for a successful future. Our dedicated faculty and comprehensive programs are designed to help you excel.
+          </p>
+          
+          <!-- Application steps -->
+          <div class="mt-8 space-y-4 cta-steps">
+            <h3 class="text-xl font-medium">Simple Application Process:</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="bg-card border border-border/50 rounded-lg p-4 text-center hover:border-primary/30 hover:bg-primary/5 transition-colors duration-300 step-item">
+                <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3">1</div>
+                <h4 class="font-medium">Submit Application</h4>
+                <p class="text-sm text-muted-foreground mt-1">Complete our online form</p>
+              </div>
+              
+              <div class="bg-card border border-border/50 rounded-lg p-4 text-center hover:border-primary/30 hover:bg-primary/5 transition-colors duration-300 step-item">
+                <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3">2</div>
+                <h4 class="font-medium">Submit Documents</h4>
+                <p class="text-sm text-muted-foreground mt-1">Provide required records</p>
+              </div>
+              
+              <div class="bg-card border border-border/50 rounded-lg p-4 text-center hover:border-primary/30 hover:bg-primary/5 transition-colors duration-300 step-item">
+                <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3">3</div>
+                <h4 class="font-medium">Receive Decision</h4>
+                <p class="text-sm text-muted-foreground mt-1">Get admission results</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- CTA buttons -->
+          <div class="mt-8 flex flex-wrap gap-4 cta-buttons">
+            <a 
+              href="#apply" 
+              class={buttonVariants({ 
+                size: "lg", 
+                className: "bg-primary text-primary-foreground hover:bg-primary/90 group relative overflow-hidden" 
+              })}
+            >
+              <span class="relative z-10">Apply Now</span>
+              <span class="absolute inset-0 w-full h-full bg-white/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
+            </a>
+            
+            <a 
+              href="#schedule-visit" 
+              class={buttonVariants({ 
+                variant: "outline", 
+                size: "lg", 
+                className: "border-primary text-primary hover:bg-primary/10 group" 
+              })}
+            >
+              <span>Schedule a Visit</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right column: Important dates and quick links -->
+      <div class="cta-sidebar space-y-8">
+        <!-- Important dates card -->
+        <div class="bg-card border border-border rounded-xl p-6 shadow-sm dates-card">
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-primary">
+              <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+              <line x1="16" x2="16" y1="2" y2="6"></line>
+              <line x1="8" x2="8" y1="2" y2="6"></line>
+              <line x1="3" x2="21" y1="10" y2="10"></line>
+            </svg>
+            Important Dates
+          </h3>
+          
+          <div class="space-y-4">
+            {importantDates.map((item, index) => (
+              <div class="flex items-start gap-3 date-item" data-index={index}>
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-0.5">
+                  <Fragment set:html={getIconSvg(item.icon)} />
+                </div>
+                <div>
+                  <div class="font-medium">{item.title}</div>
+                  <div class="text-sm text-muted-foreground">{item.date}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div class="mt-6 text-center">
+            <a href="#academic-calendar" class="text-primary text-sm font-medium hover:underline inline-flex items-center">
+              View Full Academic Calendar
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick links card -->
+        <div class="bg-card border border-border rounded-xl p-6 shadow-sm links-card">
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-primary">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+            Prospective Student Resources
+          </h3>
+          
+          <div class="space-y-3">
+            {quickLinks.map((link, index) => (
+              <a href={link.href} class="flex items-start gap-3 p-2 rounded-lg hover:bg-primary/5 transition-colors duration-200 link-item" data-index={index}>
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-0.5">
+                  <Fragment set:html={getIconSvg(link.icon)} />
+                </div>
+                <div class="font-medium">{link.title}</div>
+              </a>
+            ))}
+          </div>
+        </div>
+        
+        <!-- Contact card -->
+        <div class="bg-primary/10 border border-primary/20 rounded-xl p-6 contact-card">
+          <h3 class="text-xl font-bold mb-2">Have Questions?</h3>
+          <p class="text-muted-foreground mb-4">Our admissions team is here to help you through every step of the process.</p>
+          
+          <div class="space-y-3">
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>(123) 456-7890</span>
+            </div>
+            
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              <span>admissions@college.edu</span>
+            </div>
+          </div>
+          
+          <div class="mt-4">
+            <a href="#contact" class={buttonVariants({ variant: "secondary", size: "sm", className: "w-full" })}>
+              Contact Admissions
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animate CTA section on scroll
+    const ctaSection = document.querySelector('#cta-education');
+    
+    if (ctaSection) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Animate main content elements
+            const ctaBadge = ctaSection.querySelector('.cta-badge');
+            const ctaTitle = ctaSection.querySelector('.cta-title');
+            const ctaDescription = ctaSection.querySelector('.cta-description');
+            const ctaSteps = ctaSection.querySelector('.cta-steps');
+            const ctaButtons = ctaSection.querySelector('.cta-buttons');
+            
+            if (ctaBadge) ctaBadge.classList.add('badge-visible');
+            if (ctaTitle) ctaTitle.classList.add('title-visible');
+            if (ctaDescription) ctaDescription.classList.add('description-visible');
+            if (ctaSteps) ctaSteps.classList.add('steps-visible');
+            if (ctaButtons) ctaButtons.classList.add('buttons-visible');
+            
+            // Animate step items with staggered delay
+            const stepItems = ctaSection.querySelectorAll('.step-item');
+            stepItems.forEach((item, i) => {
+              setTimeout(() => {
+                item.classList.add('step-visible');
+              }, 300 + (i * 100));
+            });
+            
+            // Animate sidebar elements
+            const datesCard = ctaSection.querySelector('.dates-card');
+            const linksCard = ctaSection.querySelector('.links-card');
+            const contactCard = ctaSection.querySelector('.contact-card');
+            
+            if (datesCard) {
+              setTimeout(() => {
+                datesCard.classList.add('card-visible');
+                
+                // Animate date items with staggered delay
+                const dateItems = datesCard.querySelectorAll('.date-item');
+                dateItems.forEach((item, i) => {
+                  setTimeout(() => {
+                    item.classList.add('item-visible');
+                  }, 100 + (i * 100));
+                });
+              }, 200);
+            }
+            
+            if (linksCard) {
+              setTimeout(() => {
+                linksCard.classList.add('card-visible');
+                
+                // Animate link items with staggered delay
+                const linkItems = linksCard.querySelectorAll('.link-item');
+                linkItems.forEach((item, i) => {
+                  setTimeout(() => {
+                    item.classList.add('item-visible');
+                  }, 100 + (i * 100));
+                });
+              }, 400);
+            }
+            
+            if (contactCard) {
+              setTimeout(() => {
+                contactCard.classList.add('card-visible');
+              }, 600);
+            }
+            
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(ctaSection);
+    }
+  });
+</script>
+
+<style>
+  /* Background pattern */
+  .bg-grid-pattern {
+    background-size: 30px 30px;
+    background-image: 
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  }
+  
+  /* Floating animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  @keyframes float-delayed {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 15s ease-in-out infinite;
+  }
+  
+  .animate-float-delayed {
+    animation: float-delayed 18s ease-in-out 2s infinite;
+  }
+  
+  /* Main content animations */
+  .cta-badge {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .cta-badge.badge-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .cta-title {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+  }
+  
+  .cta-title.title-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .cta-description {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+  }
+  
+  .cta-description.description-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .cta-steps {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+  }
+  
+  .cta-steps.steps-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .step-item {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease, transform 0.5s ease, 
+                background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .step-item.step-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .cta-buttons {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease 0.4s, transform 0.5s ease 0.4s;
+  }
+  
+  .cta-buttons.buttons-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Sidebar card animations */
+  .dates-card,
+  .links-card,
+  .contact-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .dates-card.card-visible,
+  .links-card.card-visible,
+  .contact-card.card-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Date and link item animations */
+  .date-item,
+  .link-item {
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .date-item.item-visible,
+  .link-item.item-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>

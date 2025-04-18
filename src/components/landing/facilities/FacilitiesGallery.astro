@@ -1,0 +1,161 @@
+---
+// Define the props for this component
+interface Facility {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  image: string;
+  color: string;
+  features: string[];
+  highlight?: boolean;
+}
+
+interface Props {
+  facilities: Facility[];
+}
+
+const { facilities } = Astro.props;
+---
+
+<div class="facilities-gallery">
+  <div class="text-center mb-10">
+    <h3 class="text-2xl md:text-3xl font-bold gallery-title">
+      Explore Our Facilities
+    </h3>
+    <p class="mt-4 text-muted-foreground max-w-2xl mx-auto gallery-description">
+      Take a visual tour of our modern campus facilities designed to provide an optimal learning environment
+    </p>
+  </div>
+  
+  <!-- Visual gallery grid with masonry layout -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gallery-grid">
+    {facilities.map((facility, index) => (
+      <div class={`gallery-item ${index === 0 || index === 3 ? 'lg:col-span-2' : ''}`} data-index={index}>
+        <div class="relative overflow-hidden rounded-xl border border-border group h-full">
+          <!-- Placeholder for image -->
+          <div class={`aspect-${index === 0 || index === 3 ? '[16/9]' : '[3/4]'} w-full bg-muted overflow-hidden`}>
+            <!-- Placeholder gradient background -->
+            <div class={`absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-70`}></div>
+            
+            <!-- Visual overlay with gradient -->
+            <div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            
+            <!-- Facility info overlay -->
+            <div class="absolute inset-0 p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h4 class="text-xl font-bold text-foreground mb-2">{facility.title}</h4>
+              <p class="text-sm text-muted-foreground line-clamp-2">{facility.description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+  
+  <!-- Visual CTA button -->
+  <div class="mt-10 text-center gallery-cta">
+    <a href="#virtual-tour" class="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors duration-300 group">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+        <circle cx="12" cy="12" r="10"></circle>
+        <polygon points="10 8 16 12 10 16 10 8"></polygon>
+      </svg>
+      <span>Take a Virtual Tour</span>
+    </a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animate gallery section on scroll
+    const gallerySection = document.querySelector('.facilities-gallery');
+    
+    if (gallerySection) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Animate section elements
+            const galleryTitle = gallerySection.querySelector('.gallery-title');
+            const galleryDescription = gallerySection.querySelector('.gallery-description');
+            const galleryCta = gallerySection.querySelector('.gallery-cta');
+            
+            if (galleryTitle) galleryTitle.classList.add('title-visible');
+            
+            if (galleryDescription) {
+              setTimeout(() => {
+                galleryDescription.classList.add('description-visible');
+              }, 200);
+            }
+            
+            if (galleryCta) {
+              setTimeout(() => {
+                galleryCta.classList.add('cta-visible');
+              }, 1000);
+            }
+            
+            // Animate gallery items with staggered delay
+            const galleryItems = gallerySection.querySelectorAll('.gallery-item');
+            galleryItems.forEach((item, i) => {
+              setTimeout(() => {
+                item.classList.add('item-visible');
+              }, 400 + (i * 100));
+            });
+            
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(gallerySection);
+    }
+  });
+</script>
+
+<style>
+  /* Title animations */
+  .gallery-title {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .gallery-title.title-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Description animations */
+  .gallery-description {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .gallery-description.description-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Gallery item animations */
+  .gallery-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .gallery-item.item-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* CTA animations */
+  .gallery-cta {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .gallery-cta.cta-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

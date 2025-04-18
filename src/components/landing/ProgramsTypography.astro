@@ -1,0 +1,354 @@
+---
+import { buttonVariants } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+---
+
+<section id="programs" class="py-24 md:py-32 overflow-hidden">
+  <div class="container relative">
+    <!-- Typography-focused header with text reveal effect -->
+    <div class="mb-20 relative">
+      <div class="absolute -top-20 -left-4 text-[120px] font-black opacity-5 select-none">
+        PROGRAMS
+      </div>
+      <div class="relative z-10">
+        <div class="overflow-hidden">
+          <h2 class="text-reveal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+            <span class="text-primary">Academic</span> Programs
+          </h2>
+        </div>
+        <div class="mt-6 max-w-2xl">
+          <p class="text-muted-foreground text-lg leading-relaxed text-reveal-2">
+            Discover our forward-thinking programs designed to prepare you for tomorrow's challenges.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typography-focused program cards -->
+    <div class="grid gap-16 md:gap-24">
+      <!-- Program 1 -->
+      <div class="program-card group">
+        <div class="grid md:grid-cols-[1fr_1.5fr] gap-8 md:gap-12 items-start">
+          <!-- Program title and number -->
+          <div class="relative">
+            <div class="text-[120px] font-black text-primary opacity-10 absolute -top-10 -left-4 select-none">01</div>
+            <div class="relative z-10">
+              <Badge variant="outline" className="mb-4 text-xs uppercase tracking-widest font-medium">Most Popular</Badge>
+              <h3 class="text-3xl md:text-4xl font-bold leading-tight mb-4 group-hover:text-primary transition-colors duration-300">
+                Information Technology
+              </h3>
+              <div class="w-16 h-1 bg-primary mb-6 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <p class="text-muted-foreground mb-6">
+                Develop expertise in programming, database management, networking, and systems analysis.
+              </p>
+              <a href="#" class={buttonVariants({ variant: "link", className: "group/link p-0 h-auto text-foreground hover:text-primary" })}>
+                <span class="relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-current after:origin-right after:scale-x-0 group-hover/link:after:scale-x-100 group-hover/link:after:origin-left after:transition-transform after:duration-300">
+                  Explore Program
+                </span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 transition-transform duration-300 group-hover/link:translate-x-1">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Program details with typography focus -->
+          <div class="space-y-8">
+            <div class="grid grid-cols-2 gap-6">
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Duration</div>
+                <div class="text-xl font-medium">4 Years</div>
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Degree</div>
+                <div class="text-xl font-medium">Bachelor of Science</div>
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Format</div>
+                <div class="text-xl font-medium">On Campus</div>
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Credits</div>
+                <div class="text-xl font-medium">120 Credits</div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="text-xs uppercase tracking-widest text-muted-foreground mb-3">Key Focus Areas</div>
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                <li class="flex items-center gap-2">
+                  <div class="w-1 h-1 rounded-full bg-primary"></div>
+                  <span>Web & Mobile Development</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <div class="w-1 h-1 rounded-full bg-primary"></div>
+                  <span>Database & Cloud Computing</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <div class="w-1 h-1 rounded-full bg-primary"></div>
+                  <span>Network & Cybersecurity</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <div class="w-1 h-1 rounded-full bg-primary"></div>
+                  <span>Software Engineering</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Program 2 -->
+      <div class="program-card group">
+        <div class="grid md:grid-cols-[1fr_1.5fr] gap-8 md:gap-12 items-start">
+          <!-- Program title and number -->
+          <div class="relative">
+            <div class="text-[120px] font-black text-primary opacity-10 absolute -top-10 -left-4 select-none">02</div>
+            <div class="relative z-10">
+              <Badge variant="outline" className="mb-4 text-xs uppercase tracking-widest font-medium">High Demand</Badge>
+              <h3 class="text-3xl md:text-4xl font-bold leading-tight mb-4 group-hover:text-primary transition-colors duration-300">
+                Business Administration
+              </h3>
+              <div class="w-16 h-1 bg-primary mb-6 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <p class="text-muted-foreground mb-6">
+                Gain comprehensive knowledge in management, marketing, finance, and entrepreneurship.
+              </p>
+              <a href="#" class={buttonVariants({ variant: "link", className: "group/link p-0 h-auto text-foreground hover:text-primary" })}>
+                <span class="relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-current after:origin-right after:scale-x-0 group-hover/link:after:scale-x-100 group-hover/link:after:origin-left after:transition-transform after:duration-300">
+                  Explore Program
+                </span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 transition-transform duration-300 group-hover/link:translate-x-1">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Program details with typography focus -->
+          <div class="space-y-8">
+            <div class="grid grid-cols-2 gap-6">
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Duration</div>
+                <div class="text-xl font-medium">4 Years</div>
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Degree</div>
+                <div class="text-xl font-medium">Bachelor of Science</div>
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Format</div>
+                <div class="text-xl font-medium">On Campus</div>
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Credits</div>
+                <div class="text-xl font-medium">120 Credits</div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="text-xs uppercase tracking-widest text-muted-foreground mb-3">Key Focus Areas</div>
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                <li class="flex items-center gap-2">
+                  <div class="w-1 h-1 rounded-full bg-primary"></div>
+                  <span>Financial Management</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <div class="w-1 h-1 rounded-full bg-primary"></div>
+                  <span>Marketing & Sales</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <div class="w-1 h-1 rounded-full bg-primary"></div>
+                  <span>Human Resource Management</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <div class="w-1 h-1 rounded-full bg-primary"></div>
+                  <span>Entrepreneurship</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Program 3 -->
+      <div class="program-card group">
+        <div class="grid md:grid-cols-[1fr_1.5fr] gap-8 md:gap-12 items-start">
+          <!-- Program title and number -->
+          <div class="relative">
+            <div class="text-[120px] font-black text-primary opacity-10 absolute -top-10 -left-4 select-none">03</div>
+            <div class="relative z-10">
+              <Badge variant="outline" className="mb-4 text-xs uppercase tracking-widest font-medium">New Program</Badge>
+              <h3 class="text-3xl md:text-4xl font-bold leading-tight mb-4 group-hover:text-primary transition-colors duration-300">
+                Hospitality Management
+              </h3>
+              <div class="w-16 h-1 bg-primary mb-6 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <p class="text-muted-foreground mb-6">
+                Prepare for careers in the hospitality industry with practical and theoretical knowledge.
+              </p>
+              <a href="#" class={buttonVariants({ variant: "link", className: "group/link p-0 h-auto text-foreground hover:text-primary" })}>
+                <span class="relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-current after:origin-right after:scale-x-0 group-hover/link:after:scale-x-100 group-hover/link:after:origin-left after:transition-transform after:duration-300">
+                  Explore Program
+                </span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 transition-transform duration-300 group-hover/link:translate-x-1">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Program details with typography focus -->
+          <div class="space-y-8">
+            <div class="grid grid-cols-2 gap-6">
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Duration</div>
+                <div class="text-xl font-medium">4 Years</div>
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Degree</div>
+                <div class="text-xl font-medium">Bachelor of Science</div>
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Format</div>
+                <div class="text-xl font-medium">On Campus</div>
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Credits</div>
+                <div class="text-xl font-medium">120 Credits</div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="text-xs uppercase tracking-widest text-muted-foreground mb-3">Key Focus Areas</div>
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                <li class="flex items-center gap-2">
+                  <div class="w-1 h-1 rounded-full bg-primary"></div>
+                  <span>Hotel & Restaurant Management</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <div class="w-1 h-1 rounded-full bg-primary"></div>
+                  <span>Tourism & Events Planning</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <div class="w-1 h-1 rounded-full bg-primary"></div>
+                  <span>Culinary Arts</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <div class="w-1 h-1 rounded-full bg-primary"></div>
+                  <span>Customer Experience</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Typography-focused CTA -->
+    <div class="mt-24 md:mt-32 text-center relative">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[120px] md:text-[180px] font-black opacity-5 whitespace-nowrap select-none">
+        EXPLORE
+      </div>
+      <div class="relative z-10">
+        <a href="#" class={buttonVariants({ size: "lg", className: "group relative overflow-hidden" })}>
+          <span class="relative z-10">View All Programs</span>
+          <span class="absolute bottom-0 left-0 h-1 w-0 bg-primary-foreground transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Floating typography elements for visual interest -->
+    <div class="absolute -top-10 right-10 text-[80px] font-black opacity-5 select-none hidden md:block">B.S.</div>
+    <div class="absolute bottom-20 -left-10 text-[60px] font-black opacity-5 select-none hidden md:block">M.S.</div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Text reveal animation
+    const textElements = document.querySelectorAll('.text-reveal, .text-reveal-2');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    textElements.forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Program card reveal animation
+    const programCards = document.querySelectorAll('.program-card');
+    
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+    
+    programCards.forEach(card => {
+      cardObserver.observe(card);
+    });
+  });
+</script>
+
+<style>
+  /* Typography-focused animations */
+  .text-reveal,
+  .text-reveal-2 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .text-reveal-2 {
+    transition-delay: 0.2s;
+  }
+  
+  .text-reveal.revealed,
+  .text-reveal-2.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Program card animations */
+  .program-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  .program-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Ensure proper spacing between program cards */
+  .program-card:not(:last-child) {
+    position: relative;
+  }
+  
+  .program-card:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    opacity: 0.5;
+  }
+  
+  @media (min-width: 768px) {
+    .program-card:not(:last-child)::after {
+      bottom: -12px;
+    }
+  }
+</style>

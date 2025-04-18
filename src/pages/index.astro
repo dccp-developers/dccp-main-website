@@ -1,42 +1,26 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import { buttonVariants } from "@/components/ui/button";
+import CollegeLayout from "@/layouts/CollegeLayout.astro";
+import HeroAvantGardeNew from "@/components/landing/HeroAvantGardeNew.astro";
+import AboutElegant from "@/components/landing/AboutElegant.astro";
+import Programs from "@/components/landing/Programs.astro";
+import FacilitiesVisual from "@/components/landing/facilities/FacilitiesVisual.astro";
+import Testimonials from "@/components/landing/Testimonials.astro";
+import Admissions from "@/components/landing/Admissions.astro";
+import ContactModern from "@/components/landing/contact/ContactModern.astro";
+import CTAEducation from "@/components/landing/cta/CTAEducation.astro";
+import ProgramsVisual from "@/components/landing/programs/ProgramsVisual.astro";
 ---
 
-<BaseLayout
-  title="Astro Shadcn UI Template"
-  description="This template helps you build apps with Astro, Tailwind CSS, and Shadcn UI."
+<CollegeLayout
+  title="Data Center College of The Philippines - Baguio City"
+  description="Data Center College of The Philippines of Baguio City Inc. is a premier institution for technology and business education."
 >
-  <section class="container grid items-center gap-6 pt-6 pb-8 md:py-10">
-    <div class="flex max-w-[980px] flex-col items-start gap-2">
-      <h1
-        class="text-3xl leading-tight font-extrabold tracking-tighter md:text-4xl"
-      >
-        Astro Shadcn UI Template <br class="hidden sm:inline" />
-        built with Radix UI and Tailwind CSS.
-      </h1>
-      <p class="text-muted-foreground max-w-[700px] text-lg">
-        Accessible and customizable components that you can copy and paste into
-        your apps. Free. Open Source.
-      </p>
-    </div>
-    <div class="flex gap-4">
-      <a
-        href="https://ui.shadcn.com"
-        target="_blank"
-        rel="noreferrer"
-        class={buttonVariants()}
-      >
-        Documentation
-      </a>
-      <a
-        href="https://github.com/AREA44/astro-shadcn-ui-template"
-        target="_blank"
-        rel="noreferrer"
-        class={buttonVariants({ variant: 'outline' })}
-      >
-        GitHub
-      </a>
-    </div>
-  </section>
-</BaseLayout>
+  <HeroAvantGardeNew />
+  <AboutElegant />
+  <ProgramsVisual />
+  <FacilitiesVisual />
+  <!-- <Testimonials /> -->
+  <CTAEducation />
+  <!-- <Admissions /> -->
+  <ContactModern />
+</CollegeLayout>

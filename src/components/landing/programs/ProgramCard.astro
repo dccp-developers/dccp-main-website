@@ -1,0 +1,244 @@
+---
+// Define the props for this component
+interface Program {
+  id: string;
+  title: string;
+  description: string;
+  duration: string;
+  format: string;
+  degree: string;
+  specializations: string[];
+  isPopular?: boolean;
+  isNew?: boolean;
+}
+
+interface Props {
+  program: Program;
+  index: number;
+}
+
+const { program, index } = Astro.props;
+---
+
+<div class="program-card" data-index={index}>
+  <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+    <!-- Program info -->
+    <div class="lg:w-1/2 space-y-6">
+      <!-- Program badge -->
+      {program.isPopular && (
+        <div class="inline-block px-3 py-1 text-xs font-medium tracking-wider uppercase bg-primary/10 text-primary rounded-full">
+          Most Popular
+        </div>
+      )}
+      
+      {program.isNew && (
+        <div class="inline-block px-3 py-1 text-xs font-medium tracking-wider uppercase bg-primary/10 text-primary rounded-full">
+          New Program
+        </div>
+      )}
+      
+      <!-- Program title -->
+      <h3 class="program-title text-3xl md:text-4xl font-bold">
+        {program.title}
+      </h3>
+      
+      <!-- Program description -->
+      <p class="text-lg text-muted-foreground">
+        {program.description}
+      </p>
+      
+      <!-- Program details -->
+      <div class="program-details grid grid-cols-2 gap-x-8 gap-y-4 pt-4">
+        <div class="program-detail">
+          <div class="text-xs uppercase tracking-wider text-muted-foreground">Duration</div>
+          <div class="text-base font-medium">{program.duration}</div>
+        </div>
+        
+        <div class="program-detail">
+          <div class="text-xs uppercase tracking-wider text-muted-foreground">Format</div>
+          <div class="text-base font-medium">{program.format}</div>
+        </div>
+        
+        <div class="program-detail">
+          <div class="text-xs uppercase tracking-wider text-muted-foreground">Degree</div>
+          <div class="text-base font-medium">{program.degree}</div>
+        </div>
+      </div>
+      
+      <!-- CTA button -->
+      <div class="pt-4">
+        <a href={`/programs/${program.id}`} class="program-cta group inline-flex items-center text-base font-medium">
+          <span class="relative">
+            Explore Program
+            <span class="absolute -bottom-1 left-0 w-full h-px bg-current transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Program specializations -->
+    <div class="lg:w-1/2 specializations-container">
+      <div class="text-xs uppercase tracking-wider text-muted-foreground mb-4">
+        Specializations
+      </div>
+      
+      <div class="specializations-grid grid grid-cols-1 md:grid-cols-2 gap-4">
+        {program.specializations.map((specialization) => (
+          <div class="specialization-card group">
+            <div class="p-4 border rounded-lg bg-card hover:bg-primary/5 transition-colors duration-300 h-full">
+              <div class="flex items-start gap-3">
+                <div class="specialization-icon flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div class="specialization-name text-base font-medium group-hover:text-primary transition-colors duration-300">
+                  {specialization}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ index }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animate program cards on scroll
+    const programCard = document.querySelector(`.program-card[data-index="${index}"]`);
+    
+    if (programCard) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            programCard.classList.add('card-visible');
+            
+            // Animate program title
+            const title = programCard.querySelector('.program-title');
+            if (title) {
+              title.classList.add('title-visible');
+            }
+            
+            // Animate program details
+            const details = programCard.querySelectorAll('.program-detail');
+            details.forEach((detail, i) => {
+              setTimeout(() => {
+                detail.classList.add('detail-visible');
+              }, 100 * i);
+            });
+            
+            // Animate specializations
+            const specializations = programCard.querySelectorAll('.specialization-card');
+            specializations.forEach((spec, i) => {
+              setTimeout(() => {
+                spec.classList.add('specialization-visible');
+              }, 150 * i);
+            });
+            
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(programCard);
+    }
+  });
+</script>
+
+<style>
+  /* Card animations */
+  .program-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .program-card.card-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Title animations */
+  .program-title {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .program-title::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+  }
+  
+  .program-title.title-visible::after {
+    transform: scaleX(1);
+  }
+  
+  /* Detail animations */
+  .program-detail {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .program-detail.detail-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* Specialization animations */
+  .specialization-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .specialization-card.specialization-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* CTA hover effect */
+  .program-cta {
+    transition: color 0.3s ease;
+  }
+  
+  .program-cta:hover {
+    color: var(--primary);
+  }
+  
+  /* Add divider between cards */
+  .program-card:not(:last-child) {
+    position: relative;
+    padding-bottom: 16px;
+  }
+  
+  .program-card:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+  
+  @media (min-width: 768px) {
+    .program-card:not(:last-child) {
+      padding-bottom: 24px;
+    }
+  }
+</style>
