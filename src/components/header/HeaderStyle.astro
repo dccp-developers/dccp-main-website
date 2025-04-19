@@ -1,0 +1,44 @@
+---
+---
+
+<style>
+  /* Smooth transitions for header */
+  #college-header {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
+  }
+
+  /* Mobile menu backdrop */
+  #mobile-backdrop {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Mobile menu container */
+  #mobile-container {
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  /* Nav link hover effect */
+  .nav-link:hover .nav-indicator {
+    transform: scaleX(1);
+  }
+
+  /* Apply button hover effect */
+  .apply-button:hover span:last-child {
+    transform: scaleX(1);
+  }
+
+  /* Mobile nav animation */
+  .mobile-nav-link,
+  .mobile-collapsible-trigger,
+  .mobile-collapsible-content a {
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .mobile-nav-link:active,
+  .mobile-collapsible-trigger:active,
+  .mobile-collapsible-content a:active {
+    transform: scale(0.98);
+  }
+</style>

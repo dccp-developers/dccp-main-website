@@ -1,0 +1,352 @@
+---
+import { Badge } from "@/components/ui/badge";
+---
+
+<section class="py-20 relative overflow-hidden">
+  <!-- Background elements -->
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute inset-0 bg-background"></div>
+    <!-- Grid pattern background -->
+    <div class="absolute inset-0 opacity-[0.02]" style="background-size: 40px 40px; background-image: linear-gradient(to right, var(--border) 1px, transparent 1px), linear-gradient(to bottom, var(--border) 1px, transparent 1px);"></div>
+  </div>
+
+  <div class="container">
+    <!-- Section header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <Badge variant="outline" className="mb-4">Interface</Badge>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Intuitive Design for Everyone</h2>
+      <p class="text-muted-foreground text-lg">
+        DCCPHub features a clean, modern interface that's easy to navigate for both students and teachers.
+      </p>
+    </div>
+
+    <!-- Custom Tabs for different user interfaces -->
+    <div class="interface-tabs w-full">
+      <!-- Tab buttons -->
+      <div class="flex justify-center mb-8">
+        <div class="w-full max-w-md grid grid-cols-2 bg-muted rounded-lg p-1">
+          <button
+            id="student-tab"
+            class="tab-button active py-3 px-4 rounded-md text-sm md:text-base font-medium transition-all duration-300"
+            data-tab="student"
+          >
+            Student View
+          </button>
+          <button
+            id="teacher-tab"
+            class="tab-button py-3 px-4 rounded-md text-sm md:text-base font-medium transition-all duration-300"
+            data-tab="teacher"
+          >
+            Teacher View
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab content -->
+      <div class="tab-content-container">
+        <!-- Student Interface -->
+        <div id="student-content" class="tab-content active">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+              <h3 class="text-2xl font-semibold mb-4">Student Dashboard</h3>
+              <p class="text-muted-foreground mb-6">
+                Students enjoy a personalized dashboard that provides quick access to courses, assignments, grades, and important announcements.
+              </p>
+
+              <ul class="space-y-4">
+                <li class="flex gap-3">
+                  <div class="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  </div>
+                  <div>
+                    <h4 class="text-base font-medium">Course Overview</h4>
+                    <p class="text-sm text-muted-foreground">Quick access to all enrolled courses with progress indicators</p>
+                  </div>
+                </li>
+
+                <li class="flex gap-3">
+                  <div class="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  </div>
+                  <div>
+                    <h4 class="text-base font-medium">Assignment Tracker</h4>
+                    <p class="text-sm text-muted-foreground">Upcoming and past assignments with due dates and status</p>
+                  </div>
+                </li>
+
+                <li class="flex gap-3">
+                  <div class="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  </div>
+                  <div>
+                    <h4 class="text-base font-medium">Grade Visualization</h4>
+                    <p class="text-sm text-muted-foreground">Visual charts and graphs showing academic performance</p>
+                  </div>
+                </li>
+
+                <li class="flex gap-3">
+                  <div class="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  </div>
+                  <div>
+                    <h4 class="text-base font-medium">Notification Center</h4>
+                    <p class="text-sm text-muted-foreground">Important alerts for deadlines, grades, and announcements</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="order-1 md:order-2 interface-image">
+              <div class="relative mx-auto max-w-[500px]">
+                <!-- Browser window mockup -->
+                <div class="rounded-xl overflow-hidden shadow-lg border border-border/50 bg-card">
+                  <!-- Browser content -->
+                  <img
+                    src="/images/portal/student-dashboard.png"
+                    alt="Student Dashboard Interface"
+                    class="w-full h-auto"
+                  />
+                </div>
+
+                <!-- Decorative elements -->
+                <div class="absolute -bottom-4 -right-4 h-20 w-20 rounded-full bg-primary/10 blur-xl"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Teacher Interface -->
+        <div id="teacher-content" class="tab-content hidden">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+              <h3 class="text-2xl font-semibold mb-4">Teacher Dashboard</h3>
+              <p class="text-muted-foreground mb-6">
+                Teachers have powerful tools to manage courses, track student progress, grade assignments, and communicate effectively.
+              </p>
+
+              <ul class="space-y-4">
+                <li class="flex gap-3">
+                  <div class="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  </div>
+                  <div>
+                    <h4 class="text-base font-medium">Course Management</h4>
+                    <p class="text-sm text-muted-foreground">Create and organize course content, materials, and assignments</p>
+                  </div>
+                </li>
+
+                <li class="flex gap-3">
+                  <div class="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  </div>
+                  <div>
+                    <h4 class="text-base font-medium">Grading Tools</h4>
+                    <p class="text-sm text-muted-foreground">Efficient grading interface with rubrics and feedback options</p>
+                  </div>
+                </li>
+
+                <li class="flex gap-3">
+                  <div class="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  </div>
+                  <div>
+                    <h4 class="text-base font-medium">Student Analytics</h4>
+                    <p class="text-sm text-muted-foreground">Detailed insights into student performance and engagement</p>
+                  </div>
+                </li>
+
+                <li class="flex gap-3">
+                  <div class="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  </div>
+                  <div>
+                    <h4 class="text-base font-medium">Communication Center</h4>
+                    <p class="text-sm text-muted-foreground">Tools for announcements, messaging, and discussion moderation</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="order-1 md:order-2 interface-image">
+              <div class="relative mx-auto max-w-[500px]">
+                <!-- Browser window mockup -->
+                <div class="rounded-xl overflow-hidden shadow-lg border border-border/50 bg-card">
+                  <!-- Browser content -->
+                  <img
+                    src="/images/portal/teacher-dashboard.png"
+                    alt="Teacher Dashboard Interface"
+                    class="w-full h-auto"
+                  />
+                </div>
+
+                <!-- Decorative elements -->
+                <div class="absolute -bottom-4 -left-4 h-20 w-20 rounded-full bg-primary/10 blur-xl"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile view showcase -->
+    <div class="mt-24 grid md:grid-cols-2 gap-12 items-center">
+      <div class="text-center md:text-left">
+        <Badge variant="outline" className="mb-4">Mobile Experience</Badge>
+        <h3 class="text-2xl md:text-3xl font-bold mb-4">DCCPHub on the Go</h3>
+        <p class="text-muted-foreground mb-6">
+          Access all features of DCCPHub from your mobile device with our responsive design and dedicated mobile apps.
+        </p>
+
+        <div class="grid grid-cols-2 gap-6 max-w-md mx-auto md:mx-0">
+          <div class="text-center p-4 rounded-lg bg-muted/50">
+            <div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg>
+            </div>
+            <h4 class="text-sm font-medium">Responsive Web</h4>
+          </div>
+
+          <div class="text-center p-4 rounded-lg bg-muted/50">
+            <div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg>
+            </div>
+            <h4 class="text-sm font-medium">Native Apps</h4>
+          </div>
+
+          <div class="text-center p-4 rounded-lg bg-muted/50">
+            <div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+            </div>
+            <h4 class="text-sm font-medium">Notifications</h4>
+          </div>
+
+          <div class="text-center p-4 rounded-lg bg-muted/50">
+            <div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
+            </div>
+            <h4 class="text-sm font-medium">Offline Access</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-showcase flex justify-center">
+        <div class="relative">
+          <!-- Phone mockup -->
+          <div class="relative mx-auto w-[280px] h-[570px] bg-background rounded-[3rem] border-8 border-foreground/10 shadow-xl overflow-hidden">
+            <div class="absolute top-0 inset-x-0 h-6 bg-foreground/10 rounded-t-2xl"></div>
+            <div class="absolute top-2 inset-x-0 h-2 w-20 mx-auto bg-foreground/20 rounded-full"></div>
+            <div class="h-full w-full overflow-hidden pt-6">
+              <img
+                src="/images/portal/mobile-app.png"
+                alt="DCCPHub Mobile App"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          <!-- Decorative elements -->
+          <div class="absolute -z-10 -bottom-6 -right-6 h-32 w-32 rounded-full bg-primary/10 blur-2xl"></div>
+          <div class="absolute -z-10 -top-6 -left-6 h-32 w-32 rounded-full bg-primary/10 blur-2xl"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Tab functionality
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+
+        // Update active tab button
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        // Show corresponding content
+        tabContents.forEach(content => {
+          if (content.id === `${tabId}-content`) {
+            content.classList.remove('hidden');
+            content.classList.add('active');
+          } else {
+            content.classList.add('hidden');
+            content.classList.remove('active');
+          }
+        });
+      });
+    });
+
+    // Animation for images
+    const interfaceImages = document.querySelectorAll('.interface-image');
+    const mobileShowcase = document.querySelector('.mobile-showcase');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    interfaceImages.forEach(image => {
+      observer.observe(image);
+    });
+
+    if (mobileShowcase) {
+      observer.observe(mobileShowcase);
+    }
+  });
+</script>
+
+<style>
+  /* Tab styles */
+  .tab-button {
+    background-color: transparent;
+    color: var(--muted-foreground);
+  }
+
+  .tab-button.active {
+    background-color: var(--background);
+    color: var(--foreground);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Tab content animation */
+  .tab-content {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .tab-content.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Image animations */
+  .interface-image, .mobile-showcase {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

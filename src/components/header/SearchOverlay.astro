@@ -1,0 +1,30 @@
+---
+---
+
+<!-- Search Overlay (hidden by default) -->
+<div id="search-overlay" class="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 hidden">
+  <div class="container flex items-center justify-center h-full max-w-lg mx-auto">
+    <div class="w-full bg-card rounded-lg shadow-lg border p-6 scale-95 opacity-0 transition-all duration-300" id="search-container">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-medium">Search</h3>
+        <button id="close-search" class="p-1 rounded-md hover:bg-accent/50 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          <span class="sr-only">Close</span>
+        </button>
+      </div>
+      <div class="relative">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+        <input type="text" placeholder="Search for programs, facilities..." class="w-full pl-10 pr-4 py-2 rounded-md border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all">
+      </div>
+      <div class="mt-4">
+        <p class="text-sm text-muted-foreground">Popular searches:</p>
+        <div class="flex flex-wrap gap-2 mt-2">
+          <a href="#admissions" class="text-xs px-2 py-1 rounded-md bg-accent hover:bg-accent/80 transition-colors">Admissions</a>
+          <a href="#programs" class="text-xs px-2 py-1 rounded-md bg-accent hover:bg-accent/80 transition-colors">Computer Science</a>
+          <a href="#facilities" class="text-xs px-2 py-1 rounded-md bg-accent hover:bg-accent/80 transition-colors">Library</a>
+          <a href="#contact" class="text-xs px-2 py-1 rounded-md bg-accent hover:bg-accent/80 transition-colors">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+---
+---
+
+<div class="hidden lg:flex items-center justify-end space-x-1">
+  <nav class="flex items-center">
+    <!-- Main Navigation Links -->
+    <div class="nav-links flex items-center space-x-1">
+      <a href="#about" class="nav-link px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 hover:bg-accent/50 hover:text-primary relative overflow-hidden">
+        About
+        <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform duration-300 origin-left"></span>
+      </a>
+
+      <!-- Programs Dropdown -->
+      <div class="relative group">
+        <button class="nav-link px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 hover:bg-accent/50 hover:text-primary flex items-center gap-1 relative overflow-hidden">
+          Programs
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform duration-300 origin-left"></span>
+        </button>
+        <div class="absolute left-0 mt-1 w-56 opacity-0 translate-y-2 pointer-events-none bg-card rounded-md border shadow-md transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto z-50">
+          <div class="p-2 space-y-1">
+            <a href="#undergraduate" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
+              Undergraduate Programs
+            </a>
+            <a href="#graduate" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
+              Graduate Programs
+            </a>
+            <a href="#certificate" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
+              Certificate Courses
+            </a>
+            <a href="#online" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
+              Online Learning
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Facilities Dropdown -->
+      <div class="relative group">
+        <button class="nav-link px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 hover:bg-accent/50 hover:text-primary flex items-center gap-1 relative overflow-hidden">
+          Facilities
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform duration-300 origin-left"></span>
+        </button>
+        <div class="absolute left-0 mt-1 w-56 opacity-0 translate-y-2 pointer-events-none bg-card rounded-md border shadow-md transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto z-50">
+          <div class="p-2 space-y-1">
+            <a href="#library" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
+              Library & Learning Center
+            </a>
+            <a href="#labs" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
+              Laboratories
+            </a>
+            <a href="#sports" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
+              Sports Facilities
+            </a>
+            <a href="#campus" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
+              Campus Tour
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a href="#testimonials" class="nav-link px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 hover:bg-accent/50 hover:text-primary relative overflow-hidden">
+        Testimonials
+        <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform duration-300 origin-left"></span>
+      </a>
+
+      <a href="#admissions" class="nav-link px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 hover:bg-accent/50 hover:text-primary relative overflow-hidden">
+        Admissions
+        <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform duration-300 origin-left"></span>
+      </a>
+
+      <a href="#contact" class="nav-link px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 hover:bg-accent/50 hover:text-primary relative overflow-hidden">
+        Contact
+        <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform duration-300 origin-left"></span>
+      </a>
+
+      <a href="/dccp-hub" class="nav-link px-3 py-2 text-sm font-medium rounded-md bg-primary/5 transition-all duration-300 hover:bg-primary/10 hover:text-primary relative overflow-hidden">
+        <span class="flex items-center gap-1">
+          DCCPHub
+          <div class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></div>
+        </span>
+        <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform duration-300 origin-left"></span>
+      </a>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="ml-4">
+      <slot />
+    </div>
+  </nav>
+</div>
