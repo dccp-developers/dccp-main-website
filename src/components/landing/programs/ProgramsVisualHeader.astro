@@ -2,34 +2,34 @@
 // No props needed for this component
 ---
 
-<div class="programs-visual-header relative">
+<div class="programs-visual-header relative px-4 sm:px-0">
   <!-- Visual decorative elements -->
-  <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-xl opacity-50"></div>
-  <div class="absolute top-20 right-0 w-20 h-20 bg-primary/20 rounded-full blur-lg opacity-30"></div>
+  <div class="absolute -top-8 -left-8 sm:-top-10 sm:-left-10 w-24 h-24 sm:w-40 sm:h-40 bg-primary/10 rounded-full blur-xl opacity-50"></div>
+  <div class="absolute top-16 sm:top-20 right-0 w-12 h-12 sm:w-20 sm:h-20 bg-primary/20 rounded-full blur-lg opacity-30"></div>
   
-  <div class="relative z-10 text-center max-w-3xl mx-auto">
+  <div class="relative z-10 text-center max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto">
     <!-- Visual title with gradient and 3D effect -->
-    <h2 class="visual-title text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none mb-6">
+    <h2 class="visual-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-none mb-4 sm:mb-6">
       <span class="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70">
         Academic
       </span>
-      <span class="inline-block relative ml-2 text-foreground">
+      <span class="inline-block relative ml-1 sm:ml-2 text-foreground">
         Programs
-        <span class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary/30"></span>
+        <span class="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary/30"></span>
       </span>
     </h2>
     
     <!-- Animated subtitle with visual elements -->
-    <div class="mt-8 max-w-2xl mx-auto relative">
-      <p class="visual-subtitle text-xl md:text-2xl text-muted-foreground font-light leading-relaxed">
+    <div class="mt-4 sm:mt-6 md:mt-8 max-w-xs sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto relative">
+      <p class="visual-subtitle text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground font-light leading-relaxed">
         Shaping tomorrow's leaders with cutting-edge education
       </p>
       
       <!-- Visual indicator -->
-      <div class="mt-12 flex justify-center">
+      <div class="mt-8 sm:mt-10 md:mt-12 flex justify-center">
         <div class="visual-scroll-indicator flex flex-col items-center">
           <span class="text-xs uppercase tracking-widest text-muted-foreground mb-2">Explore</span>
-          <div class="w-px h-10 bg-gradient-to-b from-primary to-transparent animate-pulse-slow"></div>
+          <div class="w-px h-8 sm:h-10 bg-gradient-to-b from-primary to-transparent animate-pulse-slow"></div>
         </div>
       </div>
     </div>
@@ -91,6 +91,7 @@
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 1s ease, transform 1s ease;
+    will-change: opacity, transform;
   }
   
   .visual-title.title-visible {
@@ -103,6 +104,7 @@
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+    will-change: opacity, transform;
   }
   
   .visual-subtitle.subtitle-visible {
@@ -115,6 +117,7 @@
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+    will-change: opacity, transform;
   }
   
   .visual-scroll-indicator.indicator-visible {
@@ -134,5 +137,33 @@
   
   .animate-pulse-slow {
     animation: pulse-slow 2s ease-in-out infinite;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .visual-title {
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .visual-subtitle {
+      transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+    }
+    
+    .visual-scroll-indicator {
+      transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;
+    }
+  }
+  
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .visual-title,
+    .visual-subtitle,
+    .visual-scroll-indicator {
+      transition: none !important;
+    }
+    
+    .animate-pulse-slow {
+      animation: none !important;
+    }
   }
 </style>

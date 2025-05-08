@@ -205,28 +205,26 @@ const programs = [
 ];
 ---
 
-<section id="programs" class="py-24 md:py-32 relative overflow-hidden">
+<section id="programs" class="py-16 sm:py-20 md:py-32 relative overflow-hidden">
   <!-- Visual background elements -->
   <div class="absolute inset-0 bg-gradient-to-b from-background to-background/50 pointer-events-none"></div>
   <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
   
   <!-- Floating shapes for visual interest -->
-  <div class="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float"></div>
-  <div class="absolute bottom-20 right-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float-delayed"></div>
+  <div class="absolute top-20 left-10 w-40 h-40 sm:w-64 sm:h-64 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float"></div>
+  <div class="absolute bottom-20 right-10 w-48 h-48 sm:w-80 sm:h-80 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float-delayed"></div>
   
-  <div class="container relative z-10">
+  <div class="container relative z-10 px-4 sm:px-6 lg:px-8">
     <!-- Header component -->
     <ProgramsVisualHeader />
     
     <!-- Interactive program tabs -->
-    <div class="mt-16">
+    <div class="mt-10 sm:mt-16">
       <ProgramsVisualTabs programs={programs} />
     </div>
     
-    <!-- Visual program cards -->
-    <!-- This section will need significant redesign to match HeroAvantGardeNew.astro and to use the new learnMoreLink -->
-    <!-- For now, it will render based on the old structure, but the card content needs to be updated -->
-    <div class="mt-24 space-y-32">
+    <!-- Visual program cards grid -->
+    <div class="mt-12 sm:mt-16 md:mt-24 grid gap-8 sm:gap-12 md:gap-16">
       {programs.map((program, index) => (
         <ProgramsVisualCard 
           program={program}
@@ -239,10 +237,16 @@ const programs = [
 
 <style>
   .bg-grid-pattern {
-    background-size: 30px 30px;
+    background-size: 20px 20px;
     background-image: 
       linear-gradient(to right, var(--border) 1px, transparent 1px),
       linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  }
+  
+  @media (min-width: 640px) {
+    .bg-grid-pattern {
+      background-size: 30px 30px;
+    }
   }
   
   @keyframes float {
@@ -250,7 +254,7 @@ const programs = [
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-20px);
+      transform: translateY(-10px);
     }
   }
   
@@ -259,15 +263,44 @@ const programs = [
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-20px);
+      transform: translateY(-10px);
+    }
+  }
+  
+  @media (min-width: 768px) {
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+    
+    @keyframes float-delayed {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
     }
   }
   
   .animate-float {
     animation: float 15s ease-in-out infinite;
+    will-change: transform;
   }
   
   .animate-float-delayed {
     animation: float-delayed 18s ease-in-out 2s infinite;
+    will-change: transform;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-float-delayed {
+      animation: none;
+    }
   }
 </style>

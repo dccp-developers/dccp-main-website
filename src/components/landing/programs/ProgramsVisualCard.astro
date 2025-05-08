@@ -116,11 +116,11 @@ const isReversed = index % 2 !== 0;
 ---
 
 <div class="program-visual-card" data-index={index}>
-  <div class={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-16 items-center`}>
+  <div class={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-6 sm:gap-8 lg:gap-16 items-center`}>
     <!-- Visual program image with overlay -->
-    <div class="lg:w-2/5 visual-image-container relative overflow-hidden rounded-2xl">
+    <div class="w-full lg:w-2/5 visual-image-container relative overflow-hidden rounded-xl sm:rounded-2xl">
       <!-- Placeholder for image - in production, use actual images -->
-      <div class={`aspect-video w-full bg-${program.color}-100 relative overflow-hidden group`}>
+      <div class={`aspect-[4/3] sm:aspect-video w-full bg-${program.color}-100 relative overflow-hidden group`}>
         <!-- Program image (placeholder) -->
         <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-70"></div>
         
@@ -151,19 +151,19 @@ const isReversed = index % 2 !== 0;
     </div>
     
     <!-- Program content with visual elements -->
-    <div class="lg:w-3/5 visual-content">
+    <div class="w-full lg:w-3/5 visual-content">
       <!-- Program title for mobile (hidden on desktop) -->
-      <h3 class="text-3xl md:text-4xl font-bold mb-4 lg:hidden visual-title">
+      <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 lg:hidden visual-title">
         {program.title}
       </h3>
       
       <!-- Program description with visual styling -->
-      <p class="text-xl text-muted-foreground mb-8 visual-description">
+      <p class="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 visual-description">
         {program.description}
       </p>
       
       <!-- Visual program details -->
-      <div class="grid grid-cols-3 gap-4 mb-8 visual-details">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8 visual-details">
         <div class="visual-detail-card bg-card p-4 rounded-lg border border-border/50 text-center">
           <div class="text-xs uppercase tracking-wider text-muted-foreground mb-1">Duration</div>
           <div class="text-lg font-medium">{program.duration}</div>
@@ -181,12 +181,12 @@ const isReversed = index % 2 !== 0;
       </div>
       
       <!-- Visual specializations -->
-      <div class="mb-8 visual-specializations">
-        <h4 class="text-sm uppercase tracking-wider text-muted-foreground mb-4">Specializations</h4>
-        <div class="grid grid-cols-2 gap-4">
+      <div class="mb-6 sm:mb-8 visual-specializations">
+        <h4 class="text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-3 sm:mb-4">Specializations</h4>
+        <div class="grid grid-cols-1 xs:grid-cols-2 gap-3 sm:gap-4">
           {program.specializations.map((spec) => (
-            <div class="visual-spec-card flex items-center gap-3 p-3 rounded-lg bg-card border border-border/50 hover:border-primary/50 hover:bg-primary/5 transition-colors duration-300">
-              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+            <div class="visual-spec-card flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-card border border-border/50 hover:border-primary/50 hover:bg-primary/5 transition-colors duration-300">
+              <div class="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                 <Fragment set:html={getIconSvg(spec.icon)} />
               </div>
               <span class="font-medium">{spec.name}</span>
@@ -196,12 +196,12 @@ const isReversed = index % 2 !== 0;
       </div>
       
       <!-- Visual features list -->
-      <div class="mb-8 visual-features">
-        <h4 class="text-sm uppercase tracking-wider text-muted-foreground mb-4">Program Features</h4>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
+      <div class="mb-6 sm:mb-8 visual-features">
+        <h4 class="text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-3 sm:mb-4">Program Features</h4>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-2 sm:gap-y-3">
           {program.features.map((feature) => (
-            <li class="flex items-center gap-2">
-              <div class="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+            <li class="flex items-center gap-1 sm:gap-2">
+              <div class="flex-shrink-0 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
@@ -298,8 +298,9 @@ const isReversed = index % 2 !== 0;
   /* Card animations */
   .program-visual-card {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1s ease, transform 1s ease;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: opacity, transform;
   }
   
   .program-visual-card.card-visible {
@@ -311,8 +312,9 @@ const isReversed = index % 2 !== 0;
   .visual-image-container {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    box-shadow: 0 8px 25px -12px rgba(0, 0, 0, 0.1);
+    will-change: opacity, transform;
   }
   
   .visual-image-container.image-visible {
@@ -405,7 +407,15 @@ const isReversed = index % 2 !== 0;
   /* Add divider between cards */
   .program-visual-card:not(:last-child) {
     position: relative;
-    padding-bottom: 32px;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+  
+  @media (min-width: 640px) {
+    .program-visual-card:not(:last-child) {
+      padding-bottom: 32px;
+      margin-bottom: 32px;
+    }
   }
   
   .program-visual-card:not(:last-child)::after {
@@ -416,5 +426,31 @@ const isReversed = index % 2 !== 0;
     width: 100%;
     height: 1px;
     background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+  
+  /* Extra small screen support */
+  @media (max-width: 479px) {
+    .xs\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .program-visual-card,
+    .visual-image-container,
+    .visual-badge,
+    .visual-overlay-title,
+    .visual-overlay-line,
+    .visual-title,
+    .visual-description,
+    .visual-details,
+    .visual-specializations,
+    .visual-features,
+    .visual-detail-card,
+    .visual-spec-card {
+      transition: none !important;
+      animation: none !important;
+    }
   }
 </style>

@@ -31,7 +31,7 @@ const { programs } = Astro.props;
   <div class="visual-tabs-container bg-card border border-border/50 rounded-xl p-1 flex overflow-x-auto hide-scrollbar">
     {programs.map((program, index) => (
       <button 
-        class={`visual-tab-button flex-1 min-w-[120px] py-3 px-4 rounded-lg text-center text-sm font-medium transition-all duration-300 ${index === 0 ? 'active' : ''}`}
+        class={`visual-tab-button flex-1 min-w-[100px] sm:min-w-[120px] py-2 sm:py-3 px-3 sm:px-4 rounded-lg text-center text-xs sm:text-sm font-medium transition-all duration-300 ${index === 0 ? 'active' : ''}`}
         data-program-id={program.id}
       >
         {program.title}
@@ -39,51 +39,51 @@ const { programs } = Astro.props;
     ))}
   </div>
   
-  <div class="mt-8">
+  <div class="mt-6 sm:mt-8">
     {programs.map((program, index) => (
       <div 
         class={`visual-tab-content transition-all duration-500 ${index === 0 ? 'block' : 'hidden'}`}
         data-program-id={program.id}
       >
-        <div class="bg-card border border-border/50 rounded-xl p-6 md:p-8">
-          <div class="flex flex-col md:flex-row gap-8 items-start">
+        <div class="bg-card border border-border/50 rounded-xl p-4 sm:p-6 md:p-8">
+          <div class="flex flex-col md:flex-row gap-6 sm:gap-8 items-start">
             <!-- Program quick info -->
             <div class="md:w-1/3">
-              <h3 class="text-2xl font-bold mb-4">{program.title}</h3>
-              <p class="text-muted-foreground mb-6">{program.description}</p>
+              <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">{program.title}</h3>
+              <p class="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">{program.description}</p>
               
-              <div class="space-y-4">
-                <div class="flex items-center gap-3">
-                  <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <div class="space-y-3 sm:space-y-4">
+                <div class="flex items-center gap-2 sm:gap-3">
+                  <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <circle cx="12" cy="12" r="10"></circle>
                       <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
                   </div>
                   <div>
                     <div class="text-xs text-muted-foreground">Duration</div>
-                    <div class="font-medium">{program.duration}</div>
+                    <div class="text-sm sm:text-base font-medium">{program.duration}</div>
                   </div>
                 </div>
                 
-                <div class="flex items-center gap-3">
-                  <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <div class="flex items-center gap-2 sm:gap-3">
+                  <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
                       <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
                     </svg>
                   </div>
                   <div>
                     <div class="text-xs text-muted-foreground">Degree</div>
-                    <div class="font-medium">{program.degree}</div>
+                    <div class="text-sm sm:text-base font-medium">{program.degree}</div>
                   </div>
                 </div>
               </div>
               
-              <div class="mt-6">
-                <a href={`/programs/${program.id}`} class="inline-flex items-center text-primary hover:underline">
+              <div class="mt-4 sm:mt-6">
+                <a href={`/programs/${program.id}`} class="inline-flex items-center text-primary hover:underline text-sm sm:text-base">
                   <span>Learn more</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
                     <path d="M5 12h14"></path>
                     <path d="m12 5 7 7-7 7"></path>
                   </svg>
@@ -93,12 +93,12 @@ const { programs } = Astro.props;
             
             <!-- Program specializations -->
             <div class="md:w-2/3">
-              <h4 class="text-sm uppercase tracking-wider text-muted-foreground mb-4">Specializations</h4>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <h4 class="text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-3 sm:mb-4">Specializations</h4>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {program.specializations.map((spec) => (
-                  <div class="p-4 rounded-lg bg-background border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300">
-                    <h5 class="font-medium mb-2">{spec.name}</h5>
-                    <p class="text-sm text-muted-foreground">Specialized courses and practical training in this field.</p>
+                  <div class="p-3 sm:p-4 rounded-lg bg-background border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300">
+                    <h5 class="text-sm sm:text-base font-medium mb-1 sm:mb-2">{spec.name}</h5>
+                    <p class="text-xs sm:text-sm text-muted-foreground">Specialized courses and practical training in this field.</p>
                   </div>
                 ))}
               </div>
@@ -157,14 +157,15 @@ const { programs } = Astro.props;
 
 <style>
   /* Hide scrollbar but allow scrolling */
-  .hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
   
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
   
   /* Tab button styling */
   .visual-tab-button {
@@ -200,26 +201,44 @@ const { programs } = Astro.props;
   }
   
   /* Tabs container animation */
-  .programs-visual-tabs {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
+    .programs-visual-tabs {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      will-change: opacity, transform;
+    }
   
-  .programs-visual-tabs.tabs-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    .programs-visual-tabs.tabs-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+    @media (max-width: 640px) {
+      .programs-visual-tabs {
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+    }
   
   /* Tab content transition */
-  .visual-tab-content {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
+    .visual-tab-content {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      will-change: opacity, transform;
+    }
   
-  .visual-tab-content.block {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    .visual-tab-content.block {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .programs-visual-tabs,
+      .visual-tab-content,
+      .visual-tab-button {
+        transition: none !important;
+        transform: none !important;
+      }
+    }
 </style>

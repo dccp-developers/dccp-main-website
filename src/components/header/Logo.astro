@@ -1,19 +1,43 @@
 ---
+
 ---
 
-<div class="flex items-center gap-3">
-  <a href="/" class="flex items-center gap-3 group">
-    <img src="/android-chrome-512x512.png" alt="DCCP Logo" class="h-12 w-12 md:h-16 md:w-16 drop-shadow-lg rounded-full bg-white border border-yellow-400" />
-    <div class="flex flex-col leading-tight">
-      <span class="font-extrabold text-2xl md:text-4xl tracking-tight text-[#2d2ed6] drop-shadow-[2px_2px_0px_#ffd900]" style="font-family: Impact, Arial Black, Arial, sans-serif; letter-spacing: 0.02em;">
-        DATA CENTER COLLEGE
-      </span>
-      <span class="italic text-xl md:text-3xl font-semibold text-[#2d2ed6] -mt-2" style="font-family: 'Brush Script MT', cursive; text-shadow: 2px 2px 0 #ffd900;">
-        of the Philippines <span class="text-xs md:text-base text-[#2d2ed6] font-bold ml-1" style="text-shadow: 1px 1px 0 #fff, 2px 2px 0 #ffd900;">
-          of Baguio City, Inc.
-        </span>
-      </span>
-     
-    </div>
-  </a>
+<div class="flex items-center gap-1 sm:gap-2 md:gap-3">
+    <a href="/" class="flex items-center gap-1 sm:gap-2 md:gap-3 group">
+        <img
+            src="/android-chrome-512x512.png"
+            alt="DCCP Logo"
+            class="h-7 w-7 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-16 lg:w-16 drop-shadow-lg rounded-full bg-white border border-yellow-400"
+        />
+        <div class="flex flex-col leading-none sm:leading-tight">
+            <span
+                class="font-extrabold text-[0.6rem] sm:text-base md:text-xl lg:text-3xl tracking-tight text-[#2d2ed6] drop-shadow-[1px_1px_0px_#ffd900] md:drop-shadow-[2px_2px_0px_#ffd900]"
+                style="font-family: Impact, Arial Black, Arial, sans-serif; letter-spacing: 0.02em;"
+            >
+                DATA CENTER COLLEGE
+            </span>
+            <span
+                class="italic text-[0.5rem] sm:text-xs md:text-lg lg:text-2xl font-semibold text-[#2d2ed6] mt-0 sm:-mt-1 md:-mt-2"
+                style="font-family: 'Brush Script MT', cursive; text-shadow: 1px 1px 0 #ffd900;"
+            >
+                of the Philippines
+                <span
+                    class="text-[0.45rem] sm:text-[0.55rem] md:text-[0.65rem] lg:text-sm text-[#2d2ed6] font-bold ml-0 sm:ml-1"
+                    style="text-shadow: 0.5px 0.5px 0 #fff, 1px 1px 0 #ffd900;"
+                >
+                    of Baguio City, Inc.
+                </span>
+            </span>
+        </div>
+    </a>
 </div>
+
+<style>
+    /* Ensure text readability at all sizes */
+    @media (max-width: 480px) {
+        img {
+            min-width: 24px;
+            min-height: 24px;
+        }
+    }
+</style>
