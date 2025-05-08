@@ -18,15 +18,7 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
   >
     <!-- Logo and Brand -->
     <div class="flex items-center gap-2">
-      <a href="/" class="flex items-center gap-3 group">
-        <div class="rounded-full bg-primary/10 p-2 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-105">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary transition-transform duration-500 ease-out group-hover:rotate-12"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        </div>
-        <div class="flex flex-col">
-          <span class="text-lg font-bold tracking-tight leading-none">DCCP Baguio</span>
-          <span class="text-xs text-muted-foreground hidden sm:inline-block">Excellence in Education</span>
-        </div>
-      </a>
+      <Logo />
     </div>
 
     <!-- Desktop Navigation -->
@@ -40,59 +32,12 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
           </a>
 
           <!-- Programs Dropdown -->
-          <div class="relative group">
-            <button class="nav-link px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 hover:bg-accent/50 hover:text-primary flex items-center gap-1 relative overflow-hidden">
-              Programs
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform duration-300 origin-left"></span>
-            </button>
-            <div class="absolute left-0 mt-1 w-56 opacity-0 translate-y-2 pointer-events-none bg-card rounded-md border shadow-md transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto z-50">
-              <div class="p-2 space-y-1">
-                <a href="#undergraduate" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
-                  Undergraduate Programs
-                </a>
-                <a href="#graduate" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
-                  Graduate Programs
-                </a>
-                <a href="#certificate" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
-                  Certificate Courses
-                </a>
-                <a href="#online" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
-                  Online Learning
-                </a>
-              </div>
-            </div>
-          </div>
+          
 
           <!-- Facilities Dropdown -->
-          <div class="relative group">
-            <button class="nav-link px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 hover:bg-accent/50 hover:text-primary flex items-center gap-1 relative overflow-hidden">
-              Facilities
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform duration-300 origin-left"></span>
-            </button>
-            <div class="absolute left-0 mt-1 w-56 opacity-0 translate-y-2 pointer-events-none bg-card rounded-md border shadow-md transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto z-50">
-              <div class="p-2 space-y-1">
-                <a href="#library" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
-                  Library & Learning Center
-                </a>
-                <a href="#labs" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
-                  Laboratories
-                </a>
-                <a href="#sports" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
-                  Sports Facilities
-                </a>
-                <a href="#campus" class="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-primary">
-                  Campus Tour
-                </a>
-              </div>
-            </div>
-          </div>
+          
 
-          <a href="#testimonials" class="nav-link px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 hover:bg-accent/50 hover:text-primary relative overflow-hidden">
-            Testimonials
-            <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform duration-300 origin-left"></span>
-          </a>
+          
 
           <a href="#admissions" class="nav-link px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 hover:bg-accent/50 hover:text-primary relative overflow-hidden">
             Admissions
@@ -123,10 +68,10 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
 
           <!-- Apply Now Button -->
           <a
-            href="#admissions"
+            href="https://portal.dccp.edu.ph/enroll"
             class="apply-button relative overflow-hidden group px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 text-sm font-medium"
           >
-            <span class="relative z-10">Apply Now</span>
+            <span class="relative z-10">Enroll Now</span>
             <span class="absolute inset-0 bg-primary-foreground/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
           </a>
 

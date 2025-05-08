@@ -1,0 +1,51 @@
+---
+import HeadSEO from "@/components/HeadSEO.astro";
+import CollegeHeader from "@/components/CollegeHeader.astro"; // Placeholder, ideally K12Header
+import CollegeFooter from "@/components/CollegeFooter.astro"; // Placeholder, ideally K12Footer
+
+interface Props {
+  title?: string | undefined;
+  description?: string | undefined;
+  ogImage?: URL | undefined;
+}
+
+const { title, description, ogImage } = Astro.props;
+---
+
+<html lang="en" class="scroll-smooth">
+  <head>
+    <HeadSEO title={title} description={description} ogImage={ogImage} />
+  </head>
+  <body class="bg-background min-h-screen font-sans antialiased">
+    <div class="relative flex min-h-screen flex-col">
+      <CollegeHeader /> {/* Placeholder for K12Header */}
+      <main class="flex-auto">
+        <slot />
+      </main>
+      <CollegeFooter /> {/* Placeholder for K12Footer */}
+    </div>
+
+    {/* Theme script - can be shared or customized for K12 */}
+    <script is:inline>
+      const getThemePreference = () => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme')
+        }
+        return 'light' 
+      }
+      const isDark = getThemePreference() === 'dark'
+      document.documentElement.classList[isDark ? 'add' : 'remove']('dark')
+
+      if (typeof localStorage !== 'undefined') {
+        const observer = new MutationObserver(() => {
+          const isDark = document.documentElement.classList.contains('dark')
+          localStorage.setItem('theme', isDark ? 'dark' : 'light')
+        })
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['class'],
+        })
+      }
+    </script>
+  </body>
+</html> 

@@ -34,114 +34,85 @@ const getIconSvg = (iconName: string) => {
     case 'activity':
       return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>`;
     default:
-      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="16"></line><line x1="8" x2="16" y1="12" y2="12"></line></svg>`;
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle></svg>`;
   }
 };
 ---
 
-<div class="facility-card group" data-index={index}>
-  <div class={`relative overflow-hidden rounded-xl border ${facility.highlight ? 'border-primary/30' : 'border-border'} bg-card transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 h-full`}>
-    <!-- Card top with visual elements -->
-    <div class="relative">
-      <!-- Visual placeholder for image -->
-      <div class="aspect-[3/2] w-full bg-muted overflow-hidden">
-        <!-- Placeholder gradient background -->
-        <div class={`absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-70`}></div>
-        
-        <!-- Icon overlay -->
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="w-20 h-20 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center text-primary card-icon">
-            <Fragment set:html={getIconSvg(facility.icon)} />
-          </div>
-        </div>
-      </div>
-      
-      <!-- Highlight badge if applicable -->
+<div class="facility-card group relative animate-slide-up" data-index={index} style={`--slide-delay: ${index * 100}ms;`}>
+  <div class={`relative overflow-hidden rounded-xl border ${facility.highlight ? 'border-primary shadow-primary/20' : 'border-border/40'} bg-background/60 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 flex flex-col h-full`}>
+    <div class="relative aspect-[16/9] w-full overflow-hidden">
+      <img src={facility.image} alt={facility.title} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10"></div>
       {facility.highlight && (
-        <div class="absolute top-4 right-4 px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full z-10 card-badge">
-          Featured
+        <div class="absolute top-3 right-3 px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full z-10 card-badge">
+          FEATURED
         </div>
       )}
     </div>
     
-    <!-- Card content -->
-    <div class="p-6">
-      <h3 class="text-xl font-bold mb-3 card-title group-hover:text-primary transition-colors duration-300">
-        {facility.title}
-      </h3>
+    <div class="p-6 flex flex-col flex-grow">
+      <div class="flex items-start gap-4 mb-4">
+        <div class="mt-1 flex-shrink-0 rounded-lg bg-primary/10 p-2.5 text-primary card-icon">
+          <Fragment set:html={getIconSvg(facility.icon)} />
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-1 card-title text-foreground group-hover:text-primary transition-colors">
+            {facility.title}
+          </h3>
+          <p class="text-sm text-muted-foreground card-description line-clamp-3">
+            {facility.description}
+          </p>
+        </div>
+      </div>
       
-      <p class="text-muted-foreground mb-6 card-description">
-        {facility.description}
-      </p>
-      
-      <!-- Feature list with visual indicators -->
-      <div class="space-y-3 card-features">
-        {facility.features.map((feature, i) => (
-          <div class="flex items-start gap-2 feature-item" style={`--delay: ${i * 100}ms`}>
-            <div class="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-0.5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </div>
+      <div class="space-y-2 mb-6 card-features flex-grow">
+        {facility.features.slice(0, 3).map((feature, i) => ( // Show max 3 features for brevity
+          <div class="flex items-center gap-2 text-sm text-muted-foreground feature-item" style={`--delay: ${i * 100}ms`}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-primary/70 flex-shrink-0">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
             <span>{feature}</span>
           </div>
         ))}
       </div>
       
-      <!-- Visual "Learn More" button -->
-      <div class="mt-6 card-button">
-        <a href={`#${facility.id}`} class="inline-flex items-center text-sm font-medium text-primary group/link">
+      <div class="mt-auto card-button">
+        <a href={`#facility-${facility.id}`} class="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors group/link">
           <span class="relative">
             Learn More
-            <span class="absolute -bottom-1 left-0 w-full h-px bg-current transform origin-left scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300"></span>
+            <span class="absolute -bottom-0.5 left-0 w-full h-px bg-current transform origin-left scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300"></span>
           </span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 transform translate-x-0 group-hover/link:translate-x-1 transition-transform duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1.5 transform translate-x-0 group-hover/link:translate-x-0.5 transition-transform duration-300">
             <path d="M5 12h14"></path>
             <path d="m12 5 7 7-7 7"></path>
           </svg>
         </a>
       </div>
     </div>
+    
+    <!-- Subtle decorative element similar to HeroAvantGardeNew cards -->
+    <div class="absolute -right-8 -top-8 h-20 w-20 rounded-full bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
   </div>
 </div>
 
 <script define:vars={{ index }}>
+  // Using CSS for initial reveal via animate-slide-up with --slide-delay
+  // The more complex JS intersection observer for internal elements can be simplified or removed if CSS animations suffice.
+  // For this redesign, we are relying on the new `animate-slide-up` class and CSS transitions for hover states.
+  // If more granular, scroll-dependent animations are still desired for internal parts, the JS below can be adapted.
+
+  // Simplified JS for potential future use or if CSS animations are not enough.
+  /*
   document.addEventListener('DOMContentLoaded', () => {
-    // Animate facility card on scroll
     const facilityCard = document.querySelector(`.facility-card[data-index="${index}"]`);
     
     if (facilityCard) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // Add visible class to main container with delay based on index
-            setTimeout(() => {
-              facilityCard.classList.add('card-visible');
-              
-              // Animate card elements
-              const cardIcon = facilityCard.querySelector('.card-icon');
-              const cardBadge = facilityCard.querySelector('.card-badge');
-              const cardTitle = facilityCard.querySelector('.card-title');
-              const cardDescription = facilityCard.querySelector('.card-description');
-              const cardFeatures = facilityCard.querySelector('.card-features');
-              const cardButton = facilityCard.querySelector('.card-button');
-              
-              if (cardIcon) cardIcon.classList.add('icon-visible');
-              if (cardBadge) cardBadge.classList.add('badge-visible');
-              if (cardTitle) cardTitle.classList.add('title-visible');
-              if (cardDescription) cardDescription.classList.add('description-visible');
-              if (cardFeatures) cardFeatures.classList.add('features-visible');
-              if (cardButton) cardButton.classList.add('button-visible');
-              
-              // Animate feature items with staggered delay
-              const featureItems = facilityCard.querySelectorAll('.feature-item');
-              featureItems.forEach((item, i) => {
-                setTimeout(() => {
-                  item.classList.add('feature-visible');
-                }, 300 + (i * 100));
-              });
-            }, index * 100);
-            
+            // Add class to trigger CSS defined animations for internal elements
+            facilityCard.classList.add('internal-elements-visible');
             observer.unobserve(entry.target);
           }
         });
@@ -150,101 +121,59 @@ const getIconSvg = (iconName: string) => {
       observer.observe(facilityCard);
     }
   });
+  */
 </script>
 
 <style>
-  /* Card animations */
-  .facility-card {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+  /* Basic slide-up animation (can be global) */
+  @keyframes slide-up {
+    0% {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
-  
-  .facility-card.card-visible {
-    opacity: 1;
-    transform: translateY(0);
+  .animate-slide-up {
+    animation: slide-up 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: var(--slide-delay, 0s);
+    opacity: 0; /* Start hidden */
   }
-  
-  /* Icon animations */
-  .card-icon {
+
+  /* Styling for line-clamp if not globally available (Tailwind might have a plugin for this) */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+  }
+
+  /* 
+  Optional: CSS animations for internal elements if `internal-elements-visible` class is added by JS. 
+  These would replace or augment the previous JS-driven direct style manipulations.
+  Example:
+  .facility-card .card-icon {
     opacity: 0;
     transform: scale(0.8);
-    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: opacity 0.5s ease 0.1s, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s;
   }
-  
-  .card-icon.icon-visible {
+  .facility-card.internal-elements-visible .card-icon {
     opacity: 1;
     transform: scale(1);
   }
   
-  /* Badge animations */
-  .card-badge {
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  
-  .card-badge.badge-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Title animations */
-  .card-title {
+  .facility-card .card-title {
     opacity: 0;
     transform: translateY(10px);
-    transition: opacity 0.5s ease, transform 0.5s ease, color 0.3s ease;
+    transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s, color 0.3s ease;
   }
-  
-  .card-title.title-visible {
+  .facility-card.internal-elements-visible .card-title {
     opacity: 1;
     transform: translateY(0);
   }
   
-  /* Description animations */
-  .card-description {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  }
-  
-  .card-description.description-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Features animations */
-  .card-features {
-    opacity: 0;
-    transition: opacity 0.5s ease 0.2s;
-  }
-  
-  .card-features.features-visible {
-    opacity: 1;
-  }
-  
-  /* Feature item animations */
-  .feature-item {
-    opacity: 0;
-    transform: translateX(10px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    transition-delay: var(--delay, 0ms);
-  }
-  
-  .feature-item.feature-visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  
-  /* Button animations */
-  .card-button {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
-  }
-  
-  .card-button.button-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  /* ... and so on for other elements like description, features, button ... */
+  */
 </style>

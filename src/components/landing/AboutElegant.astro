@@ -1,6 +1,7 @@
 ---
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
 ---
 
 <section id="about" class="relative overflow-hidden py-24 md:py-32">
@@ -28,7 +29,7 @@ import { Separator } from "@/components/ui/separator";
         </div>
         
         <h2 class="mt-6 text-4xl font-light tracking-tight sm:text-5xl md:text-6xl">
-          Our <span class="elegant-underline font-medium">Story</span>
+          Our <span class="gradient-text font-medium">Story</span>
         </h2>
         
         <p class="mt-6 text-balance text-muted-foreground">
@@ -41,13 +42,25 @@ import { Separator } from "@/components/ui/separator";
     <div class="mb-24 grid gap-16 md:grid-cols-2">
       <!-- Left column: Image with elegant border -->
       <div class="smooth-reveal-left relative order-2 md:order-1">
-        <div class="elegant-frame relative aspect-[4/5] overflow-hidden">
-          <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-            <!-- This would be replaced with an actual image in production -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-            </svg>
+        <div class="elegant-frame relative aspect-[4/5] overflow-hidden rounded-xl border border-primary/20 shadow-lg shadow-primary/5">
+          <div class="absolute inset-0 flex items-center justify-center overflow-hidden">
+            <!-- Founder image with gradient overlay -->
+            <img 
+              src="/founder.png" 
+              alt="Founder of Data Center College of The Philippines" 
+              class="h-full w-full object-cover transition-transform duration-1000 hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
+          </div>
+          
+          <!-- Caption for the founder -->
+          <div class="absolute bottom-0 left-0 right-0 bg-background/80 p-4 backdrop-blur-md">
+            <div class="group relative">
+              <Badge variant="outline" className="mb-2 border-primary/30 bg-primary/5">Founder</Badge>
+              <h3 class="text-xl font-medium">Engr. Wilfredo M. Bactad</h3>
+              <p class="text-sm text-muted-foreground">Founder since 1974</p>
+              <div class="mt-2 h-px w-12 bg-primary transition-all duration-500 ease-out group-hover:w-full"></div>
+            </div>
           </div>
           
           <!-- Elegant corner accents -->
@@ -58,33 +71,42 @@ import { Separator } from "@/components/ui/separator";
         </div>
         
         <!-- Elegant floating accent -->
-        <div class="absolute -bottom-8 -right-8 h-32 w-32 rounded-full border border-primary/10 bg-primary/5"></div>
-        <div class="absolute -top-8 -left-8 h-24 w-24 rounded-full border border-primary/10 bg-primary/5"></div>
+        <div class="absolute -bottom-8 -right-8 h-32 w-32 rounded-full border border-primary/10 bg-primary/5 animate-float-delayed"></div>
+        <div class="absolute -top-8 -left-8 h-24 w-24 rounded-full border border-primary/10 bg-primary/5 animate-float"></div>
       </div>
       
       <!-- Right column: Content with elegant typography -->
       <div class="smooth-reveal-right order-1 flex flex-col justify-center md:order-2">
+        <div class="group relative mb-6 inline-flex items-center rounded-full border border-primary/30 bg-background/80 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-md transition-all duration-300 hover:border-primary/60">
+          <div class="absolute -inset-[1px] -z-10 rounded-full bg-gradient-to-r from-primary/20 via-primary/0 to-primary/20 opacity-0 blur-md transition-all duration-500 group-hover:opacity-100"></div>
+          <span class="mr-2 inline-block h-2 w-2 animate-pulse rounded-full bg-primary"></span>
+          Excellence Since 1974
+        </div>
+        
         <p class="elegant-dropcap text-lg leading-relaxed text-foreground">
-          Founded in 1995, Data Center College of The Philippines was established with a vision to bridge the gap between academic learning and industry requirements. Our institution has evolved into a premier center for technology and business education in Baguio City.
+          Founded in 1974, Data Center College of The Philippines was established by Engr. Wilfredo M. Bactad with a vision to bridge the gap between academic learning and industry requirements. Our institution has evolved into a premier center for technology and business education in Baguio City.
         </p>
         
         <p class="mt-6 text-muted-foreground">
-          Our college has grown from a small institution to a respected name in education, particularly in the fields of information technology, business administration, and hospitality management. We continue to evolve our programs to meet the changing demands of the global job market.
+          Our college has grown from a small institution to a respected name in education, particularly in the fields of information technology, business administration, and hospitality management. We continue to evolve our programs to meet the changing demands of the global job market for nearly five decades.
         </p>
         
         <div class="mt-8 flex items-center space-x-4">
-          <div class="h-px flex-1 bg-border"></div>
-          <span class="text-sm text-muted-foreground">Est. 1995</span>
-          <div class="h-px flex-1 bg-border"></div>
+          <div class="h-px flex-1 bg-gradient-to-r from-primary/5 via-primary/30 to-primary/5"></div>
+          <span class="font-medium text-primary">Est. 1974</span>
+          <div class="h-px flex-1 bg-gradient-to-r from-primary/5 via-primary/30 to-primary/5"></div>
         </div>
         
         <div class="mt-8">
-          <Button variant="outline" className="group border-primary/20 hover:border-primary">
-            <span>Learn more about our history</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1">
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
+          <Button size="lg" className="group relative overflow-hidden bg-primary px-8 py-6 text-lg">
+            <span class="relative z-10 flex items-center font-medium">
+              Learn more about our history
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </span>
+            <span class="absolute inset-0 -z-10 bg-gradient-to-r from-primary to-primary/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
           </Button>
         </div>
       </div>
@@ -93,52 +115,64 @@ import { Separator } from "@/components/ui/separator";
     <!-- Elegant values section with smooth hover effects -->
     <div class="mb-24">
       <div class="smooth-reveal mb-16 text-center">
-        <h3 class="text-3xl font-light">Our Core <span class="elegant-underline font-medium">Values</span></h3>
+        <h3 class="text-3xl font-light">Our Core <span class="gradient-text font-medium">Values</span></h3>
       </div>
       
       <div class="grid gap-8 md:grid-cols-3">
         <!-- Value 1 -->
-        <div class="smooth-reveal-staggered elegant-card group" style="--stagger: 0">
-          <div class="elegant-card-content">
-            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/5 transition-colors duration-500 ease-out group-hover:bg-primary/10">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        <div class="smooth-reveal-staggered group" style="--stagger: 0">
+          <div class="relative overflow-hidden rounded-xl border border-border/40 bg-background/60 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+            <div class="absolute -right-6 -top-6 h-12 w-12 rounded-full bg-primary/10"></div>
+            <div class="relative">
+              <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/5 transition-colors duration-500 ease-out group-hover:bg-primary/10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              
+              <h4 class="text-xl font-medium">Excellence in Education</h4>
+              <div class="mt-2 h-px w-12 bg-primary transition-all duration-500 ease-out group-hover:w-24"></div>
+              <p class="mt-4 text-muted-foreground">
+                Committed to providing high-quality education with modern teaching methodologies and industry-relevant curriculum.
+              </p>
             </div>
-            
-            <h4 class="text-xl font-medium">Excellence in Education</h4>
-            <div class="mt-2 h-px w-12 bg-primary transition-all duration-500 ease-out group-hover:w-24"></div>
-            <p class="mt-4 text-muted-foreground">
-              Committed to providing high-quality education with modern teaching methodologies and industry-relevant curriculum.
-            </p>
+            <div class="absolute -inset-[1px] -z-10 rounded-xl bg-gradient-to-r from-primary/20 via-primary/0 to-primary/20 opacity-0 blur-md transition-all duration-500 group-hover:opacity-100"></div>
           </div>
         </div>
         
         <!-- Value 2 -->
-        <div class="smooth-reveal-staggered elegant-card group" style="--stagger: 1">
-          <div class="elegant-card-content">
-            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/5 transition-colors duration-500 ease-out group-hover:bg-primary/10">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div class="smooth-reveal-staggered group" style="--stagger: 1">
+          <div class="relative overflow-hidden rounded-xl border border-border/40 bg-background/60 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+            <div class="absolute -right-6 -top-6 h-12 w-12 rounded-full bg-primary/10"></div>
+            <div class="relative">
+              <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/5 transition-colors duration-500 ease-out group-hover:bg-primary/10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              
+              <h4 class="text-xl font-medium">Student-Centered Approach</h4>
+              <div class="mt-2 h-px w-12 bg-primary transition-all duration-500 ease-out group-hover:w-24"></div>
+              <p class="mt-4 text-muted-foreground">
+                Focusing on individual student needs with personalized attention and mentorship to ensure academic success.
+              </p>
             </div>
-            
-            <h4 class="text-xl font-medium">Student-Centered Approach</h4>
-            <div class="mt-2 h-px w-12 bg-primary transition-all duration-500 ease-out group-hover:w-24"></div>
-            <p class="mt-4 text-muted-foreground">
-              Focusing on individual student needs with personalized attention and mentorship to ensure academic success.
-            </p>
+            <div class="absolute -inset-[1px] -z-10 rounded-xl bg-gradient-to-r from-primary/20 via-primary/0 to-primary/20 opacity-0 blur-md transition-all duration-500 group-hover:opacity-100"></div>
           </div>
         </div>
         
         <!-- Value 3 -->
-        <div class="smooth-reveal-staggered elegant-card group" style="--stagger: 2">
-          <div class="elegant-card-content">
-            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/5 transition-colors duration-500 ease-out group-hover:bg-primary/10">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        <div class="smooth-reveal-staggered group" style="--stagger: 2">
+          <div class="relative overflow-hidden rounded-xl border border-border/40 bg-background/60 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+            <div class="absolute -right-6 -top-6 h-12 w-12 rounded-full bg-primary/10"></div>
+            <div class="relative">
+              <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/5 transition-colors duration-500 ease-out group-hover:bg-primary/10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+              </div>
+              
+              <h4 class="text-xl font-medium">Industry Connections</h4>
+              <div class="mt-2 h-px w-12 bg-primary transition-all duration-500 ease-out group-hover:w-24"></div>
+              <p class="mt-4 text-muted-foreground">
+                Strong partnerships with leading companies providing internships, job placements, and industry exposure.
+              </p>
             </div>
-            
-            <h4 class="text-xl font-medium">Industry Connections</h4>
-            <div class="mt-2 h-px w-12 bg-primary transition-all duration-500 ease-out group-hover:w-24"></div>
-            <p class="mt-4 text-muted-foreground">
-              Strong partnerships with leading companies providing internships, job placements, and industry exposure.
-            </p>
+            <div class="absolute -inset-[1px] -z-10 rounded-xl bg-gradient-to-r from-primary/20 via-primary/0 to-primary/20 opacity-0 blur-md transition-all duration-500 group-hover:opacity-100"></div>
           </div>
         </div>
       </div>
@@ -147,7 +181,7 @@ import { Separator } from "@/components/ui/separator";
     <!-- Elegant timeline with smooth scroll animations -->
     <div class="mb-24">
       <div class="smooth-reveal mb-16 text-center">
-        <h3 class="text-3xl font-light">Our <span class="elegant-underline font-medium">Journey</span></h3>
+        <h3 class="text-3xl font-light">Our <span class="gradient-text font-medium">Journey</span></h3>
       </div>
       
       <div class="relative">
@@ -164,13 +198,13 @@ import { Separator } from "@/components/ui/separator";
             
             <div class="ml-8 md:ml-0 md:grid md:grid-cols-2 md:gap-8">
               <div class="smooth-reveal-right md:text-right">
-                <div class="inline-block rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-light text-primary">1995</div>
+                <div class="inline-block rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-light text-primary">1974</div>
                 <h4 class="mt-2 text-xl font-medium">Foundation</h4>
               </div>
               
               <div class="smooth-reveal-left mt-2 md:mt-0">
                 <p class="text-muted-foreground">
-                  Established with a mission to provide quality education in technology and business in Baguio City.
+                  Established with a mission to provide cutting-edge technology education in the heart of Baguio City, the Summer Capital.
                 </p>
               </div>
             </div>
@@ -241,12 +275,12 @@ import { Separator } from "@/components/ui/separator";
     
     <!-- Elegant stats with smooth counter animations -->
     <div class="smooth-reveal">
-      <div class="overflow-hidden rounded-xl border bg-card shadow-sm">
+      <div class="overflow-hidden rounded-xl border border-primary/10 bg-card shadow-md">
         <div class="grid divide-y md:divide-x md:divide-y-0 md:grid-cols-4">
           <!-- Stat 1 -->
           <div class="elegant-stat group p-8 text-center transition-colors duration-500 ease-out hover:bg-primary/5">
             <div class="text-4xl font-light text-primary">
-              <span class="counter inline-block" data-target="30">0</span>+
+              <span class="counter inline-block" data-target="50">0</span>+
             </div>
             <p class="mt-2 text-sm text-muted-foreground">Years of Excellence</p>
             <div class="mx-auto mt-4 h-px w-0 bg-primary transition-all duration-500 ease-out group-hover:w-12"></div>
@@ -285,20 +319,14 @@ import { Separator } from "@/components/ui/separator";
 </section>
 
 <style>
-  /* Elegant underline effect */
-  .elegant-underline {
-    position: relative;
+  /* Gradient text style from HeroAvantGardeNew */
+  .gradient-text {
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary) / 0.8));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     display: inline-block;
-  }
-  
-  .elegant-underline::after {
-    content: '';
-    position: absolute;
-    bottom: -0.25rem;
-    left: 25%;
-    width: 50%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.8), transparent);
+    position: relative;
   }
   
   /* Elegant drop cap */
@@ -314,36 +342,40 @@ import { Separator } from "@/components/ui/separator";
   /* Elegant frame */
   .elegant-frame {
     position: relative;
-    border: 1px solid hsl(var(--border));
     transition: all 0.5s ease-out;
   }
   
   .elegant-frame:hover {
-    border-color: hsl(var(--primary) / 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px -10px hsl(var(--primary) / 0.2);
   }
   
-  /* Elegant card */
-  .elegant-card {
-    position: relative;
-    padding: 2rem;
-    transition: transform 0.5s ease-out;
+  /* Animation keyframes from HeroAvantGardeNew */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
   
-  .elegant-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 1px solid hsl(var(--border));
-    transition: all 0.5s ease-out;
+  @keyframes float-delayed {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
   
-  .elegant-card:hover::before {
-    border-color: hsl(var(--primary) / 0.3);
+  /* Apply animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
   
-  .elegant-card-content {
-    position: relative;
-    z-index: 10;
+  .animate-float-delayed {
+    animation: float-delayed 7s ease-in-out 1s infinite;
   }
   
   /* Smooth reveal animations */
@@ -375,16 +407,20 @@ import { Separator } from "@/components/ui/separator";
   }
   
   /* Dark mode compatibility */
-  :global(.dark) .elegant-underline::after {
-    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.6), transparent);
+  :global(.dark) .elegant-dropcap::first-letter {
+    color: hsl(var(--primary) / 0.9);
   }
   
-  :global(.dark) .elegant-frame {
-    border-color: hsl(var(--border) / 0.7);
+  :global(.dark) .from-background\/80 {
+    --tw-gradient-from: hsl(var(--background) / 0.8);
   }
   
-  :global(.dark) .elegant-card::before {
-    border-color: hsl(var(--border) / 0.7);
+  :global(.dark) .bg-background\/60 {
+    background-color: hsl(var(--background) / 0.6);
+  }
+  
+  :global(.dark) .bg-background\/80 {
+    background-color: hsl(var(--background) / 0.8);
   }
 </style>
 
@@ -415,8 +451,9 @@ import { Separator } from "@/components/ui/separator";
     const counterObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const counter = entry.target;
-          const target = parseInt(counter.getAttribute('data-target'));
+          const counter = entry.target as HTMLElement;
+          const targetAttr = counter.getAttribute('data-target');
+          const target = targetAttr ? parseInt(targetAttr, 10) : 0;
           
           // Smooth counter animation with easing
           const duration = 2000; // ms
@@ -424,21 +461,22 @@ import { Separator } from "@/components/ui/separator";
           const totalFrames = Math.round(duration / frameDuration);
           
           let frame = 0;
-          const easeOutQuad = t => t * (2 - t);
+          const easeOutQuad = (t: number): number => t * (2 - t);
           
           const animate = () => {
             frame++;
             const progress = easeOutQuad(frame / totalFrames);
             const currentCount = Math.round(target * progress);
             
-            if (parseInt(counter.textContent) !== currentCount) {
-              counter.textContent = currentCount;
+            const currentText = currentCount.toString();
+            if (counter.textContent !== currentText) {
+              counter.textContent = currentText;
             }
             
             if (frame < totalFrames) {
               requestAnimationFrame(animate);
             } else {
-              counter.textContent = target;
+              counter.textContent = target.toString();
             }
           };
           

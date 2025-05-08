@@ -119,19 +119,13 @@ const techStats = [
 ];
 ---
 
-<section id="facilities" class="py-24 md:py-32 relative overflow-hidden">
+<section id="facilities" class="py-24 md:py-32 relative isolate overflow-hidden">
   <!-- Visual background elements -->
-  <div class="absolute inset-0 bg-dot-pattern opacity-[0.03] pointer-events-none"></div>
 
-  <!-- Floating decorative elements -->
-  <div class="absolute top-40 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float"></div>
-  <div class="absolute bottom-40 right-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float-delayed"></div>
-
-  <div class="container relative z-10">
     <!-- Header component -->
-    <FacilitiesHeader />
+    <!-- <FacilitiesHeader /> -->
 
-    <!-- Facility cards in a visually appealing grid -->
+    <!-- Facility cards in a visually appealing grid
     <div class="mt-16 md:mt-24 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {facilities.map((facility, index) => (
         <FacilityCard
@@ -139,12 +133,12 @@ const techStats = [
           index={index}
         />
       ))}
-    </div>
+    </div> -->
 
     <!-- Technology stats section -->
-    <div class="mt-24">
+    <!-- <div class="mt-24">
       <FacilitiesTechnology stats={techStats} />
-    </div>
+    </div> -->
 
     <!-- Visual gallery section -->
  
@@ -157,8 +151,10 @@ const techStats = [
 </section>
 
 <style>
-  .bg-dot-pattern {
-    background-image: radial-gradient(var(--foreground) 1px, transparent 1px);
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
     background-size: 30px 30px;
   }
 
@@ -167,7 +163,7 @@ const techStats = [
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-20px);
+      transform: translateY(-10px); /* Adjusted from -20px to match Hero */
     }
   }
 
@@ -176,15 +172,15 @@ const techStats = [
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-20px);
+      transform: translateY(-10px); /* Adjusted from -20px to match Hero */
     }
   }
 
   .animate-float {
-    animation: float 15s ease-in-out infinite;
+    animation: float 6s ease-in-out infinite; /* Adjusted duration to match Hero */
   }
 
   .animate-float-delayed {
-    animation: float-delayed 18s ease-in-out 2s infinite;
+    animation: float-delayed 7s ease-in-out 1s infinite; /* Adjusted duration and delay to match Hero */
   }
 </style>

@@ -16,146 +16,211 @@ interface Props {
 }
 
 const { facilities } = Astro.props;
+
+// Filter facilities that have an image, and prepare a simpler list for the gallery
+const galleryImages = facilities
+  .filter(f => f.image)
+  .map(f => ({
+    src: f.image,
+    alt: f.title,
+    title: f.title,
+    description: f.description,
+    id: f.id
+  }));
 ---
 
-<div class="facilities-gallery">
-  <div class="text-center mb-10">
-    <h3 class="text-2xl md:text-3xl font-bold gallery-title">
-      Explore Our Facilities
-    </h3>
-    <p class="mt-4 text-muted-foreground max-w-2xl mx-auto gallery-description">
-      Take a visual tour of our modern campus facilities designed to provide an optimal learning environment
-    </p>
-  </div>
-  
-  <!-- Visual gallery grid with masonry layout -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gallery-grid">
-    {facilities.map((facility, index) => (
-      <div class={`gallery-item ${index === 0 || index === 3 ? 'lg:col-span-2' : ''}`} data-index={index}>
-        <div class="relative overflow-hidden rounded-xl border border-border group h-full">
-          <!-- Placeholder for image -->
-          <div class={`aspect-${index === 0 || index === 3 ? '[16/9]' : '[3/4]'} w-full bg-muted overflow-hidden`}>
-            <!-- Placeholder gradient background -->
-            <div class={`absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-70`}></div>
-            
-            <!-- Visual overlay with gradient -->
-            <div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            
-            <!-- Facility info overlay -->
-            <div class="absolute inset-0 p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h4 class="text-xl font-bold text-foreground mb-2">{facility.title}</h4>
-              <p class="text-sm text-muted-foreground line-clamp-2">{facility.description}</p>
+<div id="facilities-gallery-section" class="facilities-gallery py-16 md:py-24 relative overflow-hidden">
+  <!-- Decorative floating elements similar to other sections -->
+  <div class="absolute -top-20 -right-20 w-72 h-72 bg-primary/5 rounded-full blur-3xl opacity-60 animate-float-delayed pointer-events-none"></div>
+  <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl opacity-50 animate-float pointer-events-none"></div>
+
+  <div class="container mx-auto relative z-10">
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+      <div class="animate-slide-up" style="--slide-delay: 0ms;">
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl fancy-heading">
+          <span class="gradient-text">Visual</span> Showcase
+        </h2>
+      </div>
+      <div class="animate-slide-up" style="--slide-delay: 200ms;">
+        <p class="mt-4 text-lg text-muted-foreground">
+          Explore a visual journey through our campus, highlighting the spaces where learning and innovation thrive.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 gallery-grid">
+      {galleryImages.map((image, index) => (
+        <div 
+          class="gallery-item group relative aspect-square overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 animate-slide-up cursor-pointer"
+          style={`--slide-delay: ${(index * 100) + 400}ms;`}
+          data-gallery-index={index}
+        >
+          <img src={image.src} alt={image.alt} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+            <h4 class="text-lg font-semibold text-white mb-1 line-clamp-2">{image.title}</h4>
+            <!-- <p class="text-xs text-primary-foreground/80 line-clamp-2">{image.description}</p> -->
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="bg-primary/80 text-primary-foreground rounded-full p-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
             </div>
           </div>
         </div>
+      ))}
+    </div>
+
+    <!-- Lightbox Structure (hidden by default) -->
+    <div id="gallery-lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4 gallery-lightbox">
+      <div class="relative max-w-4xl max-h-[90vh] w-full bg-card text-card-foreground rounded-xl shadow-2xl overflow-hidden flex flex-col animate-zoom-in">
+        <img id="lightbox-image" src="" alt="" class="w-full h-auto object-contain flex-shrink" style="max-height: calc(90vh - 160px);" />
+        <div class="p-6 flex-grow overflow-y-auto">
+          <h3 id="lightbox-title" class="text-2xl font-semibold mb-2"></h3>
+          <p id="lightbox-description" class="text-muted-foreground"></p>
+        </div>
+        <button id="lightbox-close" class="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <button id="lightbox-prev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black/30 hover:bg-black/50 p-2 rounded-full transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button id="lightbox-next" class="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black/30 hover:bg-black/50 p-2 rounded-full transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
       </div>
-    ))}
-  </div>
-  
-  <!-- Visual CTA button -->
-  <div class="mt-10 text-center gallery-cta">
-    <a href="#virtual-tour" class="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors duration-300 group">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-        <circle cx="12" cy="12" r="10"></circle>
-        <polygon points="10 8 16 12 10 16 10 8"></polygon>
-      </svg>
-      <span>Take a Virtual Tour</span>
-    </a>
+    </div>
+    
+    <!-- CTA button (kept from original, can be restyled if needed) -->
+    <div class="mt-12 md:mt-16 text-center animate-slide-up" style="--slide-delay: ${ (galleryImages.length * 100) + 500 }ms;">
+      <a href="#virtual-tour" class="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground rounded-lg text-base font-medium hover:bg-primary/90 transition-colors duration-300 group shadow-lg hover:shadow-primary/40">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2.5">
+          <path d="M17.22 2.09a21.08 21.08 0 0 0-10.44 0"/>
+          <path d="M12 22.9A21.01 21.01 0 0 0 12 1.1a21.01 21.01 0 0 0 0 21.8"/>
+          <path d="M9 12a3 3 0 1 0 6 0 3 3 0 1 0-6 0Z"/>
+          <path d="M17.22 21.91a21.08 21.08 0 0 1-10.44 0"/>
+        </svg>
+        <span>Take a Virtual Tour</span>
+      </a>
+    </div>
   </div>
 </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Animate gallery section on scroll
-    const gallerySection = document.querySelector('.facilities-gallery');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('gallery-lightbox') as HTMLElement | null;
+    const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement | null;
+    const lightboxTitle = document.getElementById('lightbox-title') as HTMLElement | null;
+    const lightboxDescription = document.getElementById('lightbox-description') as HTMLElement | null;
+    const lightboxClose = document.getElementById('lightbox-close') as HTMLButtonElement | null;
+    const lightboxPrev = document.getElementById('lightbox-prev') as HTMLButtonElement | null;
+    const lightboxNext = document.getElementById('lightbox-next') as HTMLButtonElement | null;
     
-    if (gallerySection) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Animate section elements
-            const galleryTitle = gallerySection.querySelector('.gallery-title');
-            const galleryDescription = gallerySection.querySelector('.gallery-description');
-            const galleryCta = gallerySection.querySelector('.gallery-cta');
-            
-            if (galleryTitle) galleryTitle.classList.add('title-visible');
-            
-            if (galleryDescription) {
-              setTimeout(() => {
-                galleryDescription.classList.add('description-visible');
-              }, 200);
-            }
-            
-            if (galleryCta) {
-              setTimeout(() => {
-                galleryCta.classList.add('cta-visible');
-              }, 1000);
-            }
-            
-            // Animate gallery items with staggered delay
-            const galleryItems = gallerySection.querySelectorAll('.gallery-item');
-            galleryItems.forEach((item, i) => {
-              setTimeout(() => {
-                item.classList.add('item-visible');
-              }, 400 + (i * 100));
-            });
-            
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
+    // Pass server-side galleryImages data to client-side script
+    const imagesData: { src: string; alt: string; title: string; description: string; id: string; }[] = ${JSON.stringify(galleryImages)};
+    let currentIndex = 0;
+
+    function openLightbox(index: number) {
+      currentIndex = index;
+      const imageData = imagesData[currentIndex];
+      if (!lightbox || !lightboxImage || !lightboxTitle || !lightboxDescription || !imageData) return;
+
+      lightboxImage.src = imageData.src;
+      lightboxImage.alt = imageData.alt;
+      lightboxTitle.textContent = imageData.title;
+      lightboxDescription.textContent = imageData.description;
       
-      observer.observe(gallerySection);
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      updateNavButtons();
+    }
+
+    function closeLightbox() {
+      if (!lightbox) return;
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+      document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    function showPrevImage() {
+      openLightbox((currentIndex - 1 + imagesData.length) % imagesData.length);
+    }
+
+    function showNextImage() {
+      openLightbox((currentIndex + 1) % imagesData.length);
+    }
+    
+    function updateNavButtons() {
+      if (!lightboxPrev || !lightboxNext) return;
+      lightboxPrev.style.display = imagesData.length > 1 ? 'block' : 'none';
+      lightboxNext.style.display = imagesData.length > 1 ? 'block' : 'none';
+    }
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const index = parseInt(item.getAttribute('data-gallery-index') || '0', 10);
+        openLightbox(index);
+      });
+    });
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxPrev) lightboxPrev.addEventListener('click', showPrevImage);
+    if (lightboxNext) lightboxNext.addEventListener('click', showNextImage);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (lightbox && !lightbox.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (imagesData && imagesData.length > 1) {
+          if (e.key === 'ArrowLeft') showPrevImage();
+          if (e.key === 'ArrowRight') showNextImage();
+        }
+      }
+    });
+
+    // Close lightbox if clicked outside the content
+     if (lightbox) {
+        lightbox.addEventListener('click', (e: MouseEvent) => {
+            if (e.target === lightbox) { // Check if the click is on the backdrop itself
+                closeLightbox();
+            }
+        });
     }
   });
 </script>
 
 <style>
-  /* Title animations */
-  .gallery-title {
+  /* Ensure slide-up, gradient-text, fancy-heading are global or defined */
+  @keyframes slide-up { 0% { transform: translateY(30px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+  .animate-slide-up { animation: slide-up 0.8s ease forwards; animation-delay: var(--slide-delay, 0s); opacity: 0; }
+  .gradient-text { background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary) / 0.8)); -webkit-background-clip: text; background-clip: text; color: transparent; display: inline-block; }
+  .fancy-heading { position: relative; }
+  .fancy-heading::after { content: ''; position: absolute; bottom: -0.1em; left: 50%; transform: translateX(-50%); width: 40%; height: 2px; background: hsl(var(--primary) / 0.5); transition: width 0.3s ease; }
+  .fancy-heading:hover::after { width: 60%; }
+
+  /* Lightbox specific animations */
+  @keyframes zoom-in {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  .animate-zoom-in {
+    animation: zoom-in 0.3s ease forwards;
+  }
+  
+  .gallery-lightbox {
+    transition: opacity 0.3s ease;
+  }
+  .gallery-lightbox.hidden {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
   }
-  
-  .gallery-title.title-visible {
+  .gallery-lightbox.flex { /* ensure it's visible for transition */
     opacity: 1;
-    transform: translateY(0);
+    pointer-events: auto;
   }
-  
-  /* Description animations */
-  .gallery-description {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  
-  .gallery-description.description-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Gallery item animations */
-  .gallery-item {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  
-  .gallery-item.item-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* CTA animations */
-  .gallery-cta {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  
-  .gallery-cta.cta-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+
+  /* Ensure line-clamp is available (Tailwind might have a plugin) */
+  .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 </style>

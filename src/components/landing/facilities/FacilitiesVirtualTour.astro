@@ -1,234 +1,121 @@
 ---
-// No props needed for this component
+// Props if needed, e.g., for the virtual tour URL
+interface Props {
+  tourUrl?: string; // Optional: URL for the virtual tour iframe
+}
+
+const { tourUrl = "https://www.youtube.com/embed/yszE1S5sA4c?si=s6k_gP8qXwY3hXQ8" } = Astro.props; // Example: DCCP Baguio Campus Tour video
 ---
 
-<div id="virtual-tour" class="virtual-tour-container mt-24">
-  <div class="rounded-2xl border bg-card p-8 md:p-10 relative overflow-hidden">
-    <!-- Visual background elements -->
-    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-50"></div>
-    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-xl opacity-50"></div>
-    
-    <div class="relative z-10">
-      <!-- Section header with text effects -->
-      <div class="max-w-2xl">
-        <h3 class="text-2xl md:text-3xl font-bold mb-2 tour-title">
-          Virtual Campus Tour
-        </h3>
-        <div class="w-20 h-1 bg-primary transform origin-left scale-x-0 tour-line"></div>
-        <p class="mt-4 text-muted-foreground tour-description">
+<div id="virtual-tour" class="virtual-tour-section py-16 md:py-24 relative overflow-hidden">
+  <!-- Decorative floating elements -->
+  <div class="absolute -top-10 -left-24 w-72 h-72 bg-primary/5 rounded-full blur-3xl opacity-50 animate-float pointer-events-none"></div>
+  <div class="absolute -bottom-10 -right-24 w-80 h-80 bg-primary/5 rounded-full blur-3xl opacity-60 animate-float-delayed pointer-events-none"></div>
+
+  <div class="container mx-auto relative z-10">
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+      <div class="animate-slide-up" style="--slide-delay: 0ms;">
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl fancy-heading">
+          Immersive <span class="gradient-text">Campus Tour</span>
+        </h2>
+      </div>
+      <div class="animate-slide-up" style="--slide-delay: 200ms;">
+        <p class="mt-4 text-lg text-muted-foreground">
           Experience our campus facilities from anywhere. Our interactive virtual tour allows you to explore classrooms, laboratories, and recreational spaces as if you were there in person.
         </p>
       </div>
-      
-      <!-- Virtual tour placeholder -->
-      <div class="mt-8 aspect-video w-full rounded-xl border border-border/50 bg-muted overflow-hidden tour-player">
-        <div class="flex items-center justify-center h-full">
-          <!-- Play button overlay -->
-          <div class="w-20 h-20 rounded-full bg-primary/90 flex items-center justify-center text-primary-foreground tour-play-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
-          </div>
+    </div>
+
+    <!-- Virtual Tour Embed -->
+    <div class="animate-slide-up rounded-xl overflow-hidden shadow-2xl border border-border/20 bg-black aspect-video max-w-4xl mx-auto" style="--slide-delay: 400ms;">
+      <iframe 
+        class="w-full h-full" 
+        src={tourUrl} 
+        title="DCCP Virtual Campus Tour" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen></iframe>
+    </div>
+
+    <!-- Tour Features -->
+    <div class="mt-16 md:mt-20">
+        <div class="animate-slide-up text-center mb-8 md:mb-12" style="--slide-delay: 500ms;">
+            <h3 class="text-2xl font-semibold tracking-tight sm:text-3xl">
+                Tour Highlights
+            </h3>
         </div>
-      </div>
-      
-      <!-- Tour features -->
-      <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 tour-features">
-        <div class="tour-feature">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <circle cx="12" cy="12" r="4"></circle>
-                <line x1="4.93" x2="19.07" y1="4.93" y2="19.07"></line>
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-medium">360° Views</h4>
-              <p class="text-sm text-muted-foreground">Immersive panoramic views of all campus facilities</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="tour-feature">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10H3"></path>
-                <path d="M21 6H3"></path>
-                <path d="M21 14H3"></path>
-                <path d="M21 18H3"></path>
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-medium">Interactive Map</h4>
-              <p class="text-sm text-muted-foreground">Navigate easily between different campus locations</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="tour-feature">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" x2="12" y1="8" y2="12"></line>
-                <line x1="12" x2="12.01" y1="16" y2="16"></line>
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-medium">Detailed Information</h4>
-              <p class="text-sm text-muted-foreground">Learn about each facility as you explore</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        {[ 
+          { icon: "eye", title: "360° Interactive Views", description: "Immerse yourself in panoramic scenes of key campus locations." },
+          { icon: "map-pin", title: "Easy Navigation", description: "Seamlessly move between different buildings and facilities." },
+          { icon: "info", title: "Facility Information", description: "Access details and highlights for each area as you explore." },
+        ].map((feature, index) => (
+          <div class="animate-slide-up tour-feature-card" style={`--slide-delay: ${(index * 150) + 600}ms;`}>
+            <div class="relative overflow-hidden rounded-xl border border-border/40 bg-background/70 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 h-full text-center md:text-left">
+              <div class="absolute -right-5 -top-5 h-16 w-16 rounded-full bg-primary/10 opacity-70 group-hover:opacity-100 transition-opacity"></div>
+              <div class="relative z-10 flex flex-col md:flex-row items-center gap-4">
+                <div class="flex-shrink-0 mb-3 md:mb-0 rounded-full bg-primary/10 p-3 text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    {feature.icon === 'eye' && (
+                      <>
+                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                      </>
+                    )}
+                    {feature.icon === 'map-pin' && (
+                      <>
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                      </>
+                    )}
+                    {feature.icon === 'info' && (
+                      <>
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 16v-4"/>
+                        <path d="M12 8h.01"/>
+                      </>
+                    )}
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-foreground mb-1">{feature.title}</h4>
+                  <p class="text-sm text-muted-foreground">{feature.description}</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Animate virtual tour section on scroll
-    const tourSection = document.querySelector('.virtual-tour-container');
-    
-    if (tourSection) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Animate section elements
-            const tourTitle = tourSection.querySelector('.tour-title');
-            const tourLine = tourSection.querySelector('.tour-line');
-            const tourDescription = tourSection.querySelector('.tour-description');
-            const tourPlayer = tourSection.querySelector('.tour-player');
-            const tourPlayButton = tourSection.querySelector('.tour-play-button');
-            
-            if (tourTitle) tourTitle.classList.add('title-visible');
-            
-            if (tourLine) {
-              setTimeout(() => {
-                tourLine.classList.add('line-visible');
-              }, 300);
-            }
-            
-            if (tourDescription) {
-              setTimeout(() => {
-                tourDescription.classList.add('description-visible');
-              }, 500);
-            }
-            
-            if (tourPlayer) {
-              setTimeout(() => {
-                tourPlayer.classList.add('player-visible');
-              }, 700);
-            }
-            
-            if (tourPlayButton) {
-              setTimeout(() => {
-                tourPlayButton.classList.add('button-visible');
-              }, 1000);
-            }
-            
-            // Animate feature items with staggered delay
-            const tourFeatures = tourSection.querySelectorAll('.tour-feature');
-            tourFeatures.forEach((feature, i) => {
-              setTimeout(() => {
-                feature.classList.add('feature-visible');
-              }, 1200 + (i * 200));
-            });
-            
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      observer.observe(tourSection);
-    }
-    
-    // Add click handler for play button
-    const playButton = document.querySelector('.tour-play-button');
-    if (playButton) {
-      playButton.addEventListener('click', () => {
-        // In a real implementation, this would launch the virtual tour
-        alert('Virtual tour would launch here. This is a placeholder for demonstration purposes.');
-      });
-    }
-  });
+  // Animations primarily handled by CSS `animate-slide-up` with `style="--slide-delay: ...ms;"`
+  // No complex JS needed for this component's core functionality with an iframe embed.
 </script>
 
 <style>
-  /* Title animations */
-  .tour-title {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
+  /* Ensure slide-up, gradient-text, fancy-heading, and float animations are global or defined */
+  @keyframes slide-up { 0% { transform: translateY(30px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+  .animate-slide-up { animation: slide-up 0.8s ease forwards; animation-delay: var(--slide-delay, 0s); opacity: 0; }
   
-  .tour-title.title-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .gradient-text { background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary) / 0.8)); -webkit-background-clip: text; background-clip: text; color: transparent; display: inline-block; }
   
-  /* Line animations */
-  .tour-line {
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  
-  .tour-line.line-visible {
-    transform: scaleX(1);
-  }
-  
-  /* Description animations */
-  .tour-description {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  
-  .tour-description.description-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Player animations */
-  .tour-player {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  
-  .tour-player.player-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Play button animations */
-  .tour-play-button {
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .tour-play-button.button-visible {
-    opacity: 1;
-    transform: scale(1);
-  }
-  
-  .tour-play-button:hover {
-    background-color: var(--primary);
-    transform: scale(1.1);
-  }
-  
-  /* Feature animations */
-  .tour-feature {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  
-  .tour-feature.feature-visible {
-    opacity: 1;
-    transform: translateY(0);
+  .fancy-heading { position: relative; }
+  .fancy-heading::after { content: ''; position: absolute; bottom: -0.1em; left: 50%; transform: translateX(-50%); width: 40%; height: 2px; background: hsl(var(--primary) / 0.5); transition: width 0.3s ease; }
+  .fancy-heading:hover::after { width: 60%; }
+
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .animate-float { animation: float 6s ease-in-out infinite; }
+
+  @keyframes float-delayed { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .animate-float-delayed { animation: float-delayed 7s ease-in-out 1s infinite; }
+
+  /* Minimal styling for card elements if needed, Tailwind should cover most */
+  .tour-feature-card .text-primary svg {
+    width: 24px; 
+    height: 24px;
   }
 </style>

@@ -16,6 +16,8 @@ interface Program {
   color: string;
   specializations: Specialization[];
   features: string[];
+  learnMoreLink: string;
+  category: string;
   isPopular?: boolean;
   isNew?: boolean;
 }
@@ -54,6 +56,56 @@ const getIconSvg = (iconName: string) => {
       return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" x2="9" y1="3" y2="18"></line><line x1="15" x2="15" y1="6" y2="21"></line></svg>`;
     case 'utensils':
       return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></svg>`;
+    case 'calculator':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><g fill="currentColor"><circle cx="8" cy="10" r="1"></circle><circle cx="12" cy="10" r="1"></circle><circle cx="16" cy="10" r="1"></circle><circle cx="8" cy="14" r="1"></circle><circle cx="12" cy="14" r="1"></circle><circle cx="8" cy="18" r="1"></circle><circle cx="12" cy="18" r="1"></circle></g></svg>`;
+    case 'beaker':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 3h15"></path><path d="M6 3v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3"></path><path d="M6 14h12"></path></svg>`;
+    case 'cpu':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect><path d="M15 2v2"></path><path d="M15 20v2"></path><path d="M9 2v2"></path><path d="M9 20v2"></path><path d="M20 9h2"></path><path d="M20 15h2"></path><path d="M2 9h2"></path><path d="M2 15h2"></path></svg>`;
+    case 'code-xml':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>`;
+    case 'flask-round':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"></path><path d="M14 9.31V2"></path><path d="M3 14a6.999 6.999 0 0 1 6.648-6.973C12.861 6.357 16 9.422 16 13c0 1.995-1.824 3.643-3.501 4.514C12.023 17.82 11.061 18 10 18c-3.866 0-7-3.134-7-7 0-1.308.363-2.517 1-3.546"></path><path d="M10 18S6 22 6 22"></path></svg>`;
+    case 'percent':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"></line><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg>`;
+    case 'book-open':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>`;
+    case 'scale':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg>`;
+    case 'line-chart':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg>`;
+    case 'megaphone':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg>`;
+    case 'pencil-ruler':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5 4 4"></path><path d="M13 7 8.7 2.7c-.4-.4-.9-.6-1.4-.6h-1.8c-.9 0-1.6.7-1.6 1.6v1.8c0 .5.2.9.6 1.4L7 13"></path><path d="M8 15H4.5A2.5 2.5 0 0 1 2 12.5V8"></path><path d="m14.5 6.5 5 5"></path><path d="M7.5 12.5 14 19l.5-3-2-2Z"></path><path d="m21.5 11.5-5-5"></path></svg>`;
+    case 'users-round':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21a8 8 0 0 0-16 0"></path><circle cx="10" cy="8" r="5"></circle><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"></path></svg>`;
+    case 'landmark':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22V6.74a2 2 0 0 1 .9-1.7L12 1l8.1 4.04a2 2 0 0 1 .9 1.7V22"></path><path d="M6 18h12"></path><path d="M10 10h4"></path><path d="M10 14h4"></path><path d="M2 22h20"></path></svg>`;
+    case 'brain':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v0A2.5 2.5 0 0 1 9.5 7C7 7 4 4.5 4 4.5v0A2.5 2.5 0 0 1 6.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v0A2.5 2.5 0 0 0 14.5 7C17 7 20 4.5 20 4.5v0A2.5 2.5 0 0 0 17.5 2Z"></path><path d="M4.2 4.5c0 2.9.5 5.6 2.3 7.8"></path><path d="M2.8 14.6c0 2.4 1.3 4.8 3.7 6.1"></path><path d="M19.8 4.5c0 2.9-.5 5.6-2.3 7.8"></path><path d="M21.2 14.6c0 2.4-1.3 4.8-3.7 6.1"></path><path d="M12 13a2.5 2.5 0 0 0-2.5-2.5v0A2.5 2.5 0 0 0 7 13c0 1.4.5 2.7 1.4 3.6"></path><path d="M12 13a2.5 2.5 0 0 1 2.5-2.5v0A2.5 2.5 0 0 1 17 13c0 1.4-.5 2.7-1.4 3.6"></path><path d="M10.4 18.9c.9.7 2.1.7 3.1 0"></path><path d="M12 22v-2"></path><path d="M12 10V7"></path></svg>`;
+    case 'captions':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M8 10h.01"></path><path d="M12 10h.01"></path><path d="M16 10h.01"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path></svg>`;
+    case 'chef-hat':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13.87A4 4 0 0 1 7.43 7.06c.35-.9.06-1.95-.81-2.52-.88-.58-1.99-.51-2.87.17A4 4 0 0 0 .5 8.44"></path><path d="M17.5 14c.88.51 1.99.6 2.87.06.87-.56 1.16-1.62.81-2.52A4 4 0 0 0 19.5 3.5c-1.5 0-2.83.94-3.43 2.25"></path><path d="M20.13 14.13A4.02 4.02 0 0 1 18 18.4a4 4 0 0 1-3.97-4.37"></path><path d="M9.43 17.06A4.02 4.02 0 0 1 6 13.5a4 4 0 0 1 3.97 4.37"></path><path d="M12 2v4"></path><path d="M12 18v4"></path><path d="M15.91 4.09A2.5 2.5 0 0 0 13.5 6a2.5 2.5 0 0 0-2.41-1.91"></path><path d="M8.09 4.09A2.5 2.5 0 0 1 10.5 6a2.5 2.5 0 0 1 2.41-1.91"></path></svg>`;
+    case 'utensils-crossed':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8Z"></path><path d="M15 15 3.3 3.3"></path><path d="m8 22 2.3-2.3a3 3 0 0 0 0-4.2l-1.8-1.8a3 3 0 0 0-4.2 0L2 16Z"></path></svg>`;
+    case 'home':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>`;
+    case 'shield-check':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>`;
+    case 'concierge-bell':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1Z"></path><path d="M20 17.35V11A8 8 0 1 0 4 11v6.35"></path><path d="M10 5a2 2 0 1 1 4 0"></path></svg>`;
+    case 'keyboard':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"></rect><path d="M6 10h.01"></path><path d="M10 10h.01"></path><path d="M14 10h.01"></path><path d="M18 10h.01"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M6 14h.01"></path></svg>`;
+    case 'image':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="m20.4 14.5-3-3L6 20"></path></svg>`;
+    case 'layout-grid':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"></rect><path d="M9 2v20"></path><path d="M15 2v20"></path><path d="M2 9h20"></path><path d="M2 15h20"></path></svg>`;
+    case 'network':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 10H3V3h7Zm0 11H3v-7h7Zm11 0h-7v-7h7Zm0-11h-7V3h7Z"></path><path d="M6.5 10v0a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7ZM6.5 21v0a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Z"></path><path d="M17.5 10v0a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7ZM17.5 21v0a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Z"></path></svg>`;
+    case 'database-zap':
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c0 1.66 4 3 9 3s9-1.34 9-3"></path><path d="M4 6v12c0 1.66 4 3 9 3s9-1.34 9-3V6"></path><path d="M4 12c0 1.66 4 3 9 3s9-1.34 9-3"></path><path d="m14 12-3-3v6l3-3"></path></svg>`;
     default:
       return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="16"></line><line x1="8" x2="16" y1="12" y2="12"></line></svg>`;
   }
@@ -159,17 +211,6 @@ const isReversed = index % 2 !== 0;
           ))}
         </ul>
       </div>
-      
-      <!-- Visual CTA button -->
-      <div class="visual-cta">
-        <a href={`/programs/${program.id}`} class="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors duration-300 group">
-          <span>Explore Program</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
-            <path d="M5 12h14"></path>
-            <path d="m12 5 7 7-7 7"></path>
-          </svg>
-        </a>
-      </div>
     </div>
   </div>
 </div>
@@ -216,8 +257,7 @@ const isReversed = index % 2 !== 0;
               programCard.querySelector('.visual-description'),
               programCard.querySelector('.visual-details'),
               programCard.querySelector('.visual-specializations'),
-              programCard.querySelector('.visual-features'),
-              programCard.querySelector('.visual-cta')
+              programCard.querySelector('.visual-features')
             ];
             
             contentElements.forEach((element, i) => {
@@ -322,8 +362,7 @@ const isReversed = index % 2 !== 0;
   .visual-description,
   .visual-details,
   .visual-specializations,
-  .visual-features,
-  .visual-cta {
+  .visual-features {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -333,8 +372,7 @@ const isReversed = index % 2 !== 0;
   .visual-description.content-visible,
   .visual-details.content-visible,
   .visual-specializations.content-visible,
-  .visual-features.content-visible,
-  .visual-cta.content-visible {
+  .visual-features.content-visible {
     opacity: 1;
     transform: translateY(0);
   }

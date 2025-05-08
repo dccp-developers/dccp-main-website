@@ -1,152 +1,166 @@
 ---
 // No props needed for this component
+// Import Badge and Button, though not used directly in this header, they are part of the design system
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 ---
 
-<div class="facilities-header text-center max-w-3xl mx-auto relative">
-  <!-- Visual decorative elements -->
-  <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-xl opacity-50 hidden md:block"></div>
-  <div class="absolute top-20 right-0 w-20 h-20 bg-primary/20 rounded-full blur-lg opacity-30 hidden md:block"></div>
+<div class="facilities-header text-center max-w-3xl mx-auto relative py-12 md:py-16">
+  <!-- Visual decorative elements (kept from original, can be adjusted/removed later if they clash) -->
+  <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-xl opacity-50 hidden md:block animate-float"></div>
+  <div class="absolute top-20 right-0 w-20 h-20 bg-primary/20 rounded-full blur-lg opacity-30 hidden md:block animate-float-delayed"></div>
   
   <div class="relative z-10">
-    <!-- Fancy text reveal for the title -->
-    <div class="overflow-hidden mb-2">
-      <h2 class="text-reveal text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-none">
-        <span class="text-gradient">Campus</span> <span class="relative">Facilities
-          <span class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary/30 line-reveal"></span>
-        </span>
-      </h2>
-    </div>
-    
-    <!-- Animated subtitle with staggered reveal -->
-    <div class="mt-6 max-w-2xl mx-auto overflow-hidden">
-      <p class="text-fade-in text-lg md:text-xl text-muted-foreground leading-relaxed">
-        <span class="word-reveal">Modern</span> 
-        <span class="word-reveal">facilities</span> 
-        <span class="word-reveal">designed</span> 
-        <span class="word-reveal">to</span> 
-        <span class="word-reveal">enhance</span> 
-        <span class="word-reveal">your</span> 
-        <span class="word-reveal">learning</span> 
-        <span class="word-reveal">experience</span>
-      </p>
-    </div>
-    
-    <!-- Visual scroll indicator -->
-    <div class="mt-12 flex justify-center">
-      <div class="scroll-indicator flex flex-col items-center">
-        <span class="text-xs uppercase tracking-widest text-muted-foreground mb-2 opacity-0 animate-fade-in">Explore</span>
-        <div class="w-px h-10 bg-gradient-to-b from-primary to-transparent animate-pulse-slow opacity-0 animate-fade-in"></div>
+    <!-- Animated badge (similar to HeroAvantGardeNew) -->
+    <div class="animate-slide-up" style="--slide-delay: 0ms;">
+      <div class="group relative mb-6 inline-flex items-center rounded-full border border-primary/30 bg-background/80 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-md transition-all duration-300 hover:border-primary/60">
+        <div class="absolute -inset-[1px] -z-10 rounded-full bg-gradient-to-r from-primary/20 via-primary/0 to-primary/20 opacity-0 blur-md transition-all duration-500 group-hover:opacity-100"></div>
+        <span class="mr-2 inline-block h-2 w-2 animate-pulse rounded-full bg-primary"></span>
+        State-of-the-Art
       </div>
+    </div>
+
+    <!-- Main heading with animated gradient text -->
+    <div class="space-y-2">
+      <div class="animate-slide-up overflow-hidden" style="--slide-delay: 100ms;">
+        <h1 class="fancy-heading text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+          <span class="relative inline-block">
+            <span class="animate-text-reveal" style="--reveal-delay: 300ms;">Explore</span>
+          </span>
+          <span class="relative ml-1 inline-block">
+            <span class="animate-text-reveal" style="--reveal-delay: 500ms;">Our</span>
+          </span>
+          <span class="relative ml-1 inline-block">
+            <span class="animate-text-reveal" style="--reveal-delay: 700ms;">Campus</span>
+          </span>
+        </h1>
+      </div>
+      
+      <div class="animate-slide-up" style="--slide-delay: 200ms;">
+        <div class="relative">
+          <h2 class="gradient-text text-2xl font-bold sm:text-3xl md:text-4xl">
+            World-Class Facilities
+          </h2>
+          <div class="absolute -inset-1 -z-10 animate-pulse opacity-30 blur-xl">
+            <div class="h-full w-full rounded-full bg-gradient-to-r from-primary via-primary/50 to-primary/20"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Description with animated reveal -->
+    <div class="mt-6 animate-slide-up" style="--slide-delay: 300ms;">
+      <p class="max-w-2xl mx-auto text-lg text-muted-foreground md:text-xl">
+        Discover the modern, well-equipped spaces designed to support your academic journey and enhance your learning experience at DCCP.
+      </p>
     </div>
   </div>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Text reveal animation
-    const textReveal = document.querySelector('.text-reveal');
-    if (textReveal) {
-      textReveal.classList.add('revealed');
-    }
-    
-    // Line reveal animation
-    const lineReveal = document.querySelector('.line-reveal');
-    if (lineReveal) {
-      setTimeout(() => {
-        lineReveal.classList.add('revealed');
-      }, 800);
-    }
-    
-    // Word-by-word reveal animation
-    const words = document.querySelectorAll('.word-reveal');
-    words.forEach((word, index) => {
-      setTimeout(() => {
-        word.classList.add('revealed');
-      }, 300 + (index * 100));
-    });
-    
-    // Scroll indicator animation
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-      setTimeout(() => {
-        const children = scrollIndicator.querySelectorAll('.animate-fade-in');
-        children.forEach((child, index) => {
-          setTimeout(() => {
-            child.classList.add('fade-in');
-          }, 1200 + (index * 200));
-        });
-      }, 1000);
-    }
-  });
+  // Animations are driven by CSS variables and classes from HeroAvantGardeNew.astro
+  // Ensure these classes are available globally or defined in a shared CSS file if not already.
+  // For this component, the keyframe animations like slide-up, text-reveal, float, float-delayed, and pulse
+  // are assumed to be available from HeroAvantGardeNew.astro's style tag or a global stylesheet.
+  // If HeroAvantGardeNew.astro's <style> is not global, these might need to be duplicated or moved.
+  // For now, we'll assume they are accessible.
 </script>
 
 <style>
-  /* Gradient text effect */
-  .text-gradient {
-    background: linear-gradient(to right, var(--primary), var(--primary-foreground));
+  /* Styles from HeroAvantGardeNew.astro that are needed for this header if not globally available */
+  /* It's better to move these to a global stylesheet or ensure they are imported if used across multiple components */
+
+  /* Fancy gradient text */
+  .gradient-text {
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary) / 0.8));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     display: inline-block;
+    position: relative;
   }
   
-  /* Text reveal animation */
-  .text-reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Fancy heading with animated underline */
+  .fancy-heading {
+    position: relative;
   }
   
-  .text-reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Line reveal animation */
-  .line-reveal {
+  .fancy-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0.1em; /* Adjusted for better placement */
+    left: 0;
+    width: 100%;
+    height: 0.1em; /* Adjusted for better visibility */
+    background: linear-gradient(to right, hsl(var(--primary) / 0.7), hsl(var(--primary) / 0.1));
     transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: right;
+    transition: transform 0.5s ease;
   }
   
-  .line-reveal.revealed {
+  .fancy-heading:hover::after {
     transform: scaleX(1);
+    transform-origin: left;
   }
+
+  /* Keyframes (should be defined globally or in HeroAvantGardeNew.astro if its styles are global) */
+  /* Minimal set for this component - assumes HeroAvantGardeNew.astro <style> content is available or similar keyframes are global */
   
-  /* Word-by-word reveal animation */
-  .word-reveal {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    margin-right: 0.3em;
-  }
-  
-  .word-reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Fade-in animation */
-  .animate-fade-in {
-    transition: opacity 0.5s ease;
-  }
-  
-  .animate-fade-in.fade-in {
-    opacity: 1;
-  }
-  
-  /* Pulse animation for scroll indicator */
-  @keyframes pulse-slow {
-    0%, 100% {
-      opacity: 0.5;
+  /* Fallback/Example for slide-up if not global */
+  @keyframes slide-up {
+    0% {
+      transform: translateY(30px);
+      opacity: 0;
     }
-    50% {
+    100% {
+      transform: translateY(0);
       opacity: 1;
     }
   }
-  
-  .animate-pulse-slow {
-    animation: pulse-slow 2s ease-in-out infinite;
+
+  .animate-slide-up {
+    animation: slide-up 0.8s ease forwards;
+    animation-delay: var(--slide-delay, 0s);
+    opacity: 0; /* Start hidden before animation */
   }
+  
+  /* Fallback/Example for text-reveal if not global */
+  @keyframes text-reveal {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-text-reveal {
+    display: inline-block; /* Important for the transform to work correctly */
+    overflow: hidden; /* Hide the text before it reveals */
+    transform: translateY(100%); /* Start below */
+    animation: text-reveal 0.8s cubic-bezier(0.5, 0, 0.1, 1) forwards;
+    animation-delay: var(--reveal-delay, 0s);
+  }
+
+  /* Fallback for float animations if not globally available from FacilitiesVisual.astro's parent styles */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float-delayed {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-float-delayed {
+    animation: float-delayed 7s ease-in-out 1s infinite;
+  }
+
+  /* Ensure :global styles from HeroAvantGardeNew.astro for dark mode are effective or replicated */
 </style>

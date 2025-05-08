@@ -14,222 +14,147 @@ const { stats } = Astro.props;
 
 // Function to get icon SVG based on name
 const getIconSvg = (iconName: string) => {
+  // Using a slightly more compact style for icons within stat cards
+  const attrs = `width="20" height="20" stroke-width="1.5"`; 
   switch(iconName) {
     case 'wifi':
-      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 20 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>`;
+      return `<svg xmlns="http://www.w3.org/2000/svg" ${attrs} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 20 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>`;
     case 'clock':
-      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
+      return `<svg xmlns="http://www.w3.org/2000/svg" ${attrs} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
     case 'monitor':
-      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>`;
+      return `<svg xmlns="http://www.w3.org/2000/svg" ${attrs} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>`;
     case 'zap':
-      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`;
+      return `<svg xmlns="http://www.w3.org/2000/svg" ${attrs} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`;
     default:
-      return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="16"></line><line x1="8" x2="16" y1="12" y2="12"></line></svg>`;
+      return `<svg xmlns="http://www.w3.org/2000/svg" ${attrs} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle></svg>`;
   }
 };
 ---
 
-<div class="tech-section">
-  <div class="rounded-2xl border bg-card p-8 md:p-10 relative overflow-hidden">
-    <!-- Visual background elements -->
-    <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-50"></div>
-    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-xl opacity-50"></div>
-    
-    <div class="relative z-10">
-      <!-- Section header with text effects -->
-      <div class="max-w-2xl">
-        <h3 class="text-2xl md:text-3xl font-bold mb-2 tech-title">
-          Campus Technology
-        </h3>
-        <div class="w-20 h-1 bg-primary transform origin-left scale-x-0 tech-line"></div>
-        <p class="mt-4 text-muted-foreground tech-description">
-          Our campus is equipped with high-speed Wi-Fi throughout, smart classrooms with interactive displays, and digital learning tools to enhance the educational experience. We continuously upgrade our technology infrastructure to ensure students have access to industry-standard equipment and software.
+<div class="tech-section py-16 md:py-24">
+  <div class="container mx-auto">
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+      <div class="animate-slide-up" style="--slide-delay: 0ms;">
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl fancy-heading">
+          <span class="gradient-text">Cutting-Edge</span> Technology
+        </h2>
+      </div>
+      <div class="animate-slide-up" style="--slide-delay: 200ms;">
+        <p class="mt-4 text-lg text-muted-foreground">
+          Our campus is equipped with high-speed Wi-Fi, smart classrooms, and digital learning tools to ensure students have access to industry-standard equipment and software.
         </p>
       </div>
-      
-      <!-- Tech stats with visual elements -->
-      <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-6 tech-stats">
-        {stats.map((stat, index) => (
-          <div class="tech-stat-card" style={`--delay: ${index * 100}ms`}>
-            <div class="rounded-xl bg-background p-6 border border-border/50 text-center h-full flex flex-col items-center justify-center group hover:border-primary/30 hover:bg-primary/5 transition-all duration-300">
-              <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:bg-primary/20 transition-colors duration-300 tech-icon">
+    </div>
+
+    <!-- Tech stats cards -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      {stats.map((stat, index) => (
+        <div class="animate-slide-up tech-stat-card" style={`--slide-delay: ${(index * 100) + 300}ms;`}>
+          <div class="relative overflow-hidden rounded-xl border border-border/40 bg-background/70 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 h-full flex flex-col items-center text-center">
+            <div class="absolute -right-5 -top-5 h-16 w-16 rounded-full bg-primary/10 opacity-70 group-hover:opacity-100 transition-opacity"></div>
+            <div class="relative z-10 flex flex-col items-center">
+              <div class="mb-3 rounded-full bg-primary/10 p-3 text-primary tech-icon">
                 <Fragment set:html={getIconSvg(stat.icon)} />
               </div>
-              <p class="text-3xl font-bold mb-1 tech-value">{stat.value}</p>
-              <p class="text-sm text-muted-foreground tech-label">{stat.label}</p>
+              <div class="text-3xl font-bold count-up tech-value" data-target-value={stat.value}>{stat.value.match(/^\d+/)?.[0] || stat.value}</div>
+              <div class="text-sm text-muted-foreground mt-1 tech-label">{stat.label}</div>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   </div>
 </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Animate tech section on scroll
-    const techSection = document.querySelector('.tech-section');
-    
-    if (techSection) {
+    const countUpElements = document.querySelectorAll('.count-up');
+
+    countUpElements.forEach(element => {
+      const rawTargetValue = element.getAttribute('data-target-value');
+      if (!rawTargetValue) return;
+
+      const numericPart = parseInt(rawTargetValue.replace(/[^0-9]/g, ''), 10);
+      const suffix = rawTargetValue.replace(/\d|\s/g, ''); // Extracts non-digits like %, +, Gbps
+
+      if (isNaN(numericPart)) {
+        element.textContent = rawTargetValue; // If no number, just set text
+        return;
+      }
+
+      let currentCount = 0;
+      const duration = 1500; // ms
+      const frameDuration = 1000 / 60; // 60fps
+      const totalFrames = Math.round(duration / frameDuration);
+      const countIncrement = numericPart / totalFrames;
+
+      // Check if element is visible before starting animation
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // Animate section elements
-            const techTitle = techSection.querySelector('.tech-title');
-            const techLine = techSection.querySelector('.tech-line');
-            const techDescription = techSection.querySelector('.tech-description');
-            
-            if (techTitle) techTitle.classList.add('title-visible');
-            
-            if (techLine) {
-              setTimeout(() => {
-                techLine.classList.add('line-visible');
-              }, 300);
-            }
-            
-            if (techDescription) {
-              setTimeout(() => {
-                techDescription.classList.add('description-visible');
-              }, 500);
-            }
-            
-            // Animate stat cards with staggered delay
-            const statCards = techSection.querySelectorAll('.tech-stat-card');
-            statCards.forEach((card, i) => {
-              setTimeout(() => {
-                card.classList.add('stat-visible');
-                
-                // Animate stat elements
-                const techIcon = card.querySelector('.tech-icon');
-                const techValue = card.querySelector('.tech-value');
-                const techLabel = card.querySelector('.tech-label');
-                
-                if (techIcon) techIcon.classList.add('icon-visible');
-                
-                if (techValue) {
-                  techValue.classList.add('value-visible');
-                  
-                  // Animate counter for numeric values
-                  const originalText = techValue.textContent;
-                  const isNumeric = /^[0-9]+(\+|%)?$/.test(originalText);
-                  
-                  if (isNumeric) {
-                    const targetValue = parseInt(originalText);
-                    const suffix = originalText.match(/(\+|%)/)?.[0] || '';
-                    
-                    let currentValue = 0;
-                    const duration = 1500; // ms
-                    const increment = targetValue / (duration / 16); // 60fps
-                    
-                    const counter = setInterval(() => {
-                      currentValue += increment;
-                      
-                      if (currentValue >= targetValue) {
-                        techValue.textContent = targetValue + suffix;
-                        clearInterval(counter);
-                      } else {
-                        techValue.textContent = Math.floor(currentValue) + suffix;
-                      }
-                    }, 16);
-                  }
-                }
-                
-                if (techLabel) {
-                  setTimeout(() => {
-                    techLabel.classList.add('label-visible');
-                  }, 200);
-                }
-              }, 700 + (i * 100));
-            });
-            
-            observer.unobserve(entry.target);
+            const counter = setInterval(() => {
+              currentCount += countIncrement;
+              if (currentCount >= numericPart) {
+                element.textContent = numericPart + suffix;
+                clearInterval(counter);
+              } else {
+                element.textContent = Math.floor(currentCount) + suffix;
+              }
+            }, frameDuration);
+            observer.unobserve(element); // Stop observing after animation starts
           }
         });
       }, { threshold: 0.1 });
-      
-      observer.observe(techSection);
-    }
+
+      observer.observe(element);
+    });
   });
 </script>
 
 <style>
-  /* Title animations */
-  .tech-title {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+  /* Ensure slide-up animation is available (globally or defined here if not) */
+  @keyframes slide-up {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
   }
-  
-  .tech-title.title-visible {
-    opacity: 1;
-    transform: translateY(0);
+  .animate-slide-up {
+    animation: slide-up 0.8s ease forwards;
+    animation-delay: var(--slide-delay, 0s);
+    opacity: 0; /* Start hidden */
   }
-  
-  /* Line animations */
-  .tech-line {
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Gradient text (if not global) */
+  .gradient-text {
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary) / 0.8));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
   }
-  
-  .tech-line.line-visible {
-    transform: scaleX(1);
+
+  /* Fancy heading (if not global) */
+  .fancy-heading {
+    position: relative;
   }
-  
-  /* Description animations */
-  .tech-description {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+  .fancy-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -0.1em;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 2px;
+    background: hsl(var(--primary) / 0.5);
+    transition: width 0.3s ease;
   }
-  
-  .tech-description.description-visible {
-    opacity: 1;
-    transform: translateY(0);
+  .fancy-heading:hover::after {
+    width: 60%;
   }
-  
-  /* Stat card animations */
-  .tech-stat-card {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    transition-delay: var(--delay, 0ms);
-  }
-  
-  .tech-stat-card.stat-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Icon animations */
-  .tech-icon {
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
-  }
-  
-  .tech-icon.icon-visible {
-    opacity: 1;
-    transform: scale(1);
-  }
-  
-  /* Value animations */
-  .tech-value {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  
-  .tech-value.value-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Label animations */
-  .tech-label {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-  
-  .tech-label.label-visible {
-    opacity: 1;
+
+  /* Minimal styling for card elements if needed, Tailwind should cover most */
+  .tech-stat-card .tech-icon svg {
+    width: 28px; /* Slightly larger icon in the circle */
+    height: 28px;
   }
 </style>

@@ -377,7 +377,17 @@ import { Badge } from "@/components/ui/badge";
     const countElements = document.querySelectorAll('.count-up');
     
     countElements.forEach(element => {
-      const target = parseInt(element.getAttribute('data-target'));
+      const targetAttribute = element.getAttribute('data-target');
+      if (targetAttribute === null) {
+        console.warn('Element is missing data-target attribute:', element);
+        return; // Skip this element if attribute is missing
+      }
+      const target = parseInt(targetAttribute, 10); // Added radix 10
+      if (isNaN(target)) {
+        console.warn('Invalid data-target attribute:', element);
+        return; // Skip if target is not a number
+      }
+
       const duration = 2000; // ms
       const frameDuration = 1000 / 60; // 60fps
       const totalFrames = Math.round(duration / frameDuration);
@@ -388,10 +398,10 @@ import { Badge } from "@/components/ui/badge";
         currentCount += countIncrement;
         
         if (currentCount >= target) {
-          element.textContent = target;
+          element.textContent = target.toString(); // Convert number to string
           clearInterval(counter);
         } else {
-          element.textContent = Math.floor(currentCount);
+          element.textContent = Math.floor(currentCount).toString(); // Convert number to string
         }
       }, frameDuration);
     });

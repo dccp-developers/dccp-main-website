@@ -189,63 +189,22 @@ import { Badge } from "@/components/ui/badge";
     </div>
 
     <!-- Mobile view showcase -->
-    <div class="mt-24 grid md:grid-cols-2 gap-12 items-center">
-      <div class="text-center md:text-left">
-        <Badge variant="outline" className="mb-4">Mobile Experience</Badge>
-        <h3 class="text-2xl md:text-3xl font-bold mb-4">DCCPHub on the Go</h3>
-        <p class="text-muted-foreground mb-6">
-          Access all features of DCCPHub from your mobile device with our responsive design and dedicated mobile apps.
-        </p>
-
-        <div class="grid grid-cols-2 gap-6 max-w-md mx-auto md:mx-0">
-          <div class="text-center p-4 rounded-lg bg-muted/50">
-            <div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg>
-            </div>
-            <h4 class="text-sm font-medium">Responsive Web</h4>
-          </div>
-
-          <div class="text-center p-4 rounded-lg bg-muted/50">
-            <div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg>
-            </div>
-            <h4 class="text-sm font-medium">Native Apps</h4>
-          </div>
-
-          <div class="text-center p-4 rounded-lg bg-muted/50">
-            <div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
-            </div>
-            <h4 class="text-sm font-medium">Notifications</h4>
-          </div>
-
-          <div class="text-center p-4 rounded-lg bg-muted/50">
-            <div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
-            </div>
-            <h4 class="text-sm font-medium">Offline Access</h4>
-          </div>
-        </div>
+    <div class="mt-24 flex flex-col items-center justify-center gap-8 relative overflow-visible min-h-[400px]">
+      <!-- Elegant blurred/gradient background accent -->
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
+        <div class="w-3/4 h-2/3 bg-gradient-to-tr from-primary/20 via-primary/5 to-transparent blur-3xl rounded-full opacity-70 animate-gradient-move"></div>
       </div>
-
-      <div class="mobile-showcase flex justify-center">
-        <div class="relative">
-          <!-- Phone mockup -->
-          <div class="relative mx-auto w-[280px] h-[570px] bg-background rounded-[3rem] border-8 border-foreground/10 shadow-xl overflow-hidden">
-            <div class="absolute top-0 inset-x-0 h-6 bg-foreground/10 rounded-t-2xl"></div>
-            <div class="absolute top-2 inset-x-0 h-2 w-20 mx-auto bg-foreground/20 rounded-full"></div>
-            <div class="h-full w-full overflow-hidden pt-6">
-              <img
-                src="/images/portal/mobile-app.png"
-                alt="DCCPHub Mobile App"
-                class="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-
-          <!-- Decorative elements -->
-          <div class="absolute -z-10 -bottom-6 -right-6 h-32 w-32 rounded-full bg-primary/10 blur-2xl"></div>
-          <div class="absolute -z-10 -top-6 -left-6 h-32 w-32 rounded-full bg-primary/10 blur-2xl"></div>
+      <div class="text-center space-y-6">
+        <span class="inline-block px-4 py-1 rounded-full bg-primary text-primary-foreground text-sm font-semibold shadow-lg animate-pulse-glow mb-2">In Development</span>
+        <h3 class="text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent animate-gradient-shimmer">Mobile App Coming Soon</h3>
+        <p class="text-muted-foreground text-lg max-w-xl mx-auto animate-fade-in">
+          We're building a next-generation mobile experience for DCCPHub.<br />Stay tuned for updates and early access!
+        </p>
+        <!-- Optional: animated sparkles -->
+        <div class="flex justify-center mt-4">
+          <span class="inline-block w-2 h-2 rounded-full bg-primary/80 animate-sparkle mx-1"></span>
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-primary/60 animate-sparkle-delay mx-1"></span>
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-primary/40 animate-sparkle-delay2 mx-1"></span>
         </div>
       </div>
     </div>
@@ -348,5 +307,48 @@ import { Badge } from "@/components/ui/badge";
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  @keyframes gradient-move {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.05); }
+  }
+  .animate-gradient-move {
+    animation: gradient-move 8s ease-in-out infinite;
+  }
+  @keyframes gradient-shimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+  .animate-gradient-shimmer {
+    background-size: 200% 200%;
+    animation: gradient-shimmer 3s linear infinite;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.3); }
+    50% { box-shadow: 0 0 16px 4px rgba(59,130,246,0.5); }
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes sparkle {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+  }
+  .animate-sparkle {
+    animation: sparkle 2.2s infinite;
+  }
+  .animate-sparkle-delay {
+    animation: sparkle 2.2s 0.7s infinite;
+  }
+  .animate-sparkle-delay2 {
+    animation: sparkle 2.2s 1.2s infinite;
   }
 </style>

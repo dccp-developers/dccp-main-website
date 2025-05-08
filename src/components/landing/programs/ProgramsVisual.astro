@@ -4,17 +4,19 @@ import ProgramsVisualCard from "./ProgramsVisualCard.astro";
 import ProgramsVisualCTA from "./ProgramsVisualCTA.astro";
 import ProgramsVisualTabs from "./ProgramsVisualTabs.astro";
 
-// Program data with enhanced visual elements
+// Updated program data based on dccp.edu.ph/programs
 const programs = [
+  // College Programs ( сохраняя существующие детали, насколько это возможно )
   {
-    id: "it",
+    id: "bsit",
+    category: "College",
     title: "Information Technology",
     description: "Develop expertise in programming, systems analysis, and digital innovation.",
     duration: "4 Years",
     format: "On Campus",
     degree: "Bachelor of Science",
-    image: "/images/programs/it-program.jpg", // You'll need to add these images to your public folder
-    color: "blue",
+    image: "/images/programs/college-it.jpg", // Placeholder image path
+    color: "blue", // Existing color
     specializations: [
       { name: "Web Development", icon: "code" },
       { name: "Cloud Computing", icon: "cloud" },
@@ -27,17 +29,19 @@ const programs = [
       "Internship opportunities with tech companies",
       "Certification preparation"
     ],
-    isPopular: true
+    isPopular: true,
+    learnMoreLink: "/programs/college/information-technology"
   },
   {
-    id: "business",
+    id: "bsba",
+    category: "College",
     title: "Business Administration",
     description: "Master principles of management, marketing, finance, and entrepreneurship.",
     duration: "4 Years",
     format: "On Campus",
     degree: "Bachelor of Science",
-    image: "/images/programs/business-program.jpg",
-    color: "amber",
+    image: "/images/programs/college-business.jpg", // Placeholder image path
+    color: "amber", // Existing color
     specializations: [
       { name: "Financial Management", icon: "banknote" },
       { name: "Marketing", icon: "presentation" },
@@ -49,17 +53,19 @@ const programs = [
       "Industry partnerships",
       "Leadership development program",
       "Global business perspective"
-    ]
+    ],
+    learnMoreLink: "/programs/college/business-administration"
   },
   {
-    id: "hospitality",
+    id: "bshm",
+    category: "College",
     title: "Hospitality Management",
     description: "Prepare for leadership in hospitality with practical and theoretical knowledge.",
     duration: "4 Years",
     format: "On Campus",
     degree: "Bachelor of Science",
-    image: "/images/programs/hospitality-program.jpg",
-    color: "green",
+    image: "/images/programs/college-hospitality.jpg", // Placeholder image path
+    color: "green", // Existing color
     specializations: [
       { name: "Hotel Management", icon: "building" },
       { name: "Event Planning", icon: "calendar" },
@@ -72,7 +78,129 @@ const programs = [
       "Event management experience",
       "International hospitality standards"
     ],
-    isNew: true
+    isNew: true,
+    learnMoreLink: "/programs/college/hospitality-management"
+  },
+  // K-12 Senior High School Programs
+  {
+    id: "k12-stem",
+    category: "K-12 Senior High",
+    title: "STEM",
+    description: "Science, Technology, Engineering, and Mathematics. Equipping students with skills for scientific and technological advancements.",
+    duration: "2 Years",
+    format: "On Campus",
+    degree: "Senior High School Strand",
+    image: "/images/programs/k12-stem.jpg", // Placeholder image path
+    color: "sky", // New color for K-12
+    specializations: [
+      { name: "Advanced Mathematics", icon: "calculator" },
+      { name: "Research in Physical Sciences", icon: "beaker" },
+      { name: "Engineering and Technology", icon: "cpu" },
+      { name: "Computer Programming", icon: "code-xml" },
+      { name: "Scientific Research", icon: "flask-round" }
+    ],
+    features: [
+      "Inquiry-based learning",
+      "Hands-on science projects",
+      "Preparation for university STEM courses"
+    ],
+    learnMoreLink: "/programs/k12/stem"
+  },
+  {
+    id: "k12-abm",
+    category: "K-12 Senior High",
+    title: "ABM",
+    description: "Accountancy, Business, and Management. Developing future entrepreneurs and business leaders.",
+    duration: "2 Years",
+    format: "On Campus",
+    degree: "Senior High School Strand",
+    image: "/images/programs/k12-abm.jpg", // Placeholder image path
+    color: "orange", // New color for K-12
+    specializations: [
+      { name: "Business Mathematics", icon: "percent" },
+      { name: "Fundamentals of Accountancy", icon: "book-open" },
+      { name: "Business Ethics", icon: "scale" },
+      { name: "Economics", icon: "line-chart" },
+      { name: "Marketing", icon: "megaphone" }
+    ],
+    features: [
+      "Introduction to business principles",
+      "Case studies and simulations",
+      "Entrepreneurial skills development"
+    ],
+    learnMoreLink: "/programs/k12/abm"
+  },
+  {
+    id: "k12-humss",
+    category: "K-12 Senior High",
+    title: "HUMSS",
+    description: "Humanities and Social Sciences. Exploring human society, culture, and critical thinking.",
+    duration: "2 Years",
+    format: "On Campus",
+    degree: "Senior High School Strand",
+    image: "/images/programs/k12-humss.jpg", // Placeholder image path
+    color: "rose", // New color for K-12
+    specializations: [
+      { name: "Creative Writing", icon: "pencil-ruler" },
+      { name: "Social Sciences", icon: "users-round" },
+      { name: "Political Science", icon: "landmark" },
+      { name: "Psychology", icon: "brain" },
+      { name: "Philosophy", icon: "captions" }
+    ],
+    features: [
+      "Develops communication skills",
+      "Understanding of societal issues",
+      "Encourages critical analysis"
+    ],
+    learnMoreLink: "/programs/k12/humss"
+  },
+  {
+    id: "k12-he",
+    category: "K-12 Senior High",
+    title: "HE",
+    description: "Home Economics. Focusing on livelihood skills, family and consumer sciences.",
+    duration: "2 Years",
+    format: "On Campus",
+    degree: "Senior High School Strand",
+    image: "/images/programs/k12-he.jpg", // Placeholder image path
+    color: "lime", // New color for K-12
+    specializations: [
+      { name: "Food and Nutrition", icon: "chef-hat" },
+      { name: "Culinary Arts", icon: "utensils-crossed" },
+      { name: "Home Management", icon: "home" },
+      { name: "Food Safety", icon: "shield-check" },
+      { name: "Hospitality", icon: "concierge-bell" }
+    ],
+    features: [
+      "Practical cooking and baking skills",
+      "Principles of nutrition and wellness",
+      "Household resource management"
+    ],
+    learnMoreLink: "/programs/k12/he"
+  },
+  {
+    id: "k12-ict",
+    category: "K-12 Senior High",
+    title: "ICT",
+    description: "Information and Communications Technology. Building foundational skills in digital tools and technologies.",
+    duration: "2 Years",
+    format: "On Campus",
+    degree: "Senior High School Strand",
+    image: "/images/programs/k12-ict.jpg", // Placeholder image path
+    color: "cyan", // New color for K-12
+    specializations: [
+      { name: "Computer Programming", icon: "keyboard" },
+      { name: "Digital Arts", icon: "image" },
+      { name: "Web Development", icon: "layout-grid" },
+      { name: "Network Systems", icon: "network" },
+      { name: "Database Management", icon: "database-zap" }
+    ],
+    features: [
+      "Introduction to coding",
+      "Digital content creation",
+      "Understanding of IT infrastructure"
+    ],
+    learnMoreLink: "/programs/k12/ict"
   }
 ];
 ---
@@ -96,6 +224,8 @@ const programs = [
     </div>
     
     <!-- Visual program cards -->
+    <!-- This section will need significant redesign to match HeroAvantGardeNew.astro and to use the new learnMoreLink -->
+    <!-- For now, it will render based on the old structure, but the card content needs to be updated -->
     <div class="mt-24 space-y-32">
       {programs.map((program, index) => (
         <ProgramsVisualCard 
@@ -104,9 +234,6 @@ const programs = [
         />
       ))}
     </div>
-    
-    <!-- Visual CTA component -->
-    <ProgramsVisualCTA />
   </div>
 </section>
 
