@@ -1,6 +1,11 @@
 ---
 import Logo from "@/components/header/Logo.astro";
 import ThemeToggle from "@/components/ThemeToggle.astro";
+import { getSchoolSettings } from "@/lib/api";
+
+// Fetch school settings
+const schoolSettings = await getSchoolSettings();
+const { online_enrollment_enabled, school_year_string, semester } = schoolSettings.data;
 ---
 
 <header
@@ -86,14 +91,24 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
             <span class="sr-only">Search</span>
           </button>
 
-          <!-- Apply Now Button -->
-          <a
-            href="https://portal.dccp.edu.ph/enroll"
-            class="apply-button relative overflow-hidden group px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 text-sm font-medium"
-          >
-            <span class="relative z-10">Enroll Now</span>
-            <span class="absolute inset-0 bg-primary-foreground/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
-          </a>
+          <!-- Enroll Now Button - Shows modal if enrollment is disabled -->
+          {online_enrollment_enabled ? (
+            <a
+              href="https://portal.dccp.edu.ph/enroll"
+              class="apply-button relative overflow-hidden group px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 text-sm font-medium"
+            >
+              <span class="relative z-10">Enroll Now</span>
+              <span class="absolute inset-0 bg-primary-foreground/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
+            </a>
+          ) : (
+            <button
+              id="enrollment-disabled-btn"
+              class="apply-button relative overflow-hidden group px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 text-sm font-medium"
+            >
+              <span class="relative z-10">Enroll Now</span>
+              <span class="absolute inset-0 bg-primary-foreground/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
+            </button>
+          )}
 
           <!-- Theme Toggle -->
           <ThemeToggle />
@@ -177,9 +192,15 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
       
       <!-- Footer -->
       <div class="p-4 border-t">
-        <a href="#admissions" class="block w-full py-2 px-3 bg-primary text-primary-foreground text-center rounded-md mb-4">
-          Apply Now
-        </a>
+        {online_enrollment_enabled ? (
+          <a href="https://portal.dccp.edu.ph/enroll" class="block w-full py-2 px-3 bg-primary text-primary-foreground text-center rounded-md mb-4">
+            Enroll Now
+          </a>
+        ) : (
+          <button id="enrollment-disabled-btn-mobile" class="block w-full py-2 px-3 bg-primary text-primary-foreground text-center rounded-md mb-4">
+            Enroll Now
+          </button>
+        )}
         <div class="flex justify-between items-center">
           <span class="text-sm text-muted-foreground">© 2023 DCCP Baguio</span>
           <button id="mobile-theme-toggle" class="p-2 rounded-md hover:bg-accent/50 transition-colors">
@@ -219,6 +240,39 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
   </div>
 </div>
 
+<!-- Enrollment Disabled Modal -->
+<div id="enrollment-disabled-modal" class="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 hidden">
+  <div class="h-full flex items-center justify-center p-4">
+    <div class="bg-card rounded-lg shadow-xl max-w-md w-full p-6 opacity-0 scale-95 transition-all duration-300" id="enrollment-modal-container">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-medium">Enrollment Notice</h3>
+        <button id="close-enrollment-modal" class="p-1 rounded-md hover:bg-accent/50 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div class="mb-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="rounded-full bg-primary/10 p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" x2="12" y1="8" y2="12"/>
+              <line x1="12" x2="12.01" y1="16" y2="16"/>
+            </svg>
+          </div>
+          <p class="font-medium">Online Enrollment Currently Unavailable</p>
+        </div>
+        <p class="text-muted-foreground">We're sorry, but online enrollment is not available at this time. Please check back later or contact our admissions office for assistance.</p>
+        <p class="mt-2 text-sm text-muted-foreground">For inquiries, you can reach us at <a href="mailto:admissions@dccp.edu.ph" class="text-primary hover:underline">admissions@dccp.edu.ph</a> or call us at <a href="tel:+63744420000" class="text-primary hover:underline">+63 74 442 0000</a>.</p>
+      </div>
+      <div class="flex justify-end">
+        <button id="confirm-enrollment-modal" class="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors">
+          I Understand
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     // Elements
@@ -234,6 +288,14 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
     const searchContainer = document.getElementById('search-container');
     const closeSearchButton = document.getElementById('close-search');
     const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    
+    // Enrollment disabled modal elements
+    const enrollmentDisabledBtn = document.getElementById('enrollment-disabled-btn');
+    const enrollmentDisabledBtnMobile = document.getElementById('enrollment-disabled-btn-mobile');
+    const enrollmentDisabledModal = document.getElementById('enrollment-disabled-modal');
+    const enrollmentModalContainer = document.getElementById('enrollment-modal-container');
+    const closeEnrollmentModalBtn = document.getElementById('close-enrollment-modal');
+    const confirmEnrollmentModalBtn = document.getElementById('confirm-enrollment-modal');
     
     // Scroll effect for header
     let lastScrollY = window.scrollY;
@@ -353,6 +415,58 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
         if (indicator) indicator.style.transform = 'scaleX(0)';
       });
     });
+    
+    // Enrollment disabled modal functions
+    function openEnrollmentModal() {
+      document.body.style.overflow = 'hidden';
+      if (enrollmentDisabledModal) {
+        enrollmentDisabledModal.classList.remove('hidden');
+        setTimeout(() => {
+          if (enrollmentModalContainer) {
+            enrollmentModalContainer.style.opacity = '1';
+            enrollmentModalContainer.style.transform = 'scale(1)';
+          }
+        }, 10);
+      }
+    }
+    
+    function closeEnrollmentModal() {
+      if (enrollmentModalContainer) {
+        enrollmentModalContainer.style.opacity = '0';
+        enrollmentModalContainer.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          if (enrollmentDisabledModal) {
+            enrollmentDisabledModal.classList.add('hidden');
+            document.body.style.overflow = '';
+          }
+        }, 300);
+      }
+    }
+    
+    // Add event listeners for enrollment modal
+    if (enrollmentDisabledBtn) {
+      enrollmentDisabledBtn.addEventListener('click', openEnrollmentModal);
+    }
+    
+    if (enrollmentDisabledBtnMobile) {
+      enrollmentDisabledBtnMobile.addEventListener('click', openEnrollmentModal);
+    }
+    
+    if (closeEnrollmentModalBtn) {
+      closeEnrollmentModalBtn.addEventListener('click', closeEnrollmentModal);
+    }
+    
+    if (confirmEnrollmentModalBtn) {
+      confirmEnrollmentModalBtn.addEventListener('click', closeEnrollmentModal);
+    }
+    
+    if (enrollmentDisabledModal) {
+      enrollmentDisabledModal.addEventListener('click', (e) => {
+        if (e.target === enrollmentDisabledModal) {
+          closeEnrollmentModal();
+        }
+      });
+    }
   });
 </script>
 
@@ -378,7 +492,8 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
   }
   
   /* Search container animation */
-  #search-container {
+  #search-container,
+  #enrollment-modal-container {
     transition: opacity 0.3s ease, transform 0.3s ease;
   }
   

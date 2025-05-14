@@ -1,6 +1,16 @@
 ---
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { getSchoolSettings } from "@/lib/api";
+
+// Fetch school settings
+const schoolSettings = await getSchoolSettings();
+const { 
+  school_year, 
+  school_year_string, 
+  semester, 
+  online_enrollment_enabled 
+} = schoolSettings.data;
 ---
 
 <section class="relative isolate overflow-hidden">
@@ -9,14 +19,16 @@ import { Badge } from "@/components/ui/badge";
     <!-- Left content column - takes full width on mobile, 45% on desktop -->
     <div class="relative z-10 flex flex-col justify-center px-4 py-12 sm:px-6 lg:w-[45%] lg:py-0 lg:pl-8 lg:pr-0 xl:pl-16">
       <div class="mx-auto w-full max-w-xl lg:mx-0">
-        <!-- Animated badge with gradient border -->
-        <div class="animate-slide-up" style="--slide-delay: 0ms;">
-          <div class="group relative mb-6 inline-flex items-center rounded-full border border-primary/30 bg-background/80 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-md transition-all duration-300 hover:border-primary/60">
-            <div class="absolute -inset-[1px] -z-10 rounded-full bg-gradient-to-r from-primary/20 via-primary/0 to-primary/20 opacity-0 blur-md transition-all duration-500 group-hover:opacity-100"></div>
-            <span class="mr-2 inline-block h-2 w-2 animate-pulse rounded-full bg-primary"></span>
-            Now Accepting Applications
+        <!-- Animated badge with gradient border - only shown when online enrollment is enabled -->
+        {online_enrollment_enabled && (
+          <div class="animate-slide-up" style="--slide-delay: 0ms;">
+            <div class="group relative mb-6 inline-flex items-center rounded-full border border-primary/30 bg-background/80 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-md transition-all duration-300 hover:border-primary/60">
+              <div class="absolute -inset-[1px] -z-10 rounded-full bg-gradient-to-r from-primary/20 via-primary/0 to-primary/20 opacity-0 blur-md transition-all duration-500 group-hover:opacity-100"></div>
+              <span class="mr-2 inline-block h-2 w-2 animate-pulse rounded-full bg-primary"></span>
+              Now Accepting Applications - {school_year_string} {semester}
+            </div>
           </div>
-        </div>
+        )}
         
         <!-- Main heading with animated gradient text -->
         <div class="space-y-2">
