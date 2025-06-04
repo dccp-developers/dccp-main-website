@@ -13,6 +13,6 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   server: {
-    allowedHosts: ["dccpweb.koamishin.org"],
+    allowedHosts: ["dccpweb.koamishin.org", "dccp.edu.ph"],
   },
 });

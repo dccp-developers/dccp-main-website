@@ -1,21 +1,6 @@
 ---
 // Define the props for this component
-interface Facility {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  image: string;
-  color: string;
-  features: string[];
-  highlight?: boolean;
-}
-
-interface Props {
-  facilities: Facility[];
-}
-
-const { facilities } = Astro.props;
+intrt } = Astro.props;
 
 // Filter facilities that have an image, and prepare a simpler list for the gallery
 const galleryImages = facilities
@@ -48,11 +33,11 @@ const galleryImages = facilities
         </p>
       </div>
     </div>
-    
+
     <!-- Gallery Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 gallery-grid">
       {galleryImages.map((image, index) => (
-        <div 
+        <div
           class="gallery-item group relative aspect-square overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 animate-slide-up cursor-pointer"
           style={`--slide-delay: ${(index * 100) + 400}ms;`}
           data-gallery-index={index}
@@ -90,7 +75,7 @@ const galleryImages = facilities
         </button>
       </div>
     </div>
-    
+
     <!-- CTA button (kept from original, can be restyled if needed) -->
     <div class="mt-12 md:mt-16 text-center animate-slide-up" style="--slide-delay: ${ (galleryImages.length * 100) + 500 }ms;">
       <a href="#virtual-tour" class="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground rounded-lg text-base font-medium hover:bg-primary/90 transition-colors duration-300 group shadow-lg hover:shadow-primary/40">
@@ -116,9 +101,9 @@ const galleryImages = facilities
     const lightboxClose = document.getElementById('lightbox-close') as HTMLButtonElement | null;
     const lightboxPrev = document.getElementById('lightbox-prev') as HTMLButtonElement | null;
     const lightboxNext = document.getElementById('lightbox-next') as HTMLButtonElement | null;
-    
+
     // Pass server-side galleryImages data to client-side script
-    const imagesData: { src: string; alt: string; title: string; description: string; id: string; }[] = ${JSON.stringify(galleryImages)};
+    const imagesData: { src: string; alt: string; title: string; description: string; id: string; }[] = JSON.parse(JSON.stringify(galleryItems));
     let currentIndex = 0;
 
     function openLightbox(index: number) {
@@ -130,7 +115,7 @@ const galleryImages = facilities
       lightboxImage.alt = imageData.alt;
       lightboxTitle.textContent = imageData.title;
       lightboxDescription.textContent = imageData.description;
-      
+
       lightbox.classList.remove('hidden');
       lightbox.classList.add('flex');
       document.body.style.overflow = 'hidden'; // Prevent background scrolling
@@ -151,7 +136,7 @@ const galleryImages = facilities
     function showNextImage() {
       openLightbox((currentIndex + 1) % imagesData.length);
     }
-    
+
     function updateNavButtons() {
       if (!lightboxPrev || !lightboxNext) return;
       lightboxPrev.style.display = imagesData.length > 1 ? 'block' : 'none';
@@ -208,7 +193,7 @@ const galleryImages = facilities
   .animate-zoom-in {
     animation: zoom-in 0.3s ease forwards;
   }
-  
+
   .gallery-lightbox {
     transition: opacity 0.3s ease;
   }

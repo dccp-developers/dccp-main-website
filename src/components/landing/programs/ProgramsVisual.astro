@@ -1,306 +1,329 @@
 ---
 import ProgramsVisualHeader from "./ProgramsVisualHeader.astro";
 import ProgramsVisualCard from "./ProgramsVisualCard.astro";
-import ProgramsVisualCTA from "./ProgramsVisualCTA.astro";
+// import ProgramsVisualCTA from "./ProgramsVisualCTA.astro";
 import ProgramsVisualTabs from "./ProgramsVisualTabs.astro";
 
 // Updated program data based on dccp.edu.ph/programs
 const programs = [
-  // College Programs ( сохраняя существующие детали, насколько это возможно )
-  {
-    id: "bsit",
-    category: "College",
-    title: "Information Technology",
-    description: "Develop expertise in programming, systems analysis, and digital innovation.",
-    duration: "4 Years",
-    format: "On Campus",
-    degree: "Bachelor of Science",
-    image: "public/images/bsit-image.png", // Placeholder image path
-    color: "blue", // Existing color
-    specializations: [
-      { name: "Web Development", icon: "code" },
-      { name: "Cloud Computing", icon: "cloud" },
-      { name: "Cybersecurity", icon: "shield" },
-      { name: "Data Science", icon: "database" }
-    ],
-    features: [
-      "Industry-aligned curriculum",
-      "State-of-the-art computer labs",
-      "Internship opportunities with tech companies",
-      "Certification preparation"
-    ],
-    isPopular: true,
-    learnMoreLink: "/programs/college/information-technology"
-  },
-  {
-    id: "bsba",
-    category: "College",
-    title: "Business Administration",
-    description: "Master principles of management, marketing, finance, and entrepreneurship.",
-    duration: "4 Years",
-    format: "On Campus",
-    degree: "Bachelor of Science",
-    image: "/images/programs/college-business.jpg", // Placeholder image path
-    color: "amber", // Existing color
-    specializations: [
-      { name: "Financial Management", icon: "banknote" },
-      { name: "Marketing", icon: "presentation" },
-      { name: "Human Resources", icon: "users" },
-      { name: "Entrepreneurship", icon: "lightbulb" }
-    ],
-    features: [
-      "Business simulation projects",
-      "Industry partnerships",
-      "Leadership development program",
-      "Global business perspective"
-    ],
-    learnMoreLink: "/programs/college/business-administration"
-  },
-  {
-    id: "bshm",
-    category: "College",
-    title: "Hospitality Management",
-    description: "Prepare for leadership in hospitality with practical and theoretical knowledge.",
-    duration: "4 Years",
-    format: "On Campus",
-    degree: "Bachelor of Science",
-    image: "/images/programs/college-hospitality.jpg", // Placeholder image path
-    color: "green", // Existing color
-    specializations: [
-      { name: "Hotel Management", icon: "building" },
-      { name: "Event Planning", icon: "calendar" },
-      { name: "Tourism", icon: "map" },
-      { name: "Culinary Arts", icon: "utensils" }
-    ],
-    features: [
-      "Training restaurant and kitchen",
-      "Industry internships",
-      "Event management experience",
-      "International hospitality standards"
-    ],
-    isNew: true,
-    learnMoreLink: "/programs/college/hospitality-management"
-  },
-  // K-12 Senior High School Programs
-  {
-    id: "k12-stem",
-    category: "K-12 Senior High",
-    title: "STEM",
-    description: "Science, Technology, Engineering, and Mathematics. Equipping students with skills for scientific and technological advancements.",
-    duration: "2 Years",
-    format: "On Campus",
-    degree: "Senior High School Strand",
-    image: "/images/programs/k12-stem.jpg", // Placeholder image path
-    color: "sky", // New color for K-12
-    specializations: [
-      { name: "Advanced Mathematics", icon: "calculator" },
-      { name: "Research in Physical Sciences", icon: "beaker" },
-      { name: "Engineering and Technology", icon: "cpu" },
-      { name: "Computer Programming", icon: "code-xml" },
-      { name: "Scientific Research", icon: "flask-round" }
-    ],
-    features: [
-      "Inquiry-based learning",
-      "Hands-on science projects",
-      "Preparation for university STEM courses"
-    ],
-    learnMoreLink: "/programs/k12/stem"
-  },
-  {
-    id: "k12-abm",
-    category: "K-12 Senior High",
-    title: "ABM",
-    description: "Accountancy, Business, and Management. Developing future entrepreneurs and business leaders.",
-    duration: "2 Years",
-    format: "On Campus",
-    degree: "Senior High School Strand",
-    image: "/images/programs/k12-abm.jpg", // Placeholder image path
-    color: "orange", // New color for K-12
-    specializations: [
-      { name: "Business Mathematics", icon: "percent" },
-      { name: "Fundamentals of Accountancy", icon: "book-open" },
-      { name: "Business Ethics", icon: "scale" },
-      { name: "Economics", icon: "line-chart" },
-      { name: "Marketing", icon: "megaphone" }
-    ],
-    features: [
-      "Introduction to business principles",
-      "Case studies and simulations",
-      "Entrepreneurial skills development"
-    ],
-    learnMoreLink: "/programs/k12/abm"
-  },
-  {
-    id: "k12-humss",
-    category: "K-12 Senior High",
-    title: "HUMSS",
-    description: "Humanities and Social Sciences. Exploring human society, culture, and critical thinking.",
-    duration: "2 Years",
-    format: "On Campus",
-    degree: "Senior High School Strand",
-    image: "/images/programs/k12-humss.jpg", // Placeholder image path
-    color: "rose", // New color for K-12
-    specializations: [
-      { name: "Creative Writing", icon: "pencil-ruler" },
-      { name: "Social Sciences", icon: "users-round" },
-      { name: "Political Science", icon: "landmark" },
-      { name: "Psychology", icon: "brain" },
-      { name: "Philosophy", icon: "captions" }
-    ],
-    features: [
-      "Develops communication skills",
-      "Understanding of societal issues",
-      "Encourages critical analysis"
-    ],
-    learnMoreLink: "/programs/k12/humss"
-  },
-  {
-    id: "k12-he",
-    category: "K-12 Senior High",
-    title: "HE",
-    description: "Home Economics. Focusing on livelihood skills, family and consumer sciences.",
-    duration: "2 Years",
-    format: "On Campus",
-    degree: "Senior High School Strand",
-    image: "/images/programs/k12-he.jpg", // Placeholder image path
-    color: "lime", // New color for K-12
-    specializations: [
-      { name: "Food and Nutrition", icon: "chef-hat" },
-      { name: "Culinary Arts", icon: "utensils-crossed" },
-      { name: "Home Management", icon: "home" },
-      { name: "Food Safety", icon: "shield-check" },
-      { name: "Hospitality", icon: "concierge-bell" }
-    ],
-    features: [
-      "Practical cooking and baking skills",
-      "Principles of nutrition and wellness",
-      "Household resource management"
-    ],
-    learnMoreLink: "/programs/k12/he"
-  },
-  {
-    id: "k12-ict",
-    category: "K-12 Senior High",
-    title: "ICT",
-    description: "Information and Communications Technology. Building foundational skills in digital tools and technologies.",
-    duration: "2 Years",
-    format: "On Campus",
-    degree: "Senior High School Strand",
-    image: "/images/programs/k12-ict.jpg", // Placeholder image path
-    color: "cyan", // New color for K-12
-    specializations: [
-      { name: "Computer Programming", icon: "keyboard" },
-      { name: "Digital Arts", icon: "image" },
-      { name: "Web Development", icon: "layout-grid" },
-      { name: "Network Systems", icon: "network" },
-      { name: "Database Management", icon: "database-zap" }
-    ],
-    features: [
-      "Introduction to coding",
-      "Digital content creation",
-      "Understanding of IT infrastructure"
-    ],
-    learnMoreLink: "/programs/k12/ict"
-  }
+    // College Programs ( сохраняя существующие детали, насколько это возможно )
+    {
+        id: "bsit",
+        category: "College",
+        title: "Information Technology",
+        description:
+            "Develop expertise in programming, systems analysis, and digital innovation.",
+        duration: "4 Years",
+        format: "On Campus",
+        degree: "Bachelor of Science",
+        image: "images/bsit-image.png", // Placeholder image path
+        color: "blue", // Existing color
+        specializations: [
+            { name: "Web Development", icon: "code" },
+            { name: "Cloud Computing", icon: "cloud" },
+            { name: "Cybersecurity", icon: "shield" },
+            { name: "Data Science", icon: "database" },
+        ],
+        features: [
+            "Industry-aligned curriculum",
+            "State-of-the-art computer labs",
+            "Internship opportunities with tech companies",
+            "Certification preparation",
+        ],
+        isPopular: true,
+        learnMoreLink: "/programs/college/information-technology",
+    },
+    {
+        id: "bsba",
+        category: "College",
+        title: "Business Administration",
+        description:
+            "Master principles of management, marketing, finance, and entrepreneurship.",
+        duration: "4 Years",
+        format: "On Campus",
+        degree: "Bachelor of Science",
+        image: "/images/programs/college-business.jpg", // Placeholder image path
+        color: "amber", // Existing color
+        specializations: [
+            { name: "Financial Management", icon: "banknote" },
+            { name: "Marketing", icon: "presentation" },
+            { name: "Human Resources", icon: "users" },
+            { name: "Entrepreneurship", icon: "lightbulb" },
+        ],
+        features: [
+            "Business simulation projects",
+            "Industry partnerships",
+            "Leadership development program",
+            "Global business perspective",
+        ],
+        learnMoreLink: "/programs/college/business-administration",
+    },
+    {
+        id: "bshm",
+        category: "College",
+        title: "Hospitality Management",
+        description:
+            "Prepare for leadership in hospitality with practical and theoretical knowledge.",
+        duration: "4 Years",
+        format: "On Campus",
+        degree: "Bachelor of Science",
+        image: "/images/programs/college-hospitality.jpg", // Placeholder image path
+        color: "green", // Existing color
+        specializations: [
+            { name: "Hotel Management", icon: "building" },
+            { name: "Event Planning", icon: "calendar" },
+            { name: "Tourism", icon: "map" },
+            { name: "Culinary Arts", icon: "utensils" },
+        ],
+        features: [
+            "Training restaurant and kitchen",
+            "Industry internships",
+            "Event management experience",
+            "International hospitality standards",
+        ],
+        isNew: true,
+        learnMoreLink: "/programs/college/hospitality-management",
+    },
+    // K-12 Senior High School Programs
+    {
+        id: "k12-stem",
+        category: "K-12 Senior High",
+        title: "STEM",
+        description:
+            "Science, Technology, Engineering, and Mathematics. Equipping students with skills for scientific and technological advancements.",
+        duration: "2 Years",
+        format: "On Campus",
+        degree: "Senior High School Strand",
+        image: "/images/programs/k12-stem.jpg", // Placeholder image path
+        color: "sky", // New color for K-12
+        specializations: [
+            { name: "Advanced Mathematics", icon: "calculator" },
+            { name: "Research in Physical Sciences", icon: "beaker" },
+            { name: "Engineering and Technology", icon: "cpu" },
+            { name: "Computer Programming", icon: "code-xml" },
+            { name: "Scientific Research", icon: "flask-round" },
+        ],
+        features: [
+            "Inquiry-based learning",
+            "Hands-on science projects",
+            "Preparation for university STEM courses",
+        ],
+        learnMoreLink: "/programs/k12/stem",
+    },
+    {
+        id: "k12-abm",
+        category: "K-12 Senior High",
+        title: "ABM",
+        description:
+            "Accountancy, Business, and Management. Developing future entrepreneurs and business leaders.",
+        duration: "2 Years",
+        format: "On Campus",
+        degree: "Senior High School Strand",
+        image: "/images/programs/k12-abm.jpg", // Placeholder image path
+        color: "orange", // New color for K-12
+        specializations: [
+            { name: "Business Mathematics", icon: "percent" },
+            { name: "Fundamentals of Accountancy", icon: "book-open" },
+            { name: "Business Ethics", icon: "scale" },
+            { name: "Economics", icon: "line-chart" },
+            { name: "Marketing", icon: "megaphone" },
+        ],
+        features: [
+            "Introduction to business principles",
+            "Case studies and simulations",
+            "Entrepreneurial skills development",
+        ],
+        learnMoreLink: "/programs/k12/abm",
+    },
+    {
+        id: "k12-humss",
+        category: "K-12 Senior High",
+        title: "HUMSS",
+        description:
+            "Humanities and Social Sciences. Exploring human society, culture, and critical thinking.",
+        duration: "2 Years",
+        format: "On Campus",
+        degree: "Senior High School Strand",
+        image: "/images/programs/k12-humss.jpg", // Placeholder image path
+        color: "rose", // New color for K-12
+        specializations: [
+            { name: "Creative Writing", icon: "pencil-ruler" },
+            { name: "Social Sciences", icon: "users-round" },
+            { name: "Political Science", icon: "landmark" },
+            { name: "Psychology", icon: "brain" },
+            { name: "Philosophy", icon: "captions" },
+        ],
+        features: [
+            "Develops communication skills",
+            "Understanding of societal issues",
+            "Encourages critical analysis",
+        ],
+        learnMoreLink: "/programs/k12/humss",
+    },
+    {
+        id: "k12-he",
+        category: "K-12 Senior High",
+        title: "HE",
+        description:
+            "Home Economics. Focusing on livelihood skills, family and consumer sciences.",
+        duration: "2 Years",
+        format: "On Campus",
+        degree: "Senior High School Strand",
+        image: "/images/programs/k12-he.jpg", // Placeholder image path
+        color: "lime", // New color for K-12
+        specializations: [
+            { name: "Food and Nutrition", icon: "chef-hat" },
+            { name: "Culinary Arts", icon: "utensils-crossed" },
+            { name: "Home Management", icon: "home" },
+            { name: "Food Safety", icon: "shield-check" },
+            { name: "Hospitality", icon: "concierge-bell" },
+        ],
+        features: [
+            "Practical cooking and baking skills",
+            "Principles of nutrition and wellness",
+            "Household resource management",
+        ],
+        learnMoreLink: "/programs/k12/he",
+    },
+    {
+        id: "k12-ict",
+        category: "K-12 Senior High",
+        title: "ICT",
+        description:
+            "Information and Communications Technology. Building foundational skills in digital tools and technologies.",
+        duration: "2 Years",
+        format: "On Campus",
+        degree: "Senior High School Strand",
+        image: "/images/programs/k12-ict.jpg", // Placeholder image path
+        color: "cyan", // New color for K-12
+        specializations: [
+            { name: "Computer Programming", icon: "keyboard" },
+            { name: "Digital Arts", icon: "image" },
+            { name: "Web Development", icon: "layout-grid" },
+            { name: "Network Systems", icon: "network" },
+            { name: "Database Management", icon: "database-zap" },
+        ],
+        features: [
+            "Introduction to coding",
+            "Digital content creation",
+            "Understanding of IT infrastructure",
+        ],
+        learnMoreLink: "/programs/k12/ict",
+    },
 ];
 ---
 
 <section id="programs" class="py-16 sm:py-20 md:py-32 relative overflow-hidden">
-  <!-- Visual background elements -->
-  <div class="absolute inset-0 bg-gradient-to-b from-background to-background/50 pointer-events-none"></div>
-  <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
-  
-  <!-- Floating shapes for visual interest -->
-  <div class="absolute top-20 left-10 w-40 h-40 sm:w-64 sm:h-64 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float"></div>
-  <div class="absolute bottom-20 right-10 w-48 h-48 sm:w-80 sm:h-80 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float-delayed"></div>
-  
-  <div class="container relative z-10 px-4 sm:px-6 lg:px-8">
-    <!-- Header component -->
-    <ProgramsVisualHeader />
-    
-    <!-- Interactive program tabs -->
-    <div class="mt-10 sm:mt-16">
+    <!-- Visual background elements -->
+    <div
+        class="absolute inset-0 bg-gradient-to-b from-background to-background/50 pointer-events-none"
+    >
+    </div>
+    <div
+        class="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"
+    >
+    </div>
+
+    <!-- Floating shapes for visual interest -->
+    <div
+        class="absolute top-20 left-10 w-40 h-40 sm:w-64 sm:h-64 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float"
+    >
+    </div>
+    <div
+        class="absolute bottom-20 right-10 w-48 h-48 sm:w-80 sm:h-80 bg-primary/5 rounded-full blur-3xl opacity-70 animate-float-delayed"
+    >
+    </div>
+
+    <div class="container relative z-10 px-4 sm:px-6 lg:px-8">
+        <!-- Header component -->
+        <ProgramsVisualHeader />
+
+        <!-- Interactive program tabs -->
+        <!-- <div class="mt-10 sm:mt-16">
       <ProgramsVisualTabs programs={programs} />
+    </div> -->
+
+        <!-- Visual program cards grid -->
+        <div class="mt-12 sm:mt-16 md:mt-24 grid gap-8 sm:gap-12 md:gap-16">
+            {
+                programs.map((program, index) => (
+                    <ProgramsVisualCard program={program} index={index} />
+                ))
+            }
+        </div>
     </div>
-    
-    <!-- Visual program cards grid -->
-    <div class="mt-12 sm:mt-16 md:mt-24 grid gap-8 sm:gap-12 md:gap-16">
-      {programs.map((program, index) => (
-        <ProgramsVisualCard 
-          program={program}
-          index={index}
-        />
-      ))}
-    </div>
-  </div>
 </section>
 
 <style>
-  .bg-grid-pattern {
-    background-size: 20px 20px;
-    background-image: 
-      linear-gradient(to right, var(--border) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
-  }
-  
-  @media (min-width: 640px) {
     .bg-grid-pattern {
-      background-size: 30px 30px;
+        background-size: 20px 20px;
+        background-image:
+            linear-gradient(to right, var(--border) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--border) 1px, transparent 1px);
     }
-  }
-  
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
+
+    @media (min-width: 640px) {
+        .bg-grid-pattern {
+            background-size: 30px 30px;
+        }
     }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-  
-  @keyframes float-delayed {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-  
-  @media (min-width: 768px) {
+
     @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
     }
-    
+
     @keyframes float-delayed {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
     }
-  }
-  
-  .animate-float {
-    animation: float 15s ease-in-out infinite;
-    will-change: transform;
-  }
-  
-  .animate-float-delayed {
-    animation: float-delayed 18s ease-in-out 2s infinite;
-    will-change: transform;
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .animate-float,
+
+    @media (min-width: 768px) {
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes float-delayed {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    }
+
+    .animate-float {
+        animation: float 15s ease-in-out infinite;
+        will-change: transform;
+    }
+
     .animate-float-delayed {
-      animation: none;
+        animation: float-delayed 18s ease-in-out 2s infinite;
+        will-change: transform;
     }
-  }
+
+    @media (prefers-reduced-motion: reduce) {
+        .animate-float,
+        .animate-float-delayed {
+            animation: none;
+        }
+    }
 </style>
