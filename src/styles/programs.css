@@ -1,0 +1,397 @@
+/* Enhanced styles for the redesigned programs section */
+
+/* Custom CSS variables for program colors */
+:root {
+  --program-blue: #3b82f6;
+  --program-blue-light: #60a5fa;
+  --program-amber: #f59e0b;
+  --program-amber-light: #fbbf24;
+  --program-green: #10b981;
+  --program-green-light: #34d399;
+  --program-purple: #8b5cf6;
+  --program-purple-light: #a78bfa;
+  --program-rose: #f43f5e;
+  --program-rose-light: #fb7185;
+  --program-indigo: #6366f1;
+  --program-indigo-light: #818cf8;
+}
+
+/* Enhanced program card styles */
+.program-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.program-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: 1rem;
+  z-index: 1;
+}
+
+.program-card:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced hover effects with 3D transforms */
+.program-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient background animations */
+.bg-gradient-to-br.from-blue-500.to-cyan-500 {
+  background: linear-gradient(135deg, var(--program-blue) 0%, #06b6d4 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+.bg-gradient-to-br.from-amber-500.to-orange-500 {
+  background: linear-gradient(135deg, var(--program-amber) 0%, #f97316 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+.bg-gradient-to-br.from-green-500.to-emerald-500 {
+  background: linear-gradient(135deg, var(--program-green) 0%, #059669 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+.bg-gradient-to-br.from-purple-500.to-violet-500 {
+  background: linear-gradient(135deg, var(--program-purple) 0%, #7c3aed 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+.bg-gradient-to-br.from-rose-500.to-pink-500 {
+  background: linear-gradient(135deg, var(--program-rose) 0%, #ec4899 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+.bg-gradient-to-br.from-indigo-500.to-blue-500 {
+  background: linear-gradient(135deg, var(--program-indigo) 0%, #3b82f6 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Enhanced detail card animations */
+.detail-card {
+  transform: translateY(16px) scale(0.95);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.program-card:hover .detail-card {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  visibility: visible;
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Advanced hover overlay effects */
+.program-card .hover-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.8) 50%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Specialized animations for different program types */
+.program-card[data-program-id="bsit"]:hover {
+  box-shadow: 
+    0 25px 50px -12px rgba(59, 130, 246, 0.4),
+    0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+.program-card[data-program-id="bsba"]:hover {
+  box-shadow: 
+    0 25px 50px -12px rgba(245, 158, 11, 0.4),
+    0 0 0 1px rgba(245, 158, 11, 0.2);
+}
+
+.program-card[data-program-id="bshm"]:hover {
+  box-shadow: 
+    0 25px 50px -12px rgba(16, 185, 129, 0.4),
+    0 0 0 1px rgba(16, 185, 129, 0.2);
+}
+
+.program-card[data-program-id="k12-stem"]:hover {
+  box-shadow: 
+    0 25px 50px -12px rgba(139, 92, 246, 0.4),
+    0 0 0 1px rgba(139, 92, 246, 0.2);
+}
+
+.program-card[data-program-id="k12-abm"]:hover {
+  box-shadow: 
+    0 25px 50px -12px rgba(244, 63, 94, 0.4),
+    0 0 0 1px rgba(244, 63, 94, 0.2);
+}
+
+.program-card[data-program-id="k12-humss"]:hover {
+  box-shadow: 
+    0 25px 50px -12px rgba(99, 102, 241, 0.4),
+    0 0 0 1px rgba(99, 102, 241, 0.2);
+}
+
+/* Enhanced text animations */
+.program-card h3 {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.program-card:hover h3 {
+  transform: translateY(-2px);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Specialty badge animations */
+.program-card .status-badge {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+  }
+}
+
+/* Interactive elements */
+.program-card .cta-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.program-card .cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.program-card .cta-button:hover::before {
+  left: 100%;
+}
+
+/* Micro-interactions for specializations */
+.specialization-item {
+  transition: all 0.2s ease;
+}
+
+.specialization-item:hover {
+  transform: translateX(4px);
+}
+
+.specialization-dot {
+  transition: all 0.3s ease;
+}
+
+.program-card:hover .specialization-dot {
+  transform: scale(1.2);
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* Enhanced career path tags */
+.career-tag {
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.career-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.3s ease;
+}
+
+.career-tag:hover::before {
+  left: 100%;
+}
+
+.career-tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Grid layout enhancements */
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  perspective: 1000px;
+}
+
+@media (min-width: 768px) {
+  .programs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .programs-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Scroll-triggered animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.program-card.animate-in {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.program-card.in-view {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Loading state */
+.program-card.loading {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Dark mode specific enhancements */
+@media (prefers-color-scheme: dark) {
+  .detail-card {
+    background: rgba(17, 24, 39, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .program-card::before {
+    background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .program-card {
+    border: 2px solid;
+  }
+  
+  .program-card:hover {
+    border-width: 3px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .program-card {
+    break-inside: avoid;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+  
+  .detail-card {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .program-card:hover {
+    transform: none;
+  }
+  
+  .detail-card {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    margin-top: 1rem;
+  }
+}
+
+/* Performance optimizations */
+.program-card {
+  will-change: transform;
+  contain: layout;
+}
+
+.program-card:hover {
+  will-change: transform, box-shadow;
+}
+
+/* Accessibility enhancements */
+.program-card:focus-within {
+  outline: 2px solid;
+  outline-offset: 2px;
+}
+
+.program-card:focus-within .detail-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .program-card,
+  .detail-card,
+  .specialization-item,
+  .career-tag,
+  .cta-button {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+  
+  .program-card:hover {
+    transform: none !important;
+  }
+}
