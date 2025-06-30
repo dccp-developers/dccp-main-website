@@ -3,6 +3,47 @@ import { buttonVariants } from "@/components/ui/button";
 import ContactForm from "./ContactForm.astro";
 import ContactInfo from "./ContactInfo.astro";
 import ContactMap from "./ContactMap.astro";
+
+const faqData = [
+  {
+    question: "What are the admission requirements for freshmen?",
+    answer: `
+      <p>For incoming freshmen in the Philippines, please prepare the following:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li>Original and photocopy of your Grade 12 Report Card (Form 138).</li>
+        <li>Certificate of Good Moral Character.</li>
+        <li>Original and photocopy of your PSA Birth Certificate.</li>
+        <li>Two (2) recent 2x2 ID pictures with a white background.</li>
+      </ul>
+      <p class="mt-2">Specific requirements may vary per program. We recommend checking the page of the program you are interested in.</p>
+    `
+  },
+  {
+    question: "When is the application period and entrance exam schedule?",
+    answer: `
+      <p>The application period for the <strong>2025-2026</strong> academic year runs from <strong>August 1, 2025, to December 15, 2025</strong>.</p>
+      <p class="mt-2">The College Entrance Test (CET) is scheduled for <strong>January 11, 18, and 25, 2026</strong>. Applicants can select their preferred date upon submission of their application.</p>
+    `
+  },
+  {
+    question: "What are the estimated tuition fees and payment schemes?",
+    answer: `
+      <p>The estimated tuition fee per semester ranges from <strong>₱30,000 to ₱50,000</strong>, depending on the program and number of units.</p>
+      <p class="mt-2">We offer flexible payment options, including:</p>
+      <ul class="list-disc list-inside mt-2 space-y-1">
+        <li>Full payment (with an early bird discount).</li>
+        <li>Installment plans (up to four payments per semester).</li>
+        <li>Payments via bank transfer, credit card, or GCash.</li>
+      </ul>
+    `
+  },
+  {
+    question: "Do you accept transferees and second-degree applicants?",
+    answer: `
+      <p>Yes, we welcome transferees and second-degree course applicants. Key requirements include your Transcript of Records (TOR) for evaluation, Honorable Dismissal, and a Certificate of Good Moral Character from your previous institution. The crediting of subjects is subject to evaluation by the college dean. Please contact the admissions office for a detailed checklist.</p>
+    `
+  }
+];
 ---
 
 <section id="contact" class="py-16 sm:py-20 lg:py-32 relative overflow-hidden">
@@ -91,107 +132,32 @@ import ContactMap from "./ContactMap.astro";
                 </h3>
                 
                 <p class="text-lg text-muted-foreground max-w-2xl mx-auto faq-description">
-                    Find quick answers to common questions about contacting our institution
+                    Find quick answers to common questions about our admission process, requirements, and schedules.
                 </p>
             </div>
             
             <!-- FAQ Accordion -->
             <div class="max-w-4xl mx-auto">
                 <div class="grid grid-cols-1 gap-4 faq-container">
-                    <!-- FAQ Item 1 -->
-                    <div class="faq-item group" data-index="0">
-                        <div class="bg-card border border-border/40 rounded-xl overflow-hidden group-hover:border-primary/30 group-hover:shadow-lg transition-all duration-300">
-                            <button class="faq-trigger w-full flex items-center justify-between p-6 text-left font-medium hover:bg-secondary/30 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2">
-                                <span class="text-base sm:text-lg font-semibold">What are the best ways to contact admissions?</span>
-                                <div class="flex-shrink-0 ml-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon transition-transform duration-300 text-primary">
-                                        <path d="m6 9 6 6 6-6"></path>
-                                    </svg>
-                                </div>
-                            </button>
-                            <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
-                                <div class="p-6 pt-0 text-muted-foreground border-t border-border/30">
-                                    <p class="leading-relaxed">The best ways to contact our admissions office are through email at <strong>admissions@dccp.edu.ph</strong>, by phone at <strong>(123) 456-7890</strong>, or by visiting our campus during office hours. Our admissions team typically responds to inquiries within 24-48 hours on business days.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- FAQ Item 2 -->
-                    <div class="faq-item group" data-index="1">
-                        <div class="bg-card border border-border/40 rounded-xl overflow-hidden group-hover:border-primary/30 group-hover:shadow-lg transition-all duration-300">
-                            <button class="faq-trigger w-full flex items-center justify-between p-6 text-left font-medium hover:bg-secondary/30 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2">
-                                <span class="text-base sm:text-lg font-semibold">How can I schedule a campus tour?</span>
-                                <div class="flex-shrink-0 ml-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon transition-transform duration-300 text-primary">
-                                        <path d="m6 9 6 6 6-6"></path>
-                                    </svg>
-                                </div>
-                            </button>
-                            <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
-                                <div class="p-6 pt-0 text-muted-foreground border-t border-border/30">
-                                    <p class="leading-relaxed">Campus tours can be scheduled through our website's "Visit Us" page, by calling our admissions office, or by sending an email request. Tours are available <strong>Monday through Friday at 10:00 AM and 2:00 PM</strong>, and select Saturdays at 10:00 AM. We recommend booking at least one week in advance.</p>
+                    {faqData.map((faq, index) => (
+                        <div class="faq-item group" data-index={index}>
+                            <div class="bg-card border border-border/40 rounded-xl overflow-hidden group-hover:border-primary/30 group-hover:shadow-lg transition-all duration-300">
+                                <button class="faq-trigger w-full flex items-center justify-between p-6 text-left font-medium hover:bg-secondary/30 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2">
+                                    <span class="text-base sm:text-lg font-semibold">{faq.question}</span>
+                                    <div class="flex-shrink-0 ml-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon transition-transform duration-300 text-primary">
+                                            <path d="m6 9 6 6 6-6"></path>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                                    <div class="p-6 pt-0 text-muted-foreground border-t border-border/30">
+                                        <div class="leading-relaxed space-y-3" set:html={faq.answer} />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- FAQ Item 3 -->
-                    <div class="faq-item group" data-index="2">
-                        <div class="bg-card border border-border/40 rounded-xl overflow-hidden group-hover:border-primary/30 group-hover:shadow-lg transition-all duration-300">
-                            <button class="faq-trigger w-full flex items-center justify-between p-6 text-left font-medium hover:bg-secondary/30 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2">
-                                <span class="text-base sm:text-lg font-semibold">What information should I include in my inquiry?</span>
-                                <div class="flex-shrink-0 ml-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon transition-transform duration-300 text-primary">
-                                        <path d="m6 9 6 6 6-6"></path>
-                                    </svg>
-                                </div>
-                            </button>
-                            <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
-                                <div class="p-6 pt-0 text-muted-foreground border-t border-border/30">
-                                    <p class="leading-relaxed">When contacting us, it's helpful to include your <strong>full name, contact information, current educational status</strong> (high school student, transfer student, etc.), <strong>programs you're interested in</strong>, and any specific questions you have. This allows us to provide you with the most relevant and helpful information.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- FAQ Item 4 -->
-                    <div class="faq-item group" data-index="3">
-                        <div class="bg-card border border-border/40 rounded-xl overflow-hidden group-hover:border-primary/30 group-hover:shadow-lg transition-all duration-300">
-                            <button class="faq-trigger w-full flex items-center justify-between p-6 text-left font-medium hover:bg-secondary/30 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2">
-                                <span class="text-base sm:text-lg font-semibold">How quickly can I expect a response?</span>
-                                <div class="flex-shrink-0 ml-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon transition-transform duration-300 text-primary">
-                                        <path d="m6 9 6 6 6-6"></path>
-                                    </svg>
-                                </div>
-                            </button>
-                            <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
-                                <div class="p-6 pt-0 text-muted-foreground border-t border-border/30">
-                                    <p class="leading-relaxed">We strive to respond to all inquiries within <strong>24-48 business hours</strong>. During peak admission periods (typically December-January and July-August), response times may be slightly longer. For urgent matters, we recommend calling our admissions office directly.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- FAQ Item 5 -->
-                    <div class="faq-item group" data-index="4">
-                        <div class="bg-card border border-border/40 rounded-xl overflow-hidden group-hover:border-primary/30 group-hover:shadow-lg transition-all duration-300">
-                            <button class="faq-trigger w-full flex items-center justify-between p-6 text-left font-medium hover:bg-secondary/30 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2">
-                                <span class="text-base sm:text-lg font-semibold">Do you offer virtual campus tours?</span>
-                                <div class="flex-shrink-0 ml-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon transition-transform duration-300 text-primary">
-                                        <path d="m6 9 6 6 6-6"></path>
-                                    </svg>
-                                </div>
-                            </button>
-                            <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0">
-                                <div class="p-6 pt-0 text-muted-foreground border-t border-border/30">
-                                    <p class="leading-relaxed">Yes! We offer both <strong>virtual campus tours</strong> and <strong>virtual information sessions</strong>. These are available on-demand through our website and via scheduled video calls with our admissions team. Virtual tours are perfect for students who can't visit in person or want to explore before scheduling an in-person visit.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </div>
