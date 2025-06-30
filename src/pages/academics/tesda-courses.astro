@@ -1,0 +1,22 @@
+---
+import CollegeLayout from '@/layouts/CollegeLayout.astro';
+import ProgramCard from '@/components/academics/ProgramCard.astro';
+import { programs } from '@/lib/data/programs';
+
+const tesdaPrograms = programs.filter(p => p.category === 'TESDA');
+---
+
+<CollegeLayout title="TESDA Courses">
+  <div class="container mx-auto px-4 py-12 sm:py-16 lg:py-20">
+    <div class="text-center mb-12">
+      <a href="/" class="text-primary hover:underline mb-4 inline-block">&larr; Back to Home</a>
+      <h1 class="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">TESDA Courses</h1>
+      <p class="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">Gain practical, in-demand skills with our TESDA-accredited national certificate courses.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {tesdaPrograms.map(program => (
+        <ProgramCard {program} />
+      ))}
+    </div>
+  </div>
+</CollegeLayout>
