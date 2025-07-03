@@ -20,15 +20,7 @@ const {
     <div class="relative z-10 flex flex-col justify-center px-4 py-12 sm:px-6 lg:w-[45%] lg:py-0 lg:pl-8 lg:pr-0 xl:pl-16">
       <div class="mx-auto w-full max-w-xl lg:mx-0">
         <!-- Animated badge with gradient border - only shown when online enrollment is enabled -->
-        {online_enrollment_enabled && (
-          <div class="animate-slide-up" style="--slide-delay: 0ms;">
-            <div class="group relative mb-6 inline-flex items-center rounded-full border border-primary/30 bg-background/80 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-md transition-all duration-300 hover:border-primary/60">
-              <div class="absolute -inset-[1px] -z-10 rounded-full bg-gradient-to-r from-primary/20 via-primary/0 to-primary/20 opacity-0 blur-md transition-all duration-500 group-hover:opacity-100"></div>
-              <span class="mr-2 inline-block h-2 w-2 animate-pulse rounded-full bg-primary"></span>
-              Now Accepting Applications - {school_year_string} {semester}
-            </div>
-          </div>
-        )}
+     
         
         <!-- Main heading with animated gradient text -->
         <div class="space-y-2">
@@ -45,7 +37,15 @@ const {
               </span>
             </h1>
           </div>
-          
+          {online_enrollment_enabled && (
+            <div class="animate-slide-up" style="--slide-delay: 0ms;">
+              <div class="group relative mb-6 inline-flex items-center rounded-full border border-primary/30 bg-background/80 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-md transition-all duration-300 hover:border-primary/60">
+                <div class="absolute -inset-[1px] -z-10 rounded-full bg-gradient-to-r from-primary/20 via-primary/0 to-primary/20 opacity-0 blur-md transition-all duration-500 group-hover:opacity-100"></div>
+                <span class="mr-2 inline-block h-2 w-2 animate-pulse rounded-full bg-primary"></span>
+                Now Accepting Applications - {school_year_string} {semester}
+              </div>
+            </div>
+          )}
           <div class="animate-slide-up" style="--slide-delay: 200ms;">
             <div class="relative">
               <h2 class="gradient-text text-2xl font-bold sm:text-3xl md:text-4xl">
@@ -128,7 +128,7 @@ const {
         <!-- Main image with parallax effect -->
         <div class="parallax-container h-full w-full overflow-hidden">
           <img 
-            src="/campus.png" 
+            src="/campus.webp" 
             alt="DCCP Campus" 
             class="h-full w-full scale-110 object-cover transition-transform duration-[2s] hover:scale-100"
             id="parallax-img"
@@ -194,6 +194,48 @@ const {
     </a>
   </div>
 </section>
+
+<script>
+  function restartAnimations() {
+    // Re-trigger CSS animations
+    const animatedElements = document.querySelectorAll('[class*="animate-"]');
+    animatedElements.forEach((el) => {
+      el.classList.remove(...Array.from(el.classList).filter(c => c.startsWith('animate-')));
+      // Reading offsetWidth is a trick to force reflow
+            void (el as HTMLElement).offsetWidth;
+      el.classList.add(...Array.from(el.classList).filter(c => c.startsWith('animate-')));
+    });
+
+    // Re-run count-up animation
+    const countUpObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target as HTMLElement;
+          const target = parseInt(el.dataset.target || '0', 10);
+          let current = 0;
+          const increment = target / 100;
+          const interval = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              clearInterval(interval);
+            }
+            el.textContent = Math.ceil(current).toString();
+          }, 20);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.count-up').forEach(el => {
+        (el as HTMLElement).textContent = '0'; // Reset counter
+        countUpObserver.observe(el);
+    });
+  }
+
+  // Run on initial load
+  document.addEventListener('astro:page-load', restartAnimations);
+</script>
 
 <style>
   /* Clip path for the image section */
