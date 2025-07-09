@@ -15,4 +15,7 @@ export default defineConfig({
   server: {
     allowedHosts: ["dccpweb.koamishin.org", "dccp.edu.ph"],
   },
+  devToolbar: {
+    enabled: false
+  },
 });
