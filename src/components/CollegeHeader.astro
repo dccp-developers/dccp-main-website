@@ -5,174 +5,328 @@ import { getSchoolSettings } from "@/lib/api";
 
 // Fetch school settings
 const schoolSettings = await getSchoolSettings();
-const { online_enrollment_enabled, school_year_string, semester } = schoolSettings.data;
+const { online_enrollment_enabled } = schoolSettings.data;
 ---
 
 <header
-  id="college-header"
-  class="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-40 w-full border-b backdrop-blur"
+  id="modern-header"
+  class="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur-md transition-all duration-300"
 >
-  <div
-    class="container flex h-16 sm:h-20 items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-300"
-  >
-    <!-- Logo and Brand -->
-    <div class="flex items-center gap-2">
-      <Logo />
-    </div>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 sm:h-18 items-center justify-between">
+      <!-- Logo and Brand -->
+      <div class="flex items-center gap-3 z-10">
+        <Logo />
+      </div>
 
-    <!-- Desktop Navigation -->
-    <div class="hidden lg:flex items-center justify-end space-x-1 ml-auto">
-      <nav class="flex items-center">
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center space-x-1">
         <!-- Main Navigation Links -->
-        <div class="nav-links flex items-center space-x-1">
-          <a href="#about" class="nav-link px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 hover:bg-accent/50 hover:text-primary relative overflow-hidden">
-            About
-            <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform duration-300 origin-left"></span>
+        <div class="flex items-center space-x-1">
+          <a href="#about" class="nav-link group relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:bg-accent/50 hover:text-primary">
+            <span class="relative z-10">About</span>
+            <div class="absolute inset-0 bg-primary/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+            <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary group-hover:w-8 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300"></div>
           </a>
 
           <!-- Programs Dropdown -->
           <div class="relative group">
-            <button class="nav-link px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 hover:bg-accent/50 hover:text-primary relative overflow-hidden flex items-center gap-1">
-              Programs
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200 group-hover:rotate-180"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              <span class="nav-indicator absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 transition-transform duration-300 origin-left"></span>
+            <button class="nav-link flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:bg-accent/50 hover:text-primary">
+              <span>Programs</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:rotate-180">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
             </button>
-            <div class="absolute left-0 mt-1 w-56 origin-top-left rounded-md bg-card shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2">
-              <div class="py-1">
-                <a href="/academics/undergraduate" class="block px-4 py-2 text-sm hover:bg-accent/50 transition-colors">Undergraduate Programs</a>
-                <a href="/academics/graduate" class="block px-4 py-2 text-sm hover:bg-accent/50 transition-colors">Graduate Programs</a>
-                <a href="/academics/tesda-courses" class="block px-4 py-2 text-sm hover:bg-accent/50 transition-colors">TESDA Courses</a>
+            <div class="absolute left-0 top-full mt-2 w-64 bg-card/95 backdrop-blur-md rounded-xl shadow-xl border border-border/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+              <div class="p-2">
+                <a href="/academics/undergraduate" class="flex items-center gap-3 px-4 py-3 text-sm rounded-lg hover:bg-accent/50 transition-colors group/item">
+                  <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover/item:bg-primary/20 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                      <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-medium">Undergraduate</div>
+                    <div class="text-xs text-muted-foreground">Bachelor's Degree Programs</div>
+                  </div>
+                </a>
+                <a href="/academics/tesda-courses" class="flex items-center gap-3 px-4 py-3 text-sm rounded-lg hover:bg-accent/50 transition-colors group/item">
+                  <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover/item:bg-primary/20 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                      <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 9h6v6H9z"/><path d="m9 1 3 3 3-3"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-medium">TESDA Courses</div>
+                    <div class="text-xs text-muted-foreground">Technical & Vocational Training</div>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- Facilities Dropdown -->
+          <!-- Facilities Link -->
+          <!-- <a href="#facilities" class="nav-link group relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:bg-accent/50 hover:text-primary">
+            <span class="relative z-10">Facilities</span>
+            <div class="absolute inset-0 bg-primary/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+            <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary group-hover:w-8 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300"></div>
+          </a> -->
 
+          <!-- Admissions Link -->
+          <!-- <a href="#admissions" class="nav-link group relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:bg-accent/50 hover:text-primary">
+            <span class="relative z-10">Admissions</span>
+            <div class="absolute inset-0 bg-primary/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+            <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary group-hover:w-8 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300"></div>
+          </a> -->
 
-          
-
-        <!-- Action Buttons -->
-        <div class="ml-4 flex items-center space-x-2">
-          <!-- Search Button -->
-          <button id="search-button" class="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
-            <span class="sr-only">Search</span>
-          </button>
-
-          <!-- Enroll Now Button - Shows modal if enrollment is disabled -->
-          {online_enrollment_enabled ? (
-            <a
-              href="https://portal.dccp.edu.ph/enroll"
-              class="apply-button relative overflow-hidden group px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 text-sm font-medium"
-            >
-              <span class="relative z-10">Enroll Now</span>
-              <span class="absolute inset-0 bg-primary-foreground/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
-            </a>
-          ) : (
-            <button
-              id="enrollment-disabled-btn"
-              class="apply-button relative overflow-hidden group px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 text-sm font-medium"
-            >
-              <span class="relative z-10">Enroll Now</span>
-              <span class="absolute inset-0 bg-primary-foreground/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
-            </button>
-          )}
-
-          <!-- Theme Toggle -->
-          <ThemeToggle />
+          <!-- Portal Access - Prominent -->
+          <a href="/dccp-hub" class="nav-link group relative px-4 py-2 text-sm font-medium rounded-lg bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 transition-all duration-300 hover:from-primary/20 hover:to-primary/10 hover:border-primary/30">
+            <span class="relative z-10 flex items-center gap-2 text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"></path><path d="m21 3-9 9"></path><path d="M15 3h6v6"></path>
+              </svg>
+              Portal
+              <div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+            </span>
+          </a>
         </div>
       </nav>
-    </div>
 
-    <!-- Mobile Menu Button -->
-    <div class="lg:hidden flex items-center gap-2 ml-auto">
-      <button id="search-button-mobile" class="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors duration-300">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
-        <span class="sr-only">Search</span>
-      </button>
+      <!-- Action Buttons -->
+      <div class="hidden lg:flex items-center space-x-3">
+        <!-- Search Button -->
+        <button id="search-button" class="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-all duration-300 group">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-300">
+            <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <span class="sr-only">Search</span>
+        </button>
 
-      <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-accent/50 transition-colors duration-300" aria-label="Open menu" aria-expanded="false">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-        <span class="sr-only">Menu</span>
-      </button>
+        <!-- Enroll Now Button -->
+        {online_enrollment_enabled ? (
+          <a
+            href="https://portal.dccp.edu.ph/enroll"
+            class="enroll-button group relative overflow-hidden px-6 py-2.5 rounded-lg bg-gradient-to-r from-primary to-primary/90 text-primary-foreground font-medium text-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5"
+          >
+            <span class="relative z-10 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-12 transition-transform duration-300">
+                <path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              </svg>
+              Enroll Now
+            </span>
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </a>
+        ) : (
+          <button
+            id="enrollment-disabled-btn"
+            class="enroll-button group relative overflow-hidden px-6 py-2.5 rounded-lg bg-gradient-to-r from-primary to-primary/90 text-primary-foreground font-medium text-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5"
+          >
+            <span class="relative z-10 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-12 transition-transform duration-300">
+                <path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              </svg>
+              Enroll Now
+            </span>
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </button>
+        )}
+
+        <!-- Theme Toggle -->
+        <ThemeToggle />
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="lg:hidden flex items-center gap-2">
+        <button id="search-button-mobile" class="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <span class="sr-only">Search</span>
+        </button>
+
+        <button id="mobile-menu-button" class="p-2 rounded-lg hover:bg-accent/50 transition-colors duration-300 group" aria-label="Open menu" aria-expanded="false">
+          <div class="relative w-6 h-6">
+            <span class="hamburger-line absolute left-0 top-1 w-6 h-0.5 bg-current transition-all duration-300 group-hover:bg-primary"></span>
+            <span class="hamburger-line absolute left-0 top-1/2 -translate-y-1/2 w-6 h-0.5 bg-current transition-all duration-300 group-hover:bg-primary"></span>
+            <span class="hamburger-line absolute left-0 bottom-1 w-6 h-0.5 bg-current transition-all duration-300 group-hover:bg-primary"></span>
+          </div>
+          <span class="sr-only">Menu</span>
+        </button>
+      </div>
     </div>
   </div>
 </header>
 
-<div id="mobile-menu-container" class="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 hidden lg:hidden">
-  <div class="fixed inset-y-0 right-0 w-4/5 max-w-sm bg-background border-l shadow-xl h-full overflow-auto">
-    <div class="flex flex-col h-full">
-      <!-- Header -->
-      <div class="flex justify-between items-center p-4 border-b">
-        <div class="flex items-center gap-2">
-          <div class="rounded-full bg-primary/10 p-1.5">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-          </div>
-          <span class="text-sm font-medium">DCCP Baguio</span>
+<!-- Modern Mobile Menu -->
+<div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 opacity-0 invisible lg:hidden transition-all duration-300" style="z-index: 9999;">
+  <div id="mobile-menu-container" class="fixed inset-0 bg-background border-l border-border transform translate-y-full transition-transform duration-500 ease-out" style="z-index: 10000;">
+    <!-- Mobile Menu Header -->
+    <div class="flex items-center justify-between p-6 border-b border-border/50">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
         </div>
-        <button id="close-mobile-menu" class="p-2 rounded-md hover:bg-accent/50 transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-          <span class="sr-only">Close menu</span>
-        </button>
+        <div>
+          <h2 class="font-semibold text-lg">DCCP Baguio</h2>
+          <p class="text-xs text-muted-foreground">Navigation Menu</p>
+        </div>
       </div>
-      
-      <!-- Navigation -->
-      <nav class="p-4 space-y-4 flex-1 overflow-y-auto">
-        <a href="#about" class="block p-3 rounded-md hover:bg-accent/50 transition-colors">About</a>
-        
-        <!-- Programs dropdown -->
+      <button id="close-mobile-menu" class="p-2 rounded-xl hover:bg-accent/50 transition-colors group">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-90 transition-transform duration-300">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+        <span class="sr-only">Close menu</span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Content -->
+    <div class="flex flex-col h-full overflow-hidden">
+      <!-- Quick Actions -->
+      <div class="p-6 border-b border-border/50">
+        <div class="grid grid-cols-2 gap-3">
+          <!-- Portal Access - Prominent -->
+          <a href="/dccp-hub" class="group flex flex-col items-center gap-2 p-4 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 hover:from-primary/20 hover:to-primary/10 transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"></path><path d="m21 3-9 9"></path><path d="M15 3h6v6"></path>
+              </svg>
+            </div>
+            <div class="text-center">
+              <div class="text-sm font-medium text-primary">Portal</div>
+              <div class="text-xs text-muted-foreground">Access DCCPHub</div>
+            </div>
+          </a>
+
+          <!-- Enrollment -->
+          {online_enrollment_enabled ? (
+            <a href="https://portal.dccp.edu.ph/enroll" class="group flex flex-col items-center gap-2 p-4 rounded-xl bg-gradient-to-br from-green-500/10 to-green-500/5 border border-green-500/20 hover:from-green-500/20 hover:to-green-500/10 transition-all duration-300">
+              <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600">
+                  <path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                </svg>
+              </div>
+              <div class="text-center">
+                <div class="text-sm font-medium text-green-600">Enroll</div>
+                <div class="text-xs text-muted-foreground">Apply Now</div>
+              </div>
+            </a>
+          ) : (
+            <button id="enrollment-disabled-btn-mobile" class="group flex flex-col items-center gap-2 p-4 rounded-xl bg-gradient-to-br from-orange-500/10 to-orange-500/5 border border-orange-500/20 hover:from-orange-500/20 hover:to-orange-500/10 transition-all duration-300">
+              <div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-600">
+                  <circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/>
+                </svg>
+              </div>
+              <div class="text-center">
+                <div class="text-sm font-medium text-orange-600">Enroll</div>
+                <div class="text-xs text-muted-foreground">Coming Soon</div>
+              </div>
+            </button>
+          )}
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="flex-1 overflow-y-auto p-6 space-y-2">
+        <!-- About -->
+        <a href="#about" class="mobile-nav-item group flex items-center gap-4 p-4 rounded-xl hover:bg-accent/50 transition-all duration-300">
+          <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600">
+              <circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-medium">About</div>
+            <div class="text-sm text-muted-foreground">Learn about DCCP</div>
+          </div>
+        </a>
+
+        <!-- Programs -->
         <div class="mobile-dropdown">
-          <button class="w-full flex justify-between items-center p-3 rounded-md hover:bg-accent/50 transition-colors">
-            Programs
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dropdown-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <button class="mobile-nav-item group w-full flex items-center justify-between p-4 rounded-xl hover:bg-accent/50 transition-all duration-300">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+              </div>
+              <div>
+                <div class="font-medium">Programs</div>
+                <div class="text-sm text-muted-foreground">Academic offerings</div>
+              </div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dropdown-icon transition-transform duration-300">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
           </button>
-          <div class="dropdown-content hidden pl-6 mt-1 space-y-2">
-            <a href="/academics/undergraduate" class="block p-2 rounded-md hover:bg-accent/50 transition-colors">Undergraduate Programs</a>
-            <a href="/academics/graduate" class="block p-2 rounded-md hover:bg-accent/50 transition-colors">Graduate Programs</a>
-            <a href="/academics/tesda-courses" class="block p-2 rounded-md hover:bg-accent/50 transition-colors">TESDA Courses</a>
+          <div class="dropdown-content hidden pl-14 pr-4 pb-2 space-y-1">
+            <a href="/academics/undergraduate" class="block p-3 rounded-lg hover:bg-accent/50 transition-colors">
+              <div class="font-medium text-sm">Undergraduate Programs</div>
+              <div class="text-xs text-muted-foreground">Bachelor's Degree Programs</div>
+            </a>
+            <a href="/academics/tesda-courses" class="block p-3 rounded-lg hover:bg-accent/50 transition-colors">
+              <div class="font-medium text-sm">TESDA Courses</div>
+              <div class="text-xs text-muted-foreground">Technical & Vocational Training</div>
+            </a>
           </div>
         </div>
-        
-        <!-- Facilities dropdown -->
-        <div class="mobile-dropdown">
-          <button class="w-full flex justify-between items-center p-3 rounded-md hover:bg-accent/50 transition-colors">
-            Facilities
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dropdown-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="dropdown-content hidden pl-6 mt-1 space-y-2">
-            <a href="#library" class="block p-2 rounded-md hover:bg-accent/50 transition-colors">Library & Learning Center</a>
-            <a href="#labs" class="block p-2 rounded-md hover:bg-accent/50 transition-colors">Laboratories</a>
-            <a href="#sports" class="block p-2 rounded-md hover:bg-accent/50 transition-colors">Sports Facilities</a>
-            <a href="#campus" class="block p-2 rounded-md hover:bg-accent/50 transition-colors">Campus Tour</a>
+
+        <!-- Facilities -->
+        <!-- <a href="#facilities" class="mobile-nav-item group flex items-center gap-4 p-4 rounded-xl hover:bg-accent/50 transition-all duration-300">
+          <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600">
+              <path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/>
+            </svg>
           </div>
-        </div>
-        
-        <a href="#admissions" class="block p-3 rounded-md hover:bg-accent/50 transition-colors">Admissions</a>
-        <a href="#contact" class="block p-3 rounded-md hover:bg-accent/50 transition-colors">Contact</a>
-        <a href="/dccp-hub" class="block p-3 rounded-md hover:bg-accent/50 transition-colors bg-primary/5">
-          <div class="flex items-center gap-1">
-            <span>DCCPHub</span>
-            <div class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></div>
+          <div>
+            <div class="font-medium">Facilities</div>
+            <div class="text-sm text-muted-foreground">Campus & amenities</div>
+          </div>
+        </a> -->
+
+        <!-- Admissions -->
+        <!-- <a href="#admissions" class="mobile-nav-item group flex items-center gap-4 p-4 rounded-xl hover:bg-accent/50 transition-all duration-300">
+          <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center group-hover:bg-orange-500/20 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-600">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-medium">Admissions</div>
+            <div class="text-sm text-muted-foreground">Join our community</div>
+          </div>
+        </a> -->
+
+        <!-- Contact -->
+        <a href="#contact" class="mobile-nav-item group flex items-center gap-4 p-4 rounded-xl hover:bg-accent/50 transition-all duration-300">
+          <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center group-hover:bg-red-500/20 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-600">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-medium">Contact</div>
+            <div class="text-sm text-muted-foreground">Get in touch</div>
           </div>
         </a>
       </nav>
-      
-      <!-- Footer -->
-      <div class="p-4 border-t">
-        {online_enrollment_enabled ? (
-          <a href="https://portal.dccp.edu.ph/enroll" class="block w-full py-2 px-3 bg-primary text-primary-foreground text-center rounded-md mb-4">
-            Enroll Now
-          </a>
-        ) : (
-          <button id="enrollment-disabled-btn-mobile" class="block w-full py-2 px-3 bg-primary text-primary-foreground text-center rounded-md mb-4">
-            Enroll Now
-          </button>
-        )}
-        <div class="flex justify-between items-center">
-          <span class="text-sm text-muted-foreground">© 2023 DCCP Baguio</span>
-          <button id="mobile-theme-toggle" class="p-2 rounded-md hover:bg-accent/50 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 dark:hidden"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 hidden dark:block"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+      <!-- Mobile Menu Footer -->
+      <div class="p-6 border-t border-border/50">
+        <div class="flex items-center justify-between">
+          <div class="text-sm text-muted-foreground">© 2025 DCCP Baguio</div>
+          <button id="mobile-theme-toggle" class="p-2.5 rounded-lg hover:bg-accent/50 transition-all duration-300 group border border-border/50 hover:border-border" title="Toggle theme">
+            <!-- Sun icon for light mode (visible in light mode) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dark:hidden group-hover:rotate-180 transition-transform duration-300">
+              <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+            <!-- Moon icon for dark mode (visible in dark mode) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden dark:block group-hover:rotate-180 transition-transform duration-300">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+            </svg>
+            <span class="sr-only">Toggle theme</span>
           </button>
         </div>
       </div>
@@ -243,10 +397,11 @@ const { online_enrollment_enabled, school_year_string, semester } = schoolSettin
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     // Elements
-    const header = document.getElementById('college-header');
+    const header = document.getElementById('modern-header');
     const navLinks = document.querySelectorAll('.nav-link');
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
     const mobileMenuContainer = document.getElementById('mobile-menu-container');
     const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
     const searchButton = document.getElementById('search-button');
@@ -255,7 +410,8 @@ const { online_enrollment_enabled, school_year_string, semester } = schoolSettin
     const searchContainer = document.getElementById('search-container');
     const closeSearchButton = document.getElementById('close-search');
     const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-    
+    const hamburgerLines = document.querySelectorAll('.hamburger-line');
+
     // Enrollment disabled modal elements
     const enrollmentDisabledBtn = document.getElementById('enrollment-disabled-btn');
     const enrollmentDisabledBtnMobile = document.getElementById('enrollment-disabled-btn-mobile');
@@ -263,126 +419,199 @@ const { online_enrollment_enabled, school_year_string, semester } = schoolSettin
     const enrollmentModalContainer = document.getElementById('enrollment-modal-container');
     const closeEnrollmentModalBtn = document.getElementById('close-enrollment-modal');
     const confirmEnrollmentModalBtn = document.getElementById('confirm-enrollment-modal');
-    
+
     // Scroll effect for header
     let lastScrollY = window.scrollY;
-    
+
     function updateHeaderOnScroll() {
-      if (window.scrollY > 50) {
-        header.classList.add('shadow-sm');
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > 50) {
+        header?.classList.add('shadow-lg', 'shadow-black/5');
+        header?.classList.remove('shadow-sm');
       } else {
-        header.classList.remove('shadow-sm');
+        header?.classList.remove('shadow-lg', 'shadow-black/5');
+        header?.classList.add('shadow-sm');
       }
-      
-      // Hide header on scroll down, show on scroll up
-      if (window.scrollY > lastScrollY && window.scrollY > 150) {
-        header.style.transform = 'translateY(-100%)';
+
+      // Hide header on scroll down, show on scroll up (improved)
+      if (currentScrollY > lastScrollY && currentScrollY > 200) {
+        if (header) header.style.transform = 'translateY(-100%)';
       } else {
-        header.style.transform = 'translateY(0)';
+        if (header) header.style.transform = 'translateY(0)';
       }
-      lastScrollY = window.scrollY;
+      lastScrollY = currentScrollY;
     }
-    
+
     window.addEventListener('scroll', updateHeaderOnScroll);
-    
-    // Mobile menu
+
+    // Mobile menu animations
     function openMobileMenu() {
+      console.log('Opening mobile menu...'); // Debug log
       document.body.style.overflow = 'hidden';
-      mobileMenuContainer.classList.remove('hidden');
+      if (mobileMenuOverlay && mobileMenuContainer) {
+        // Show overlay first
+        mobileMenuOverlay.classList.remove('invisible');
+        mobileMenuOverlay.classList.remove('opacity-0');
+        mobileMenuOverlay.classList.add('opacity-100');
+
+        // Animate hamburger to X
+        animateHamburgerToX();
+
+        // Slide in menu container
+        setTimeout(() => {
+          mobileMenuContainer.style.transform = 'translateY(0)';
+          console.log('Menu should be visible now'); // Debug log
+        }, 10);
+      } else {
+        console.log('Mobile menu elements not found'); // Debug log
+      }
     }
-    
+
     function closeMobileMenu() {
-      document.body.style.overflow = '';
-      mobileMenuContainer.classList.add('hidden');
+      console.log('Closing mobile menu...'); // Debug log
+      if (mobileMenuOverlay && mobileMenuContainer) {
+        // Slide out menu container
+        mobileMenuContainer.style.transform = 'translateY(100%)';
+        mobileMenuOverlay.classList.remove('opacity-100');
+        mobileMenuOverlay.classList.add('opacity-0');
+
+        // Animate X back to hamburger
+        animateXToHamburger();
+
+        setTimeout(() => {
+          mobileMenuOverlay.classList.add('invisible');
+          document.body.style.overflow = '';
+        }, 500);
+      }
     }
-    
-    mobileMenuButton.addEventListener('click', openMobileMenu);
-    closeMobileMenuButton.addEventListener('click', closeMobileMenu);
-    
-    // Close menu when clicking outside
-    mobileMenuContainer.addEventListener('click', function(e) {
-      if (e.target === mobileMenuContainer) {
+
+    // Hamburger animation functions
+    function animateHamburgerToX() {
+      if (hamburgerLines.length >= 3) {
+        (hamburgerLines[0] as HTMLElement).style.transform = 'rotate(45deg) translate(6px, 6px)';
+        (hamburgerLines[1] as HTMLElement).style.opacity = '0';
+        (hamburgerLines[2] as HTMLElement).style.transform = 'rotate(-45deg) translate(6px, -6px)';
+      }
+    }
+
+    function animateXToHamburger() {
+      if (hamburgerLines.length >= 3) {
+        (hamburgerLines[0] as HTMLElement).style.transform = '';
+        (hamburgerLines[1] as HTMLElement).style.opacity = '1';
+        (hamburgerLines[2] as HTMLElement).style.transform = '';
+      }
+    }
+
+    mobileMenuButton?.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Mobile menu button clicked');
+      openMobileMenu();
+    });
+
+    closeMobileMenuButton?.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Close button clicked');
+      closeMobileMenu();
+    });
+
+    // Close menu when clicking overlay
+    mobileMenuOverlay?.addEventListener('click', function(e) {
+      if (e.target === mobileMenuOverlay) {
+        console.log('Overlay clicked');
         closeMobileMenu();
       }
     });
-    
-    // Mobile dropdowns
+
+    // Mobile dropdowns with improved animations
     mobileDropdowns.forEach(dropdown => {
       const button = dropdown.querySelector('button');
       const content = dropdown.querySelector('.dropdown-content');
       const icon = dropdown.querySelector('.dropdown-icon');
-      
-      button.addEventListener('click', () => {
-        content.classList.toggle('hidden');
-        if (content.classList.contains('hidden')) {
-          icon.style.transform = '';
+
+      button?.addEventListener('click', () => {
+        const isHidden = content?.classList.contains('hidden');
+
+        if (isHidden) {
+          content?.classList.remove('hidden');
+          if (icon) (icon as HTMLElement).style.transform = 'rotate(180deg)';
         } else {
-          icon.style.transform = 'rotate(180deg)';
+          content?.classList.add('hidden');
+          if (icon) (icon as HTMLElement).style.transform = '';
         }
       });
     });
-    
+
     // Search overlay
     function openSearch() {
       document.body.style.overflow = 'hidden';
-      searchOverlay.classList.remove('hidden');
-      setTimeout(() => {
-        searchContainer.style.opacity = '1';
-        searchContainer.style.transform = 'scale(1)';
-      }, 10);
+      if (searchOverlay && searchContainer) {
+        searchOverlay.classList.remove('hidden');
+        setTimeout(() => {
+          if (searchContainer) {
+            searchContainer.style.opacity = '1';
+            searchContainer.style.transform = 'scale(1)';
+          }
+        }, 10);
+      }
     }
-    
+
     function closeSearch() {
-      searchContainer.style.opacity = '0';
-      searchContainer.style.transform = 'scale(0.95)';
-      setTimeout(() => {
-        searchOverlay.classList.add('hidden');
-        document.body.style.overflow = '';
-      }, 300);
+      if (searchContainer) {
+        searchContainer.style.opacity = '0';
+        searchContainer.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          if (searchOverlay) {
+            searchOverlay.classList.add('hidden');
+            document.body.style.overflow = '';
+          }
+        }, 300);
+      }
     }
-    
+
     searchButton?.addEventListener('click', openSearch);
     searchButtonMobile?.addEventListener('click', openSearch);
     closeSearchButton?.addEventListener('click', closeSearch);
-    
-    searchOverlay.addEventListener('click', (e) => {
+
+    searchOverlay?.addEventListener('click', (e) => {
       if (e.target === searchOverlay) {
         closeSearch();
       }
     });
-    
+
     // Close with Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        if (!searchOverlay.classList.contains('hidden')) {
+        if (searchOverlay && !searchOverlay.classList.contains('hidden')) {
           closeSearch();
-        } else if (!mobileMenuContainer.classList.contains('hidden')) {
+        } else if (mobileMenuOverlay && !mobileMenuOverlay.classList.contains('invisible')) {
           closeMobileMenu();
         }
       }
     });
-    
-    // Theme toggle
-    if (mobileThemeToggle) {
-      mobileThemeToggle.addEventListener('click', () => {
-        const isDark = document.documentElement.classList.toggle('dark');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      });
-    }
-    
-    // Nav indicator effect
+
+    // Theme toggle - compatible with shadcn theme system
+    mobileThemeToggle?.addEventListener('click', () => {
+      const element = document.documentElement;
+      element.classList.toggle('dark');
+
+      const isDark = element.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // Enhanced nav hover effects (desktop only)
     navLinks.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        const indicator = link.querySelector('.nav-indicator');
-        if (indicator) indicator.style.transform = 'scaleX(1)';
+      const htmlLink = link as HTMLElement;
+      htmlLink.addEventListener('mouseenter', () => {
+        // Add subtle scale effect
+        htmlLink.style.transform = 'translateY(-1px)';
       });
-      
-      link.addEventListener('mouseleave', () => {
-        const indicator = link.querySelector('.nav-indicator');
-        if (indicator) indicator.style.transform = 'scaleX(0)';
+
+      htmlLink.addEventListener('mouseleave', () => {
+        htmlLink.style.transform = '';
       });
     });
-    
+
     // Enrollment disabled modal functions
     function openEnrollmentModal() {
       document.body.style.overflow = 'hidden';
@@ -390,17 +619,17 @@ const { online_enrollment_enabled, school_year_string, semester } = schoolSettin
         enrollmentDisabledModal.classList.remove('hidden');
         setTimeout(() => {
           if (enrollmentModalContainer) {
-            enrollmentModalContainer.style.opacity = '1';
-            enrollmentModalContainer.style.transform = 'scale(1)';
+            (enrollmentModalContainer as HTMLElement).style.opacity = '1';
+            (enrollmentModalContainer as HTMLElement).style.transform = 'scale(1)';
           }
         }, 10);
       }
     }
-    
+
     function closeEnrollmentModal() {
       if (enrollmentModalContainer) {
-        enrollmentModalContainer.style.opacity = '0';
-        enrollmentModalContainer.style.transform = 'scale(0.95)';
+        (enrollmentModalContainer as HTMLElement).style.opacity = '0';
+        (enrollmentModalContainer as HTMLElement).style.transform = 'scale(0.95)';
         setTimeout(() => {
           if (enrollmentDisabledModal) {
             enrollmentDisabledModal.classList.add('hidden');
@@ -409,66 +638,208 @@ const { online_enrollment_enabled, school_year_string, semester } = schoolSettin
         }, 300);
       }
     }
-    
+
     // Add event listeners for enrollment modal
-    if (enrollmentDisabledBtn) {
-      enrollmentDisabledBtn.addEventListener('click', openEnrollmentModal);
-    }
-    
-    if (enrollmentDisabledBtnMobile) {
-      enrollmentDisabledBtnMobile.addEventListener('click', openEnrollmentModal);
-    }
-    
-    if (closeEnrollmentModalBtn) {
-      closeEnrollmentModalBtn.addEventListener('click', closeEnrollmentModal);
-    }
-    
-    if (confirmEnrollmentModalBtn) {
-      confirmEnrollmentModalBtn.addEventListener('click', closeEnrollmentModal);
-    }
-    
-    if (enrollmentDisabledModal) {
-      enrollmentDisabledModal.addEventListener('click', (e) => {
-        if (e.target === enrollmentDisabledModal) {
-          closeEnrollmentModal();
+    enrollmentDisabledBtn?.addEventListener('click', openEnrollmentModal);
+    enrollmentDisabledBtnMobile?.addEventListener('click', openEnrollmentModal);
+    closeEnrollmentModalBtn?.addEventListener('click', closeEnrollmentModal);
+    confirmEnrollmentModalBtn?.addEventListener('click', closeEnrollmentModal);
+
+    enrollmentDisabledModal?.addEventListener('click', (e) => {
+      if (e.target === enrollmentDisabledModal) {
+        closeEnrollmentModal();
+      }
+    });
+
+    // Add smooth scroll behavior for anchor links
+    document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = anchor.getAttribute('href');
+        const target = document.querySelector(href || '');
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          // Close mobile menu if open
+          if (mobileMenuOverlay && !mobileMenuOverlay.classList.contains('invisible')) {
+            closeMobileMenu();
+          }
         }
       });
-    }
+    });
   });
 </script>
 
 <style>
-  /* Header transitions */
-  #college-header {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Modern Header Styles */
+  #modern-header {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
-  
-  /* Nav links effects */
-  .nav-link:hover .nav-indicator {
-    transform: scaleX(1) !important;
+
+  #modern-header.shadow-lg {
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
-  
-  /* Apply button effects */
-  .apply-button:hover span:last-child {
-    transform: scaleX(1);
+
+  /* Enhanced Nav Link Animations */
+  .nav-link {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
-  /* Dropdown icon transition */
+
+  .nav-link:hover {
+    transform: translateY(-1px);
+  }
+
+  /* Hamburger Animation */
+  .hamburger-line {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+  }
+
+  /* Mobile Menu Animations */
+  #mobile-menu-overlay {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #mobile-menu-container {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Mobile Nav Item Hover Effects */
+  .mobile-nav-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .mobile-nav-item:hover {
+    transform: translateX(4px);
+  }
+
+  /* Dropdown Animations */
   .dropdown-icon {
-    transition: transform 0.2s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
-  /* Search container animation */
+
+  .dropdown-content {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .dropdown-content:not(.hidden) {
+    max-height: 300px;
+  }
+
+  /* Enroll Button Glow Effect */
+  .enroll-button {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .enroll-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .enroll-button:hover::before {
+    left: 100%;
+  }
+
+  /* Search and Modal Animations */
   #search-container,
   #enrollment-modal-container {
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
-  /* Mobile optimizations */
+
+  /* Responsive Design Enhancements */
+  @media (max-width: 1024px) {
+    .nav-link {
+      padding: 0.5rem 0.75rem;
+    }
+  }
+
   @media (max-width: 640px) {
-    #college-header > div {
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
+    #modern-header {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .mobile-nav-item {
+      padding: 1rem;
+    }
+  }
+
+  /* Mobile Menu Specific Styles */
+  #mobile-menu-overlay {
+    z-index: 9999 !important;
+  }
+
+  #mobile-menu-container {
+    z-index: 10000 !important;
+    background: hsl(var(--background)) !important;
+    border: 1px solid hsl(var(--border));
+  }
+
+  /* Force visibility when menu is open */
+  #mobile-menu-overlay.opacity-100 {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Ensure menu content is visible */
+  #mobile-menu-container * {
+    color: hsl(var(--foreground));
+  }
+
+  /* Dark mode optimizations */
+  .dark #modern-header {
+    background: rgba(0, 0, 0, 0.85);
+    border-color: hsl(var(--border));
+  }
+
+  .dark #mobile-menu-container {
+    background: hsl(var(--background));
+    border-color: hsl(var(--border));
+  }
+
+  /* Theme transition for smooth switching */
+  html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Ensure theme icons transition smoothly */
+  #mobile-theme-toggle svg {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Smooth scrolling for the entire page */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus states for accessibility */
+  .nav-link:focus,
+  .mobile-nav-item:focus,
+  button:focus {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+
+  /* Reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
     }
   }
 </style>
