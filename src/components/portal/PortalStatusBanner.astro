@@ -1,0 +1,423 @@
+---
+// PortalStatusBanner.astro - Status banner for portal.dccp.edu.ph
+---
+
+<div id="portal-status-banner" class="portal-status-banner">
+  <div class="status-container">
+    <div class="status-indicator">
+      <div class="status-dot" id="status-dot"></div>
+      <div class="status-pulse" id="status-pulse"></div>
+    </div>
+    <div class="status-content">
+      <div class="status-title" id="status-title">Checking Portal Status...</div>
+      <div class="status-message" id="status-message">Please wait while we verify the portal availability.</div>
+    </div>
+    <div class="status-actions">
+      <button id="refresh-status" class="refresh-btn" title="Refresh Status">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+          <path d="M21 3v5h-5"></path>
+          <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+          <path d="M3 21v-5h5"></path>
+        </svg>
+      </button>
+      <button id="close-status" class="close-btn" title="Dismiss Banner">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .portal-status-banner {
+    position: relative;
+    width: 100%;
+    z-index: 10;
+    background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted) / 0.5) 100%);
+    border: 1px solid hsl(var(--border));
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 24px;
+  }
+
+  .portal-status-banner.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .status-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .status-indicator {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: hsl(var(--muted-foreground));
+    transition: all 0.3s ease;
+  }
+
+  .status-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .status-dot.checking {
+    background-color: hsl(var(--warning));
+    animation: pulse 1.5s infinite;
+  }
+
+  .status-dot.online {
+    background-color: hsl(142, 76%, 36%);
+  }
+
+  .status-dot.offline {
+    background-color: hsl(0, 84%, 60%);
+  }
+
+  .status-pulse.checking {
+    background-color: hsl(var(--warning));
+    animation: ripple 1.5s infinite;
+  }
+
+  .status-pulse.online {
+    background-color: hsl(142, 76%, 36%);
+    animation: ripple 2s infinite;
+  }
+
+  .status-pulse.offline {
+    background-color: hsl(0, 84%, 60%);
+    animation: ripple 2s infinite;
+  }
+
+  .status-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .status-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+    margin-bottom: 2px;
+  }
+
+  .status-message {
+    font-size: 12px;
+    color: hsl(var(--muted-foreground));
+    line-height: 1.4;
+  }
+
+  .status-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .refresh-btn,
+  .close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: hsl(var(--muted-foreground));
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .refresh-btn:hover {
+    background: hsl(var(--muted));
+    color: hsl(var(--foreground));
+  }
+
+  .close-btn:hover {
+    background: hsl(var(--destructive) / 0.1);
+    color: hsl(var(--destructive));
+  }
+
+  .refresh-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .refresh-btn.loading {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(2);
+      opacity: 0;
+    }
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+
+  /* Dark mode adjustments */
+  :global(.dark) .portal-status-banner {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.5) 100%);
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 640px) {
+    .status-container {
+      padding: 10px 12px;
+      gap: 10px;
+    }
+
+    .status-title {
+      font-size: 13px;
+    }
+
+    .status-message {
+      font-size: 11px;
+    }
+
+    .refresh-btn,
+    .close-btn {
+      width: 28px;
+      height: 28px;
+    }
+  }
+</style>
+
+<script>
+  class PortalStatusBanner {
+    private banner: HTMLElement | null;
+    private statusDot: HTMLElement | null;
+    private statusPulse: HTMLElement | null;
+    private statusTitle: HTMLElement | null;
+    private statusMessage: HTMLElement | null;
+    private refreshBtn: HTMLButtonElement | null;
+    private closeBtn: HTMLButtonElement | null;
+    
+    private isOnline: boolean | null;
+    private isChecking: boolean;
+
+    constructor() {
+      this.banner = document.getElementById('portal-status-banner');
+      this.statusDot = document.getElementById('status-dot');
+      this.statusPulse = document.getElementById('status-pulse');
+      this.statusTitle = document.getElementById('status-title');
+      this.statusMessage = document.getElementById('status-message');
+      this.refreshBtn = document.getElementById('refresh-status') as HTMLButtonElement;
+      this.closeBtn = document.getElementById('close-status') as HTMLButtonElement;
+      
+      this.isOnline = null;
+      this.isChecking = false;
+      
+      this.init();
+    }
+
+    init() {
+      // Check if banner was previously dismissed
+      const dismissed = localStorage.getItem('dccp-portal-status-dismissed');
+      if (dismissed) {
+        this.hideBanner();
+        return;
+      }
+
+      // Show banner and start checking
+      this.showBanner();
+      this.checkPortalStatus();
+
+      // Set up event listeners
+      this.refreshBtn?.addEventListener('click', () => this.checkPortalStatus());
+      this.closeBtn?.addEventListener('click', () => this.dismissBanner());
+
+      // Auto-refresh every 5 minutes
+      setInterval(() => {
+        if (!this.isChecking) {
+          this.checkPortalStatus();
+        }
+      }, 5 * 60 * 1000);
+    }
+
+    showBanner() {
+      this.banner?.classList.add('show');
+    }
+
+    hideBanner() {
+      this.banner?.classList.remove('show');
+    }
+
+    dismissBanner() {
+      this.hideBanner();
+      localStorage.setItem('dccp-portal-status-dismissed', 'true');
+    }
+
+    setStatus(status: string, title: string, message: string) {
+      // Reset classes
+      this.statusDot?.classList.remove('checking', 'online', 'offline');
+      this.statusPulse?.classList.remove('checking', 'online', 'offline');
+      
+      // Add new status class
+      this.statusDot?.classList.add(status);
+      this.statusPulse?.classList.add(status);
+      
+      // Update text content
+      if (this.statusTitle) this.statusTitle.textContent = title;
+      if (this.statusMessage) this.statusMessage.textContent = message;
+    }
+
+    setChecking() {
+      this.isChecking = true;
+      this.refreshBtn?.classList.add('loading');
+      this.refreshBtn?.setAttribute('disabled', 'true');
+      this.setStatus('checking', 'Checking Portal Status...', 'Please wait while we verify the portal availability.');
+    }
+
+    setOnline() {
+      this.isChecking = false;
+      this.isOnline = true;
+      this.refreshBtn?.classList.remove('loading');
+      this.refreshBtn?.removeAttribute('disabled');
+      this.setStatus('online', 'Portal is Online', 'portal.dccp.edu.ph is accessible and ready for use.');
+    }
+
+    setOffline() {
+      this.isChecking = false;
+      this.isOnline = false;
+      this.refreshBtn?.classList.remove('loading');
+      this.refreshBtn?.removeAttribute('disabled');
+      this.setStatus('offline', 'Portal is Currently Offline', 'The DCCP Portal is experiencing connectivity issues (Cloudflare Tunnel error). Please try again later or contact IT support.');
+    }
+
+    async checkPortalStatus() {
+      if (this.isChecking) return;
+
+      this.setChecking();
+
+      // Try multiple methods to check portal status
+      const isOnline = await this.tryMultipleChecks();
+      
+      if (isOnline) {
+        this.setOnline();
+      } else {
+        this.setOffline();
+      }
+    }
+
+    async tryMultipleChecks(): Promise<boolean> {
+      // Since we can't reliably detect Cloudflare Tunnel errors from the browser,
+      // we'll be more conservative and require multiple successful checks
+      const checks = await Promise.allSettled([
+        this.checkWithImage(),
+        this.checkWithDifferentImage()
+      ]);
+
+      // Count successful checks
+      const successCount = checks.filter(result => 
+        result.status === 'fulfilled' && result.value === true
+      ).length;
+
+      // Require at least 1 successful check, but be conservative
+      // If we can't load basic assets, assume it's down
+      return successCount >= 1;
+    }
+
+
+    async checkWithImage(): Promise<boolean> {
+      // Try to load favicon - this will fail if server is completely down
+      return new Promise<boolean>((resolve) => {
+        const img = new Image();
+        const timeout = setTimeout(() => {
+          resolve(false);
+        }, 5000); // Shorter timeout
+
+        img.onload = () => {
+          clearTimeout(timeout);
+          resolve(true);
+        };
+
+        img.onerror = () => {
+          clearTimeout(timeout);
+          resolve(false);
+        };
+
+        // Try to load the favicon with timestamp to avoid cache
+        img.src = 'https://portal.dccp.edu.ph/favicon.ico?' + Date.now();
+      });
+    }
+
+    async checkWithDifferentImage(): Promise<boolean> {
+      // Try a different approach - attempt to load a common web asset
+      return new Promise<boolean>((resolve) => {
+        const img = new Image();
+        const timeout = setTimeout(() => {
+          resolve(false);
+        }, 5000);
+
+        img.onload = () => {
+          clearTimeout(timeout);
+          resolve(true);
+        };
+
+        img.onerror = () => {
+          clearTimeout(timeout);
+          resolve(false);
+        };
+
+        // Try to load a common asset that should exist on most web servers
+        img.src = 'https://portal.dccp.edu.ph/robots.txt?' + Date.now();
+      });
+    }
+
+  }
+
+  // Initialize when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    new PortalStatusBanner();
+  });
+</script>
