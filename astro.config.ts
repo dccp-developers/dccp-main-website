@@ -4,6 +4,8 @@ import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import cloudflare from "@astrojs/cloudflare";
 
+import vercel from "@astrojs/vercel";
+
 // https://astro.build/config
 export default defineConfig({
   output: "server",
@@ -18,9 +20,7 @@ export default defineConfig({
     },
   },
   integrations: [react()],
-  adapter: cloudflare({
-    imageService: "compile",
-  }),
+  adapter: vercel(),
   server: {
     allowedHosts: ["dccpweb.koamishin.org", "dccp.edu.ph"],
   },
