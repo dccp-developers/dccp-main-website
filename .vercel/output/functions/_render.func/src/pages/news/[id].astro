@@ -55,7 +55,7 @@ try {
 
     if (id.includes('_')) {
         // This looks like a Facebook post ID, try to fetch it from our API
-        const response = await fetch(`http://localhost:4321/api/facebook-post/${id}`);
+        const response = await fetch(`/api/facebook-post/${id}`);
 
         if (response.ok) {
             const fbPost = await response.json();
@@ -65,7 +65,7 @@ try {
 
             // Try to fetch comments for this post
             try {
-                const commentsResponse = await fetch(`http://localhost:4321/api/facebook-post/${id}/comments`);
+                const commentsResponse = await fetch(`/api/facebook-post/${id}/comments`);
                 if (commentsResponse.ok) {
                     const commentsData = await commentsResponse.json();
                     comments = commentsData.data || [];
@@ -77,7 +77,7 @@ try {
 
             // Fetch Facebook posts and get posts before current one
             try {
-                const postsResponse = await fetch(`http://localhost:4321/api/facebook-posts?limit=20`);
+                const postsResponse = await fetch(`/api/facebook-posts?limit=20`);
                 if (postsResponse.ok) {
                     const postsData = await postsResponse.json();
                     // Fix: API returns { posts: [...] } not { data: [...] }

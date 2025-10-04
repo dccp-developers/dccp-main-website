@@ -1,23 +1,14 @@
 // API endpoint for fetching Facebook posts on the client side
 export async function GET({ url }: { url: URL }) {
   try {
-    console.log('API: Facebook posts endpoint called');
-
     const pageId = import.meta.env.FACEBOOK_PAGE_ID;
     const accessToken = import.meta.env.FACEBOOK_ACCESS_TOKEN;
-
-    console.log('API: Environment check', {
-      hasPageId: !!pageId,
-      hasAccessToken: !!accessToken,
-      pageId: pageId?.substring(0, 10) + '...' // Log first 10 chars for debugging
-    });
 
     const limit = parseInt(url.searchParams.get('limit') || '5');
     const after = url.searchParams.get('after');
     const before = url.searchParams.get('before');
 
     if (!pageId || !accessToken) {
-      console.error('API: Missing credentials');
       return new Response(
         JSON.stringify({
           posts: [],
@@ -54,17 +45,13 @@ export async function GET({ url }: { url: URL }) {
       apiUrl += `&before=${before}`;
     }
 
-    console.log('API: Fetching Facebook posts:', { limit, after, before });
-
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
-      console.error('API: Facebook API error:', errorData);
 
       // Check if it's an expired token error
       if (errorData.error?.code === 190) {
-        console.log('API: Facebook token expired, returning sample posts');
 
         // Return sample posts when token is expired
         const samplePosts = [
@@ -127,7 +114,6 @@ export async function GET({ url }: { url: URL }) {
     }
 
     const fbData = await response.json();
-    console.log('API: Facebook response received');
 
     // Transform Facebook data to our format
     const formattedPosts = fbData.data ? fbData.data.map((post) => {
@@ -167,8 +153,6 @@ export async function GET({ url }: { url: URL }) {
     });
 
   } catch (error) {
-    console.error('API error fetching Facebook posts:', error);
-    console.error('API error stack:', error.stack);
 
     return new Response(
       JSON.stringify({

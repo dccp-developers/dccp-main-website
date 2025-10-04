@@ -3,8 +3,8 @@ export { renderers } from '../../renderers.mjs';
 async function GET({ url }) {
   try {
     console.log("API: Facebook posts endpoint called");
-    const pageId = process.env.FACEBOOK_PAGE_ID;
-    const accessToken = process.env.FACEBOOK_ACCESS_TOKEN;
+    const pageId = "379808588551143";
+    const accessToken = "EAARdS5kPdZBIBPvmpTyr2mSBkEkZAeSqPVqGEoC4IWSXN8FWbCvXtLjZBbMfu4OpJvDfKLBJz7kgxVcMq9KmI8NxXDsLBvD2DmUqV4ocOiKuiDeXjXziW5KZBDGglWUW6wMInIALASZB2ZBbGdDpl7ZBi7Wqkq8V4egmduSjynVnCtY84ja8GSHOZCgZA1sCQXnumOkw76Pj8EEeZC5it8g10DQKZAp";
     console.log("API: Environment check", {
       hasPageId: !!pageId,
       hasAccessToken: !!accessToken,
@@ -14,21 +14,7 @@ async function GET({ url }) {
     const limit = parseInt(url.searchParams.get("limit") || "5");
     const after = url.searchParams.get("after");
     const before = url.searchParams.get("before");
-    if (!pageId || !accessToken) {
-      console.error("API: Missing credentials");
-      return new Response(
-        JSON.stringify({
-          posts: [],
-          hasNext: false,
-          hasPrevious: false,
-          error: "Facebook API credentials not configured"
-        }),
-        {
-          status: 500,
-          headers: { "Content-Type": "application/json" }
-        }
-      );
-    }
+    if (!pageId || !accessToken) ;
     const fields = [
       "id",
       "message",

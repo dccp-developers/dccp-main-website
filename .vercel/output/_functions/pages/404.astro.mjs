@@ -1,6 +1,6 @@
 import { e as createComponent, m as maybeRenderHead, r as renderTemplate, h as addAttribute, k as renderComponent, f as createAstro, l as renderSlot, n as renderHead } from '../chunks/astro/server_maCZ-oJZ.mjs';
 import 'kleur/colors';
-import { b as buttonVariants, $ as $$ThemeToggle, a as $$HeadSEO } from '../chunks/ThemeToggle_ChsheyU9.mjs';
+import { b as buttonVariants, $ as $$ThemeToggle, a as $$HeadSEO } from '../chunks/ThemeToggle_D8FQHwZV.mjs';
 import 'clsx';
 export { renderers } from '../renderers.mjs';
 

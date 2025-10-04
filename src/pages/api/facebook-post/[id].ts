@@ -31,17 +31,13 @@ export async function GET({ params }: { params: { id: string } }) {
 
     const apiUrl = `https://graph.facebook.com/v18.0/${id}?fields=${fields}&access_token=${accessToken}`;
 
-    console.log('API: Fetching single Facebook post:', id);
-
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
-      console.error('API: Facebook post error:', errorData);
 
       // Check if it's an expired token error
       if (errorData.error?.code === 190) {
-        console.log('API: Facebook token expired, returning sample post');
 
         // Return sample post when token is expired
         const samplePost = {
@@ -68,7 +64,6 @@ export async function GET({ params }: { params: { id: string } }) {
     }
 
     const fbPost = await response.json();
-    console.log('API: Facebook post response received');
 
     // Transform to our format
     const createdDate = new Date(fbPost.created_time);
@@ -98,7 +93,6 @@ export async function GET({ params }: { params: { id: string } }) {
     });
 
   } catch (error) {
-    console.error('API error fetching Facebook post:', error);
 
     return new Response(
       JSON.stringify({

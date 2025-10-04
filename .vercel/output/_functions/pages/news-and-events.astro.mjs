@@ -1,58 +1,22 @@
 import { e as createComponent, k as renderComponent, r as renderTemplate } from '../chunks/astro/server_maCZ-oJZ.mjs';
 import 'kleur/colors';
-import { $ as $$CollegeLayout } from '../chunks/CollegeLayout_BaCHOouF.mjs';
-import { jsxDEV } from 'react/jsx-dev-runtime';
+import { $ as $$CollegeLayout } from '../chunks/CollegeLayout_aajB7oz9.mjs';
+import { jsx, jsxs } from 'react/jsx-runtime';
 export { renderers } from '../renderers.mjs';
 
 function HeroSection() {
-  return /* @__PURE__ */ jsxDEV("section", { className: "relative pt-32 pb-16 lg:pt-40 lg:pb-24", children: /* @__PURE__ */ jsxDEV("div", { className: "container mx-auto px-6 lg:px-12", children: /* @__PURE__ */ jsxDEV("div", { className: "max-w-5xl", children: [
-    /* @__PURE__ */ jsxDEV("div", { className: "mb-8", children: /* @__PURE__ */ jsxDEV("span", { className: "inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 text-secondary border border-secondary/20 rounded-full text-sm font-medium", children: [
-      /* @__PURE__ */ jsxDEV("span", { className: "w-2 h-2 bg-secondary rounded-full animate-pulse" }, void 0, false, {
-        fileName: "/home/yuuki/Documents/GitHub/dccp-main-website/src/components/hero-section.tsx",
-        lineNumber: 8,
-        columnNumber: 15
-      }, this),
+  return /* @__PURE__ */ jsx("section", { className: "relative pt-32 pb-16 lg:pt-40 lg:pb-24", children: /* @__PURE__ */ jsx("div", { className: "container mx-auto px-6 lg:px-12", children: /* @__PURE__ */ jsxs("div", { className: "max-w-5xl", children: [
+    /* @__PURE__ */ jsx("div", { className: "mb-8", children: /* @__PURE__ */ jsxs("span", { className: "inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 text-secondary border border-secondary/20 rounded-full text-sm font-medium", children: [
+      /* @__PURE__ */ jsx("span", { className: "w-2 h-2 bg-secondary rounded-full animate-pulse" }),
       "Latest Updates"
-    ] }, void 0, true, {
-      fileName: "/home/yuuki/Documents/GitHub/dccp-main-website/src/components/hero-section.tsx",
-      lineNumber: 7,
-      columnNumber: 13
-    }, this) }, void 0, false, {
-      fileName: "/home/yuuki/Documents/GitHub/dccp-main-website/src/components/hero-section.tsx",
-      lineNumber: 6,
-      columnNumber: 11
-    }, this),
-    /* @__PURE__ */ jsxDEV("h2", { className: "font-serif text-5xl sm:text-6xl lg:text-7xl leading-tight text-balance mb-6 text-foreground", children: [
+    ] }) }),
+    /* @__PURE__ */ jsxs("h2", { className: "font-serif text-5xl sm:text-6xl lg:text-7xl leading-tight text-balance mb-6 text-foreground", children: [
       "Stay Connected with",
       " ",
-      /* @__PURE__ */ jsxDEV("span", { className: "text-primary", children: "DCCP Baguio" }, void 0, false, {
-        fileName: "/home/yuuki/Documents/GitHub/dccp-main-website/src/components/hero-section.tsx",
-        lineNumber: 15,
-        columnNumber: 13
-      }, this)
-    ] }, void 0, true, {
-      fileName: "/home/yuuki/Documents/GitHub/dccp-main-website/src/components/hero-section.tsx",
-      lineNumber: 13,
-      columnNumber: 11
-    }, this),
-    /* @__PURE__ */ jsxDEV("p", { className: "text-lg lg:text-xl text-muted-foreground max-w-2xl leading-relaxed", children: "Discover the latest achievements, important announcements, and upcoming events that make our school community thrive." }, void 0, false, {
-      fileName: "/home/yuuki/Documents/GitHub/dccp-main-website/src/components/hero-section.tsx",
-      lineNumber: 18,
-      columnNumber: 11
-    }, this)
-  ] }, void 0, true, {
-    fileName: "/home/yuuki/Documents/GitHub/dccp-main-website/src/components/hero-section.tsx",
-    lineNumber: 5,
-    columnNumber: 9
-  }, this) }, void 0, false, {
-    fileName: "/home/yuuki/Documents/GitHub/dccp-main-website/src/components/hero-section.tsx",
-    lineNumber: 4,
-    columnNumber: 7
-  }, this) }, void 0, false, {
-    fileName: "/home/yuuki/Documents/GitHub/dccp-main-website/src/components/hero-section.tsx",
-    lineNumber: 3,
-    columnNumber: 5
-  }, this);
+      /* @__PURE__ */ jsx("span", { className: "text-primary", children: "DCCP Baguio" })
+    ] }),
+    /* @__PURE__ */ jsx("p", { className: "text-lg lg:text-xl text-muted-foreground max-w-2xl leading-relaxed", children: "Discover the latest achievements, important announcements, and upcoming events that make our school community thrive." })
+  ] }) }) });
 }
 
 class FacebookApiService {
@@ -261,8 +225,8 @@ const $$NewsAndEvents = createComponent(async ($$result, $$props, $$slots) => {
   let nextCursor;
   let previousCursor;
   try {
-    const pageId = process.env.FACEBOOK_PAGE_ID;
-    const accessToken = process.env.FACEBOOK_ACCESS_TOKEN;
+    const pageId = "379808588551143";
+    const accessToken = "EAARdS5kPdZBIBPvmpTyr2mSBkEkZAeSqPVqGEoC4IWSXN8FWbCvXtLjZBbMfu4OpJvDfKLBJz7kgxVcMq9KmI8NxXDsLBvD2DmUqV4ocOiKuiDeXjXziW5KZBDGglWUW6wMInIALASZB2ZBbGdDpl7ZBi7Wqkq8V4egmduSjynVnCtY84ja8GSHOZCgZA1sCQXnumOkw76Pj8EEeZC5it8g10DQKZAp";
     if (pageId && accessToken) {
       const facebookApi = initializeFacebookApi(pageId, accessToken);
       const result = await facebookApi.getPosts(3);
@@ -271,10 +235,6 @@ const $$NewsAndEvents = createComponent(async ($$result, $$props, $$slots) => {
       hasPrevious = result.hasPrevious;
       nextCursor = result.nextCursor;
       previousCursor = result.previousCursor;
-    } else {
-      console.warn(
-        "Facebook API credentials not configured. Using fallback posts."
-      );
     }
   } catch (error) {
     console.error("Error fetching initial Facebook posts:", error);

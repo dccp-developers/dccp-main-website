@@ -3,18 +3,8 @@ export { renderers } from '../../../renderers.mjs';
 async function GET({ params }) {
   try {
     const { id } = params;
-    const accessToken = process.env.FACEBOOK_ACCESS_TOKEN;
-    if (!accessToken) {
-      return new Response(
-        JSON.stringify({
-          error: "Facebook API credentials not configured"
-        }),
-        {
-          status: 500,
-          headers: { "Content-Type": "application/json" }
-        }
-      );
-    }
+    const accessToken = "EAARdS5kPdZBIBPvmpTyr2mSBkEkZAeSqPVqGEoC4IWSXN8FWbCvXtLjZBbMfu4OpJvDfKLBJz7kgxVcMq9KmI8NxXDsLBvD2DmUqV4ocOiKuiDeXjXziW5KZBDGglWUW6wMInIALASZB2ZBbGdDpl7ZBi7Wqkq8V4egmduSjynVnCtY84ja8GSHOZCgZA1sCQXnumOkw76Pj8EEeZC5it8g10DQKZAp";
+    if (!accessToken) ;
     const fields = [
       "id",
       "message",

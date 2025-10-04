@@ -1,6 +1,6 @@
 import { e as createComponent, f as createAstro, k as renderComponent, r as renderTemplate, m as maybeRenderHead, h as addAttribute } from '../../chunks/astro/server_maCZ-oJZ.mjs';
 import 'kleur/colors';
-import { $ as $$CollegeLayout } from '../../chunks/CollegeLayout_BaCHOouF.mjs';
+import { $ as $$CollegeLayout } from '../../chunks/CollegeLayout_aajB7oz9.mjs';
 import { ArrowLeft, Calendar, User, MessageCircle, Facebook, ExternalLink } from 'lucide-react';
 export { renderers } from '../../renderers.mjs';
 
@@ -19,14 +19,14 @@ const $$id = createComponent(async ($$result, $$props, $$slots) => {
   try {
     console.log("Server: Fetching Facebook post:", id);
     if (id.includes("_")) {
-      const response = await fetch(`http://localhost:4321/api/facebook-post/${id}`);
+      const response = await fetch(`/api/facebook-post/${id}`);
       if (response.ok) {
         const fbPost = await response.json();
         console.log("Server: Facebook post fetched:", fbPost);
         post = fbPost;
         error = null;
         try {
-          const commentsResponse = await fetch(`http://localhost:4321/api/facebook-post/${id}/comments`);
+          const commentsResponse = await fetch(`/api/facebook-post/${id}/comments`);
           if (commentsResponse.ok) {
             const commentsData = await commentsResponse.json();
             comments = commentsData.data || [];
@@ -36,7 +36,7 @@ const $$id = createComponent(async ($$result, $$props, $$slots) => {
           console.error("Server error fetching comments:", commentErr);
         }
         try {
-          const postsResponse = await fetch(`http://localhost:4321/api/facebook-posts?limit=20`);
+          const postsResponse = await fetch(`/api/facebook-posts?limit=20`);
           if (postsResponse.ok) {
             const postsData = await postsResponse.json();
             const allPosts = postsData.posts || [];

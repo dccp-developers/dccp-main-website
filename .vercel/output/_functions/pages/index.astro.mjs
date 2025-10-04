@@ -1,12 +1,12 @@
 import { e as createComponent, m as maybeRenderHead, k as renderComponent, o as renderScript, r as renderTemplate, h as addAttribute, p as Fragment, u as unescapeHTML, f as createAstro, q as defineScriptVars } from '../chunks/astro/server_maCZ-oJZ.mjs';
 import 'kleur/colors';
-import { g as getSchoolSettings, $ as $$CollegeLayout } from '../chunks/CollegeLayout_BaCHOouF.mjs';
-import { B as Button, c as cn, b as buttonVariants } from '../chunks/ThemeToggle_ChsheyU9.mjs';
+import { g as getSchoolSettings, $ as $$CollegeLayout } from '../chunks/CollegeLayout_aajB7oz9.mjs';
+import { B as Button, c as cn, b as buttonVariants } from '../chunks/ThemeToggle_D8FQHwZV.mjs';
 /* empty css                                 */
-import { jsxDEV } from 'react/jsx-dev-runtime';
+import { jsx } from 'react/jsx-runtime';
 import 'react';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
-import { B as Badge } from '../chunks/badge_B1Oj23Us.mjs';
+import { B as Badge } from '../chunks/badge_pKJmSC37.mjs';
 import 'clsx';
 export { renderers } from '../renderers.mjs';
 
@@ -34,7 +34,7 @@ function Separator({
   decorative = true,
   ...props
 }) {
-  return /* @__PURE__ */ jsxDEV(
+  return /* @__PURE__ */ jsx(
     SeparatorPrimitive.Root,
     {
       "data-slot": "separator-root",
@@ -45,15 +45,7 @@ function Separator({
         className
       ),
       ...props
-    },
-    void 0,
-    false,
-    {
-      fileName: "/home/yuuki/Documents/GitHub/dccp-main-website/src/components/ui/separator.tsx",
-      lineNumber: 15,
-      columnNumber: 5
-    },
-    this
+    }
   );
 }
 

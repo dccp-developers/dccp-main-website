@@ -44,6 +44,12 @@ if (!id) {
     return Astro.redirect("/news");
 }
 
+// Helper function to get base URL for server-side fetch
+function getBaseUrl(request: Request): string {
+    const url = new URL(request.url);
+    return `${url.protocol}//${url.host}`;
+}
+
 let post: FormattedPost | null = null;
 let relatedPosts: FormattedPost[] = [];
 let error: string | null = null;
@@ -51,33 +57,31 @@ let comments: FacebookComment[] = [];
 
 // Try to fetch the Facebook post and related posts on the server
 try {
-    console.log('Server: Fetching Facebook post:', id);
 
     if (id.includes('_')) {
         // This looks like a Facebook post ID, try to fetch it from our API
-        const response = await fetch(`http://localhost:4321/api/facebook-post/${id}`);
+        const baseUrl = getBaseUrl(Astro.request);
+        const response = await fetch(`${baseUrl}/api/facebook-post/${id}`);
 
         if (response.ok) {
             const fbPost = await response.json();
-            console.log('Server: Facebook post fetched:', fbPost);
             post = fbPost;
             error = null;
 
             // Try to fetch comments for this post
             try {
-                const commentsResponse = await fetch(`http://localhost:4321/api/facebook-post/${id}/comments`);
+                const commentsResponse = await fetch(`${baseUrl}/api/facebook-post-comments/${id}`);
                 if (commentsResponse.ok) {
                     const commentsData = await commentsResponse.json();
                     comments = commentsData.data || [];
-                    console.log('Server: Comments fetched:', comments.length);
                 }
             } catch (commentErr) {
-                console.error('Server error fetching comments:', commentErr);
+                comments = [];
             }
 
             // Fetch Facebook posts and get posts before current one
             try {
-                const postsResponse = await fetch(`http://localhost:4321/api/facebook-posts?limit=20`);
+                const postsResponse = await fetch(`${baseUrl}/api/facebook-posts?limit=20`);
                 if (postsResponse.ok) {
                     const postsData = await postsResponse.json();
                     // Fix: API returns { posts: [...] } not { data: [...] }
@@ -97,17 +101,13 @@ try {
 
                     // Take up to 3 previous posts
                     relatedPosts = previousPosts.slice(0, 3);
-                    console.log('Server: Previous posts fetched:', relatedPosts.length, 'Current post index:', currentIndex);
                 }
             } catch (postsErr) {
-                console.error('Server error fetching related posts:', postsErr);
+                // Silently handle related posts error
             }
-        } else {
-            console.log('Server: API call failed, using fallback');
         }
     }
 } catch (err) {
-    console.error('Server error fetching Facebook post:', err);
     error = "Failed to load Facebook post";
 }
 
@@ -299,11 +299,29 @@ function formatCommentTime(timestamp: string): string {
                                     key={comment.id}
                                     class="flex gap-4 p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors"
                                 >
-                                    <img
-                                        src={comment.from?.picture || "/placeholder.svg?height=40&width=40"}
-                                        alt={comment.from?.name || comment.author}
-                                        class="w-10 h-10 rounded-full object-cover flex-shrink-0"
-                                    />
+                                    {comment.from?.picture ? (
+                                        <img
+                                            src={comment.from.picture}
+                                            alt={comment.from?.name || "Facebook User"}
+                                            class="w-10 h-10 rounded-full object-cover flex-shrink-0"
+                                            onError={(e) => {
+                                                // If image fails to load, replace with initials
+                                                const target = e.target as HTMLImageElement;
+                                                const parent = target.parentElement;
+                                                if (parent) {
+                                                    const name = comment.from?.name || "Facebook User";
+                                                    const initial = name.charAt(0).toUpperCase();
+                                                    parent.innerHTML = `<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0"><span class="text-primary font-medium text-sm">${initial}</span></div>`;
+                                                }
+                                            }}
+                                        />
+                                    ) : (
+                                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                            <span class="text-primary font-medium text-sm">
+                                                {comment.from?.name?.charAt(0).toUpperCase() || "U"}
+                                            </span>
+                                        </div>
+                                    )}
                                     <div class="flex-1 min-w-0">
                                         <div class="flex items-center gap-2 mb-1">
                                             <p class="font-medium text-foreground text-sm">

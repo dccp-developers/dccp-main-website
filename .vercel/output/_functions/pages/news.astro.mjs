@@ -1,6 +1,6 @@
 import { e as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead, o as renderScript, h as addAttribute } from '../chunks/astro/server_maCZ-oJZ.mjs';
 import 'kleur/colors';
-import { $ as $$CollegeLayout } from '../chunks/CollegeLayout_BaCHOouF.mjs';
+import { $ as $$CollegeLayout } from '../chunks/CollegeLayout_aajB7oz9.mjs';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 export { renderers } from '../renderers.mjs';
 
@@ -10,8 +10,8 @@ const $$News = createComponent(async ($$result, $$props, $$slots) => {
   let nextCursor;
   let error = null;
   try {
-    const pageId = process.env.FACEBOOK_PAGE_ID;
-    const accessToken = process.env.FACEBOOK_ACCESS_TOKEN;
+    const pageId = "379808588551143";
+    const accessToken = "EAARdS5kPdZBIBPvmpTyr2mSBkEkZAeSqPVqGEoC4IWSXN8FWbCvXtLjZBbMfu4OpJvDfKLBJz7kgxVcMq9KmI8NxXDsLBvD2DmUqV4ocOiKuiDeXjXziW5KZBDGglWUW6wMInIALASZB2ZBbGdDpl7ZBi7Wqkq8V4egmduSjynVnCtY84ja8GSHOZCgZA1sCQXnumOkw76Pj8EEeZC5it8g10DQKZAp";
     if (pageId && accessToken) {
       const response = await fetch(
         `https://graph.facebook.com/v18.0/${pageId}/feed?fields=message,story,created_time,full_picture,picture,permalink_url,likes.summary(true),comments.summary(true),shares&limit=5&access_token=${accessToken}`
@@ -45,53 +45,6 @@ const $$News = createComponent(async ($$result, $$props, $$slots) => {
       } else {
         throw new Error(`Facebook API error: ${response.status}`);
       }
-    } else {
-      posts = [
-        {
-          id: "sample-1",
-          date: "DEC",
-          year: "2024",
-          title: "Students Win National Science Competition",
-          category: "Achievements",
-          excerpt: "Our talented science team has achieved remarkable success at the National STEM Challenge.",
-          content: "Our talented science team has achieved remarkable success at the National STEM Challenge.",
-          permalink: "#",
-          likes: 45,
-          comments: 12,
-          shares: 8,
-          image: "/placeholder.svg"
-        },
-        {
-          id: "sample-2",
-          date: "DEC",
-          year: "2024",
-          title: "New STEM Lab Opens with State-of-the-Art Equipment",
-          category: "Campus News",
-          excerpt: "The newly renovated STEM facility features cutting-edge technology and collaborative spaces.",
-          content: "The newly renovated STEM facility features cutting-edge technology and collaborative spaces.",
-          permalink: "#",
-          likes: 32,
-          comments: 7,
-          shares: 5,
-          image: "/placeholder.svg"
-        },
-        {
-          id: "sample-3",
-          date: "NOV",
-          year: "2024",
-          title: "Annual Winter Concert Features Student Orchestra",
-          category: "Arts & Culture",
-          excerpt: "Join us for an evening of beautiful music as our talented student musicians perform.",
-          content: "Join us for an evening of beautiful music as our talented student musicians perform.",
-          permalink: "#",
-          likes: 28,
-          comments: 15,
-          shares: 3,
-          image: "/placeholder.svg"
-        }
-      ];
-      hasMore = false;
-      nextCursor = void 0;
     }
   } catch (err) {
     console.error("Error fetching Facebook posts for news page:", err);

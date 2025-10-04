@@ -1,6 +1,6 @@
 import { e as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../../chunks/astro/server_maCZ-oJZ.mjs';
 import 'kleur/colors';
-import { $ as $$CollegeLayout } from '../../chunks/CollegeLayout_BaCHOouF.mjs';
+import { $ as $$CollegeLayout } from '../../chunks/CollegeLayout_aajB7oz9.mjs';
 import { $ as $$ProgramCard } from '../../chunks/ProgramCard_DBLHNwUV.mjs';
 import { p as programs } from '../../chunks/programs_D6qzVDLi.mjs';
 export { renderers } from '../../renderers.mjs';

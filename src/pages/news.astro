@@ -36,7 +36,6 @@ try {
 
         if (response.ok) {
             const fbData = await response.json();
-            console.log('Server: Facebook posts fetched:', fbData);
 
             // Transform Facebook data to our format
             posts = fbData.data ? fbData.data.map((post: any) => {
@@ -118,7 +117,6 @@ try {
         nextCursor = undefined;
     }
 } catch (err) {
-    console.error("Error fetching Facebook posts for news page:", err);
     // Show fallback posts on error
     posts = [
         {
@@ -284,7 +282,6 @@ try {
 
                     try {
                         // Fetch more Facebook posts using server-side API
-                        console.log('Load More: Fetching posts with cursor:', cursor);
 
                         const params = new URLSearchParams({
                             limit: '5',
@@ -298,7 +295,6 @@ try {
                         }
 
                         const data = await response.json();
-                        console.log('Load More: Response:', data);
 
                         if (data.posts && data.posts.length > 0) {
                             // Remove "no data" message if it exists
@@ -378,7 +374,6 @@ try {
                             loadMoreContainer.remove();
                         }
                     } catch (error) {
-                        console.error("Error loading more posts:", error);
                         loadMoreButton.innerHTML = "Error loading posts";
 
                         // Show error message

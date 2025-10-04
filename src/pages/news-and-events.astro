@@ -27,12 +27,9 @@ try {
         nextCursor = result.nextCursor;
         previousCursor = result.previousCursor;
     } else {
-        console.warn(
-            "Facebook API credentials not configured. Using fallback posts.",
-        );
+        // Using fallback posts when Facebook API credentials are not configured
     }
 } catch (error) {
-    console.error("Error fetching initial Facebook posts:", error);
     // Will fall back to client-side loading or hardcoded posts
 }
 ---
