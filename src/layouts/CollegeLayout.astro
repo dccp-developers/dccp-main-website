@@ -1,54 +1,61 @@
 ---
+import "@fontsource/playfair-display";
+import "@fontsource/inter";
 import HeadSEO from "@/components/HeadSEO.astro";
 import CollegeFooter from "@/components/CollegeFooter.astro";
 import CollegeHeader from "@/components/CollegeHeader.astro";
-import { ViewTransitions } from 'astro:transitions';
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
-  title?: string | undefined;
-  description?: string | undefined;
-  ogImage?: URL | undefined;
+    title?: string | undefined;
+    description?: string | undefined;
+    ogImage?: URL | undefined;
 }
 
 const { title, description, ogImage } = Astro.props;
 ---
 
-<html lang="en" class="scroll-smooth">
-  <head>
-    <HeadSEO title={title} description={description} ogImage={ogImage} />
-    <ViewTransitions />
-    <script defer src="http://dccp-umami-63a1ab-46-250-224-248.traefik.me/script.js" data-website-id="784bf82c-73c4-40d8-b7cb-4ed5057136ce"></script>
-  </head>
-  <body class="bg-background min-h-screen font-sans antialiased">
-    <div class="relative flex min-h-screen flex-col">
-      <CollegeHeader />
-      <main class="flex-auto">
-        <slot />
-      </main>
-      <CollegeFooter />
-    </div>
+<html lang="en" class="scroll-smooth font-serif">
+    <head>
+        <HeadSEO title={title} description={description} ogImage={ogImage} />
+        <ViewTransitions />
+    </head>
+    <body class="font-serif bg-background min-h-screen font-sans antialiased">
+        <div class="relative flex min-h-screen flex-col">
+            <CollegeHeader />
+            <main class="flex-auto">
+                <slot />
+            </main>
+            <CollegeFooter />
+        </div>
 
-    <!-- Theme script to ensure theme functionality works throughout the site -->
-    <script is:inline>
-      const getThemePreference = () => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme')
-        }
-        return 'light' // Default to light theme instead of using system preference
-      }
-      const isDark = getThemePreference() === 'dark'
-      document.documentElement.classList[isDark ? 'add' : 'remove']('dark')
+        <!-- Theme script to ensure theme functionality works throughout the site -->
+        <script is:inline>
+            const getThemePreference = () => {
+                if (
+                    typeof localStorage !== "undefined" &&
+                    localStorage.getItem("theme")
+                ) {
+                    return localStorage.getItem("theme");
+                }
+                return "light"; // Default to light theme instead of using system preference
+            };
+            const isDark = getThemePreference() === "dark";
+            document.documentElement.classList[isDark ? "add" : "remove"](
+                "dark",
+            );
 
-      if (typeof localStorage !== 'undefined') {
-        const observer = new MutationObserver(() => {
-          const isDark = document.documentElement.classList.contains('dark')
-          localStorage.setItem('theme', isDark ? 'dark' : 'light')
-        })
-        observer.observe(document.documentElement, {
-          attributes: true,
-          attributeFilter: ['class'],
-        })
-      }
-    </script>
-  </body>
+            if (typeof localStorage !== "undefined") {
+                const observer = new MutationObserver(() => {
+                    const isDark =
+                        document.documentElement.classList.contains("dark");
+                    localStorage.setItem("theme", isDark ? "dark" : "light");
+                });
+                observer.observe(document.documentElement, {
+                    attributes: true,
+                    attributeFilter: ["class"],
+                });
+            }
+        </script>
+    </body>
 </html>

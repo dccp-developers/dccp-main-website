@@ -5,11 +5,11 @@ import { getSchoolSettings } from "@/lib/api";
 
 // Fetch school settings
 const schoolSettings = await getSchoolSettings();
-const { 
-  school_year, 
-  school_year_string, 
-  semester, 
-  online_enrollment_enabled 
+const {
+  school_year,
+  school_year_string,
+  semester,
+  online_enrollment_enabled
 } = schoolSettings.data;
 ---
 

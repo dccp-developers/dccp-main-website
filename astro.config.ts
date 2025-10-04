@@ -5,8 +5,9 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  output: "server",
   site: process.env.CI
-    ? "https://astro-shadcn-ui-template.vercel.app"
+    ? "https://dccp.edu.ph"
     : "http://localhost:4321",
   integrations: [react()],
   vite: {
@@ -16,6 +17,6 @@ export default defineConfig({
     allowedHosts: ["dccpweb.koamishin.org", "dccp.edu.ph"],
   },
   devToolbar: {
-    enabled: false
+    enabled: false,
   },
 });
