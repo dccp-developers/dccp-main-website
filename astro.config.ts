@@ -2,17 +2,25 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
+import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
   output: "server",
-  site: process.env.CI
-    ? "https://dccp.edu.ph"
-    : "http://localhost:4321",
-  integrations: [react()],
+  site: process.env.CI ? "https://dccp.edu.ph" : "http://localhost:4321",
   vite: {
     plugins: [tailwindcss()],
+    ssr: {
+      external: ['node:fs/promises', 'node:path', 'node:url']
+    },
+    build: {
+      minify: false,
+    }
   },
+  integrations: [react()],
+  adapter: cloudflare({
+    imageService: "compile"
+  }),
   server: {
     allowedHosts: ["dccpweb.koamishin.org", "dccp.edu.ph"],
   },

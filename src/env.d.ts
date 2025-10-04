@@ -1,5 +1,6 @@
 /// <reference path="../.astro/types.d.ts" />
-/// <reference types="astro/client" />
+ <reference path="../.astro/types.d.ts" />
+ <reference types="astro/client" />
 
 interface ImportMetaEnv {
   readonly FACEBOOK_PAGE_ID: string;
