@@ -9,7 +9,7 @@ import vercel from "@astrojs/vercel";
 // https://astro.build/config
 export default defineConfig({
   output: "server",
-  site: process.env.CI ? "https://dccp.edu.ph" : "http://localhost:4321",
+  site: process.env.CI ? "https://www.dccp.edu.ph" : "http://localhost:4321",
   vite: {
     plugins: [tailwindcss()],
     ssr: {
