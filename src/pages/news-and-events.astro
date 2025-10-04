@@ -40,6 +40,7 @@ try {
 <CollegeLayout title="News & Events">
     <HeroSection />
     <NewsSection
+        client:only="react"
         initialPosts={JSON.stringify(initialPosts)}
         initialHasNext={hasNext}
         initialHasPrevious={hasPrevious}

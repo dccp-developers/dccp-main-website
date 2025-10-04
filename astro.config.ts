@@ -11,15 +11,21 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     ssr: {
-      external: []
+      external: [],
+    },
+    resolve: {
+      alias: {
+        // Use react-dom/server.edge for production builds
+        "react-dom/server": "react-dom/server.edge",
+      },
     },
     build: {
       minify: false,
-    }
+    },
   },
   integrations: [react()],
   adapter: cloudflare({
-    imageService: "compile"
+    imageService: "compile",
   }),
   server: {
     allowedHosts: ["dccpweb.koamishin.org", "dccp.edu.ph"],
