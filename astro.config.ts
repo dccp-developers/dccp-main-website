@@ -19,7 +19,8 @@ export default defineConfig({
   },
   integrations: [react()],
   adapter: cloudflare({
-    imageService: "compile"
+    imageService: "compile",
+    enableKVSessions: false
   }),
   server: {
     allowedHosts: ["dccpweb.koamishin.org", "dccp.edu.ph"],
