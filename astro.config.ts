@@ -13,12 +13,6 @@ export default defineConfig({
     ssr: {
       external: [],
     },
-    resolve: {
-      alias: {
-        // Use standard react-dom/server for Workers compatibility
-        "react-dom/server": "react-dom/server",
-      },
-    },
     build: {
       minify: false,
     },
