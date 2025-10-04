@@ -1,0 +1,20 @@
+{
+  "name": "dccp-main-website",
+  "compatibility_date": "2025-10-04",
+  "main": "./dist/_worker.js/index.js",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "compatibility_flags": ["nodejs_compat_v2"],
+  "vars": {
+    "SITE_URL": "https://dccp.edu.ph"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "SESSION",
+      "id": "SESSION_KV_NAMESPACE_ID",
+      "preview_id": "SESSION_KV_PREVIEW_ID"
+    }
+  ]
+}
