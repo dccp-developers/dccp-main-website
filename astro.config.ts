@@ -15,8 +15,8 @@ export default defineConfig({
     },
     resolve: {
       alias: {
-        // Use react-dom/server.edge for production builds
-        "react-dom/server": "react-dom/server.edge",
+        // Use standard react-dom/server for Workers compatibility
+        "react-dom/server": "react-dom/server",
       },
     },
     build: {
