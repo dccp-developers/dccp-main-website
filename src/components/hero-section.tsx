@@ -11,15 +11,16 @@ export function HeroSection() {
           </div>
 
           <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl leading-tight text-balance mb-6 text-foreground">
-            Stay Connected with <span className="text-primary">Oakwood Academy</span>
+            Stay Connected with{" "}
+            <span className="text-primary">DCCP Baguio</span>
           </h2>
 
           <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-            Discover the latest achievements, important announcements, and upcoming events that make our school
-            community thrive.
+            Discover the latest achievements, important announcements, and
+            upcoming events that make our school community thrive.
           </p>
         </div>
       </div>
     </section>
-  )
+  );
 }
