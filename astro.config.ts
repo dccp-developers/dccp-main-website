@@ -11,7 +11,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     ssr: {
-      external: ['node:fs/promises', 'node:path', 'node:url']
+      external: []
     },
     build: {
       minify: false,
@@ -19,8 +19,7 @@ export default defineConfig({
   },
   integrations: [react()],
   adapter: cloudflare({
-    imageService: "compile",
-    enableKVSessions: false
+    imageService: "compile"
   }),
   server: {
     allowedHosts: ["dccpweb.koamishin.org", "dccp.edu.ph"],
