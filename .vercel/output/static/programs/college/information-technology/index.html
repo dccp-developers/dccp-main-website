@@ -1,0 +1,282 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth font-serif"> <head><meta charset="utf-8"><meta name="robots" content="index, follow"><meta name="googlebot" content="index, follow"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v5.14.1"><link rel="canonical" href="http://localhost:4321/programs/college/information-technology/"><title>Information Technology</title><meta name="title" content="Information Technology"><meta name="description"><meta property="og:type" content="website"><meta property="og:url" content="http://localhost:4321/programs/college/information-technology/"><meta property="og:title" content="Information Technology"><meta property="og:description"><meta property="og:image" content="http://localhost:4321/programs/college/information-technology/og-image.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="http://localhost:4321/programs/college/information-technology/"><meta property="twitter:title" content="Information Technology"><meta property="twitter:description"><meta property="twitter:image" content="http://localhost:4321/programs/college/information-technology/og-image.png"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BtW12nJZ.js"></script><link rel="stylesheet" href="/_astro/graduate.DH0ovsPv.css">
+<link rel="stylesheet" href="/_astro/graduate.gpseFvEu.css"><script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+		var script = document.createElement('script');
+		script.defer = true;
+		script.src = '/_vercel/insights/script.js';
+		var head = document.querySelector('head');
+		head.appendChild(script);
+	</script></head> <body class="font-serif bg-background min-h-screen font-sans antialiased"> <vercel-speed-insights data-props="{}" data-params="{&#34;category&#34;:&#34;college&#34;,&#34;slug&#34;:&#34;information-technology&#34;}" data-pathname="/programs/college/information-technology/"></vercel-speed-insights> <script type="module">var name = "@vercel/speed-insights";
+var version = "1.2.0";
+var initQueue = () => {
+  if (window.si) return;
+  window.si = function a(...params) {
+    (window.siq = window.siq || []).push(params);
+  };
+};
+function isBrowser() {
+  return typeof window !== "undefined";
+}
+function detectEnvironment() {
+  try {
+    const env = "development";
+    if (env === "development" || env === "test") {
+      return "development";
+    }
+  } catch (e) {
+  }
+  return "production";
+}
+function isDevelopment() {
+  return detectEnvironment() === "development";
+}
+function computeRoute(pathname, pathParams) {
+  if (!pathname || !pathParams) {
+    return pathname;
+  }
+  let result = pathname;
+  try {
+    const entries = Object.entries(pathParams);
+    for (const [key, value] of entries) {
+      if (!Array.isArray(value)) {
+        const matcher = turnValueToRegExp(value);
+        if (matcher.test(result)) {
+          result = result.replace(matcher, `/[${key}]`);
+        }
+      }
+    }
+    for (const [key, value] of entries) {
+      if (Array.isArray(value)) {
+        const matcher = turnValueToRegExp(value.join("/"));
+        if (matcher.test(result)) {
+          result = result.replace(matcher, `/[...${key}]`);
+        }
+      }
+    }
+    return result;
+  } catch (e) {
+    return pathname;
+  }
+}
+function turnValueToRegExp(value) {
+  return new RegExp(`/${escapeRegExp(value)}(?=[/?#]|$)`);
+}
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+function getScriptSrc(props) {
+  if (props.scriptSrc) {
+    return props.scriptSrc;
+  }
+  if (isDevelopment()) {
+    return "https://va.vercel-scripts.com/v1/speed-insights/script.debug.js";
+  }
+  if (props.dsn) {
+    return "https://va.vercel-scripts.com/v1/speed-insights/script.js";
+  }
+  if (props.basePath) {
+    return `${props.basePath}/speed-insights/script.js`;
+  }
+  return "/_vercel/speed-insights/script.js";
+}
+function injectSpeedInsights(props = {}) {
+  var _a;
+  if (!isBrowser() || props.route === null) return null;
+  initQueue();
+  const src = getScriptSrc(props);
+  if (document.head.querySelector(`script[src*="${src}"]`)) return null;
+  if (props.beforeSend) {
+    (_a = window.si) == null ? void 0 : _a.call(window, "beforeSend", props.beforeSend);
+  }
+  const script = document.createElement("script");
+  script.src = src;
+  script.defer = true;
+  script.dataset.sdkn = name + (props.framework ? `/${props.framework}` : "");
+  script.dataset.sdkv = version;
+  if (props.sampleRate) {
+    script.dataset.sampleRate = props.sampleRate.toString();
+  }
+  if (props.route) {
+    script.dataset.route = props.route;
+  }
+  if (props.endpoint) {
+    script.dataset.endpoint = props.endpoint;
+  } else if (props.basePath) {
+    script.dataset.endpoint = `${props.basePath}/speed-insights/vitals`;
+  }
+  if (props.dsn) {
+    script.dataset.dsn = props.dsn;
+  }
+  if (isDevelopment() && props.debug === false) {
+    script.dataset.debug = "false";
+  }
+  script.onerror = () => {
+    console.log(
+      `[Vercel Speed Insights] Failed to load script from ${src}. Please check if any content blockers are enabled and try again.`
+    );
+  };
+  document.head.appendChild(script);
+  return {
+    setRoute: (route) => {
+      script.dataset.route = route ?? void 0;
+    }
+  };
+}
+
+function getBasePath() {
+  try {
+    return undefined                                                    ;
+  } catch {
+  }
+}
+customElements.define(
+  "vercel-speed-insights",
+  class VercelSpeedInsights extends HTMLElement {
+    constructor() {
+      super();
+      try {
+        const props = JSON.parse(this.dataset.props ?? "{}");
+        const params = JSON.parse(this.dataset.params ?? "{}");
+        const route = computeRoute(this.dataset.pathname ?? "", params);
+        injectSpeedInsights({
+          route,
+          ...props,
+          framework: "astro",
+          basePath: getBasePath(),
+          beforeSend: window.speedInsightsBeforeSend
+        });
+      } catch (err) {
+        throw new Error(`Failed to parse SpeedInsights properties: ${err}`);
+      }
+    }
+  }
+);</script> <div class="relative flex min-h-screen flex-col"> <header id="modern-header" class="font-serif bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur-md transition-all duration-300" data-astro-cid-ww64rl6q> <div class="container mx-auto px-4 sm:px-6 lg:px-8" data-astro-cid-ww64rl6q> <div class="flex h-16 sm:h-18 items-center justify-between" data-astro-cid-ww64rl6q> <!-- Logo and Brand --> <div class="flex items-center gap-3 z-10" data-astro-cid-ww64rl6q> <div class="flex items-center gap-1 sm:gap-2 md:gap-3" data-astro-cid-s7zbvxmx> <a href="/" class="flex items-center gap-1 sm:gap-2 md:gap-3 group" data-astro-cid-s7zbvxmx> <img src="/android-chrome-512x512.png" alt="DCCP Logo" class="h-7 w-7 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-16 lg:w-16 drop-shadow-lg rounded-full bg-white border border-yellow-400" data-astro-cid-s7zbvxmx> <div class="flex flex-col leading-none sm:leading-tight" data-astro-cid-s7zbvxmx> <span class="font-extrabold text-[0.6rem] sm:text-base md:text-xl lg:text-3xl tracking-tight text-[#2d2ed6] drop-shadow-[1px_1px_0px_#ffd900] md:drop-shadow-[2px_2px_0px_#ffd900]" style="font-family: Impact, Arial Black, Arial, sans-serif; letter-spacing: 0.02em;" data-astro-cid-s7zbvxmx>
+DATA CENTER COLLEGE
+</span> <span class="italic text-[0.5rem] sm:text-xs md:text-lg lg:text-2xl font-semibold text-[#2d2ed6] mt-0 sm:-mt-1 md:-mt-2" style="font-family: 'Brush Script MT', cursive; text-shadow: 1px 1px 0 #ffd900;" data-astro-cid-s7zbvxmx>
+of the Philippines
+<span class="text-[0.45rem] sm:text-[0.55rem] md:text-[0.65rem] lg:text-sm text-[#2d2ed6] font-bold ml-0 sm:ml-1" style="text-shadow: 0.5px 0.5px 0 #fff, 1px 1px 0 #ffd900;" data-astro-cid-s7zbvxmx>
+of Baguio City, Inc.
+</span> </span> </div> </a> </div>  </div> <!-- Desktop Navigation --> <nav class="hidden lg:flex items-center space-x-1" data-astro-cid-ww64rl6q> <!-- Main Navigation Links --> <div class="flex items-center space-x-1" data-astro-cid-ww64rl6q> <a href="#about" class="nav-link group relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:bg-accent/50 hover:text-primary" data-astro-cid-ww64rl6q> <span class="relative z-10" data-astro-cid-ww64rl6q>About</span> <div class="absolute inset-0 bg-primary/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300" data-astro-cid-ww64rl6q></div> <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary group-hover:w-8 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300" data-astro-cid-ww64rl6q></div> </a> <a href="/news-and-events" class="nav-link group relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:bg-accent/50 hover:text-primary" data-astro-cid-ww64rl6q> <span class="relative z-10" data-astro-cid-ww64rl6q>News & Events</span> <div class="absolute inset-0 bg-primary/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300" data-astro-cid-ww64rl6q></div> <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary group-hover:w-8 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300" data-astro-cid-ww64rl6q></div> </a> <!-- Programs Dropdown --> <div class="relative group" data-astro-cid-ww64rl6q> <button class="nav-link flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:bg-accent/50 hover:text-primary" data-astro-cid-ww64rl6q> <span data-astro-cid-ww64rl6q>Programs</span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:rotate-180" data-astro-cid-ww64rl6q> <polyline points="6 9 12 15 18 9" data-astro-cid-ww64rl6q></polyline> </svg> </button> <div class="absolute left-0 top-full mt-2 w-64 bg-card/95 backdrop-blur-md rounded-xl shadow-xl border border-border/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0" data-astro-cid-ww64rl6q> <div class="p-2" data-astro-cid-ww64rl6q> <a href="/academics/undergraduate" class="flex items-center gap-3 px-4 py-3 text-sm rounded-lg hover:bg-accent/50 transition-colors group/item" data-astro-cid-ww64rl6q> <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover/item:bg-primary/20 transition-colors" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary" data-astro-cid-ww64rl6q> <path d="M22 10v6M2 10l10-5 10 5-10 5z" data-astro-cid-ww64rl6q></path><path d="M6 12v5c3 3 9 3 12 0v-5" data-astro-cid-ww64rl6q></path> </svg> </div> <div data-astro-cid-ww64rl6q> <div class="font-medium" data-astro-cid-ww64rl6q>
+Undergraduate
+</div> <div class="text-xs text-muted-foreground" data-astro-cid-ww64rl6q>
+Bachelor's Degree Programs
+</div> </div> </a> <a href="/academics/tesda-courses" class="flex items-center gap-3 px-4 py-3 text-sm rounded-lg hover:bg-accent/50 transition-colors group/item" data-astro-cid-ww64rl6q> <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover/item:bg-primary/20 transition-colors" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary" data-astro-cid-ww64rl6q> <rect width="18" height="18" x="3" y="3" rx="2" data-astro-cid-ww64rl6q></rect><path d="M9 9h6v6H9z" data-astro-cid-ww64rl6q></path><path d="m9 1 3 3 3-3" data-astro-cid-ww64rl6q></path> </svg> </div> <div data-astro-cid-ww64rl6q> <div class="font-medium" data-astro-cid-ww64rl6q>
+TESDA Courses
+</div> <div class="text-xs text-muted-foreground" data-astro-cid-ww64rl6q>
+Technical & Vocational Training
+</div> </div> </a> </div> </div> </div> <!-- Facilities Link --> <!-- <a href="#facilities" class="nav-link group relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:bg-accent/50 hover:text-primary">
+            <span class="relative z-10">Facilities</span>
+            <div class="absolute inset-0 bg-primary/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+            <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary group-hover:w-8 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300"></div>
+          </a> --> <!-- Admissions Link --> <!-- <a href="#admissions" class="nav-link group relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:bg-accent/50 hover:text-primary">
+            <span class="relative z-10">Admissions</span>
+            <div class="absolute inset-0 bg-primary/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+            <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary group-hover:w-8 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300"></div>
+          </a> --> <!-- Portal Access - Prominent --> <a href="/dccp-hub" class="nav-link group relative px-4 py-2 text-sm font-medium rounded-lg bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 transition-all duration-300 hover:from-primary/20 hover:to-primary/10 hover:border-primary/30" data-astro-cid-ww64rl6q> <span class="relative z-10 flex items-center gap-2 text-primary" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-ww64rl6q> <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" data-astro-cid-ww64rl6q></path><path d="m21 3-9 9" data-astro-cid-ww64rl6q></path><path d="M15 3h6v6" data-astro-cid-ww64rl6q></path> </svg>
+Portal
+<div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" data-astro-cid-ww64rl6q></div> </span> </a> </div> </nav> <!-- Action Buttons --> <div class="hidden lg:flex items-center space-x-3" data-astro-cid-ww64rl6q> <!-- Search Button --> <button id="search-button" class="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-all duration-300 group" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform duration-300" data-astro-cid-ww64rl6q> <circle cx="11" cy="11" r="8" data-astro-cid-ww64rl6q></circle><path d="m21 21-4.3-4.3" data-astro-cid-ww64rl6q></path> </svg> <span class="sr-only" data-astro-cid-ww64rl6q>Search</span> </button> <!-- Enroll Now Button --> <button id="enrollment-disabled-btn" class="enroll-button group relative overflow-hidden px-6 py-2.5 rounded-lg bg-gradient-to-r from-primary to-primary/90 text-primary-foreground font-medium text-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5" data-astro-cid-ww64rl6q> <span class="relative z-10 flex items-center gap-2" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-12 transition-transform duration-300" data-astro-cid-ww64rl6q>  <path d="M15 3h6v6" data-astro-cid-ww64rl6q></path> <path d="M10 14 21 3" data-astro-cid-ww64rl6q></path> <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" data-astro-cid-ww64rl6q></path>  </svg>
+Enroll Now
+</span> <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" data-astro-cid-ww64rl6q></div> </button> <!-- Theme Toggle --> <button data-slot="button" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*=&#x27;size-&#x27;])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 size-9" id="themeToggle"> <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-[1.5rem] w-[1.3rem] dark:hidden"><path d="M7.5 0C7.77614 0 8 0.223858 8 0.5V2.5C8 2.77614 7.77614 3 7.5 3C7.22386 3 7 2.77614 7 2.5V0.5C7 0.223858 7.22386 0 7.5 0ZM2.1967 2.1967C2.39196 2.00144 2.70854 2.00144 2.90381 2.1967L4.31802 3.61091C4.51328 3.80617 4.51328 4.12276 4.31802 4.31802C4.12276 4.51328 3.80617 4.51328 3.61091 4.31802L2.1967 2.90381C2.00144 2.70854 2.00144 2.39196 2.1967 2.1967ZM0.5 7C0.223858 7 0 7.22386 0 7.5C0 7.77614 0.223858 8 0.5 8H2.5C2.77614 8 3 7.77614 3 7.5C3 7.22386 2.77614 7 2.5 7H0.5ZM2.1967 12.8033C2.00144 12.608 2.00144 12.2915 2.1967 12.0962L3.61091 10.682C3.80617 10.4867 4.12276 10.4867 4.31802 10.682C4.51328 10.8772 4.51328 11.1938 4.31802 11.3891L2.90381 12.8033C2.70854 12.9986 2.39196 12.9986 2.1967 12.8033ZM12.5 7C12.2239 7 12 7.22386 12 7.5C12 7.77614 12.2239 8 12.5 8H14.5C14.7761 8 15 7.77614 15 7.5C15 7.22386 14.7761 7 14.5 7H12.5ZM10.682 4.31802C10.4867 4.12276 10.4867 3.80617 10.682 3.61091L12.0962 2.1967C12.2915 2.00144 12.608 2.00144 12.8033 2.1967C12.9986 2.39196 12.9986 2.70854 12.8033 2.90381L11.3891 4.31802C11.1938 4.51328 10.8772 4.51328 10.682 4.31802ZM8 12.5C8 12.2239 7.77614 12 7.5 12C7.22386 12 7 12.2239 7 12.5V14.5C7 14.7761 7.22386 15 7.5 15C7.77614 15 8 14.7761 8 14.5V12.5ZM10.682 10.682C10.8772 10.4867 11.1938 10.4867 11.3891 10.682L12.8033 12.0962C12.9986 12.2915 12.9986 12.608 12.8033 12.8033C12.608 12.9986 12.2915 12.9986 12.0962 12.8033L10.682 11.3891C10.4867 11.1938 10.4867 10.8772 10.682 10.682ZM5.5 7.5C5.5 6.39543 6.39543 5.5 7.5 5.5C8.60457 5.5 9.5 6.39543 9.5 7.5C9.5 8.60457 8.60457 9.5 7.5 9.5C6.39543 9.5 5.5 8.60457 5.5 7.5ZM7.5 4.5C5.84315 4.5 4.5 5.84315 4.5 7.5C4.5 9.15685 5.84315 10.5 7.5 10.5C9.15685 10.5 10.5 9.15685 10.5 7.5C10.5 5.84315 9.15685 4.5 7.5 4.5Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg> <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5 dark:block"><path d="M2.89998 0.499976C2.89998 0.279062 2.72089 0.0999756 2.49998 0.0999756C2.27906 0.0999756 2.09998 0.279062 2.09998 0.499976V1.09998H1.49998C1.27906 1.09998 1.09998 1.27906 1.09998 1.49998C1.09998 1.72089 1.27906 1.89998 1.49998 1.89998H2.09998V2.49998C2.09998 2.72089 2.27906 2.89998 2.49998 2.89998C2.72089 2.89998 2.89998 2.72089 2.89998 2.49998V1.89998H3.49998C3.72089 1.89998 3.89998 1.72089 3.89998 1.49998C3.89998 1.27906 3.72089 1.09998 3.49998 1.09998H2.89998V0.499976ZM5.89998 3.49998C5.89998 3.27906 5.72089 3.09998 5.49998 3.09998C5.27906 3.09998 5.09998 3.27906 5.09998 3.49998V4.09998H4.49998C4.27906 4.09998 4.09998 4.27906 4.09998 4.49998C4.09998 4.72089 4.27906 4.89998 4.49998 4.89998H5.09998V5.49998C5.09998 5.72089 5.27906 5.89998 5.49998 5.89998C5.72089 5.89998 5.89998 5.72089 5.89998 5.49998V4.89998H6.49998C6.72089 4.89998 6.89998 4.72089 6.89998 4.49998C6.89998 4.27906 6.72089 4.09998 6.49998 4.09998H5.89998V3.49998ZM1.89998 6.49998C1.89998 6.27906 1.72089 6.09998 1.49998 6.09998C1.27906 6.09998 1.09998 6.27906 1.09998 6.49998V7.09998H0.499976C0.279062 7.09998 0.0999756 7.27906 0.0999756 7.49998C0.0999756 7.72089 0.279062 7.89998 0.499976 7.89998H1.09998V8.49998C1.09998 8.72089 1.27906 8.89997 1.49998 8.89997C1.72089 8.89997 1.89998 8.72089 1.89998 8.49998V7.89998H2.49998C2.72089 7.89998 2.89998 7.72089 2.89998 7.49998C2.89998 7.27906 2.72089 7.09998 2.49998 7.09998H1.89998V6.49998ZM8.54406 0.98184L8.24618 0.941586C8.03275 0.917676 7.90692 1.1655 8.02936 1.34194C8.17013 1.54479 8.29981 1.75592 8.41754 1.97445C8.91878 2.90485 9.20322 3.96932 9.20322 5.10022C9.20322 8.37201 6.82247 11.0878 3.69887 11.6097C3.45736 11.65 3.20988 11.6772 2.96008 11.6906C2.74563 11.702 2.62729 11.9535 2.77721 12.1072C2.84551 12.1773 2.91535 12.2458 2.98667 12.3128L3.05883 12.3795L3.31883 12.6045L3.50684 12.7532L3.62796 12.8433L3.81491 12.9742L3.99079 13.089C4.11175 13.1651 4.23536 13.2375 4.36157 13.3059L4.62496 13.4412L4.88553 13.5607L5.18837 13.6828L5.43169 13.7686C5.56564 13.8128 5.70149 13.8529 5.83857 13.8885C5.94262 13.9155 6.04767 13.9401 6.15405 13.9622C6.27993 13.9883 6.40713 14.0109 6.53544 14.0298L6.85241 14.0685L7.11934 14.0892C7.24637 14.0965 7.37436 14.1002 7.50322 14.1002C11.1483 14.1002 14.1032 11.1453 14.1032 7.50023C14.1032 7.25044 14.0893 7.00389 14.0623 6.76131L14.0255 6.48407C13.991 6.26083 13.9453 6.04129 13.8891 5.82642C13.8213 5.56709 13.7382 5.31398 13.6409 5.06881L13.5279 4.80132L13.4507 4.63542L13.3766 4.48666C13.2178 4.17773 13.0353 3.88295 12.8312 3.60423L12.6782 3.40352L12.4793 3.16432L12.3157 2.98361L12.1961 2.85951L12.0355 2.70246L11.8134 2.50184L11.4925 2.24191L11.2483 2.06498L10.9562 1.87446L10.6346 1.68894L10.3073 1.52378L10.1938 1.47176L9.95488 1.3706L9.67791 1.2669L9.42566 1.1846L9.10075 1.09489L8.83599 1.03486L8.54406 0.98184ZM10.4032 5.30023C10.4032 4.27588 10.2002 3.29829 9.83244 2.40604C11.7623 3.28995 13.1032 5.23862 13.1032 7.50023C13.1032 10.593 10.596 13.1002 7.50322 13.1002C6.63646 13.1002 5.81597 12.9036 5.08355 12.5522C6.5419 12.0941 7.81081 11.2082 8.74322 10.0416C8.87963 10.2284 9.10028 10.3497 9.34928 10.3497C9.76349 10.3497 10.0993 10.0139 10.0993 9.59971C10.0993 9.24256 9.84965 8.94373 9.51535 8.86816C9.57741 8.75165 9.63653 8.63334 9.6926 8.51332C9.88358 8.63163 10.1088 8.69993 10.35 8.69993C11.0403 8.69993 11.6 8.14028 11.6 7.44993C11.6 6.75976 11.0406 6.20024 10.3505 6.19993C10.3853 5.90487 10.4032 5.60464 10.4032 5.30023Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg> <span class="sr-only">Toggle theme</span> </button> <script type="module">if (typeof window !== "undefined" && !window.themeInitialized) {
+  window.themeInitialized = true;
+  const getThemePreference = () => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  };
+  const isDark = getThemePreference() === "dark";
+  document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+  if (typeof localStorage !== "undefined") {
+    const observer = new MutationObserver(() => {
+      const isDark2 = document.documentElement.classList.contains("dark");
+      localStorage.setItem("theme", isDark2 ? "dark" : "light");
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"]
+    });
+  }
+}
+const handleToggleClick = () => {
+  const element = document.documentElement;
+  element.classList.toggle("dark");
+  const isDark = element.classList.contains("dark");
+  if (typeof localStorage !== "undefined") {
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  }
+};
+const button = document.getElementById("themeToggle");
+if (button) {
+  button.addEventListener("click", handleToggleClick);
+}</script> </div> <!-- Mobile Menu Button --> <div class="lg:hidden flex items-center gap-2" data-astro-cid-ww64rl6q> <button id="search-button-mobile" class="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors duration-300" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-ww64rl6q> <circle cx="11" cy="11" r="8" data-astro-cid-ww64rl6q></circle><path d="m21 21-4.3-4.3" data-astro-cid-ww64rl6q></path> </svg> <span class="sr-only" data-astro-cid-ww64rl6q>Search</span> </button> <button id="mobile-menu-button" class="p-2 rounded-lg hover:bg-accent/50 transition-colors duration-300 group" aria-label="Open menu" aria-expanded="false" data-astro-cid-ww64rl6q> <div class="relative w-6 h-6" data-astro-cid-ww64rl6q> <span class="hamburger-line absolute left-0 top-1 w-6 h-0.5 bg-current transition-all duration-300 group-hover:bg-primary" data-astro-cid-ww64rl6q></span> <span class="hamburger-line absolute left-0 top-1/2 -translate-y-1/2 w-6 h-0.5 bg-current transition-all duration-300 group-hover:bg-primary" data-astro-cid-ww64rl6q></span> <span class="hamburger-line absolute left-0 bottom-1 w-6 h-0.5 bg-current transition-all duration-300 group-hover:bg-primary" data-astro-cid-ww64rl6q></span> </div> <span class="sr-only" data-astro-cid-ww64rl6q>Menu</span> </button> </div> </div> </div> </header> <!-- Modern Mobile Menu --> <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 lg:hidden transition-all duration-300" style="z-index: 9999; opacity: 0; visibility: hidden; pointer-events: none;" data-astro-cid-ww64rl6q> <div id="mobile-menu-container" class="fixed inset-y-0 right-0 w-full max-w-sm bg-background border-l border-border transition-transform duration-300 ease-out" style="z-index: 10000; transform: translateX(100%);" data-astro-cid-ww64rl6q> <!-- Mobile Menu Header --> <div class="flex items-center justify-between p-4 border-b border-border/50 bg-background/95 backdrop-blur-sm" data-astro-cid-ww64rl6q> <div class="flex items-center gap-3" data-astro-cid-ww64rl6q> <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary" data-astro-cid-ww64rl6q> <path d="M22 10v6M2 10l10-5 10 5-10 5z" data-astro-cid-ww64rl6q></path><path d="M6 12v5c3 3 9 3 12 0v-5" data-astro-cid-ww64rl6q></path> </svg> </div> <div data-astro-cid-ww64rl6q> <h2 class="font-semibold text-lg" data-astro-cid-ww64rl6q>DCCP Baguio</h2> <p class="text-xs text-muted-foreground" data-astro-cid-ww64rl6q>Navigation Menu</p> </div> </div> <button id="close-mobile-menu" class="p-2 rounded-xl hover:bg-accent/50 transition-colors group" aria-label="Close menu" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-90 transition-transform duration-300" data-astro-cid-ww64rl6q> <path d="M18 6 6 18" data-astro-cid-ww64rl6q></path><path d="m6 6 12 12" data-astro-cid-ww64rl6q></path> </svg> <span class="sr-only" data-astro-cid-ww64rl6q>Close menu</span> </button> </div> <!-- Mobile Menu Content --> <div class="flex flex-col h-full overflow-hidden" data-astro-cid-ww64rl6q> <!-- Quick Actions --> <div class="p-4 border-b border-border/50" data-astro-cid-ww64rl6q> <div class="grid grid-cols-2 gap-3" data-astro-cid-ww64rl6q> <!-- Portal Access - Prominent --> <a href="/dccp-hub" class="group flex flex-col items-center gap-2 p-3 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 hover:from-primary/20 hover:to-primary/10 transition-all duration-300" data-astro-cid-ww64rl6q> <div class="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary" data-astro-cid-ww64rl6q> <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" data-astro-cid-ww64rl6q></path><path d="m21 3-9 9" data-astro-cid-ww64rl6q></path><path d="M15 3h6v6" data-astro-cid-ww64rl6q></path> </svg> </div> <div class="text-center" data-astro-cid-ww64rl6q> <div class="text-xs font-medium text-primary" data-astro-cid-ww64rl6q>
+Portal
+</div> <div class="text-[10px] text-muted-foreground" data-astro-cid-ww64rl6q>
+DCCPHub
+</div> </div> </a> <!-- Enrollment --> <button id="enrollment-disabled-btn-mobile" class="group flex flex-col items-center gap-2 p-3 rounded-xl bg-gradient-to-br from-orange-500/10 to-orange-500/5 border border-orange-500/20 hover:from-orange-500/20 hover:to-orange-500/10 transition-all duration-300" data-astro-cid-ww64rl6q> <div class="w-10 h-10 rounded-xl bg-orange-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-600" data-astro-cid-ww64rl6q>  <circle cx="12" cy="12" r="10" data-astro-cid-ww64rl6q></circle> <line x1="12" x2="12" y1="8" y2="12" data-astro-cid-ww64rl6q></line> <line x1="12" x2="12.01" y1="16" y2="16" data-astro-cid-ww64rl6q></line>  </svg> </div> <div class="text-center" data-astro-cid-ww64rl6q> <div class="text-xs font-medium text-orange-600" data-astro-cid-ww64rl6q>
+Enroll
+</div> <div class="text-[10px] text-muted-foreground" data-astro-cid-ww64rl6q>
+Coming Soon
+</div> </div> </button> </div> </div> <!-- Navigation Links --> <nav class="flex-1 overflow-y-auto p-4 space-y-1" data-astro-cid-ww64rl6q> <!-- About --> <a href="#about" class="mobile-nav-item group flex items-center gap-3 p-3 rounded-xl hover:bg-accent/50 transition-all duration-300" data-astro-cid-ww64rl6q> <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600" data-astro-cid-ww64rl6q> <circle cx="12" cy="12" r="10" data-astro-cid-ww64rl6q></circle><line x1="12" x2="12" y1="8" y2="12" data-astro-cid-ww64rl6q></line><line x1="12" x2="12.01" y1="16" y2="16" data-astro-cid-ww64rl6q></line> </svg> </div> <div data-astro-cid-ww64rl6q> <div class="font-medium text-sm" data-astro-cid-ww64rl6q>About</div> <div class="text-xs text-muted-foreground" data-astro-cid-ww64rl6q>
+Learn about DCCP
+</div> </div> </a> <!-- Recent Events --> <a href="/news-and-events" class="mobile-nav-item group flex items-center gap-3 p-3 rounded-xl hover:bg-accent/50 transition-all duration-300" data-astro-cid-ww64rl6q> <div class="w-8 h-8 rounded-lg bg-teal-500/10 flex items-center justify-center group-hover:bg-teal-500/20 transition-colors" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-teal-600" data-astro-cid-ww64rl6q> <rect x="3" y="4" width="18" height="18" rx="2" ry="2" data-astro-cid-ww64rl6q></rect><line x1="16" y1="2" x2="16" y2="6" data-astro-cid-ww64rl6q></line><line x1="8" y1="2" x2="8" y2="6" data-astro-cid-ww64rl6q></line><line x1="3" y1="10" x2="21" y2="10" data-astro-cid-ww64rl6q></line> </svg> </div> <div data-astro-cid-ww64rl6q> <div class="font-medium text-sm" data-astro-cid-ww64rl6q>News & Events</div> <div class="text-xs text-muted-foreground" data-astro-cid-ww64rl6q>
+Stay updated
+</div> </div> </a> <!-- Programs --> <div class="mobile-dropdown" data-astro-cid-ww64rl6q> <button class="mobile-nav-item group w-full flex items-center justify-between p-3 rounded-xl hover:bg-accent/50 transition-all duration-300" data-astro-cid-ww64rl6q> <div class="flex items-center gap-3" data-astro-cid-ww64rl6q> <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600" data-astro-cid-ww64rl6q> <path d="M22 10v6M2 10l10-5 10 5-10 5z" data-astro-cid-ww64rl6q></path><path d="M6 12v5c3 3 9 3 12 0v-5" data-astro-cid-ww64rl6q></path> </svg> </div> <div data-astro-cid-ww64rl6q> <div class="font-medium text-sm" data-astro-cid-ww64rl6q>Programs</div> <div class="text-xs text-muted-foreground" data-astro-cid-ww64rl6q>
+Academic offerings
+</div> </div> </div> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dropdown-icon transition-transform duration-300" data-astro-cid-ww64rl6q> <polyline points="6 9 12 15 18 9" data-astro-cid-ww64rl6q></polyline> </svg> </button> <div class="dropdown-content hidden pl-11 pr-3 pb-1 space-y-1" data-astro-cid-ww64rl6q> <a href="/academics/undergraduate" class="block p-2.5 rounded-lg hover:bg-accent/50 transition-colors" data-astro-cid-ww64rl6q> <div class="font-medium text-xs" data-astro-cid-ww64rl6q>
+Undergraduate Programs
+</div> <div class="text-[10px] text-muted-foreground" data-astro-cid-ww64rl6q>
+Bachelor's Degree Programs
+</div> </a> <a href="/academics/tesda-courses" class="block p-2.5 rounded-lg hover:bg-accent/50 transition-colors" data-astro-cid-ww64rl6q> <div class="font-medium text-xs" data-astro-cid-ww64rl6q>TESDA Courses</div> <div class="text-[10px] text-muted-foreground" data-astro-cid-ww64rl6q>
+Technical & Vocational Training
+</div> </a> </div> </div> <!-- Contact --> <a href="#contact" class="mobile-nav-item group flex items-center gap-3 p-3 rounded-xl hover:bg-accent/50 transition-all duration-300" data-astro-cid-ww64rl6q> <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center group-hover:bg-red-500/20 transition-colors" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-600" data-astro-cid-ww64rl6q> <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" data-astro-cid-ww64rl6q></path> </svg> </div> <div data-astro-cid-ww64rl6q> <div class="font-medium text-sm" data-astro-cid-ww64rl6q>Contact</div> <div class="text-xs text-muted-foreground" data-astro-cid-ww64rl6q>
+Get in touch
+</div> </div> </a> </nav> <!-- Mobile Menu Footer --> <div class="p-4 border-t border-border/50" data-astro-cid-ww64rl6q> <div class="flex items-center justify-between" data-astro-cid-ww64rl6q> <div class="text-xs text-muted-foreground" data-astro-cid-ww64rl6q>
+© 2025 DCCP Baguio
+</div> <button id="mobile-theme-toggle" class="p-2 rounded-lg hover:bg-accent/50 transition-all duration-300 group border border-border/50 hover:border-border" title="Toggle theme" data-astro-cid-ww64rl6q> <!-- Sun icon for light mode (visible in light mode) --> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dark:hidden group-hover:rotate-180 transition-transform duration-300" data-astro-cid-ww64rl6q> <circle cx="12" cy="12" r="4" data-astro-cid-ww64rl6q></circle><path d="M12 2v2" data-astro-cid-ww64rl6q></path><path d="M12 20v2" data-astro-cid-ww64rl6q></path><path d="m4.93 4.93 1.41 1.41" data-astro-cid-ww64rl6q></path><path d="m17.66 17.66 1.41 1.41" data-astro-cid-ww64rl6q></path><path d="M2 12h2" data-astro-cid-ww64rl6q></path><path d="M20 12h2" data-astro-cid-ww64rl6q></path><path d="m6.34 17.66-1.41 1.41" data-astro-cid-ww64rl6q></path><path d="m19.07 4.93-1.41 1.41" data-astro-cid-ww64rl6q></path> </svg> <!-- Moon icon for dark mode (visible in dark mode) --> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden dark:block group-hover:rotate-180 transition-transform duration-300" data-astro-cid-ww64rl6q> <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" data-astro-cid-ww64rl6q></path> </svg> <span class="sr-only" data-astro-cid-ww64rl6q>Toggle theme</span> </button> </div> </div> </div> </div> </div> <!-- Search Overlay --> <div id="search-overlay" class="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 hidden" data-astro-cid-ww64rl6q> <div class="h-full flex items-center justify-center p-4" data-astro-cid-ww64rl6q> <div class="bg-card rounded-lg shadow-xl max-w-md w-full p-6 opacity-0 scale-95 transition-all duration-300" id="search-container" data-astro-cid-ww64rl6q> <div class="flex items-center justify-between mb-4" data-astro-cid-ww64rl6q> <h3 class="text-lg font-medium" data-astro-cid-ww64rl6q>Search</h3> <button id="close-search" class="p-1 rounded-md hover:bg-accent/50 transition-colors" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" data-astro-cid-ww64rl6q><path d="M18 6 6 18" data-astro-cid-ww64rl6q></path><path d="m6 6 12 12" data-astro-cid-ww64rl6q></path></svg> </button> </div> <div class="relative" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" data-astro-cid-ww64rl6q><circle cx="11" cy="11" r="8" data-astro-cid-ww64rl6q></circle><path d="m21 21-4.3-4.3" data-astro-cid-ww64rl6q></path></svg> <input type="text" placeholder="Search for programs, facilities..." class="w-full pl-10 pr-4 py-2 rounded-md border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" data-astro-cid-ww64rl6q> </div> <div class="mt-4" data-astro-cid-ww64rl6q> <p class="text-sm text-muted-foreground" data-astro-cid-ww64rl6q>Popular searches:</p> <div class="flex flex-wrap gap-2 mt-2" data-astro-cid-ww64rl6q> <a href="#admissions" class="text-xs px-2 py-1 rounded-md bg-accent hover:bg-accent/80 transition-colors" data-astro-cid-ww64rl6q>Admissions</a> <a href="#programs" class="text-xs px-2 py-1 rounded-md bg-accent hover:bg-accent/80 transition-colors" data-astro-cid-ww64rl6q>Computer Science</a> <a href="#facilities" class="text-xs px-2 py-1 rounded-md bg-accent hover:bg-accent/80 transition-colors" data-astro-cid-ww64rl6q>Library</a> <a href="#contact" class="text-xs px-2 py-1 rounded-md bg-accent hover:bg-accent/80 transition-colors" data-astro-cid-ww64rl6q>Contact</a> </div> </div> </div> </div> </div> <!-- Enrollment Disabled Modal --> <div id="enrollment-disabled-modal" class="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 hidden" data-astro-cid-ww64rl6q> <div class="h-full flex items-center justify-center p-4" data-astro-cid-ww64rl6q> <div class="bg-card rounded-lg shadow-xl max-w-md w-full p-6 opacity-0 scale-95 transition-all duration-300" id="enrollment-modal-container" data-astro-cid-ww64rl6q> <div class="flex items-center justify-between mb-4" data-astro-cid-ww64rl6q> <h3 class="text-lg font-medium" data-astro-cid-ww64rl6q>Enrollment Notice</h3> <button id="close-enrollment-modal" class="p-1 rounded-md hover:bg-accent/50 transition-colors" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" data-astro-cid-ww64rl6q><path d="M18 6 6 18" data-astro-cid-ww64rl6q></path><path d="m6 6 12 12" data-astro-cid-ww64rl6q></path></svg> </button> </div> <div class="mb-6" data-astro-cid-ww64rl6q> <div class="flex items-center gap-3 mb-4" data-astro-cid-ww64rl6q> <div class="rounded-full bg-primary/10 p-2" data-astro-cid-ww64rl6q> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary" data-astro-cid-ww64rl6q> <circle cx="12" cy="12" r="10" data-astro-cid-ww64rl6q></circle> <line x1="12" x2="12" y1="8" y2="12" data-astro-cid-ww64rl6q></line> <line x1="12" x2="12.01" y1="16" y2="16" data-astro-cid-ww64rl6q></line> </svg> </div> <p class="font-medium" data-astro-cid-ww64rl6q>
+Online Enrollment Currently Unavailable
+</p> </div> <p class="text-muted-foreground" data-astro-cid-ww64rl6q>
+We're sorry, but online enrollment is not available at this
+                    time. Please check back later or contact our admissions
+                    office for assistance.
+</p> <p class="mt-2 text-sm text-muted-foreground" data-astro-cid-ww64rl6q>
+For inquiries, you can reach us at <a href="mailto:admissions@dccp.edu.ph" class="text-primary hover:underline" data-astro-cid-ww64rl6q>admissions@dccp.edu.ph</a> or call us at <a href="tel:+63744420000" class="text-primary hover:underline" data-astro-cid-ww64rl6q>+63 74 442 0000</a>.
+</p> </div> <div class="flex justify-end" data-astro-cid-ww64rl6q> <button id="confirm-enrollment-modal" class="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors" data-astro-cid-ww64rl6q>
+I Understand
+</button> </div> </div> </div> </div> <script type="module" src="/_astro/CollegeHeader.astro_astro_type_script_index_0_lang.DESnXaJi.js"></script>  <main class="flex-auto">  <div class="container mx-auto px-4 py-12 sm:py-16 lg:py-20"> <div class="max-w-4xl mx-auto"> <a href="/academics/undergraduate" class="text-primary hover:underline mb-6 inline-block">&larr; Back to Undergraduate Programs</a> <div class="relative mb-8"> <img src="/images/programs/college-bsit.jpg" alt="Image for Information Technology" class="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"> <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg"></div> <div class="absolute bottom-8 left-8"> <p class="text-lg font-semibold text-white/80"> Bachelor of Science </p> <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight"> Information Technology </h1> </div> </div> <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <div class="md:col-span-2"> <h2 class="text-2xl font-bold mb-4">Program Overview</h2> <p class="text-muted-foreground text-lg"> Develop expertise in programming, systems analysis, and digital innovation for the modern tech landscape. </p> <h3 class="text-xl font-bold mt-8 mb-4">Program Details</h3> <div class="grid grid-cols-2 gap-4 text-muted-foreground"> <div class="flex items-center gap-3"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> <div> <strong>Duration:</strong> 4 Years </div> </div> <div class="flex items-center gap-3"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary"><map-pin></map-pin></svg> <div> <strong>Format:</strong> On Campus </div> </div> </div> </div> <div class="bg-card border border-border/10 rounded-lg p-6 h-fit shadow-sm"> <h3 class="text-lg font-bold mb-4">Start Your Journey</h3> <p class="text-sm text-muted-foreground mb-4">
+Ready to transform your future? Apply now to join our
+                        vibrant academic community.
+</p> <button class="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold py-2 px-4 rounded">Apply Now</button> </div> </div> </div> </div>  </main> <footer class="bg-muted py-12 md:py-16"> <div class="container"> <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4"> <div> <div class="flex items-center space-x-2"> <div class="rounded-full bg-primary/10 p-1.5"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg> </div> <span class="font-bold">DCCP Baguio</span> </div> <p class="mt-4 text-sm text-muted-foreground">
+Data Center College of The Philippines of Baguio City Inc.
+                    is committed to providing quality education and producing
+                    industry-ready graduates.
+</p> <div class="mt-6 flex space-x-4"> <a href="#" class="text-muted-foreground hover:text-foreground"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg> <span class="sr-only">Facebook</span> </a> <a href="#" class="text-muted-foreground hover:text-foreground"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg> <span class="sr-only">Instagram</span> </a> <a href="#" class="text-muted-foreground hover:text-foreground"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg> <span class="sr-only">Twitter</span> </a> <a href="#" class="text-muted-foreground hover:text-foreground"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg> <span class="sr-only">LinkedIn</span> </a> </div> </div> <div> <h3 class="text-lg font-bold">Quick Links</h3> <ul class="mt-4 space-y-2 text-sm"> <li> <a href="#about" class="text-muted-foreground hover:text-foreground">About Us</a> </li> <li> <a href="#programs" class="text-muted-foreground hover:text-foreground">Academic Programs</a> </li> <li> <a href="#facilities" class="text-muted-foreground hover:text-foreground">Campus Facilities</a> </li> <li> <a href="#testimonials" class="text-muted-foreground hover:text-foreground">Student Testimonials</a> </li> <li> <a href="#admissions" class="text-muted-foreground hover:text-foreground">Admissions</a> </li> <li> <a href="#contact" class="text-muted-foreground hover:text-foreground">Contact Us</a> </li> </ul> </div> <div> <h3 class="text-lg font-bold">Programs</h3> <ul class="mt-4 space-y-2 text-sm"> <li> <a href="#" class="text-muted-foreground hover:text-foreground">BS Information Technology</a> </li> <li> <a href="#" class="text-muted-foreground hover:text-foreground">BS Business Administration</a> </li> <li> <a href="#" class="text-muted-foreground hover:text-foreground">BS Hospitality Management</a> </li> <li> <a href="#" class="text-muted-foreground hover:text-foreground">Associate in Computer Technology</a> </li> <li> <a href="#" class="text-muted-foreground hover:text-foreground">Short Courses & Certifications</a> </li> </ul> </div> <div> <h3 class="text-lg font-bold">Contact Information</h3> <ul class="mt-4 space-y-2 text-sm"> <li class="flex items-start gap-2"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 text-muted-foreground"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg> <span class="text-muted-foreground">118 Upper Bonifacio Street, Brgy. Holy Ghost
+                            Proper, Baguio City, Philippines
+</span> </li> <li class="flex items-start gap-2"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 text-muted-foreground"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> <span class="text-muted-foreground">(+63) 0908 814 6729</span> </li> <li class="flex items-start gap-2"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 text-muted-foreground"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg> <span class="text-muted-foreground">baguio-campus@dccp.edu.ph</span> </li> </ul> </div> </div> <div class="mt-12 border-t pt-8"> <div class="flex flex-col items-center justify-between gap-4 md:flex-row"> <p class="text-center text-sm text-muted-foreground md:text-left">
+&copy; 2025 Data Center College of The
+                    Philippines. All rights reserved.
+</p> <div class="flex space-x-4 text-sm text-muted-foreground"> <a href="/privacy-policy" class="hover:text-foreground">Privacy Policy</a> <a href="/terms-of-service" class="hover:text-foreground">Terms of Service</a> <a href="#" class="hover:text-foreground">Sitemap</a> </div> </div> </div> </div> </footer> </div> <!-- Theme script to ensure theme functionality works throughout the site --> <script>
+            const getThemePreference = () => {
+                if (
+                    typeof localStorage !== "undefined" &&
+                    localStorage.getItem("theme")
+                ) {
+                    return localStorage.getItem("theme");
+                }
+                return "light"; // Default to light theme instead of using system preference
+            };
+            const isDark = getThemePreference() === "dark";
+            document.documentElement.classList[isDark ? "add" : "remove"](
+                "dark",
+            );
+
+            if (typeof localStorage !== "undefined") {
+                const observer = new MutationObserver(() => {
+                    const isDark =
+                        document.documentElement.classList.contains("dark");
+                    localStorage.setItem("theme", isDark ? "dark" : "light");
+                });
+                observer.observe(document.documentElement, {
+                    attributes: true,
+                    attributeFilter: ["class"],
+                });
+            }
+        </script> </body> </html>

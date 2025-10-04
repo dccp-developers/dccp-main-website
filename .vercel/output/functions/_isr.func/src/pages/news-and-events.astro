@@ -1,0 +1,51 @@
+---
+import CollegeLayout from "@/layouts/CollegeLayout.astro";
+import { HeroSection } from "@/components/hero-section";
+import { NewsSection } from "@/components/news-section";
+import { EventsSection } from "@/components/events-section";
+import { initializeFacebookApi } from "@/lib/facebook-api";
+import type { FormattedPost } from "@/lib/facebook-api";
+
+let initialPosts: FormattedPost[] = [];
+let hasNext = false;
+let hasPrevious = false;
+let nextCursor: string | undefined;
+let previousCursor: string | undefined;
+
+// Attempt to fetch initial Facebook posts on the server
+try {
+    const pageId = import.meta.env.FACEBOOK_PAGE_ID;
+    const accessToken = import.meta.env.FACEBOOK_ACCESS_TOKEN;
+
+    if (pageId && accessToken) {
+        const facebookApi = initializeFacebookApi(pageId, accessToken);
+        const result = await facebookApi.getPosts(3);
+
+        initialPosts = result.posts;
+        hasNext = result.hasNext;
+        hasPrevious = result.hasPrevious;
+        nextCursor = result.nextCursor;
+        previousCursor = result.previousCursor;
+    } else {
+        console.warn(
+            "Facebook API credentials not configured. Using fallback posts.",
+        );
+    }
+} catch (error) {
+    console.error("Error fetching initial Facebook posts:", error);
+    // Will fall back to client-side loading or hardcoded posts
+}
+---
+
+<CollegeLayout title="News & Events">
+    <HeroSection />
+    <NewsSection
+        client:only="react"
+        initialPosts={JSON.stringify(initialPosts)}
+        initialHasNext={hasNext}
+        initialHasPrevious={hasPrevious}
+        initialNextCursor={nextCursor}
+        initialPreviousCursor={previousCursor}
+    />
+    <!-- <EventsSection client:load /> -->
+</CollegeLayout>

@@ -1,0 +1,80 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "^/_astro/(.*)$",
+			"headers": {
+				"cache-control": "public, max-age=31536000, immutable"
+			},
+			"continue": true
+		},
+		{
+			"src": "^/_server-islands/([^/]+?)/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/_image/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/404/?$",
+			"dest": "/_isr?x_astro_path=$0"
+		},
+		{
+			"src": "^/academics/graduate/?$",
+			"dest": "/_isr?x_astro_path=$0"
+		},
+		{
+			"src": "^/academics/tesda-courses/?$",
+			"dest": "/_isr?x_astro_path=$0"
+		},
+		{
+			"src": "^/academics/undergraduate/?$",
+			"dest": "/_isr?x_astro_path=$0"
+		},
+		{
+			"src": "^/api/facebook-post/([^/]+?)/?$",
+			"dest": "/_isr?x_astro_path=$0"
+		},
+		{
+			"src": "^/api/facebook-posts/?$",
+			"dest": "/_isr?x_astro_path=$0"
+		},
+		{
+			"src": "^/dccp-hub/?$",
+			"dest": "/_isr?x_astro_path=$0"
+		},
+		{
+			"src": "^/news/([^/]+?)/?$",
+			"dest": "/_isr?x_astro_path=$0"
+		},
+		{
+			"src": "^/news/?$",
+			"dest": "/_isr?x_astro_path=$0"
+		},
+		{
+			"src": "^/news-and-events/?$",
+			"dest": "/_isr?x_astro_path=$0"
+		},
+		{
+			"src": "^/privacy-policy/?$",
+			"dest": "/_isr?x_astro_path=$0"
+		},
+		{
+			"src": "^/terms-of-service/?$",
+			"dest": "/_isr?x_astro_path=$0"
+		},
+		{
+			"src": "^/$",
+			"dest": "/_isr?x_astro_path=$0"
+		},
+		{
+			"src": "^/.*$",
+			"dest": "_render",
+			"status": 404
+		}
+	]
+}
