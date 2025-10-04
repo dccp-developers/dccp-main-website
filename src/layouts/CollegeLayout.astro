@@ -5,7 +5,7 @@ import HeadSEO from "@/components/HeadSEO.astro";
 import CollegeFooter from "@/components/CollegeFooter.astro";
 import CollegeHeader from "@/components/CollegeHeader.astro";
 import { ViewTransitions } from "astro:transitions";
-
+import SpeedInsights from "@vercel/speed-insights/astro";
 interface Props {
     title?: string | undefined;
     description?: string | undefined;
@@ -21,6 +21,7 @@ const { title, description, ogImage } = Astro.props;
         <ViewTransitions />
     </head>
     <body class="font-serif bg-background min-h-screen font-sans antialiased">
+        <SpeedInsights />
         <div class="relative flex min-h-screen flex-col">
             <CollegeHeader />
             <main class="flex-auto">

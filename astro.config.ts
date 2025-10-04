@@ -20,9 +20,14 @@ export default defineConfig({
     },
   },
   integrations: [react()],
-  adapter: vercel(),
+  adapter: vercel({
+    isr: true,
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
   server: {
-    allowedHosts: ["dccpweb.koamishin.org", "dccp.edu.ph"],
+    allowedHosts: ["dccpweb.koamishin.org", "dccp.edu.ph", "www.dccp.edu.ph"],
   },
   devToolbar: {
     enabled: false,
